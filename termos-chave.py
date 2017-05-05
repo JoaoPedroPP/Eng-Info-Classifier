@@ -3,14 +3,14 @@
 #==============================================================================
 # Código para armazenar os termos-chave de cada disciplina na sua subárea
 # 
-# Feito individulamente para melhor visualização do PP da UFABC
+# Feito individualmente para melhor visualização do PP da UFABC
 # 
 #
 #
 #==============================================================================
 
 #######################Computação############################
-progSoftEmb = ['C', 'C++', 'orientada a objeto', 'IDE', 'debug', 'compilação', 'UML', 'software']
+progSoftEmb = ['C', 'C++', 'IDE', 'debug', 'compilação', 'UML', 'software']
 
 Computacao = progSoftEmb
 
@@ -21,10 +21,10 @@ eSCMCritica = ['SWEBOK', 'SPIN', 'promela', 'máquinas de estados', 'validação
 infoSoci = ['Inteligência Social', 'sistemas sociais', 'ciência de redes', 'redes virais', 'formação de opinião', 'computação social']
 pLN = ['PLN', 'NLP', 'nltk', 'línguas naturais', 'língua natural', 'linguística', 'tradução automática', 'semântica']
 dispMoveis = ['J2ME', 'MIDlet', 'CLDC', 'MIDP', 'GUI', 'aplicativos', 'Android', 'iOS', 'java', 'C#', ' Java', 'API', 'APIs']
-jogosDigi = ['jogos', 'Unity3d', 'Unity', 'VR', 'sprite', 'sprites', 'videogame', 'jogo']
+jogosDigi = ['jogos', 'Unity3D', 'Unity', 'VR', 'sprite', 'sprites', 'videogame', 'jogo']
 sistInt = ['rede neural', 'redes neurais', 'machine learning', 'perceptron' , 'SVM', 'rede convolucional', 'backpropagation', 'algoritmo genético', 'ADALINE', 'vetor de suporte', 'aprendizado de máquina', 'lógica fuzzy', 'Machine Learning', 'neurônio', 'neurônios']
 engSoftware = ['Engenharia de Software', 'CASE', 'desenvolvimento de software', 'gerência de projeto']
-algoEstruDado1 = ['estruturas lineares', 'pilhas', 'listas encadeadas', 'árvores', 'oredenação', 'strings']
+algoEstruDado1 = ['estruturas lineares', 'pilhas', 'listas encadeadas', 'árvores', 'ordenação', 'strings']
 sistDistribuidos = ['comunicação entre processos', 'modelo cliente servidor', 'RPC', 'sincronização', 'transação distribuída', 'P2P', 'cluster', 'cloud', 'Cloud']
 
 Computacao = Computacao + progEstru + progOrientObj + eSCMCritica + infoSoci + dispMoveis + pLN + jogosDigi + sistInt + engSoftware + algoEstruDado1 + sistDistribuidos
