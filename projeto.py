@@ -6,6 +6,8 @@
 import nltk
 from nltk.corpus import PlaintextCorpusReader
 import os
+import termoschave
+import histograma
 
 ###########################################################################
 ######################Configuração inicial#################################
@@ -37,22 +39,32 @@ for i in range(len(A)):
     tel = 0
     ele = 0
     com = 0
+    redinfo = 0
+    procmul = 0
     portuguese_stopwords = nltk.corpus.stopwords.words('portuguese')
     for w in nltk.Text(t.words('Texto_%d'%i)):
         w.lower()
         if w not in portuguese_stopwords:
-            if w in Tele:
-                print w
+            if w in termoschave.tele():
+                #print w
                 tel += 1
-            if w in Eletro:
-                print w
+            if w in termoschave.elec():
+                #print w
                 ele += 1
-            if w in Comp:
-                print w
+            if w in termoschave.comp():
+                #print w
                 com += 1
-    print tel
-    print ele
-    print com
+            if w in termoschave.redinf():
+                redinfo += 1
+            if w in termoschave.procmult():
+                procmul += 1
+    #nltk.Text(t.words('Texto_%d'%i)).collocations(20)
+    print "Palavras da Telecomunicações %d"%tel
+    print "Palavras da Eletrônica %d"%ele
+    print "Palavras da Computação %d"%com
+    print "Palavras de Redes de Informação %d"%redinfo
+    print "Palavras de Processamento Multimidia %d"%procmul
+    histograma.graph(tel, ele, com, redinfo, procmul)
     print "-----FIM-----"
 
 ###########################################################################
