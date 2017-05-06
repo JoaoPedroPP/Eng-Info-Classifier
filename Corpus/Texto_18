@@ -1,0 +1,281 @@
+Segmentação de fissura 3D pulmonar em imgens TC baseadas em texturas
+
+I. INTRODUÇÃO
+
+O CÂNCER de pulmão (CP) é o mais comum de todos os
+tumores malignos, apresentando aumento de 2% por ano
+na sua incidência mundial. Quanto ao número de mortes é
+estimado 22.424 sendo 13.698 homens e 8.726 mulheres, o
+tratamento inicial para esta doença é a lobectomia [1].
+Para a cirurgia de lobectomia é importante utilizar
+informações anatômicas das cavidades do pulmão para o seu
+planejamento. A anatomia típica do pulmão humano possui
+cinco divisões distintas chamadas de lóbulos, cujos limites são
+determinados pelas fissuras. O auxílio na segmentação 3D dos
+lóbulos, a partir de imagens de Tomografia Computadorizada
+(TC), é geralmente obtida através da detecção das fissuras
+pulmonares.
+O auxílio ao diagnóstico médico na pneumologia usando
+imagens de TC do tórax vêm sendo aplicado na segmentação
+dos pulmões [3,4], de suas estruturas internas [5,6,7] e até
+mesmo de doenças pulmonares [8,9]. Na segmentação dos
+lóbulos, diversos trabalhos na literatura fazem uso de
+informações anatômicas do pulmão para ajudar a auxiliar na
+segmentação da fissura pulmonar [2].
+Zhang et al [10] utilizam um atlas anatômico do pulmão e
+um sistema fuzzy para inicializar a segmentação da fissura
+
+lobular e emprega um outro sistema fuzzy juntamente com
+pontos inseridos manualmente que servem como base para
+identificar a fissura pulmonar, ou seja, depende diretamente do
+atlas anatômico do pulmão e da interação com o usuário que
+insere pontos para segmentação final. Pu et al [11] fazem uso
+de um modelo geométrico para realizar a segmentação inicial
+da fissura, após aplicar um filtro de suavização Laplaciano e
+realiza um processamento na imagem resultante através de
+método estatístico de forma a obter uma aproximação da
+fissura na imagem de TC, o que torna um algoritmo
+dependente do modelo geométrico que pode variar
+dependendo do pulmão em análise. Já, Sapthagirivasan et al
+[12] utilizam uma filtragem para realçar as árvores vasculares
+e brônquicas de forma a identificar o local das fissuras e então
+aplica uma transformada wavelet baseada em uma árvore
+dupla complexa 2D para encontrar as curvaturas das fissuras.
+Com base no local e nas curvaturas, é realizado uma busca
+para a fissura pulmonar, ou seja, o algoritmo depende de uma
+prévia identificação das árvores vasculares e brônquicas, além
+do resultado da identificação das curvaturas através
+transformada wavelet. Lassen et al [13] utilizam segmentação
+dos vasos sanguíneos e um filtro de realce através dos
+autovalores da matriz hessiana para realizar a segmentação da
+fissura, dependendo também de uma prévia segmentação da
+árvore vascular.
+Nesse contexto, observa-se que a segmentação das fissuras
+geralmente é baseada em um modelo genérico pré-definido
+que não considera a individualidade da anatomia de cada
+paciente. Quando não baseada nesses modelos, a segmentação
+das fissuras baseia-se no resultado de algoritmos de detecção e
+segmentação de outras estruturas, como vasos sanguíneos ou
+vias aéreas. Vale ressaltar que esses algoritmos possuem
+algum grau de erro que podem chegar a comprometer a
+segmentação das fissuras.
+Nesse sentido, com o intuito de obter uma segmentação 3D
+da fissura totalmente independente de modelos anatômicos e
+da segmentação das demais estruturas existentes no exame de
+TC, o presente trabalho tem por objetivo realizar a
+segmentação 3D de fissuras utilizando apenas medidas de
+textura baseado em Haralick [14], Redes Neurais Artificiais
+(RNA) e morfologia matemática.
+II. REVISÃO BIBLIOGRÁFICA
+As imagens utilizadas neste trabalho fazem parte de
+um banco de imagens de TC disponibilizadas para fins
+acadêmicos por LOLA11 em http://lola11.com/. O LOLA11
+consiste em um banco de dados de imagens de TC de tórax,
+com anormalidades diferentes, que são utilizadas como base
+para avaliação de algoritmos de segmentação de estruturas
+pulmonares. Lassen et al utilizam o banco LOLA11 para
+validação do método de segmentação de lóbulos pulmonares.
+
+A. Textura
+As texturas podem ser interpretadas como relações
+espaciais e arranjos de elementos básicos de uma imagem. Em
+geral, são utilizadas para indicar propriedades intrínsecas de
+superfícies ou regiões, principalmente as que apresentam uma
+variação suave de nível de cinza, sendo tão pequenas que não
+conseguem separar objetos na resolução observada [14].
+Neste trabalho, a extração das características de texturas é
+realizada por meio de estatísticas de segunda ordem, baseado
+na repetição de pares de pixels proposto por Haralick [14]. As
+estatísticas de segunda ordem são calculadas com base na
+função de probabilidade da co-ocorrência de dois pares de
+pixels na imagem. Esta função de probabilidade é também
+definida como matriz de co-ocorrência 
+2
+De posse desta matriz, é possível calcular as medidas de
+texturas definidas por Haralick [8]:
+Contraste (C)
+Homogeneidade (H)
+Energia (En)
+Autocorrelação (A)
+Covariância (Cov)
+Proeminência (P)
+Sombra (S)
+B. Rede MLP
+O classificador MLP (Multilayer Perceptron) consiste em
+uma rede em cascata com a camada de entrada, camada oculta
+e camada de saída [15].
+O princípio do treinamento da MLP consiste em calcular a
+saída dos neurônios das camadas ocultas através de uma
+estimativa do efeito que estas camadas causam no erro dos
+neurônios da camada de saída [15]. Dessa maneira, o erro na
+camada de saída do classificador é retropropagado para as
+camadas ocultas, possibilitando o aperfeiçoamento dos valores
+dos pesos entre as camadas.
+A detecção da fissura utilizada neste trabalho utiliza como
+entradas da MLP as 10 métricas de textura descritas na seção
+anterior. Desta forma a rede utilizada possui uma camada de
+entrada com 10 atributos, uma camada oculta com 60
+neurônios e uma camada de saída com 2 neurônios, sendo o
+primeiro neurônio para detectar positivamente a fissura e o
+segundo neurônio o oposto do primeiro.
+Na fase de treinamento foi formado um banco de dados
+com 28000 conjuntos de atributos provenientes de 60 imagens
+selecionadas aleatoriamente do banco de imagens LOLA11.
+São atribuídos aos voxels selecionados um rótulo igual a 1
+caso o mesmo represente parte de uma fissura, e rótulo igual a
+-1 caso contrário. Desta forma o banco de dados é composto
+pelas 10 medidas de texturas descrita na seção da Textura,
+seguidas do rótulo atribuído. A rede utilizada foi treinada por
+150 épocas com uma taxa de aprendizagem ɳ= 0,2. Para
+realizar a validação do treinamento foi utilizado a técnica de
+cross-validation de forma a verificar o treinamento correto da
+rede.
+III.METODOLOGIA
+
+Máxima Probabilidade (MAX)
+em que,
+Correlação (Corr)
+em que i e j são, respectivamente, a intensidade de dois pixels
+localizados em (k, l) e (m, n), separados por uma distância d
+na orientação de θ com a horizontal.
+A partir da definição de matriz de co-ocorrência, é possível
+definir a matriz S de dependência espacial do nível de cinza
+(SGLDM - Spatial Gray Level Dependence Matrix) [14]
+Entropia (Ent)
+O algoritmo proposto neste trabalho consiste inicialmente
+na segmentação do pulmão e filtragem Gaussiana 3D. Em
+seguida é realizada a classificação da MLP baseado em
+texturas para detecção de regiões semelhantes a fissuras, e por
+fim é aplicada uma etapa de pós-processamento que consiste
+
+
+em uma análise de componentes conectados e operações de
+morfologia matemática.
+
+
+A segmentação da área do pulmão foi processada baseada
+no algoritmo de [16]. O fluxograma do algoritmo pode ser
+observado na Fig. 1. O método é iniciado com uma análise da
+imagem de TC, ver Fig. 2(a), para identificar a semente e após
+realizar um crescimento de região com um limiar fixo. Após
+segmentar os pulmões, é realizada uma filtragem gaussiana
+3D com o objetivo de suavizar os componentes de alta
+frequência da imagem. Neste trabalho foi aplicado um filtro
+gaussiano com μ=1mm e máscara de 3x3x3.
+Para etapa de detecção de fissura, é utilizada uma rede
+MLP conforme procedimento descrito na seção Rede MLP, na
+qual são submetidos os atributos calculados. Para cada voxel
+pertencente ao pulmão é estabelecida uma sub imagem de
+dimensões 11x11, centralizada no voxel em questão. Dessa
+forma, para o cálculo da matriz de co-ocorrência, com base na
+equação 1, são formados 120 pares de voxels considerando o
+voxel central e cada um dos voxels da sub imagem
+estabelecida. Em seguida a matriz de dependência espacial é
+definida, e baseada nesta, as 10 medidas de texturas utilizadas
+neste trabalho são calculadas de acordo com a equação 2.
+Estas são utilizadas como entradas da MLP e o resultado da
+classificação pode ser observada na Fig. 2(b).
+
+Na etapa de pós-processamento para a remoção de ruídos e
+falsos positivos gerados pela MLP, é utilizada uma técnica de
+análise de componentes conectados, utilizando o limiar de
+1000 voxels. Após essa análise é aplicada nas imagens
+resultante morfologia matemática utilizando fechamento na
+imagem com o intuito de conectar algumas lacunas menores
+presentes na detecção das fissuras. A imagem resultante do
+pós-processamento é ilustrada na Fig. 2(c).
+
+A. Avaliação do Método
+Na avaliação de algoritmos aplicados a imagens médicas,
+alguns autores chegam a um padrão‐ouro por meio da
+expertise de médicos especialistas e validam algoritmos com
+base na comparação visual ou obtenção de taxas de acerto
+entre os resultados obtidos e os resultados apresentados no
+padrão ouro.
+Neste trabalho, para obtenção do padrão‐ouro, um total de
+200 imagens, representativas de todas as regiões dos pulmões
+de 10 exames do LOLA11 são analisadas por dois médicos
+especialistas.
+Os resultados apresentados neste trabalho, são baseados
+nos voxels definidos como fissura após a etapa de pósprocessamento. Desta forma cada voxel é classificado depois
+do pós-processamento em uma das categorias seguintes,
+Verdadeiro Positivos (VP) que consistem nos voxels que
+constam no padrão ouro como fissura e classificados como
+fissura pelo algoritmo. Verdadeiro Positivos (VN) que
+consistem em voxels que não constam no padrão ouro como
+fissura e não são classificados como fissura pelo algoritmo.
+Falso Positivos (FP) que consistem em voxels que não
+constam no padrão ouro como fissura e são classificados como
+fissura pelo algoritmo. Falso Negativos (FN) que consistem
+em voxels que constam no padrão ouro como fissura e não são
+classificados como fissura pelo algoritmo.
+Por fim, é calculado o Coeficiente de Similaridade (CS) e
+Sensibilidade (S) e Especificidade (Es) dados por:
+
+IV. RESULTADOS
+A partir do padrão ouro das 200 imagens analisadas pelos
+especialistas, o algoritmo foi processado e o resultado das
+imagens das fissuras foram analisadas.
+Uma abordagem possível para o levantamento do
+resultado, consiste em calcular as detecções totais não fazendo
+distinção entre exames. As taxas de acerto do classificador é
+ilustrada na Tabela I.
+
+Ressalta-se o excelente desempenho do algoritmo ao
+observar as taxas de CS e Es. Baseado no valor do CS,
+percebe-se que o resultado obtido está bem próximo do
+cenário desejado, já em relação a Es conclui-se que o
+algoritmo define bem estruturas que não são fissuras.
+
+Na Tabela II é ilustrado uma outra abordagem de analisar
+o resultado do algoritmo através das taxas calculadas para
+cada um dos exames baseados nos resultados da classificação
+da MLP
+A sensibilidade obteve a menor taxa entre as três, porém
+ainda se mostra uma taxa satisfatória, uma vez que a
+classificação é realizada a nível de voxel. Logo, mesmo que a
+fissura detectada pelo algoritmo não possua todos os voxels,
+ainda é possível obter uma representação da fissura pulmonar
+satisfatória.
+
+
+Na Tabela III é demonstrado os valores médios de cada
+uma das taxas, juntamente com seu desvio padrão depois do
+pós-processamento.
+Desta forma é possível afirmar que o algoritmo atingiu o
+objetivo de realizar a segmentação da fissura de forma a
+deixa-la visível com o objetivo de uma futura segmentação
+dos lóbulos.
+V.CONCLUSÃO
+
+
+A partir da Fig. 3 é possível observar que o resultado da
+classificação da fissura pelo algoritmo proposto é satisfatório,
+pois está bem próximo ao segmentado pelo especialista.
+Na Fig. 4 é ilustrado um gráfico que possui as taxas de
+acerto do classificador, para as classes de fissura, pulmão e do
+classificador em geral para os dados utilizados. Desta forma, é
+possível observar que a classe fissura, classe de interesse neste
+trabalho possui um resultado bem expressivo de forma que as
+suas taxas variam na faixa de 77% de acerto.
+
+Este trabalho aborda um método computacional para a
+detecção automática de fissuras pulmonares em imagens de
+TC do tórax. O método proposto consiste na análise de
+padrões de textura de segunda ordem, classificadas por uma
+rede neural MLP e posteriormente pós-processada utilizando
+análise de componentes conectados e morfologia matemática.
+As imagens utilizadas neste trabalho são provenientes do
+banco de imagens LOLA11 disponível em http://lola11.com.
+Para quantificação de resultados foram levantados a
+quantidade de detecções VP, VN, FP e FN, e posteriormente
+calculadas as taxas de sensibilidade, especificidade e
+coeficiente de similaridade. Foram obtidos resultados
+satisfatórios com taxas CS = 95,6%, S = 71,1% e Es = 95,6%,
+obtendo assim uma elevada taxa de acerto para o classificador.
+Para trabalhos futuros, sugere-se realizar a segmentação dos
+lóbulos baseado na detecção da fissura proposta neste
+trabalho.
+
+
+

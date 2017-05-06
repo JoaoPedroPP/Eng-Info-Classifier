@@ -1,0 +1,486 @@
+Desenvovlimento de um sistema de classificação de imagens dermoscopicas para dispositivos móveis
+
+I. INTRODUÇÃO
+
+O CÂNCER é uma das doenças que mais preocupa a
+medicina. Segundo o Instituto Nacional do Câncer
+(INCA), para o ano de 2014 foi feita uma estimativa de 580
+mil novos casos dessa doença. No Brasil, o câncer de pele
+corresponde a 25% de todos os tumores malignos registrados
+no país. O câncer de pele do tipo melanoma é o menos
+comum, representando cerca de 4% das neoplasias malignas
+desse órgão. No entanto, esse tipo de câncer é considerado o
+mais agressivo pelo fato de apresentar um alto índice de
+metástase, fazendo com que, o diagnóstico precoce seja um
+fator crucial para o tratamento e cura dessa doença [1].
+Uma técnica utilizada pelos dermatologistas para
+diagnosticar o câncer de pele, e consequentemente o
+melanoma, é a dermatoscopia. Trata-se de um exame não
+invasivo, realizado in vivo, que analisa superfícies
+pigmentadas na pele humana. Para a realização dessa análise,
+é necessário a utilização de um aparelho chamado
+dermatoscópio. Esse último consiste em um aparelho ótico
+que permite ampliar a lesão de 10 a 100 vezes. O mesmo
+ainda emite um feixe de luz que atinge a superfície da pele em
+um ângulo de 20°. Para eliminar o reflexo natural da luz, um
+gel é aplicado previamente sobre a pele, permitindo a
+identificação de estruturas da pele que antes não eram visíveis
+a olho nu [2].
+Resultados mostram que a utilização da dermatoscopia, em
+conjunção com os resultados do exame clínico e o histórico do
+paciente, melhora a acurácia do diagnóstico da lesão em 50%
+
+[3]. Alguns algoritmos médicos são utilizados em conjunto
+com a dermatoscopia na análise das lesões. Dentre os métodos
+mais utilizados destacam-se o uso da regra ABCD [4] e a lista
+dos sete pontos [5].
+Para essa análise a regra ABCD atribui uma pontuação para
+a lesão. Essa pontuação é obtida através da soma dos pontos
+atribuídos às características de assimetria (A), borda (B), cor
+(C), e diâmetro e/ou estruturas diferenciais (rede de pigmento,
+pontos, estrias, etc.) (D). Caso a soma atinja uma pontuação
+maior que 5.45, a lesão é diagnosticada como melanoma. A
+lista dos sete pontos verifica a presença de estruturas
+diferencias atípicas, são elas: rede de pigmento, véu azulesbranquiçado, padrão vascular atípico, estrias, pigmentação
+irregular, pontos ou glóbulos e estruturas de regressão. Esse
+método classifica a lesão como melanoma caso sejam
+identificadas duas ou mais estruturas diferenciais atípicas.
+Mesmo com o uso dos algoritmos de diagnósticos
+descritos, que visam tornar o diagnóstico mais confiável e
+preciso, a prática do exame de dermatoscopia em alguns casos
+pode ser considerada um desafio, seja pela pouca quantidade
+de médicos especialistas nessa área, ou pela falta de
+experiência dos profissionais, ou pela pouca quantidade de
+profissionais em regiões interioranas e na zona rural.
+O avanço das tecnologias dos sistemas computacionais e
+dos dispositivos móveis, tornou possível o emprego de
+sistemas computacionais para as mais diversas áreas, inclusive
+a área da saúde. O uso desses sistemas na análise do câncer de
+pele pode solucionar ou reduzir os vieses decorrentes de
+diagnósticos incorretos.
+Este trabalho apresenta o desenvolvimento de um protótipo
+capaz de executar todos os passos necessários para a
+realização do exame de dermatoscopia utilizando um
+dispositivo móvel. O objetivo desse sistema é tornar possível a
+execução do exame de dermatoscopia por diversos
+profissionais da saúde, que poderão identificar uma lesão e
+encaminhar o paciente para o tratamento adequado, assim
+como realizar o exame independentemente da região que o
+paciente esteja, já que o sistema não irá utilizar nenhum tipo
+de conexão com internet para executar o exame.
+Este artigo está organizado da seguinte forma: Na seção 2
+são apresentados trabalhos relacionados. Na seção 3, é
+apresentada a visão geral do sistema. Na seção 4, são
+apresentados os métodos desenvolvidos durante a
+implementação do protótipo. Na seção 5, são apresentados os
+resultados e discussões e na Seção 6 a conclusão deste
+trabalho.
+
+
+II. TRABALHOS RELACIONADOS
+Nos últimos tempos, foram propostos vários sistemas para
+a detecção e classificação do melanoma. Alguns sistemas
+tentam imitar o desempenho da dermatologia utilizando
+diferentes técnicas para analisar e classificar as lesões de pele,
+principalmente do tipo melanoma. Os sistemas para análise
+dessas lesões geralmente seguem uma abordagem de
+reconhecimento de padrões e/ou visão computacional, e
+grande parte desses sistemas são inspirados na regra ABCD.
+Em [6] o autor apresenta o SKAN – Sistema para detecção de
+lesões de pele utilizando técnicas adaptativas. O sistema
+classifica lesões de pele do tipo melanoma baseado na regra
+ABCD. Para isso, o autor utiliza um algoritmo de árvore de
+decisão adaptativa para tomar suas decisões, essa árvore cria
+ou exclui nós dinamicamente de forma a se adaptar e melhorar
+seu índice de acertos. O sistema analisa as características da
+lesão e classifica como maligna ou benigna.
+O avanço das tecnologias possibilitou o desenvolvimento
+das mais diversas aplicações para dispositivos. O uso desses
+aparelhos como ferramenta para auxiliar o diagnóstico do
+câncer pode ser visto em [8]. Onde o autor apresenta um
+sistema de classificação de lesões de pele utilizando um
+dispositivo móvel sob a plataforma iOS. O sistema
+desenvolvido captura a imagem das lesões utilizando a câmera
+do próprio dispositivo e processa a imagem no mesmo. A
+regra ABCD é utilizada para extrair e classificar a lesão como
+maligna, suspeita e benigna. O sistema apresentou bons
+resultados na análise do melanoma, onde o mesmo foi capaz
+de classificar de modo geral 90% das lesões, obtendo um nível
+de sensibilidade de 93,02% e um nível de especificidade de
+86,95%.
+O trabalho em [9] é semelhante ao trabalho anterior. Neste
+trabalho os autores desenvolveram um sistema que executa
+sob a plataforma Android, mas a principal diferença está no
+processo de classificação, que utiliza um classificador KNN.
+O sistema obteve um desempenho geral de 66,7%, um nível de
+Sensibilidade (SE – classificação correta do melanoma) de
+60,7% e um nível de Especificidade (SP – classificação
+correta dos nevos benignos e atípicos) de 80,5% no processo
+de classificação.
+Em [10] os autores apresentam o uso de um dispositivo
+móvel como uma ferramenta de triagem do câncer de pele do
+tipo melanoma. Os autores utilizam um celular e um
+dermatoscópio de bolso para capturar imagens das lesões de
+pele, transmitindo as imagens por e-mail ou por uma aplicação
+web. O estudo aponta que o uso dessa prática teve um índice
+de 93% de aceitação dos profissionais de saúde, e que pode
+gerar bons índices de acurácia no diagnóstico do câncer.
+Os três últimos trabalhos relacionados apresentam soluções
+relacionadas com a dermatologia e estão diretamente
+relacionados com a proposta desse trabalho. Comparando com
+o trabalho de [10], este trabalho apresenta um sistema mais
+completo pelo fato do próprio sistema apresentar um parecer
+que possa auxiliar na decisão que será tomada sobre a lesão
+analisada, sem a necessidade de conexão com a internet. A
+dependência do uso de internet por parte do sistema pode
+tornar inviável o uso desse dispositivo, pois o usuário pode se
+
+encontrar em regiões onde o sinal da rede não esteja
+disponível, como na zona rural, por exemplo. Em [8] e [9]
+foram apresentadas propostas similares à deste trabalho. No
+entanto, ambos diferem deste nas técnicas utilizadas no
+processamento, na classificação, e principalmente na forma de
+aquisição da imagem, onde os trabalhos citados não utilizam o
+dermatoscópio, ferramenta fundamental para análise das
+lesões. A próxima seção apresenta a estrutura geral do sistema
+proposto.
+III. ESTRUTURA DO SISTEMA
+Dentre as maneiras de diagnosticar doenças dermatológicas
+em computadores, a análise de imagens é uma das mais
+utilizadas para o diagnóstico do câncer de pele do tipo
+melanoma. A estrutura proposta para o sistema de
+classificação de imagens dermatoscópicas para este trabalho, é
+apresentado na Fig. 1. Nela pode-se observar as etapas
+necessárias para a execução do sistema.
+
+
+
+O método proposto é composto dos seguintes módulos:
+A. Aquisição da Imagem
+Nesse módulo as imagens são capturadas no ato da consulta.
+O usuário utiliza a câmera do dispositivo móvel pareado com
+a lente de um dermatoscópio. Já é possível encontrar no
+mercado modelos de dermatoscópios desenvolvidos para
+alguns smartphones, e adaptadores para smartphones que
+possibilitam acoplar um dermatoscópio ao mesmo. Feito isso,
+o usuário deve se certificar que a lesão fique totalmente dentro
+do espaço da imagem. As imagens capturadas são salvas
+automaticamente no cartão de memória do dispositivo.
+B. Pré-Processamento
+Este módulo melhora as condições da imagem e corrige
+possíveis ruídos adquiridos no processo de aquisição da
+mesma. Para isso, foram utilizadas diferentes técnicas de
+processamento de imagens, tais como filtros e outras técnicas
+para melhorar as condições da imagem. Em seguida, é
+realizado o processo de segmentação, esse processo consiste
+em separar a lesão da região saudável da pele. Para isso, foi
+utilizada uma técnica de limiarização. Os algoritmos utilizados
+em cada módulo desse sistema serão apresentados
+posteriormente.
+C. Extração de Características
+Essa etapa analisa as imagens que recebe do PréProcessamento. O módulo analisa a lesão, e extrai suas
+características de acordo com as regras de borda (B) e cor (C)
+da regra ABCD. As informações extraídas são armazenadas
+
+
+em um vetor de características em forma de dados e enviados
+para o próximo módulo.
+
+
+apresenta o resultado da aplicação do filtro Bilateral em uma
+imagem de câncer de pele do tipo melanoma (Fig. 3(a)).
+
+D. Classificação
+Nesse módulo, as características das lesões que foram
+identificadas e extraídas das imagens são utilizadas como
+entrada para um classificador inteligente com um algoritmo de
+aprendizagem de máquina utilizando uma abordagem de
+aprendizagem supervisionada. As informações analisadas são
+classificadas em benignas ou melanoma.
+E. Exibição dos Resultados
+Nesse módulo é apresentado o resultado da classificação e as
+características identificadas pelo algoritmo.
+IV. MÉTODOS DESENVOLVIDOS
+Para o processo de aquisição da imagem deste protótipo,
+foi utilizado um conjunto de imagens dermatoscópicas da base
+PH² [11]. Essas imagens foram obtidas sob as mesmas
+condições utilizando o sistema Tuebinger Mole Analyzer com
+uma ampliação de 20 vezes. A base é formada por um
+conjunto de 200 imagens, sendo elas: 80 nevos comuns, 80
+nevos atípicos e 40 melanomas, no formado bmp com
+dimensão média de 768 × 560 pixels. Vale ressaltar que, todas
+as imagens foram analisadas por dermatologistas.
+Das 200 imagens existentes na base, apenas 60 foram
+utilizadas. Algumas foram retiradas pelo fato de possuírem
+características que não favorecem a segmentação e a análise
+de características, como: a lesão não está totalmente dentro do
+espaço da imagem (Fig. 2(a)), excesso de pelos (Fig. 2(b)) e
+baixo nível de contraste entre a lesão e a pele (Fig. 2(c)).
+Em seguida para melhorar as condições da imagem, e
+consequentemente a extração de características, foram
+utilizados os seguintes filtros: filtro Bilateral [12], um filtro de
+média, e uma função para separar os canais RGB.
+Para minimizar os ruídos existentes na imagem,
+inicialmente foi aplicado na imagem o filtro Bilateral, para
+isso, utilizou-se a função bilateralFilter do pacote OpenCV
+[13]. Esse filtro é capaz de suavizar tanto imagens em tons de
+cinza como imagens coloridas, preservando a borda por meio
+de uma combinação não linear dos pixels mais próximos de
+uma imagem. O filtro combina os níveis de cinza ou as cores
+de acordo com a proximidade geométrica e sua semelhança
+fotométrica, sempre escolhendo os valores mais próximos de
+sua vizinhança. O método utilizado pelo filtro para suavizar as
+imagens difere de outras técnicas pelo fato de não produzir
+sombras ao longo das bordas em imagens coloridas,
+resultando em um melhor aguçamento da borda. A Fig. 3(b)
+
+Percebe-se, na Fig. 3(b), que a utilização do filtro eliminou
+os pelos, diminuiu e eliminou algumas estruturas formadas
+pelo gel e melhorou a textura da imagem. Também é possível
+notar que aplicação do filtro não alterou a estrutura da borda
+da lesão.
+Em seguida, o canal azul é extraído da imagem utilizando a
+função split do pacote OpenCv. Esse canal foi selecionado
+para as próximas etapas, pois, conforme experimentos
+realizados no trabalho apresentado por [7], é o que melhor
+discrimina a lesão. A Fig. 3(c) apresenta a imagem no canal de
+cor azul.
+Separado o canal azul da imagem, a mesma é submetida
+novamente a um filtro de suavização, mas dessa vez é
+utilizado um filtro de média (medianBlur: função do pacote
+OpenCv) com uma matriz 13x13. Esse processo é necessário
+para melhorar ainda mais as condições da imagem, removendo
+eventuais ruídos que venham a persistir na mesma. Na Fig.
+3(c) pode-se observar a presença de ruídos, nesse caso, o gel
+que persistiu na imagem mesmo depois da aplicação do filtro
+Bilateral. O filtro de média foi utilizado para complementar o
+pré-processamento da imagem, removendo os últimos ruídos
+existentes na mesma. O resultado pode ser observado na Fig.
+3(d).
+O próximo passo é separar a região da lesão, da pele
+saudável. Para isso, utilizou-se um método de limiarização,
+que consiste em dividir a imagem em duas classes: o fundo
+(background) e a região de interesse (objeto que será
+analisado). Para isso define-se um limiar que divide o
+histograma da imagem em duas partes, através da análise do
+valor de cada pixel.
+Para o processo de segmentação realizado neste trabalho,
+foi utilizado o método de segmentação por limiarização de
+Otsu (threshold Otsu) [14]. Essa técnica é baseada nas
+características de distribuição dos tons das imagens. É um
+método não paramétrico e não supervisionado, que busca
+selecionar automaticamente um limiar ótimo que possa
+
+
+separar ou segmentar as regiões de interesse em uma imagem,
+por meio da análise dos tons de cinza. Essa técnica busca
+encontrar o melhor limiar para a segmentação das classes. A
+Fig. 4(a) apresenta o resultado da segmentação com o método
+de Otsu, onde a região que se apresenta na cor branca é a
+região da lesão encontrada.
+
+
+Para concluir o processo de Pré-Processamento, é realizado
+uma conjunção entre a região detectada e a imagem original
+de entrada. Esse processo é realizado para definir a região de
+interesse a ser analisada. O resultado desse processo é
+apresentado na Fig. 4(b).
+Com a identificação da região da lesão inicia-se o processo
+de Extração de Características. Neste trabalho, são analisadas
+as características de borda (B) e cor (C) da regra ABCD. A
+análise das bordas de uma lesão é feita observando a presença
+de irregularidades, caracterizadas por áreas de transição
+abruptas nas margens da lesão. Segundo a regra ABCD, para
+realizar a análise da borda, a imagem deve ser dividida em 8
+segmentos, onde para cada corte abrupto que for identificado
+dentro do segmento deve ser adicionado um ponto ao cálculo
+da pontuação, que pode variar de 0 (mínimo) até 8 (máximo).
+As lesões que contabilizarem valores entre 0 e 2 têm sua borda
+classificada como regular e as que contabilizarem valores
+iguais ou maiores que 3 têm sua borda classificada como
+irregular.
+Para isso, inicialmente foi definido o contorno da lesão
+utilizando a função findContours do OpenCV. Essa função
+recupera os contornos de uma imagem binária utilizando o
+algoritmo proposto em [15]. A linha verde da Fig. 5(a)
+apresenta o resultado da função aplicada a imagem da Fig.
+4(a).
+
+Após identificar a borda da lesão, faz-se necessário utilizar
+a função convexHull do OpenCv. Essa função utiliza o
+algoritmo proposto por [16], que encontra os pontos convexos
+da região da lesão. O resultado obtido pela aplicação dessa
+função é apresentado pela linha azul da Fig. 5(a), onde o
+traçado resultante em forma de polígono representa a forma
+ideal para que a borda da lesão fosse classificada como
+regular, tornando possível identificar os cortes abruptos na
+borda da lesão.
+Após identificar a borda e as irregularidades, é necessário
+localizar todos os defeitos de convexidade existentes no
+contorno da lesão. Para isso foi utilizado o método
+convexityDefects do OpenCv. As irregularidades são
+identificadas semelhante ao que propõe a regra ABCD, onde o
+método analisa a existência de defeitos de convexidade em
+uma região que vai de A – H. Os pontos em vermelho
+apresentados nas Fig. 5(b), (c) e (d) representam o resultado
+da busca por irregularidades na borda da lesão.
+Para identificar quais irregularidades poderiam caracterizar
+a região como irregular, vários testes foram realizados com o
+objetivo de identificar um limiar adequado para os mais
+diferentes tamanhos de irregularidade. Na Fig. 5(a) as regiões
+marcadas pelos pontos que vão de A à F, apresentam os
+possíveis candidatos a representar uma irregularidade. Nessa
+imagem é possível observar diferentes irregularidades com
+diferentes profundidades. O cálculo do limiar foi realizado de
+acordo com a quantidade de pontos existentes entre o ponto
+convexo apresentado na cor verde na Fig. 5(b), (c) e (d) e a
+extremidade da irregularidade apresentado pela cor vermelha.
+A relação entre o limiar e o tamanho da irregularidade é
+inversamente proporcional, ou seja, quanto maior o valor do
+limiar menor será a quantidade de irregularidades encontradas
+(Fig. 5(b)), e quanto menor o valor do limiar, maior será a
+quantidade de regiões identificadas (Fig. 5(c)). O limiar
+utilizado na Fig. 5(c) mostrou ser muito sensível na realização
+dos testes. Ao final dos testes, o limiar que apresentou o
+melhor resultado entre essa e outras imagens, foi aplicado a
+Fig. 5(d). As irregularidades encontradas são contabilizadas e
+armazenadas em um vetor de características.
+A análise da cor para os dermatologistas é uma das
+principais formas de identificar se uma lesão é maligna ou
+benigna. Segundo a regra ABCD [17], deve-se analisar nas
+lesões a presença de seis cores, são elas: preto, branco, azulcinza, vermelho, castanho-claro e castanho-escuro. Neste
+trabalho, para realizar a análise das cores da lesão, a imagem
+foi processada utilizando a técnica adaptada do trabalho [7].
+Para esse processo, os pixels contidos na imagem são
+analisados procurando identificar as cores estabelecidas pela
+regra ABCD. Neste caso, é preciso definir as cores que serão
+analisadas e os seus respectivos valores. A Fig. 6 apresenta os
+valores que queremos encontrar, com exceção do valor (0,0,0),
+que não foi utilizado na cor preta devido o mesmo ser
+utilizado para representar a região da pele que não faz parte da
+lesão, e estar presente em todas as imagens.
+
+
+A verificação das cores é realizada através de uma
+interação que analisa a cor de cada um dos pixels. As cores
+identificadas são armazenadas no final do processo em um
+vetor de características.
+O próximo passo é a classificação, nessa etapa, as
+características das lesões que foram identificadas e extraídas
+das imagens são utilizadas como entrada para um classificador
+inteligente com um algoritmo de aprendizagem de máquina. O
+classificador utilizado nesse trabalho é uma Rede Neural
+Artificial (RNA) do tipo Multilayer Perceptron (MLP)
+treinada com o algoritmo backpropagation [18].
+A rede foi implementada na linguagem Java, sendo a
+mesma composta por dez neurônios na camada oculta e dois
+na camada de saída, ambas utilizando a função de ativação do
+tipo sigmoide. Para o treinamento a rede utiliza o algoritmo
+backpropagation executando a 10.000 ciclos de treinamento e
+com a taxa de aprendizado de 0,3. A saída combina os
+resultados dos dois neurônios da camada de saída para
+classificar as lesões, ou seja, o valor de saída 0 e 1 classifica o
+nevo como melanoma e o valor 1 e 0 classifica o nevo como
+benigno.
+Para a realização do treinamento, fez-se necessário
+montar um arquivo com um conjunto de dados composto pelas
+características de cor e borda das lesões das imagens da base
+PH². Após a montagem do conjunto de dados, o mesmo foi
+aplicado à rede MLP para ser realizado o treinamento da
+mesma. O processo de treinamento foi realizado utilizando a
+metodologia Holdout [18]. Esse último consiste em separar os
+dados em dois conjuntos, 70% dos dados para realizar o
+treinamento e 30% para validação, onde os dados de
+treinamento contêm as informações e a classe à qual pertence
+a lesão e os dados são distribuídos no conjunto de forma
+aleatória. O conjunto de validação, por sua vez, não possui
+informações sobre a classe e é aplicado logo após o
+treinamento. A rede MLP classificou os dados como nevo
+benigno e nevo maligno (melanoma).
+Ao final do processo, as informações obtidas na análise de
+características e a classificação são apresentados ao usuário.
+V. RESULTADO E DISCUSSÕES
+A técnica utilizada no processo de segmentação escolhida
+foi comparada com a segmentação manual realizados pelos
+dermatologistas, e disponível na base PH². A Fig. 7(a)
+apresenta o resultado da técnica de segmentação.
+
+A Fig. 7 apresenta uma lesão segmentada pelo especialista
+(Fig. 7(a)) e o método de Otsu (Fig. 7(b)). Percebe-se que o
+resultado do método de segmentação aplicado neste trabalho
+apresentou um resultado aproximado com o apresentado pelo
+especialista, apresentando variações de recuo e expansão em
+algumas áreas da lesão. No geral o método de Otsu e os filtros
+utilizados para o pré-processamento obtiveram um bom
+resultado.
+Com relação a borda, a presença de ruídos em algumas
+imagens dificultou a análise das irregularidades de algumas
+lesões, mas mesmo assim o método ainda obteve um bom
+resultado, pois o mesmo foi capaz de identificar
+irregularidades em 88,5% das imagens. Quanto à validação, é
+necessário apresentar os resultados a um especialista para que
+o mesmo possa validar a técnica desenvolvida.
+Para a análise da cor, o resultado do método desenvolvido
+foi comparado com os valores apresentados na base. Onde os
+seguintes casos foram identificados, como: mesma quantidade
+de cores, as mesmas tonalidades de cores, mesma quantidade
+de cor mas com tonalidades de cores diferentes, e falha na
+identificação das cores. O método desenvolvido ainda precisa
+de mais ajustes nos códigos para descrever melhor os níveis
+das cores.
+A escolha da rede MLP, deu-se através de testes realizados
+na ferramenta WEKA com os dados quantitativos das imagens
+da base PH² [19]. Os resultados apresentados na Tabela 1
+mostram o desempenho do classificador na análise da borda e
+da cor das lesões.
+
+Observando os resultados obtidos pela rede MLP, pode-se
+dizer que os mesmos são tidos como satisfatórios, uma vez
+que, mesmo com uma pouca quantidade de dados utilizados
+tanto para o treinamento como para a classificação, o
+algoritmo conseguiu uma média geral de classificação de 88%
+de acerto. O algoritmo conseguiu um bom desempenho quanto
+ao nível de especificidade (capacidade de classificar
+corretamente os nevos benignos), atingindo uma média de
+93% de acerto. Quanto ao nível de sensibilidade (capacidade
+de classificar corretamente o melanoma), mesmo com a pouca
+quantidade de imagens utilizadas tanto para o treinamento
+como para a validação, pode-se dizer que a média de 66%
+
+
+obtida pelo classificador foi um bom resultado. Comparando
+com os resultados apresentados no trabalho [8], este trabalho
+obteve um nível maior de especificidade e um nível menor de
+sensibilidade, quanto ao trabalho apresentado em [9], este
+trabalho obteve índices maiores de sensibilidade e
+especificidade.
+Contudo, a pouca quantidade de imagens influenciou
+diretamente na classificação do algoritmo, mas, mesmo assim,
+o algoritmo apresentou um bom desempenho no processo de
+classificação, e pode-se afirmar que o uso das regras de borda
+(B) e cor (C) se apresentaram como bons descriminantes para
+as lesões analisadas.
+VI. CONCLUSÃO E TRABALHOS FUTUROS
+Este artigo apresenta o desenvolvimento de um protótipo
+de classificação de imagens dermatoscópicas para dispositivos
+móveis, utilizando uma RNA do tipo MLP sob a plataforma
+Android. O objetivo desse sistema é fornecer uma ferramenta
+que possa auxiliar médicos e profissionais de saúde na análise
+do câncer de pele do tipo melanoma através de um dispositivo
+móvel.
+Como contribuição, esse trabalho apresenta um protótipo
+capaz de realizar o exame de dermatoscopia através de um
+dispositivo móvel. Este protótipo auxilia no acesso ao exame
+de dermatoscopia à população mais carente e aos que residem
+em regiões interioranas ou zona rural.
+Como trabalhos futuros, é essencial a utilização de um
+conjunto com uma maior quantidade de imagens
+dermatoscópicas, além de pesquisar ou desenvolver métodos
+que tratem a presença de pelos e lesões que apresentam pouco
+contraste em relação à pele. Pretende-se também implementar
+as regras de assimetria e estruturas diferenciais da regra
+ABCD, além de utilizar outros métodos para a extração de cor
+e da borda e buscar parcerias com especialistas e/ou hospitais
+com o objetivo de adquirir imagens e validar as funções do
+sistema.
+

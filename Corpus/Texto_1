@@ -1,0 +1,576 @@
+Suporte a decisão em redes de gerencia de redes de telecomunicações com matriz de analise baseada em sistemas de regra fuzzy
+
+I.INTRODUÇÃO
+
+OS AMBIENTES organizacionais têm apresentado uma
+complexidade crescente, pautando o processo de Tomada
+de Decisão com incertezas e riscos que se tornam cada vez
+menos claros aos tomadores de decisão.
+A princípio, uma tomada de decisão deve sempre ser
+imparcial. No entanto, existem fatores que contribuem para
+gerar incertezas que contribuem para afastar a racionalidade
+do processo, como por exemplo, heurísticas cognitivas que
+influenciam o contexto. Portanto, é cada vez mais importante
+que o tomador de decisões esteja suportado por ferramentas
+que tenham como finalidade reduzir a subjetividade de suas
+decisões, sejam elas, operacional, tático ou estratégico.
+A Lógica Nebulosa trabalha com a imprecisão, incerteza ou
+verdade parcial, e é projetada para implementar o raciocínio
+humano, onde palavras não representam uma ideia única, mas
+um conjunto de ideias. E, cada um pode ter uma representação
+diferente para cada palavra, dependendo da sua experiência
+anterior e visão de mundo. Um termo pode ser entendido e
+interpretado, por pessoas diferentes, de maneiras diferentes.
+A Lógica nebulosa é projetada para interpretar o raciocínio
+dedutivo, isto é, o modo como as pessoas inferem conclusões
+baseadas em fatos ou informações. É capaz de expressar de
+
+
+uma maneira sistemática quantidades imprecisas, vagas e até
+mal definidas [1].
+A Lógica Nebulosa torna possível traduzir e tratar essas
+incertezas e imprecisões, de modo que os computadores, que
+só conhecem a precisão absoluta, possam processar as
+informações, “raciocinando” como as pessoas, de modo a
+apoiá-las em seu processo de tomada de decisão.
+Este trabalho propõe um método generalista, baseado em
+operações entre matrizes numéricas, para a implementação de
+sistemas de regras nebulosas, através de transformações
+numérico-lógicas nos elementos dessas matrizes.
+A disponibilidade de um método generalista permite que
+sua aplicação em qualquer plataforma computacional
+(hardware e software), para análise em uma ampla gama de
+cenários com presença de subjetividade no processo de
+tomada de decisão. Com a construção de um sistema de
+inferência baseado regras nebulosas e associação de regras,
+pode-se comparar a tomada de decisão baseada no resultado
+do método com a opinião e tomada de decisão do especialista.
+II.
+
+CONCEITOS BÁSICOS
+
+A Lógica Nebulosa é classificada como Lógica NãoClássica ou Lógica Polivalente, rejeitando a lei do terceiro
+excluído, que é um dos princípios básicos da Lógica Clássica.
+O raciocínio humano consiste em inferência lógica ou
+implicações lógicas. Na Lógica Nebulosa, a inferência
+consiste em uma entrada ou condição, tendo uma saída ou
+conseqüência. E, todas as entradas ou condições, são regras de
+raciocínio com graus de verdade no intervalo [0,1].
+O processo de Implicação Lógica realiza as inferências
+para gerar as saídas dos conjuntos nebulosos. É o Conceito de
+Causa e Efeito ou Condição e Conseqüência;
+As regras são de natureza condicional e possuem o
+seguinte formato:
+SE (x É A) E/OU(y É B) ENTÃO (z É C)
+Onde x, y e z são as variáveis lingüísticas e A, B e C são os
+valores lingüísticos. Um Sistema de Inferência baseado em
+Regras Nebulosas (FIS – Fuzzy Inference Systems) utiliza a
+teoria de Conjuntos Nebulosos e modelos lingüísticos para
+mapear as entradas e transformá-las em saída, por técnicas
+heurísticas [1, 2] A Fig. 1 ilustra esse processo:
+
+
+
+O mecanismo de inferência nebulosa publicado, em 1975,
+por Ebrahim Mamdani consiste no processamento de quatro
+etapas [3]:
+1.fuzzificação das entradas,
+2.avaliação das regras,
+
+3.agregação dos conseqüentes,
+
+4.defuzzificação
+
+A. FUZZIFICAÇÃO DAS ENTRADAS
+Cada conjunto nebuloso é definido por valores modais
+[A,B,C,D] conforme a Fig.2. Considerando essa definição, para
+um valor medido xe de uma entrada crisp, o valor de
+pertinência associado ao seu conjunto nebuloso pode ser
+calculado como segue:
+Se (xe < A) OU (xe >= D), µ=0;
+Se (xe > A) E (xe < B), µ=((xe-A)/(B-A));
+Se (xe >= B) E (xe <= C), µ=1;
+Se (xe > C) & (xe < D), µ=((D-xe)/(D-C));
+
+Se mais de uma regra nebulosa realiza implicação no
+conjunto C, o valor de µC deve ser assumido como o máximo
+entre os possíveis valores que seriam associados a partir de
+cada uma das regras.
+C. DEFUZZIFICAÇÃO
+Esta etapa consiste na transformação do raciocínio
+nebuloso, até então trabalhado com as variáveis e valores
+lingüísticos, para valores numéricos simples ou crisp. Para
+tanto, torna-se necessária a unificação ou sobreposição dos
+conseqüentes implicados na etapa anterior, requerendo-se o uso
+de uma técnica de defuzzificação. Neste trabalho, para
+valorizar a robustez e precisão do resultado, foi adotado o
+método do Centro de Gravidade ou Centróide (COG), que
+determina o valor exato do potencial ofensivo como o centro
+de gravidade da figura plana formada pela união de todas as
+distribuições de regras sobre a variável nebulosa de saída.
+III.
+
+Considerando esse mecanismo, este trabalho propõe um
+método generalista, baseado em operações entre matrizes
+numéricas, para a implementação de sistemas de regras
+nebulosas, através de transformações numérico-lógicas nos
+elementos dessas matrizes.
+Para análise, em uma ampla gama de cenários com
+presença de subjetividade no processo de tomada de decisão.
+É nesse contexto que a proposta deste trabalho se insere.
+De forma geral, o mecanismo em questão consiste dos
+seguintes passos para realizar o procedimento proposto
+originalmente por Mandani:
+1.
+
+Definir as matrizes que farão parte do mecanismo, a
+saber:
+a) Os valores e escopo de aplicação dos conjuntos
+nebulosos que compõem as variáveis nebulosas
+de entrada do sistema baseado em regras
+nebulosas, para o cenário específico sob análise,
+em uma Matriz E;
+b) As definições de valores modais e formato da
+função de pertinência referente aos conjuntos
+nebulosos das variáveis nebulosas (entrada e
+saída), codificados numericamente em uma
+Matriz C;
+c) A definição de antecedentes e consequentes das
+regras nebulosas que compõem a base de
+conhecimento do sistema em uma Matriz R;
+
+2.
+
+Realizar transformações numéricas na matriz C baseadas
+na informação lógica codificada nas matrizes E e C para
+viabilizar e armazenar o cálculo das pertinências (µ) dos
+valores definidos para as entradas no cenário específico
+sob análise em relação aos conjuntos nebulosos das
+variáveis nebulosas de entrada definidas em C;
+
+3.
+
+Realizar a implicação das regras de inferência nebulosas
+através de transformações numéricas na matriz C
+baseadas na informação lógica da relação entre
+antecedentes e consequentes codificada nas matrizes R e C
+
+
+AVALIAÇÃO DE REGRAS E AGREGAÇÃO DOS
+CONSEQUENTES
+Com a finalidade de proporcionar processamento rápido do
+potencial ofensivo, neste trabalho foi empregado o seguinte
+formato para a construção das regras nebulosas:
+
+B.
+
+SE (x É A) E/OU(y É B) ENTÃO (z É C)
+na qual x, y e z são variáveis nebulosas e A, B e C são seus
+qualificativos, ou seja, seus conjuntos nebulosos associados. A
+implicação nebulosa consiste em associar um valor de
+pertinência µC ao conjunto de saída C, a partir das pertinências
+µA e µB dos conjuntos de entrada A e B previamente
+determinadas na etapa de Fuzzificação, de forma que:
+
+MÉTODO MATRICIAL
+
+
+para viabilizar a determinação dos cortes-alfa (αCUT)
+referentes aos conjuntos nebulosos das variáveis
+nebulosas de saída definidas em C;
+4.
+
+5.
+
+Realizar a agregação dos conseqüentes das regras
+nebulosas definidos pelos conjuntos nebulosos de saída,
+definindo a envoltória resultante das variáveis nebulosas
+de saída devidamente cortadas na altura definida em seus
+cortes-alfa (αCUT);
+Calcular o valor final representativo das variáveis de saída
+através da defuzzificação das envoltórias resultantes
+obtidas em (4) através de um método previamente
+especificado, como por exemplo, o centróide (ou centro de
+massa)
+
+A Fig. 3 ilustra, de maneira geral o relacionamento entre as
+matrizes e as fases do mecanismo proposto:
+
+
+IV.
+
+DESCRIÇÃO DAS MATRIZES
+
+Os itens que se seguem descrevem em maior detalhamento
+cada etapa representada na Fig. 3.
+A. DEFINIÇÃO DA MATRIZ E
+Para a definição da matriz E, sejam dados:
+
+As variáveis nebulosas de entrada envolvidas com o
+cenário sob análise, de tal forma que VEi representa a i-ésima
+variável de entrada, totalizando NVE variáveis de entrada,
+
+O número total de conjuntos que compõem uma dada
+variável nebulosa de entrada VEi, definido por NCVEi;
+A matriz E a que se referem os dados de entrada terá então
+dimensão NVE linhas por duas colunas. Nessa matriz:
+
+Cada posição [i, 1] corresponde ao valor da entrada
+crispque se refere à VEi;
+
+Cada posição [i, 2] corresponde a NCVEi (número
+total de conjuntos nebulosos referentes a VEi).
+A Fig.4 apresenta um exemplo da estrutura da matriz E.
+Nessa figura, tem-se uma matriz de entrada formatada para um
+problema que está fundamentado nas relações entre quatro
+variáveis nebulosas de entrada, pois o número de linhas da
+matriz E é quatro. A primeira variável nebulosa apresenta cinco
+conjuntos nebulosos, assim como a segunda e a quarta; já a
+terceira variável nebulosa apresenta três conjuntos. O valor de
+entrada que será fuzzificado junto a primeira variável nebulosa
+é 90.1; o que será fuzzificado junto a segunda variável é de
+10.1; e assim por diante.
+
+
+
+B. DEFINIÇÃO DA MATRIZ C
+Para a definição da matriz C, sejam dados:
+
+As variáveis nebulosas de entrada envolvidas com o
+cenário sob análise, de tal forma que VEi representa a i-ésima
+variável de entrada, totalizando NVE variáveis de entrada,
+
+O número total de conjuntos que compõem uma dada
+variável nebulosa de entrada VEi, definido por NCVEi
+
+As variáveis nebulosas de saída envolvidas com o
+cenário sob análise, de tal forma que VSi representa a i-ésima
+variável de saída, totalizando NVS variáveis de saída,
+
+O número total de conjuntos que compõem uma dada
+variável nebulosa de saída VSi, definido por NCVSi
+A matriz C a qual se referem os dados de conjuntos nebulosos
+do problema (tanto das variáveis de entrada quanto das
+variáveis de saída) terá então, dimensão (NVE + NVS) linhas
+por cinco colunas.
+Nessa matriz, as NVE primeiras linhas correspondem aos
+dados que especificam os conjuntos das variáveis nebulosas de
+entrada, enquanto as NVS últimas linhas especificam os
+conjuntos das variáveis nebulosas de saída. Assim, os NCVEi
+conjuntos nebulosos da variável de entrada VEi serão
+empilhados no topo da matriz C na ordem em que estão
+indexados na matriz E. Posteriormente, os NCVSi conjuntos
+nebulosos da variável de saída VSi são acrescentados ao final
+desse empilhamento, completando a formação da matriz C.
+Assim, cada linha da matriz C, quando tomada
+individualmente, representa um conjunto nebuloso específico
+(de entrada ou saída).
+Em cada uma das linhas:
+
+A primeira coluna representa o valor modal A da
+função de pertinência do conjunto nebuloso, conforme
+especificação dada na Fig 2;
+
+A segunda coluna representa o valor modal B da
+função de pertinência do conjunto nebuloso, conforme
+especificação dada na Fig 2;
+
+A terceira coluna representa o valor modal C da
+função de pertinência do conjunto nebuloso, conforme
+especificação dada na Fig 2;
+
+A quarta coluna representa o valor modal D da função
+de pertinência do conjunto nebuloso, conforme especificação
+dada na Fig 2;
+Já a quinta coluna de cada uma das linhas da matriz C
+representa o valor da pertinência (µ) obtida ao final do
+processo de fuzzificação, quando a linha em questão se refere a
+um conjunto nebuloso de uma variável de entrada. Por outro
+lado, quando se tratar de uma linha que se refere a um conjunto
+nebuloso de uma variável de saída, a quinta coluna apresentará
+
+
+o valor do corte-alfa (αCUT) dos conjuntos de saída que é
+obtido ao final do processo de implicação das regras nebulosas.
+A Fig. 5 apresenta um exemplo da estrutura da matriz C:
+
+
+A Fig. 6 apresenta um exemplo da estrutura da matriz R.
+Nessa figura, tem-se uma base de conhecimento representada
+por duas regras nebulosas, pois esse é o número de linhas da
+matriz. Em cada uma dessas regras, as duas primeiras colunas
+apresentam os indexadores dos antecedentes, enquanto a última
+coluna apresenta os indexadores do único consequente.
+
+
+
+
+A tradução dos valores apresentados pela matriz da Fig. 6
+se dá como se segue.
+αcut
+
+
+
+A Matriz C é a utilizada tanto na entrada, quanto no
+processamento e na saída dos dados.
+C. DEFINIÇÃO DA MATRIZ R
+Para a definição da matriz R, sejam dados:
+O número máximo de antecedentes NA que uma regra
+nebulosa da base de conhecimento pode apresentar;
+O número máximo de consequentes NC que uma
+regra nebulosa da base de conhecimento pode
+apresentar;
+O número total de regras nebulosas NR presentes na
+base de conhecimento;
+A matriz R a qual se referem as regras de inferência
+nebulosa presentes na base de conhecimento do mecanismo
+proposto neste trabalho terá NR linhas por (NA + NC) colunas.
+Assim, cada linha da matriz R, quando tomada
+individualmente, representa uma regra de inferência específica
+com o formato geral:
+SE (A1E A2 E A3 E .... ANA) ENTÃO (C1, C2 .... CNC).
+Onde Ai representa o i-ésimo conjunto nebuloso de entrada,
+presente na regra nebulosa, e Ci representa o i-ésimo conjunto
+nebuloso de saída, detentor do resultado da inferência da regra
+nebulosa.
+A matriz R será preenchida com os indexadores dos
+conjuntos nebulosos envolvidos com as regras de inferência,
+quando considerados a sua posição na matriz C, ou seja, a linha
+da matriz C que armazena os parâmetros que especificam os
+citados conjuntos.
+Consequentemente, em relação a cada regra nebulosa, em
+sua correspondente linha da matriz R, as NA primeiras colunas
+armazenam as linhas da matriz C que correspondem aos
+conjuntos nebulosos dos antecedentes da regra em questão; por
+outro lado, as NC últimas colunas armazenam as linhas da
+matriz C que correspondem aos conjuntos nebulosos dos
+consequentes dessa mesma regra.
+
+Regra 1:
+SE
+(O conjunto nebuloso de entrada representado na linha 3
+da matriz C)
+E
+(O conjunto nebuloso de entrada representado na linha 10
+da matriz C)
+ENTÃO
+(O conjunto nebuloso de saída representado na linha 30
+da matriz C)
+Regra 2:
+SE
+(O conjunto nebuloso de entrada representado na linha 5
+da matriz C)
+/E
+(O conjunto nebuloso de entrada representado na linha 14
+da matriz C)
+ENTÃO
+(O conjunto nebuloso de saída representado na linha 34
+da matriz C)
+V.
+
+CENÁRIO
+
+Com base na análise das informações obtidas durante a
+pesquisa exploratória, definiram-se e caracterizaram-se os
+principais condicionantes de futuro, que influenciam ou
+definem os cenários alternativos do setor de telefonia fixa no
+Brasil [4, 5, 6].
+Desta forma, foram definidas seis variáveis em função de
+sua influência e de seu impacto sobre o futuro do setor,
+caracterizadas na forma de incertezas críticas, justificando o
+uso da Lógica Nebulosa para auxiliar o gestor ou investidos na
+tomada de decisão nesse segmento de mercado.
+Para simulação destes cenários foi utilizada a Lógica
+Nebulosa com seis variáveis definidas conforme estudo prévio
+das informações levantadas nas bases citadas. Os resultados
+obtidos são demonstrados através de três cenários
+caracterizados como Favorável, Desfavorável e Estável. Para
+o cenário Favorável, o serviço de telefonia fixa é atrativo para
+novos investimentos, devido ao contexto político de baixo
+risco e possibilidade de expansão do serviço. Para o cenário
+Desfavorável, a cena política apresenta aumento nos riscos,
+
+
+
+aumento da competitividade e baixa atratividade no mercado.
+Para o cenário Estável, a telefonia fixa se mantém nos
+patamares atuais, pelo fato de não ocorrerem grandes
+mudanças nos contextos político e de mercado.
+As seis variáveis definidas em função de sua influência e
+de seu impacto sobre o futuro do setor, caracterizadas na
+forma de incertezas críticas e nomeadas foram:
+1. RecTelMov: Reclamações sobre a Telefonia Móvel.
+Essa variável nebulosa será expressa em porcentagem (%)
+com intervalo entre 0-100 e se relacionará a 5 conjuntos
+nebulosos;
+2. GastTelFix: Gastos com telefonia fixa (assinatura +
+despesas). Essa variável nebulosa será expressa em R$ com
+intervalo entre 0-100 e se relacionará a 5 conjuntos nebulosos;
+3. ConcMerc: Concentração do mercado. Essa variável
+nebulosa será expressa em Unidade com intervalo entre 0-5 e
+se relacionará a 3 conjuntos nebulosos;
+4. DensPop: Densidade Populacional. Essa variável
+nebulosa será expressa em hab/km2 com intervalo entre 0-500
+e se relacionará a 5 conjuntos nebulosos;
+5. RiscoPol: Risco Político do Brasil. Essa variável
+nebulosa será expressa em porcentagem (%) com intervalo
+entre 0-100 e se relacionará a 6 conjuntos nebulosos;
+6. Cobertura: Cobertura geográfica para instalações de
+telefonia fixa. Essa variável nebulosa de saída será expressa
+em porcentagem (%) com intervalo entre 0-100 e se
+relacionará a 5 conjuntos nebulosos;
+A variável nebulosa de saída MercTelFixa, representará a
+Atratividade do Mercado de Telefonia Fixa. Essa variável
+nebulosa de saída será expressa de acordo com uma pontuação
+com intervalo entre 0-10 e se relacionará a 5 conjuntos
+nebulosos.
+As variáveis nebulosas de entrada acima, necessárias para
+essa inferência, estão descritas na Tabela I, também expressam
+níveis qualitativos das variáveis exatas (ou crisp) coletadas
+após a pesquisa exploratória do cenário de Telefonia Fixa no
+Brasil, através de conjuntos nebulosos. Esses níveis
+qualitativos de entrada são determinados na etapa de
+Fuzzificação do sistema nebuloso [1, 2, 3]. Assim, a cada
+conjunto nebuloso da Tabela I é associado um grau de
+pertinência .
+
+RESULTADOS
+
+A eficácia do sistema foi testada em três diferentes
+cenários, descritos a seguir, onde, para cada cenário, foram
+realizadas simulações com a inserção de dados para cada
+variável no sistema desenvolvido utilizando a lógica nebulosa,
+gerando como resultado o coeficiente associado à variável de
+saída “Atratividade do Mercado de Telefonia Fixa” para cada
+cenário projetado:
+A. CENÁRIO FAVORÁVEL
+É o cenário mais atrativo para os investidores pelo fato
+dos condicionantes apresentarem uma situação confortável e
+promissora. Neste cenário, o número de reclamações de
+telefonia móvel cresce a índices que favorecem o uso do
+serviço de telefonia fixa e novas adesões, as tarifas aplicadas
+na telefonia fixa serão reduzidas apresentando baixíssimo
+custo no uso do serviço, o mercado apresenta pouca
+concorrência pelo fato de existirem poucas operadoras, sendo
+um atrativo a novos investidores, o crescimento populacional
+apresentará baixos índices nas regiões com pouca
+infraestrutura, centralizando-se nas grandes regiões onde já
+existe infraestrutura adequada e um volume de adesões
+significativas pelo fato da renda nos grandes centros ser maior.
+O país reage à crise européia e apresenta altos índices de
+produtividade (PIB), de equilíbrio financeiro, e baixo risco
+político, incentivando o mercado investidor. Com isso,
+crescem os investimentos em infraestrutura, havendo a
+expansão do serviço de telefonia fixa em todas as regiões do
+país.
+E, para esse cenário supuseram-se alguns valores de
+entradas (crisp) como exemplo. Esses valores encontram-se
+descritos na Tabela II.
+
+A base de regras completa está no Apêndice.
+Após a fuzzificação dessas entradas, inferência das regras
+e agregação dos conseqüentes utilizando as matrizes C e R, o
+cálculo do centróide na Defuzzificação resulta em valor de
+saída igual a 6,43. O coeficiente de saída mostra para o gestor
+que a Atratividade do Mercado de Telefonia Fixa é Positiva ou
+Muito Positiva para os valores de entrada apresentados na
+Tabela 2.
+B. CENÁRIO ESTÁVEL
+Para este cenário, os condicionantes se mantêm no patamar
+atual sem grandes mudanças, mantendo-se o índice de
+reclamações da telefonia móvel, as tarifas aplicadas na
+telefonia fixa, o numero de operadoras de telefonia fixa e a
+concorrência atual, sendo incentivado o crescimento das
+operadoras menores. O crescimento da população ocorrerá de
+forma moderada e o poder aquisitivo se mantém nas regiões
+mais favorecidas, mantendo o número de acessos e não
+exigindo altos investimentos das operadoras. O risco político
+continua numa situação estável, não apresentando altos índices
+junto ao mercado e a cobertura das operadoras continuará nos
+grandes centros, não ocorrendo grande expansão nas regiões
+com menos infraestrutura, mantendo os acessos ativos e o
+oferecimento de novos serviços
+E, para esse cenário supuseram-se alguns valores de
+entradas (crisp) como exemplo. Esses valores encontram-se
+descritos na Tabela III.
+
+C. CENÁRIO DESFAVORÁVEL
+Para o cenário caracterizado como “Desfavorável”,
+consideroraram-se os seguintes condicionantes que poderão
+desfavorecer o mercado de telefonia fixa: o mercado de
+telefonia móvel poderá ser mais atrativo do que de telefonia
+fixa se houver uma redução significativa nas reclamações de
+telefonia móvel e se as tarifas de telefonia fixa aumentarem. A
+concorrência de mercado também poderá ser um agravante se
+aparecerem novas operadoras no mercado, aumentando a
+concorrência. Com relação ao crescimento da população, se
+ocorrer um crescimento mais significativo da parcela com
+menor renda nas regiões menos estruturadas serão exigidos
+grandes investimentos das operadoras, inclusive não sendo
+garantida a adesão pelo fato da baixa renda, o que não ocorre,
+por exemplo, nas grandes regiões que já possuem volume alto
+de acesso e infraestrutura. Quanto ao risco político, se houver
+um agravamento no cenário atual devido a crise na Europa ou
+outros fatores, poderá ocasionar crise no mercado interno
+(uma recessão), diminuindo os investimentos e as aquisições,
+e também cancelamento de acessos. E se houver pouca ou
+nenhuma infraestrutura de telefonia fixa nos locais definidos
+pela Anatel, serão exigidos grandes investimentos das
+operadoras, sendo um outro fator que desmotivará os
+investidores
+E, para esse cenário supuseram-se alguns valores de
+entradas (crisp) como exemplo. Esses valores encontram-se
+descritos na tabela IV.
+
+Após a fuzzificação dessas entradas, inferência das regras
+e agregação dos conseqüentes utilizando as matrizes C e R, o
+cálculo do centróide na Defuzzificação resulta em valor de
+saída igual a 4,78. O coeficiente de saída mostra para o gestor
+que a Atratividade do Mercado de Telefonia Fixa é de Média
+Atratividade para os valores de entrada apresentados na
+Tabela 3.
+
+MATRIZ E
+Observação
+Proporção Baixo/Normal de
+reclamações de telefonia móvel
+Gasto com telefonia fixa
+acima/Muito Acima
+Baixa/Média concentração do
+mercado
+Densidade populacional
+Alta/MuitoAlta
+Medio Alto/Alto risco político
+Cobertura geográfica
+Baixo/Inexistente
+
+Após a fuzzificação dessas entradas, inferência das regras
+e agregação dos conseqüentes utilizando as matrizes C e R, o
+cálculo do centróide na Defuzzificação resulta em valor de
+saída igual a 2,59. O coeficiente de saída mostra para o gestor
+que a Atratividade do Mercado de Telefonia Fixa é Muito
+Negativa para os valores de entrada apresentados na Tabela 4
+V.
+
+CONCLUSÕES
+
+Conforme citado anteriormente, para validação do método
+proposto, foram desenvolvidos três cenários, para o horizonte
+2010-2020, para o mercado de telefonia fixa no contexto
+brasileiro, conforme demonstra a matriz de combinação de
+incertezas apresentada naTabela V.
+
+
+Na matriz, foram traçados três caminhos utilizando as seis
+variáveis, onde as setas indicam as possíveis incertezas que
+poderão ocorrer dentro de cada cenário futuro.
+O estudo demonstrou que inúmeros são os fatores que
+podem influenciar no futuro dos serviços de telefonia fixa, que
+prospecções de cenários futuros são muito válidas no sentido
+de demonstrar como as tendências e incertezas podem ser
+analisadas possibilitando visões de futuro de um determinado
+serviço, e que o método de lógica nebulosa aplicado no
+conjunto dos fatores mostrou-se operacional, possibilitando a
+construção dos cenários prospectivos, calculo dos coeficientes
+e a confirmação dos cenários simulados.
+

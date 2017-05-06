@@ -1,0 +1,431 @@
+Aplicabilidade de um sistema computacional para avalição clínica em cursos de medicina
+
+I. INTRODUÇÃO
+
+O PRESENTE estudo está baseado em um método
+específico de ensino, aprendizagem e avaliação baseado
+em casos clínicos e sua ferramenta computacional
+correspondente. Sendo os mesmos utilizados na disciplina de
+Endocrinologia Pediátrica da ISCMSP desde 1993, para o
+método manual, e desde 2009 para o informatizado. A
+ferramenta tem sido adotada em mais de 20 eventos desde
+2010, e a partir de 2013 passou a ser utilizada no Concurso
+para Obtenção do Certificado de Área de Atuação em
+Endocrinologia Pediátrica.
+O processo de ensino e aprendizagem médica é uma
+questão de grande interesse, que exige frequente
+reestruturação e reorganização, pois tem à disposição novos
+meios de comunicação e novas ferramentas para ensino e
+avaliação dos estudantes. As ferramentas como computadores,
+dispositivos móveis e ambientes virtuais de aprendizagem
+podem melhorar a interação entre professor e aluno e com isso
+facilitar o processo de aprendizagem, bem como avaliar o
+aprendizado, quando utilizadas de forma adequada [1].
+Tais variações na educação médica são observadas na
+graduação e nos programas de Residência Médica,
+
+valorizando os processos de ensino e aprendizagem que
+buscam explorar as experiências práticas, fundamentadas
+pelos conceitos teóricos e científicos. Na residência médica, o
+profissional busca a aquisição de novos conhecimentos e
+aprimoramento dos já adquiridos, por meio da experiência na
+prática clínica, leitura, palestras, apresentações gravadas,
+podcasts, módulos de aprendizagem online, discussões em
+pequenos grupos, discussões baseadas em casos, dentre outros
+[2]. A aprendizagem através da experiência clínica
+proporciona ao aluno formação suficiente em situações
+clínicas complexas em um ambiente profissional realista e
+verdadeiro [3].
+Neste contexto, surgiram várias propostas metodológicas
+que defendem o uso de evidências, problemas e casos clínicos
+como meio de conduzir os alunos ao universo da prática
+médica, ao mesmo tempo em que recebem referências teóricas
+para fomentar o raciocínio e incrementar a aquisição de
+conhecimento. Estas metodologias permitem que, conforme o
+nível de formação do aluno, situações (casos) sejam
+apresentadas exigindo que o mesmo apresente sua opinião
+sobre o assunto [4] [5]. Os métodos baseados em casos
+promovem a aprendizagem ativa, na qual o aluno é engajado a
+buscar por informações que facilitem seu aprendizado,
+proporcionando oportunidade de relacionar teoria à prática,
+incentivar o desenvolvimento de habilidades de pensamento
+crítico e permitir a sua utilização em um processo avaliativo
+de aprendizagem [6]. O método tradicional de ensino nas
+escolas médicas do Brasil não oferece um retorno ideal ao
+aluno ou ao professor [5]. Por esta razão, muitas escolas de
+medicina optam por ampliar e diversificar com outros
+métodos, adicionando aqueles que melhor se ajustem à sua
+estrutura e objetivos [4] [7] [8]. Alguns utilizam recursos
+como animações gráficas, vídeos e áudios digitais online,
+leituras, simulações clínicas interativas e testes, que
+caracterizam as ferramentas computacionais. Embora tais
+ferramentas ofereçam diversas vantagens, ainda é pouco
+explorada sua aplicabilidade no processo de ensino e
+aprendizagem baseada em casos clínicos.
+O objetivo deste trabalho é analisar a aplicabilidade de
+um sistema computacional para avaliação de aprendizagem
+baseado em casos clínicos, que difere dos demais por
+apresentar a descrição de um caso clínico juntamente com
+perguntas que devem ser respondidas de maneira progressiva e
+lógica, permitindo assim a visualização de um raciocínio
+evolutivo.
+II. MATERIAL E MÉTODOS
+O estudo foi prospectivo e randomizado, sendo os sujeitos
+da pesquisa os residentes da Unidade de Endocrinologia
+
+
+Pediátrica do Departamento de Pediatria e Puericultura da
+Irmandade da Santa Casa de Misericórdia de São Paulo
+(ISCMSP), realizado no mês de Setembro de 2012 e Junho de
+2013 e incluiu residentes de segundo ano (R2) de pediatria
+geral, terceiro ano (R3) e quarto ano (R4) de endocrinologia
+pediátrica e residentes de endocrinologia geral. Em 2012
+participaram do estudo 23 sujeitos, os mesmos foram
+separados como grupo A, com 11 sujeitos, 50% de R4, 30%
+de R3 e 20% de R2 e grupo B com 12 sujeitos, sendo 17% de
+R4, 75% de R3 e 8% de R2. No primeiro momento, o grupo B
+foi submetido à avaliação de um caso clínico utilizando a
+metodologia
+de
+avaliação
+informatizada
+(n=12).
+Simultaneamente, os sujeitos do grupo A realizaram a
+avaliação do mesmo caso clínico utilizando o método manual
+(n=11). No segundo momento, o grupo B que participou da
+avaliação informatizada, realizou a avaliação de um caso
+clínico diferente através do método manual (n=12) e o grupo
+A realizou a avaliação informatizada do caso (n=10). Em 2013
+a pesquisa foi composta por 16 sujeitos, quando separados,
+cada grupo ficou com oito sujeitos, sendo o grupo A, com
+20% de R4 e 80% de R3, enquanto o grupo B com 43% de R4
+e 57% de R3. Foram excluídos da análise os sujeitos que
+realizaram apenas um dos métodos de avaliação. Assim, em
+2012 foram analisados os dados de 22 sujeitos e em 2013 de
+12. Ambos os métodos propõem a apresentação de casos
+clínicos teóricos e fictícios, com questões desenvolvidas de
+forma a tornar a avaliação mais completa.
+A avaliação no processo manual foi feita em sala de aula,
+enquanto no método informatizado a avaliação foi em
+laboratório de informática. Todos receberam orientações de
+como fazer o cadastro e como proceder à avaliação através do
+sistema.
+Para analisar a aplicabilidade do método de avaliação
+informatizado em comparação ao método manual, nossa opção
+foi decompor os dados obtidos em cada variável, como o
+desempenho dos sujeitos, tempo transcorrido para resolução
+dos casos e satisfação na utilização do sistema, obtida através
+de questionário com questões adaptadas do American
+Costumer Satisfaction Index (ACSI) [9].
+O programa computacional utilizado para a análise desses
+dados foi o Statistical Package for Social Sciences (SPSS)
+V.13.0 para Windows, considerando um nível de 5% de
+significância. Para a análise estatística foram utilizados o teste
+paramétrico t-Student e t-Student pareado para as distribuições
+normais e para as distribuições com um número de sujeitos
+reduzido ou sem distribuição normal foram utilizados os testes
+não paramétricos Mann-Whitney ou Wilcoxon.
+Método de avaliação de aprendizagem manual baseada em
+casos
+O avaliador (professor) prepara um caso clínico,
+geralmente composto pela identificação do paciente, sua
+queixa principal e duração, histórico da doença atual,
+antecedentes pessoais e familiares, hábitos de vida, uma
+descrição do exame físico e eventualmente exames
+complementares básicos que possam ter sido solicitados
+durante a avaliação inicial. A partir destas informações, o
+avaliador pergunta qual conduta seria adequada para chegar ao
+
+
+
+diagnóstico e tratamento corretos de acordo com a evolução
+proposta. Nem todos os exames físicos e complementares do
+conjunto que o avaliador prepara serão solicitados e utilizados
+durante a avaliação, pois depende do diagnóstico que o
+avaliado irá propor. Desta forma, é possível que cada avaliado
+solicite durante a conduta exames e/ou informações diferentes,
+às vezes incorretos para a solução do caso, determinando um
+desfecho inadequado. Definir este conjunto não é uma tarefa
+fácil para quem está criando o caso clínico e exige
+conhecimento e dedicação do avaliador.
+A aplicação desse método de avaliação segue as etapas
+descritas na Fig 1. Sua aplicação prática requer diversos
+supervisores presenciais, que permitam oferecer ao avaliado o
+resultado ou a evolução do caso de acordo com o caminho
+diagnóstico e terapêutico escolhido.
+
+
+
+Método de avaliação de aprendizagem informatizado baseada
+em casos
+No método de avaliação informatizado o avaliador deve
+inserir o caso no sistema online Medical Clinical Case
+(MedCC – www.clinicalcaselearning.com), específico para a
+criação de avaliações baseadas em casos clínicos. O MedCC
+surgiu devido a necessidade dos professores em agilizar as
+
+avaliações baseadas em casos clínicos e pelo próprio processo
+avaliativo dos residentes que compõem o programa de
+residência médica em endocrinologia. A ferramenta
+computacional foi desenvolvida por meio da colaboração entre
+docentes da Faculdade de Ciências Médicas da Santa Casa de
+São Paulo (FCMSCSP) e construída para ser acessada por
+meio da Internet. Trabalha com diferentes tipos de mídias, tais
+como textos, imagens, vídeos, sons, animações, documentos,
+tabelas e hiperlinks. O avaliador pode controlar o tempo,
+dificuldade e quantidade de questões, etc [10]. Os passos
+básicos utilizados pelo avaliador para inserção do caso no
+sistema bem como a forma de participação do avaliado são
+apresentados na Fig. 2.
+O processo de inclusão de casos clínicos na ferramenta é
+dividido em três etapas: definição da prova, descrição da
+prova e definição das questões. Na primeira etapa, o avaliador
+determina informações básicas, como título, orientações
+gerais, tempo de duração, tipo de prova, indicando tratar-se de
+um caso clínico, disponibilidade da prova e também pode
+escolher algumas configurações adicionais referentes à
+disponibilização da nota após o término da avaliação.
+Também pode oferecer arquivos anexos que servem como
+feedback, pois podem ser disponibilizados aos avaliados após
+a avaliação e conter comentários/explicações do avaliador
+sobre o caso e/ou respostas corretas esperadas. A segunda
+etapa consiste da criação de texto descritivo com detalhes do
+caso clínico que será visualizado e analisado pelo avaliado. Na
+terceira etapa, o avaliador seleciona as questões previamente
+criadas, ou novas questões inseridas pelo avaliador para
+compor a avaliação.
+Toda questão possui correção automatizada considerando
+a(s) resposta(s) correta(s) indicada(s) pelo avaliador, incluindo
+lista de sinônimos em questões de texto aberto. No MedCC é
+possível criar questões de dez tipos diferentes (Escolha Única,
+Escolha Múltipla, Única, Falso/Verdadeiro, Direta, Prioridade,
+Correspondência, Composta, Medicamento, Sub-Questões) as
+quais podem conter textos adicionais com a finalidade de
+fornecer ao avaliado informações complementares primordiais
+à condução do caso ou diagnóstico correto. As informações
+adicionais também são essenciais para trazer o avaliado de
+volta ao objetivo principal da aprendizagem, além de servir de
+feedback durante a resolução do caso. Após criar, as questões
+de um caso, o avaliador deve associar as questões que irão
+compor a avaliação específica do caso. Uma vez terminada a
+associação, três informações básicas para cada questão devem
+ser definidas: a ordem que a mesma será apresentada na
+avaliação, sua categoria, ou seja, se a resposta indica o saber
+de um conceito, conhecimento, capacidade de elaborar
+hipóteses clínicas, capacidade de solicitar exames subsidiários,
+conclusão diagnóstica e conduta terapêutica. Por fim, a
+pontuação de cada questão é estabelecida, respeitando o peso
+da informação solicitada.
+Um recurso bastante útil oferecido pela ferramenta é o de
+geração de diferentes tipos de relatórios. Estes podem ser
+utilizados pelo avaliador para ter um feedback de cada
+indivíduo, ou de um conjunto de avaliados, ou de uma
+discussão de caso clínico específico ou ainda em uma palestra
+
+
+de um evento baseada em um caso clínico, previamente
+realizado pelos participantes.
+No sistema, cada questão é apresentada individualmente, de
+forma progressiva, partindo de questões mais gerais e
+conceituais para questões mais pontuais e de conhecimento.
+Cada questão, juntamente com a sua(s) respectiva(s)
+resposta(s) são enviadas para o histórico, área reservada após a
+descrição do caso. Desta forma, o avaliado continua a
+visualizar a questão e o histórico das respostas na mesma tela.
+O sistema não permite retroceder para modificar as respostas
+dadas. O desempenho de cada participante é obtido por meio
+de sua nota final, cuja composição é a soma das notas obtidas
+em cada questão.
+
+
+Portanto, no método de avaliação de aprendizagem
+informatizado, o sistema apresenta ferramentas que facilitam o
+processo de avaliação, desde sua composição até aplicação,
+tanto para o avaliador quanto para o avaliado e ainda
+proporciona recursos de feedback aos avaliados que no
+método de avaliação manual seriam possíveis, apenas com
+menos recursos, grande trabalho e demanda de tempo para o
+avaliador.
+
+método informatizado como instrumento de avaliação
+alternativo ao método manual, sem perda para os sujeitos.
+Para a variável tempo, calculamos a média em cada caso
+para cada grupo nos anos de 2012 e 2013 e aplicamos testes
+estatísticos para verificar se o tempo transcorrido é menor
+quando os sujeitos são submetidos ao método informatizado,
+quando comparamos com os tempos do método manual. Os
+resultados obtidos em minutos estão descritos na Tabela II.
+
+III. RESULTADOS
+
+TABELA II. GRUPOS, MÉDIAS, MEDIANAS, DESVIOS-PADRÃO DA
+VARIÁVEL TEMPO NO MÉTODO MANUAL E INFORMATIZADO EM
+2012 E 2013.
+
+Para as notas obtidas em cada caso e em cada grupo de
+residentes avaliados nos anos de 2012 e 2013 aplicamos testes
+estatísticos para verificar se há diferença entre as notas dos
+alunos quando os mesmos são submetidos aos dois métodos
+de avaliação. Os resultados obtidos estão descritos na Tabela
+I.
+
+Observamos que as notas tiveram valores médios maiores
+para o grupo A, analisado em 2012, independentemente do
+método de avaliação ao que o mesmo tenha sido submetido,
+devido à composição do grupo. O que justifica o valor da
+média no Caso 1 (p<0,001) ser maior no método manual. Essa
+diferença é questionável, devido ao poder do teste estatístico
+aplicado e conforme o número de sujeitos presentes em cada
+grupo.
+Podemos observar que os valores das médias em 2013 são
+muito próximos para ambos os métodos de avaliação. Um
+fator que contribuiu para esta proximidade é que neste mesmo
+ano o método de avaliação manual sofreu modificações e
+ficou semelhante ao método informatizado e o número de
+sujeitos em cada grupo é pequeno.
+Considerando a análise das notas para ambos os métodos
+de avaliação e independentemente do caso avaliado, os valores
+das notas obtidas são similares em 2012 (p = 0,261) e 2013 (p
+= 0,378), ou seja, houve um equilíbrio com relação ao
+desempenho dos sujeitos, indiferente do método de avaliação.
+Com o objetivo de verificar as notas obtidas para ambos os
+métodos, independente do ano, realizamos a análise da
+variabilidade das notas. Os resultados demonstraram não
+haver diferença de desempenho dos sujeitos quando
+submetidos aos métodos de avaliação manual e informatizado
+(p = 0,596), o que reforça a possibilidade de utilização do
+
+
+A análise do tempo, independente do ano de aplicação da
+avaliação, mostrou haver diferença entre os métodos de
+avaliação (p<0,001).
+Por questões operacionais, o método de avaliação manual
+em 2013 sofreu uma modificação, ficando mais próximo do
+método informatizado, o que pode ter contribuído para a
+considerável diminuição no tempo médio das avaliações para
+ambos os métodos. Mesmo com essa consideração,
+observamos que o tempo médio de resolução usando o método
+informatizado é menor que no manual.
+Um ganho inerente ao método informatizado, que não pode
+ser visualizado no conjunto de dados analisados, é o tempo
+que o avaliador deixa de gastar com as correções de todas as
+provas. Para corrigir os casos realizados através do método
+manual em 2013, um dos avaliadores precisou, em média, de
+75 minutos, já os casos realizados pelo método informatizado
+tem sua correção automática pelo sistema. Assim, o método
+informatizado apresenta a vantagem de ser mais rápido, o que
+reforça a possibilidade de utilização do método informatizado
+como instrumento de avaliação.
+Em 2012, dos 22 sujeitos considerados, 21 responderam o
+questionário de avaliação do sistema MedCC. Já em 2013
+todos os 12 sujeitos responderam. A análise descritiva foi
+realizada para todas as questões nos dois anos. Em 2012, para
+o conjunto de questões sobre navegabilidade e aparência, o
+item “Muito Bom” foi apontado por em média 63% dos
+sujeitos, enquanto para o conjunto sobre satisfação e
+funcionalidade por 65%. Em 2013 os sujeitos também
+avaliaram positivamente o sistema, para o primeiro conjunto
+de questões, sendo o item “Muito Bom” apontado por 47%
+dos sujeitos, enquanto para o segundo conjunto 50%. A taxa
+de satisfação de 2013 apresentou um valor menor com relação
+a 2012, mas mesmo assim poucos comentários, sugestões e
+
+
+relatos sobre as dificuldades foram apresentados,
+principalmente sobre o acesso ao sistema.
+A avaliação mostrou que a satisfação do usuário com
+relação ao sistema foi alcançada. Os comentários foram
+construtivos e mostraram sua aceitabilidade, sugerindo assim
+que o mesmo possa ser utilizado como uma ferramenta
+computacional em substituição do método manual de
+avaliação.
+IV. CONCLUSÃO
+Diante da importância da avaliação de aprendizagem
+baseada em casos clínicos, buscamos na literatura trabalhos
+que relatassem as experiências obtidas com a utilização de
+ferramentas computacionais desenvolvidas especificamente
+para avaliação de aprendizagem baseada em casos e que
+adotassem como método de avaliação o mesmo apresentado
+neste trabalho. O número de artigos encontrados é nulo, em
+virtude do método de avaliação apresentar características
+próprias, apenas um trabalho [11] propõe o desenvolvimento e
+a utilização de sistema para este fim, mas não apresenta o
+estudo da aplicabilidade do mesmo.
+Considerando os trabalhos que realizaram análise de notas
+dos sujeitos submetidos à avaliação baseada em casos, os
+estudos [12] [13] [14] mostram, que assim como no presente
+estudo, os sujeitos foram separados em grupos e o
+desempenho dos participantes dos grupos não foi afetado
+pelos diferentes métodos de avaliação utilizados, ou seja, o
+desempenho do sujeito foi o mesmo independentemente do
+método de avaliação. O ponto divergente entre os trabalhos
+com relação ao nosso, é a aplicação dos métodos avaliativos.
+Nos outros estudos um grupo de participantes realiza a
+avaliação utilizando um material de apoio ou ferramenta e
+outro grupo não utiliza qualquer ferramenta. Neste estudo, os
+grupos realizam a avaliação tanto com quanto sem a utilização
+da ferramenta. Demonstramos que o desempenho dos sujeitos
+na avaliação dos casos clínicos impressos é similar ao
+desempenho dos sujeitos nos casos clínicos informatizados.
+Para evitar interferências, cada grupo participou de duas
+avaliações, sendo cada uma realizada por um método, porém
+com descrição do caso e questões distintas. Além disso, a
+exposição aos diferentes métodos foi cruzada, ou seja, o início
+em cada grupo ora foi pelo método manual, ora pelo método
+informatizado.
+Já nos trabalhos [15] [16], os resultados mostram
+diferenças entre os grupos analisados, pois nestes a separação
+dos participantes foi realizada considerando o nível de
+conhecimento ou a série em que eles se encontravam.
+Apenas dois artigos realizam a análise do tempo
+transcorrido nas avaliações. No primeiro [12], conclui-se que a
+duração da avaliação é a mesma independente da ferramenta
+ser ou não empregada. Em nosso estudo, observamos que
+houve diferença no tempo de realização quando a avaliação é
+feita por diferentes métodos, indicando que a utilização do
+sistema tornou o processo de aplicação e realização da prova
+mais ágil. Os resultados encontrados entre os estudos diferem,
+pois as ferramentas possuem objetivos diferentes, enquanto
+uma oferece acesso ao material complementar durante a
+
+
+avaliação, a ferramenta utilizada em nosso estudo está inserida
+no próprio processo de avaliação. No segundo trabalho, [15]
+os autores apontam como esperado, que o tempo para
+solucionar o caso depende da série em que os participantes se
+encontram, ou seja, quanto mais avançada a série, mais rápido
+o caso é resolvido. No nosso estudo, em ambos os anos os
+participantes de séries menores precisaram de menos tempo
+para resolver o caso no método informatizado. Parece ter
+havido influência de uma experiência maior com a utilização
+de sistemas computacionais ao longo dos anos em nossa
+instituição.
+A análise de satisfação dos sujeitos com relação à
+ferramenta utilizada no processo de avaliação é realizada por
+diversos autores: [12] [13] [14] [16] [17] [18] [19] [20], sendo
+aplicados questionários sobre usabilidade, satisfação de uso e
+eficácia do método baseado em casos. Os resultados mostram
+a aprovação da utilização do sistema e/ou tecnologia, sendo
+que alguns autores apontam que a avaliação baseada em casos
+auxilia e enriquecem o processo de aprendizagem.
+Alguns apontam a porcentagem de aceitabilidade em torno
+de 85% [12]. Em nosso estudo, a classificação “Muito Bom”
+foi apontada por média de 56% dos sujeitos. Essa diferença
+pode ser explicada pela composição dos sujeitos das
+pesquisas. Os sujeitos de nossa casuística eram médicos
+residentes, com elevado nível de conhecimento e exigência em
+relação aos alunos de graduação, participantes de outros
+estudos. Consideramos, como modificação necessária, a
+alteração de como é realizada o acesso ao sistema, de forma a
+torna-lo mais fácil e intuitivo, conforme apontado pelos
+sujeitos da pesquisa.
+Concluímos que a aplicabilidade do sistema computacional
+no processo de avaliação de aprendizagem baseada em casos
+clínicos é factível, podendo ser útil para avaliar e aprimorar o
+conhecimento de uma forma interativa, sem perda de
+qualidade ou prejuízo de desempenho dos participantes,
+possibilitando ainda significante ganho de tempo na realização
+da avaliação pelo avaliado e na correção da prova pelo
+avaliador, além de menor subjetividade na correção da prova,
+que no sistema é feita de forma automática.
+

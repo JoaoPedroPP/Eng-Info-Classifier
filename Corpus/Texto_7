@@ -1,0 +1,500 @@
+Melhoria na robustez em redes DTN que carregam grandes quantias de arquivos médicos na amazônia
+
+I. INTRODUÇÃO
+
+EM alguns cenários da Amazônia, o provimento de
+serviços de saúde é bastante deficitário, quer pela falta de
+médicos, quer pela ausência de infraestrutura de comunicação.
+Um desses cenários é o arquipélago do Marajó. Ele está
+localizado no norte do Brasil e ocupa uma área de 104.142
+Km2. Apenas uma de suas ilhas tem um tamanho equivalente a
+Suíça. Trata-se da maior ilha completamente envolvida por
+água doce do mundo. Os dez maiores municípios do
+arquipélago somam cerca de 318.000 habitantes. De acordo
+com o último censo brasileiro [1], apenas 43% da população
+desse arquipélago vive em áreas urbanas. Existem muitas
+comunidades, ribeirinhas em sua maioria. Em muitos locais
+não há sequer serviço de telefonia fixa. Não há pontes ligando
+o arquipélago ao continente e o principal meio de transporte
+são os barcos. Muitos deles operam com linhas fixas, onde os
+dias e horários de viagem são pré-definidos, de forma análoga
+a um sistema de transporte de ônibus urbano. Para prover
+serviços mínimos de saúde a essas comunidades, o governo
+organiza caravanas sazonais, como as do projeto Propaz, que
+saem da capital mais próxima (Belém) e transportam médicos
+de diversas especialidades, além de outros profissionais. Essas
+caravanas costumam percorrer as principais cidades do
+arquipélago em um único final de semana. Muitas das cidades
+possuem equipamentos seus em postos de saúde, mas não
+dispõem de médicos para realização dos exames. Os únicos
+profissionais da área médica que são permanentes são os
+agentes de saúde. Um dos projetos que vem sendo
+desenvolvidos para prover serviços de saúde na região do
+Marajó se chama Continuous Displacement Plan Oriented
+Network (CoDPON) [2]. Ele é mantido através de uma
+parceria entre as Universidades da Amazônia (Brasil) e do
+O suporte de financiamento para este projeto foi obtido com recursos da
+FIDESA.
+
+Arizona (USA). O enfoque está em um sistema eficiente,
+barato e robusto que provenha serviços remotos, incluindo
+serviços médicos, à população daquela região. Para isso,
+propõe-se o uso de uma rede tolerante a atrasos e desconexões
+(DTN), adaptada às especificidades locais. A arquitetura do
+sistema CoDPON é descrita na seção III.
+Um dos grandes desafios do projeto CoDPON, que vem
+sendo desenvolvido junto ao Hospital Santa Casa em Belém, é
+a otimização da rede para viabilizar o transporte de grandes
+arquivos. A exemplo, cita-se imagens de ultrassonografia no
+padrão Digital Imaging and Communications in Medicine
+(DICOM) [3], que precisam chegar ao centro de análise dentro
+de um limiar de tempo preestabelecido e com confiabilidade.
+Questões envolvendo a transferência de grandes arquivos em
+face de uma limitação de tempo de conexão entre os barcos e
+algumas vilas (muitos barcos apenas passam em frente a
+comunidades ribeirinhas, sem realizar paradas) e entre os
+próprios barcos são foco de estudo desse grupo de pesquisa.
+Este artigo apresenta propostas para aumentar a eficiência no
+transporte de dados e, em especial, no tempo de
+reconhecimento das mensagens recebidas. Neste último caso,
+apresenta-se uma avaliação de desempenho, via simulação,
+considerando a proposta das chamadas camadas de
+proximidade.
+II. TRABALHOS RELACIONADOS
+A. DTN e Data Mule
+Data Mule, que é um caso especial de redes DTN, é um
+acrônimo para (Mobile Ubiquitous LAN Extension). O
+conceito está relacionado a veículos que carregam,
+fisicamente, um computador com um dispositivo de
+armazenamento e um módulo de telecomunicações limitado
+(normalmente WiFi) entre áreas remotas com o objetivo de
+criar um enlace de comunicação de dados eficiente [4]. As
+primeiras aplicações terrestres, baseadas em DTN, foram
+propostas para redes de sensores na Índia [5][6]. Logo outras
+aplicações emergiram para a integração de comunidades
+remotas. No Brasil, podem-se destacar os projetos de inclusão
+de comunidades indígenas desenvolvidos na Universidade
+Federal do Amazônas apresentados na ExtremeCom 2011.
+Dentre os trabalhos correlatos destacam-se a Daknet [7] que
+proveu comunicação digital a baixo custo, permitindo que
+vilas remotas dessem um salto do passado para usufruírem de
+uma solução de conectividade que veio com a implantação de
+uma infraestrutura sem fio com cobertura total e banda larga.
+Outro trabalho propõe a transferência de arquivos de ultrassom
+em uma câmera digital para análise remota [8]. Esforços como
+este sensibilizaram a comunidade científica para produzir
+novas ferramentas para avaliar o impacto de redes DTN em
+cenários alternativos. Dentre outros, destaca-se o simulador de
+
+
+redes oportunísticas The Opportunistic Network Environment
+Simulator (ONE) que é rico em protocolos e modelos de
+mobilidade [9]. Como se trata de uma ferramenta de código
+aberto é possível incorporar e testar novas ideias.
+Recentemente, Osman Khalid et al [10] propuseram a
+concepção de Pontos de Checagem (CP). Os CPs são
+dispositivos sem fio autônomos com uma grande quantidade
+de buffer disponível para armazenamento temporário e
+posterior encaminhamento das mensagens DTN.
+B. Roteamento em redes DTN
+Os protocolos de roteamento de redes MANET (Mobile AdHoc Network) foram concebidos tendo como premissa o uso
+de redes densas suficientes para estarem inteiramente
+conectadas. Essa premissa sugere que sempre haveria um
+caminho disponível entre os nós da rede. Essa não é a
+realidade em redes DTN. Para resolver o problema os
+protocolos de roteamento DTN bufferizam as mensagens,
+fazendo com que os nós as carreguem por longos períodos de
+tempo. Esse modelo é conhecido como Store-Carry-Forward
+(SCF). Em um roteamento SCF as mensagens ficam
+armazenadas no nó hospedeiro até que o próximo nó se torne
+disponível. Esse processo é cíclico enquanto a mensagem não
+chegar ao destino. A diferença, portanto, entre as técnicas de
+telecomunicação SCF e o tradicional Store-and-Forward (SF)
+está no tempo de retenção das mensagens. Enquanto que no
+modelo SF essa retenção está na casa de milissegundos, no
+SCF ela varia de muitos segundos, minutos, horas, podendo
+chegar a dias. Isso é possível graças ao uso de uma camada
+adicional na pilha de protocolos chamada Bundle Layer (BL).
+Por esse motivo as unidades roteadas nesse tipo de rede são
+tratadas como mensagens e não como pacotes. Um pacote é
+uma unidade que transita na camada de redes (Network Layer),
+enquanto que as mensagens, que podem ser compostas por
+vários pacotes, transitam em camadas mais altas como é o
+caso da camada BL[11].
+No que diz respeito às mensagens, elas são divididas em
+dois esquemas de roteamento: single-copy e multi-copy. Nesse
+caso a diferença é relativa ao número de cópias que podem
+existir simultaneamente na rede. O esquema single-copy
+encaminha uma única cópia da mensagem através da rede.
+Exemplos de protocolos que trabalham com esse esquema são
+o Direct Delivery, que somente repassa a mensagem se houver
+contato direto com o destinatário e o First Contact, que
+encaminha as mensagens para o primeiro nó que encontrar.
+Nesse caso, o resultado será uma procura randômica pelo nó
+de destino. Já o esquema multi-copy replica a mensagem e
+encaminha várias cópias, consumindo, portanto, mais recursos
+da rede, mas tendo uma maior probabilidade de entrega e
+latência reduzida. Exemplos de protocolos que trabalham com
+esse esquema são o Epidemic, que replica as mensagens para
+todos os nós encontrados e o Spray and Wait, que limita o
+número de mensagens copiadas a uma configuração máxima
+pré-definida. Depois distribui as cópias para os nós contatados
+até que o número máximo de cópias tenha sido exaurido.
+
+
+III. ARQUITETURA CODPON
+As redes CoDPON constituem uma proposta adaptada de
+Data Mule, inspirada no sistema de controle de tráfego aéreo e
+aplicada às especificidades de regiões sem infraestrutura de
+comunicação, como é o caso do arquipélago do Marajó. Uma
+rede CoDPON possui basicamente quatro componentes:
+Nó, que pode ser de três tipos: Veículos - normalmente um
+barco equipado com um sistema de comunicação sem fio.
+Ele age como mula de dados, Peer Base Stations (PBS) são portos ou pontos de checagem (CPs) fixos. São
+previamente mapeados e equipados com um sistema de
+comunicação e HotSpots - são uma forma alternativa para
+provimento de comunicação mais rápida entre as PBS
+(linhas telefônicas fixas, por exemplo).
+DACTs (Dados de Aplicações Codpon em Trânsito):
+Representam a unidade mínima de transferência de dados
+entre os nós. Equivalem às mensagens e são usadas para
+evitar perda de consistência nas transmissões. Cada
+sistema pode ter uma configuração de DACT diferenciada,
+de acordo com os seus requisitos. As DACTs possuem
+QoS, o que permite a priorização de transferência de dados
+em caso limitação no tempo de conexão.
+Planos de Deslocamento: Contém todas as informações
+relativas às rotas das linhas de veículos (barcos). Incluemse aí a relação das PBS de origem e destino, escalas,
+distâncias hidrográficas entre as PBS e os tempos
+estimados de viagem e ancoragem de cada veículo. Tempo
+de ancoragem é o tempo consumido em uma escala
+(embarque e desembarque de passageiros, reabastecimento
+etc).
+Os Protocolos de Comunicação tem como única restrição
+a aderência aos princípios de tolerância a altos níveis de
+atrasos e desconexões.
+Para modelar o sistema CoDPON será adotada a mesma
+metodologia usada por Acer [12], uma vez que ambos os
+sistemas tem características bastante semelhantes.
+é composto,
+Um sistema hidrográfico CoDPON
+basicamente, por barcos, portos  e planos de
+deslocamento. A relação entre os barcos e os planos
+de deslocamento é sempre de um para um. O tempo que um
+ para chegar a um porto 
+, saindo de
+barco leva
+outro imediatamente anterior
+em seu plano de
+deslocamento é dado na equação 1.
+Com isso, os planos de deslocamento podem ser
+representados como o conjunto de todas as escalas do barco
+com o respectivo tempo estimado de viagem, conforme
+representado na equação 2.
+,
+O atraso fim a fim de cada barco pode ser representado na
+equação 3.
+Sendo N o número de portos que o Barco vai percorrer em
+seu plano de deslocamento. A variação estatística do atraso, ou
+
+
+
+seja, o jitter, é dado na equação 4:
+
+Uma rede CoDPON conta ainda com pontos de checagem
+(CP) em diversos locais onde as rotas de barcos passam com
+frequência. Um ponto de checagem compreende uma PBS
+instalada em um local estratégico (boias marítimas de
+sinalização, por exemplo). Pequenos vilarejos, que não
+estejam nas rotas fixas dos barcos, podem carregar seus
+arquivos e os transportar até os pontos de checagem, que agem
+como terminais de integração de dados. Uma das limitações
+dos pontos de checagem está justamente no tempo de conexão,
+uma vez que os barcos não param nesses locais. Eles apenas
+passam próximos a eles. Uma alternativa para enviar grandes
+arquivos a partir dos pontos de checagem está no uso de
+codificadores Fountain, descritos em A.
+A. Códigos Fountain (Fountain Codes)
+De acordo com MacKay [13] um codificador Fountain é
+uma fonte metafórica que produz uma quantidade infinita de
+gotas de água (pacotes de dados codificados). Assim, qualquer
+um que desejar receber o arquivo codificado apresenta um
+balde sob a fonte e coleta gotas até que o número de gotas no
+balde seja suficiente para recuperar o arquivo original e
+decodificar os pacotes. Na analogia com o sistema CoDPON,
+as fonte seriam os pontos de checagem, as gotas (pacotes)
+seriam transportadas pelos barcos de linha até o destino
+(capital), que teria um balde para as recolher. Se for
+considerado que a informação que se quer transportar é um
+balde de água, basta gerar diversas gotas e alimentar os barcos
+nos pontos de checagem que as mesmas serão coletadas no
+destino até resultarem em um balde com a informação
+original. A grande contribuição de códigos Fountain é que se
+podem recuperar arquivos, mesmo sem receber todos os
+pacotes originais, ou seja, é possível reconstruir um pacote
+perdido usando as cópias excedentes dos pacotes já recebidos.
+Se for considerado um codificador Fountain para um arquivo
+de K pacotes S1, S2, ..., Sk, e a cada ciclo do clock, identificado
+por n, esse codificador gere K bits randômicos {Gkn}, o pacote
+codificado tn será definido como a soma bit a bit, através de
+uma operação XOR de acordo com a equação 5. Nesse caso, o
+balde de destino precisa receber apenas algumas gotas a mais
+do que K para a recuperação do arquivo original.
+A chave para a decodificação tn, que pode seguir no
+cabeçalho dos próprios pacotes é dada na equação 6.
+Para representar a eficiência do uso de codificadores
+Fountain em uma rede CoDPON, tomar-se-á como referência
+uma das aplicações vislumbradas para o projeto. Trata-se da
+análise remota de exames de ultrassonografia em mulheres
+grávidas nas comunidades ribeirinhas do arquipélago do
+Marajó. A proposta é realizar esses exames por agentes de
+saúde e os enviar para a pré-avaliação dos médicos na capital.
+O procedimento ajudará no processo de triagem, uma vez que
+as caravanas de atendimento médico não atendem a demanda
+
+da região. Para que um exame de ultrassonografia possa ser
+analisado remotamente, dois vídeos, sincronizados, se fazem
+necessários: um do exame em si e outro do agente de saúde
+realizando esse exame. Segundo o grupo de médicos
+especialistas que atua na região, isso se faz necessário uma vez
+que na análise se faz necessário associar a imagem do feto à
+posição do transdutor quando usado pelo agente de saúde. Para
+exemplificar, considerar-se-á, que os arquivos de
+ultrassonografia consomem 20 pacotes de dados (p1, p2, ... p20)
+uma vez que está quantidade é suficiente para armazenar uma
+imagem DCOM. Considera-se também que há um gerador
+Fountain instalado em um dos CPs. Ele produz 60 outros
+pacotes codificados (pc1, pc2,... pc60) a partir desses 20
+originais. Esses 60 pacotes são repassados aos barcos de
+acordo com o tempo de conexão em uma alusão às gotas de
+água sendo espalhadas pela fonte:
+. Certamente muitas dessas
+gotas serão perdidas ao longo do caminho. No caso dos
+barcos, isso ocorre em função de eles estarem associados a
+diferentes rotas. O gráfico da Fig. 1 mostra a probabilidade de
+reconstrução do dado original a partir de diferentes
+quantidades de pacotes. Se for considerado um arquivo de 20
+pacotes codificados, independente da ordem em que chegaram
+(ex.: pc41, pc6, pc16,.. pc29), o decodificador tem uma
+probabilidade de 26% de restaurar o arquivo original a partir
+de 20 pacotes. Essa probabilidade aumenta para 50% com 21
+pacotes, para 72% com 22 pacotes e chega a 100% com 9
+pacotes adicionais.
+
+
+
+Uma das características desejáveis para o sistema CoDPON
+é a robustez. Se o sistema fosse associado a um grafo, robustez
+seria a medida da capacidade de resistência desse grafo (em
+termos de conectividade) para a remoção de arestas (linhas de
+barcos entre as cidades) ou vértices (PBS). Para prover o
+sistema com essa característica será usado a proposta de
+codificação da rede descrita em B.
+B. Codificação Linear de Redes (Linear Network Coding)
+Tradicionalmente, os streams de dados compartilham os
+recursos de uma rede de computadores, mas a informação em
+si permanece separada, ou seja, um nó, em redes de
+computadores, apenas replica ou roteia pacotes recebidos, mas
+
+
+não os modifica. Codificação de redes é uma nova filosofia de
+roteamento que permite aos nós de uma rede combinarem
+diversos pacotes provenientes dos enlaces de entrada em um
+ou mais pacotes a serem entregues nos enlaces na saída [14].
+Isso é feito através de um processo de codificação e
+decodificação que ocorre nos roteadores. Não se trata de uma
+concatenação de pacotes, mas sim de uma combinação
+algébrica que produz pacotes do mesmo tamanho dos que
+entraram no enlace, provendo assim um aumento na taxa de
+multidifusão da rede. A técnica permite, inclusive, a execução
+recursiva do processo de codificação, possibilitando assim que
+pacotes já codificados sejam codificados novamente em
+roteadores diferentes. A decodificação, que ocorre apenas nos
+destinos, tem um impacto muito pequeno no atraso, o que a
+torna ideal para uma rede com as características da CoDPON.
+Para demonstrar o ganho obtido e o processo de codificação
+e decodificação advindos desse tipo de roteamento, parte do
+cenário da rede CoDPON foi modelado usando-se uma
+topologia de rede borboleta conforme ilustrado na Fig. 2.
+
+
+
+resolvendo-se o sistema linear da equação 7.
+Onde ( ) é a chamada matriz de transferência (para um
+dado destino t) que compreende o conjunto de todos os vetores
+de codificação globais. A matriz de transferência pode,
+inclusive, vir junto com os pacotes. O ganho fica evidenciado
+em comunicação wireless conforme ilustrado na Fig. 3.
+
+
+
+C. Reconhecimento de mensagens em redes CoDPON
+
+
+
+A topologia apresentada na Fig. 2, considera a fonte em
+Belém e os destinos em Portel e Comunidade Ribeirinha.
+Tomou-se como base a teoria do fluxo máximo - corte
+mínimo. O corte mínimo ou mincut (Belém, Portel) = 2 e o
+mincut (Belém, Comunidade Ribeirinha) = 2. Isso gera uma
+capacidade de multidifusão da rede C = 2.
+Se três pacotes P1, P2 e P3 forem enviados da fonte aos
+destinos, via roteamento por multidifusão, e se forem
+considerados enlaces de capacidade unitária (um pacote por
+unidade de tempo), a taxa de multidifusão será igual a 1.5
+pacotes por unidade de tempo. Em uma rede codificada essa
+taxa sobe para 2 pacotes por unidade de tempo. No exemplo,
+após o uso do processo de codificação na rede, são recebidos
+em Portel os pacotes P1 e P1
+P2 e calculados P2 = (P1
+P2)
+P1. Em Comunidade Ribeirinha são recebidos P2 e P1
+P2 e calculados P1 = (P1 P2) P2.
+As combinações lineares ocorrem nos roteadores com o uso
+dos pacotes entrantes e de um vetor de codificação local [a1,
+a2, a3] pertencente a um corpo finito Fq. O vetor de
+codificação global compreende o conjunto dos vetores de
+codificação locais. A decodificação se dá nos destinos
+
+Dentre os problemas percebidos na rede CoDPON, o alto
+grau de latência e atraso, no cenário como um todo, é um dos
+que mais preocupa. Esse problema é especialmente
+evidenciado no processo de reconhecimento das mensagens,
+uma vez que existe um limiar de tempo associado às aplicações
+existentes (Ex. Um arquivo de ultrassonografia precisa chegar à
+capital em até 48 horas). Como a grande maioria das aplicações
+requer confiabilidade, o reconhecimento, ainda que sobre redes
+SCF, continua sendo um requisito necessário. Por serem muito
+pequenas, as mensagens de reconhecimento não requerem uma
+infraestrutura de comunicação robusta para serem enviadas. A
+proposta aqui apresentada e avaliada via simulação, considera a
+infraestrutura de telefonia fixa ou móvel. Mesmo que precária e
+limitada a apenas algumas cidades da região, ela é utilizada
+para o envio das mensagens de reconhecimento para o mais
+próximo possível da fonte de transmissão. A partir desse ponto
+as mensagens seguem, através de veículos (barcos em sua
+maioria), até seu destino. Para descrever o processo será
+utilizada a rede ilustrada na Fig. 2.
+Os enlaces, representados entre os nós (PBS) da topologia,
+indicam a existência de linhas regulares de barco entre as PBS.
+Em cada enlace há uma referência à distância hidrográfica
+entre as PBS, ao número de linhas de barco existentes nessa
+rota e a eventual disponibilidade de linhas telefônicas
+(Hotspots) no local. A partir dessas informações, a topologia
+pode ser visualizada como um conjunto de camadas de
+proximidade em relação a fonte de transmissão, conforme
+ilustrado na Fig. 4. A primeira camada de proximidade (No
+exemplo Melgaço) é referente ao nó de origem das
+transmissões. Havendo disponibilidade de linhas telefônicas
+nesse local, o reconhecimento não precisa passar por transporte
+fluvial, indo diretamente do receptor ao transmissor. A segunda
+
+
+camada de proximidade compreende as PBSs que estão ligadas
+diretamente à origem de transmissão. No exemplo da Fig. 5
+isso ocorre com as PBS_Breves, PBS_Portel e
+PBS_ComunidadeRibeirinha. A terceira camada de
+proximidade é formada por PBSs que estão a dois saltos da
+origem de transmissão e assim por diante. Ao receber as
+mensagens de uma fonte de transmissão, a PBS verifica a
+disponibilidade de telefonia camada a camada, da mais interna
+a mais externa, transmitindo as mensagens de reconhecimento
+para todas as PBS daquela camada que possuam serviço de
+telefonia disponível. De lá, as mensagens seguem nas linhas
+regulares de barco até o destino.
+
+Uma vez que as mensagens de reconhecimento tenham sido
+repassadas para as PBS localizadas em camadas mais
+próximas do destino, resta saber qual o protocolo mais
+adequado para encaminhar essas mensagens através dos
+barcos. Foram investigados os seguintes protocolos: Epidemic
+Router(ER), Epidemic Oracle Router(EOR), First Contact
+Router(FCR) e Spray and Wait Router(SWR). Neste último
+caso, utilizando-se duas cópias, uma vez que uma avaliação
+em separado apresentada na Fig. 5 mostra que este é o número
+mais apropriado para o cenário. O desempenho de cada grupo
+de protocolos foi testado, transferindo-se mensagens pequenas
+a partir de três diferentes camadas de proximidade. No nível
+dois, onde há uma ligação direta entre o nó que recebeu as
+mensagens de reconhecimento e o destino, no nível três, onde
+existem dois nós intermediários entre o nó que recebeu as
+mensagens de reconhecimento e o destino e no nível quatro,
+onde existem três nós intermediários entre o nó que recebeu as
+mensagens de reconhecimento e o destino.
+
+
+
+A seção IV apresenta os resultados baseados em simulação,
+para avaliar quatro protocolos no processo de encaminhamento
+das mensagens de reconhecimento das camadas de
+proximidade ao destino.
+
+IV - SIMULAÇÃO
+Para a realização da simulação utilizou-se o simulador The
+ONE. Apensar da existência de outros simuladores que
+possuem módulos DTN, como o NS-2, a motivação para a
+escolha do The ONE se deu, além da consolidação na
+academia, pela possibilidade de se fazer estudos a partir de um
+cenário georeferenciado. O cenário utilizado foi o apresentado
+na Fig. 2. Os parâmetros de simulação são descritos na tabela
+1.
+
+
+
+O gráfico da Fig. 6 mostra a latência média obtida a partir
+dos três diferentes níveis de proximidade com o uso dos quatro
+protocolos avaliados. Considera-se a latência, o atraso das
+mensagens desde a criação até a entrega das mesmas. O
+melhor desempenho foi do protocolo SWR utilizando duas
+cópias. Tomando como referência o protocolo SWR em
+relação aos protocolos EOR e ER, houve uma latência menor
+que chegou a 52% e 53% respectivamente. No caso do FCR
+essa diferença foi ainda maior, chegando a 83%.
+
+
+O gráfico da Fig. 7 mostra a taxa média de sobrecarga, que
+é uma avaliação da eficiência da largura de banda calculada
+com a fórmula apresentada na equação 8:
+
+.
+
+V. CONCLUSÕES
+
+Quanto menor a taxa de sobrecarga, melhor para a rede.
+Como se pode observar a diferença do protocolo SWP em
+relação ao protocolo FCR foi de 45%, em relação ao protocolo
+ER de 64% e em relação ao protocolo EOR de 78%.
+
+
+
+No caso das mensagens retransmitidas, que consiste no
+número de transmissões bem sucedidas entre os nós, pode-se
+observar no gráfico da Fig. 8 que a diferença do protocolo
+SWR em relação ao protocolo FCR foi de 90%, em relação ao
+protocolo ER de 94% e em relação ao protocolo EOR de 96%.
+
+Fica evidenciado que o uso do protocolo SWR é a melhor
+opção para o envio das mensagens de reconhecimento. Ao se
+propor o uso de camadas de proximidade e do uso de
+tecnologias híbridas de comunicação para um canal de retorno,
+a rede se torna mais confiável e mais eficiente. Os usos de
+geradores de códigos Fountain e de codificação de rede,
+igualmente, aumentam significativamente a taxa de
+multidifusão da rede, tornando-a mais robusta. Em um cenário
+como a Amazônia, onde há contínua movimentação de barcos,
+essa proposta é bastante promissora. Os pontos de checagem
+criam possibilidade de inclusão de comunidades totalmente
+isoladas no sistema, mesmo sem linhas fixas de barcos.
+Consequentemente há um aumento na granularidade da rede.
+Trabalhos Futuros
+Dentre os trabalhos futuros destaca-se a realização de
+avaliações mais complexas de simulação com codificadores
+Fountain a inclusão de codificação linear a partir de um
+levantamento georeferenciado do cenário aqui proposto.
+Em relação a média do número de saltos entre os nós
+origem e destino, pode-se observar no gráfico da Fig. 9 que a
+diferença do protocolo SWP em relação ao protocolo ER foi
+de 46%, em relação ao protocolo EOR de 50% e em relação ao
+protocolo EOR de 81%.
+
+

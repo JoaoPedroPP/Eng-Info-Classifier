@@ -1,0 +1,531 @@
+Modelos de controle preditivel(no sentido de prever, mudar isso mais tarde)usando evolução diferencial aplicado a um sistema de pressão
+
+I. INTRODUÇÃO
+
+DENTRO da indústria, encontram-se diversos tipos de
+processos dinâmicos que apresentam características não
+lineares. Em especial, na indústria química, podem ser citados
+processos envolvendo vazão de fluídos, pressão e
+neutralização de pH, entre outros [1]-[3]. Tais processos são
+controlados por malhas de controle PID (proporcional, integral
+e derivativo), principalmente por serem de fácil
+implementação e garantirem resultado satisfatório na maioria
+dos processos [4]. Entretanto, um dos desafios atuais é o de
+tratar o uso de malhas de controle em processos com não
+linearidades acentuadas, nos quais técnicas lineares não são
+suficientes para garantir um bom desempenho do sistema.
+Uma possível solução, que permite alto desempenho, além de
+tratamento de restrições e relativa facilidade de expansão para
+sistemas multivariáveis é o uso de Controle Preditivo Baseado
+em Modelo (MPC, do inglês Model-Based Predictive Control)
+[5], [6], utilizando uma abordagem não linear.
+Os métodos de MPC baseiam-se em um modelo
+matemático da planta para otimizar o desempenho da malha
+de controle. Tais métodos foram inicialmente aplicados em
+malhas de controle de processos petroquímicos [7] e
+atualmente são aplicados nas mais diversas áreas. Usualmente,
+o modelo empregado é linear, mas diversas abordagens foram
+propostas para garantir um bom desempenho no controle de
+processos com não linearidades acentuadas. Entre tais
+
+propostas, o uso de algoritmos evolutivos tem se mostrado
+eficiente [1]-[3].
+Algoritmos evolutivos são consideravelmente aplicados em
+diversas linhas dentro da engenharia. Podem ser encontradas
+aplicações de tais algoritmos em otimização de sistemas de
+energia [8], modelagem de sistemas a eventos discretos [9] e
+controle de processos, entre outras aplicações. Na área de
+controle de processos dinâmicos encontram-se, entre outras,
+aplicações de algoritmos evolutivos para sintonizar parâmetros
+de controladores lineares. Entre elas, pode ser citado o uso de
+Algoritmos Genéticos (AGs) para determinação de parâmetros
+de controladores LQR (Linear Quadratic Regulator) em [10],
+no qual se avaliam modelos e a convergência do algoritmo.
+AGs foram também utilizados para sintonizar os parâmetros
+do controlador LQR buscando alcançar especificações de
+projeto [11]. Nesse caso, aplicou-se também o algoritmo
+populacional PSO (Particle Swarm Optimization). Os autores
+concluem que ambos os algoritmos foram capazes de
+solucionar o problema de otimização, com diversas
+configurações testadas.
+No trabalho apresentado em [2], uma abordagem não linear
+de MPC é feita utilizando otimização com um AG. Os autores
+apresentam testes em plantas altamente não lineares,
+ressaltando as vantagens do controlador preditivo em questão.
+Entretanto, há uma preocupação em relação ao custo
+computacional, sendo que algumas ideias são propostas para
+reduzir o processamento necessário.
+Uma possível solução para desenvolver malhas de controle
+não linear é a utilização de um algoritmo de Evolução
+Diferencial (DE, do inglês Differential Evolution) no lugar de
+AGs, buscando um menor custo computacional. Na pesquisa
+apresentada por [1], em que essa proposta foi utilizada, os
+autores apresentam resultados promissores e comparam o
+desempenho do algoritmo DE com um AG no controle
+preditivo de uma planta de neutralização de pH. É citado que o
+algoritmo DE apresentou menor custo computacional e melhor
+estabilidade na busca de soluções ótimas. Entretanto, são
+apresentados apenas resultados de simulação, o que permite
+que o modelo seja perfeitamente casado com a planta.
+No presente artigo, apresenta-se a aplicação de um
+algoritmo MPC baseado em DE, aqui chamado de DE-MPC,
+em um sistema físico de controle de pressão de uma bancada
+didática. Foram exploradas diferentes configurações
+paramétricas para o DE-MPC, comparando os resultados
+obtidos com um controlador PID convencional. A planta foi
+modelada com um modelo discreto no espaço de estados, com
+ganho variável em relação ao sinal de entrada mapeado por
+uma rede neural. Tal modelagem permite caracterizar as
+
+
+principais não linearidades da planta, apresentando eficiência
+no custo computacional. Além disso, utiliza-se uma
+formulação incremental para o modelo em espaço de estados,
+que garante erro nulo em regime permanente e acomodação de
+perturbações constantes na saída da planta. Dessa forma, o
+controlador apresenta tolerância a imperfeições no modelo e
+consegue atuar em toda a região ativa da planta.
+Na Seção II, o algoritmo DE é apresentado, com enfoque
+nas estratégias utilizadas. A ideia geral do controlador MPC é
+exposta na Seção III, relacionando o algoritmo DE com os
+conceitos do método de controle. Apresentam-se a planta e a
+metodologia utilizada para a modelagem da mesma na Seção
+IV e, na Seção V, os resultados obtidos. Conclusões e
+sugestões de trabalhos futuros são apresentadas na Seção VI.
+II. EVOLUÇÃO DIFERENCIAL
+A Evolução Diferencial (DE) é um algoritmo evolucionário
+para otimização global codificado em variáveis no domínio
+dos números reais. Se trata de um algoritmo de implementação
+e conceitos simples, que utiliza um operador baseado em
+diferenças para realizar a operação de mutação [12]. Apesar de
+ser considerado como operador de mutação, o operador de
+diferenças atua também como mecanismo de troca de
+informação
+entre
+indivíduos,
+caracterizando
+uma
+recombinação genética entre os pares.
+Publicado inicialmente em [13], o algoritmo DE obteve
+sucesso por se tratar de um método de fácil implementação,
+destacando-se em aplicações industriais e de engenharia [12],
+[14].
+Justifica-se a escolha do algoritmo DE para o controlador
+MPC pela sua comprovada eficiência e por trabalhar
+diretamente no domínio numérico da aplicação. Além disso,
+por ser um algoritmo evolucionário, permite tratar
+naturalmente as restrições de taxa de variação dos sinais e
+faixas de excursão (as restrições são apresentadas na Seção
+III).
+A seguir, apresenta-se o algoritmo DE, a partir de [12] e
+[13], com enfoque no esquema utilizado e, na sequência,
+comentários sobre os parâmetros escolhidos.
+A. Algoritmo DE
+Existem diversos esquemas para o algoritmo DE, sendo
+mais comumente utilizado o esquema DE/rand/1/bin [12],
+escolhido para esta aplicação. Dada uma população de
+indivíduos codificados na forma de vetores, para cada
+− 1], chamado indivíduo-alvo,
+indivíduo , = [0, 1, ⋯ ,
+gera-se um indivíduo de teste para competir com o indivíduoalvo pelo lugar na população. O indivíduo teste é gerado
+primeiramente com um vetor doador , obtido na forma:
+
+sendo 1, 2 e 3 índices aleatórios entre 0 e NP-1,
+diferentes entre si e diferentes de . O termo “/rand/1” refereser escolhido aleatoriamente para
+se ao fato do indivíduo
+receber a perturbação de um par de indivíduos que compõem o
+
+
+sendo
+o limiar de crossover. Valores altos de
+(> 0.5)
+em . Valores
+tendem a fazer prevalecer o vetor doador
+mais baixos (< 0.5) tendem a fazer prevalecer o vetor .
+Por fim, o valor do fitness (adaptabilidade) de
+é
+comparado ao fitness de . Entre os dois, o que obtiver
+melhor avaliação sobrevive para a próxima geração.
+B. Parâmetros intrínsecos
+Em [14], considera-se os seguintes parâmetros intrínsecos
+do algoritmo DE: constante de crossover, intensidade de
+mutação e tamanho da população.
+seja comparado a
+Valores baixos de
+fazem com que
+uma pequena variação dele próprio, fazendo com que o
+algoritmo tenha uma menor velocidade de convergência
+(busca local). Valores altos de
+fazem com que
+seja
+comparado a um vetor com menos relação a ele próprio,
+acelerando os passos de busca do algoritmo (busca global).
+Observa-se que uma velocidade de convergência maior não
+significa necessariamente um algoritmo melhor, pois se deve
+considerar a possibilidade de convergência prematura [13].
+Com relação ao parâmetro , de acordo com [13], valores
+menores que 0.4 ou maiores que 1.0 são bons apenas para
+casos específicos. Cita-se ainda que um bom valor para testes
+iniciais é
+= 0.5 e que para aumentar a diversificação do
+algoritmo deve-se aumentar e
+.
+III. CONTROLE PREDITIVO BASEADO EM MODELO –
+MPC
+Os métodos de MPC foram apresentados inicialmente ao
+meio acadêmico na década de 1970 [7]. Tais métodos
+representam uma classe de controladores que utilizam um
+modelo matemático explícito da planta a ser controlada para
+predizer seu comportamento futuro. Com base na predição,
+realiza-se a otimização da malha de controle em relação a uma
+função de custo. Dentro da função de custo considera-se, em
+geral, esforços de controle e erros de rastreamento de
+referência [5], [7]. Uma possível configuração para tal função
+de custo é a forma quadrática [5]:
+
+em que
+é o vetor com os valores futuros de referência,
+é o vetor de saídas preditas e
+é o vetor a ser obtido com
+os incrementos da ação de controle. O parâmetro é uma
+
+constante positiva e não nula que pondera o custo das
+variações de controle em relação ao erro de rastreamento.
+A predição é realizada considerando um horizonte de
+predição finito , que representa o número de amostras de
+saídas futuras a serem preditas. Dentro do horizonte de
+predição, gera-se uma sequência de incrementos do sinal de
+controle que minimizam a função de custo [7]. O parâmetro
+é chamado de horizonte de controle e deve ser menor ou igual
+a .
+Os métodos de MPC possuem também a possibilidade de
+inclusão de restrições sobre as variáveis de controle e de saída.
+O potencial para lidar com restrições foi um dos fatores que
+contribuiu para que as técnicas de MPC fossem aplicadas em
+processos industriais. Entre os tipos de restrições comumente
+utilizadas, pode-se citar os limites de operação dos atuadores,
+questões de segurança e exploração de regiões mais eficientes
+[6].
+A. Otimizador para MPC utilizando DE
+No caso de sistemas lineares sem restrições, métodos
+analíticos diretos podem ser usados para encontrar o vetor
+ótimo de controle. No caso com restrições, existem os
+métodos de programação quadrática, que são eficientes em
+questão de tempo de execução [15]. Para o caso de sistemas
+não lineares, entretanto, torna-se uma tarefa complexa definir
+equações e fórmulas para otimização. Nesse aspecto, a
+otimização por DE torna-se uma alternativa viável, desde que
+considerado um período de amostragem grande o suficiente
+para comportar a execução do algoritmo.
+A otimização da função de custo é definida através da
+função de fitness. Após a leitura da saída real da planta, esta é
+simulada para amostras futuras com base no modelo. Cada
+indivíduo representa uma sequência de incrementos na ação
+de controle. Dessa forma, caso
+seja menor que ,
+considera-se que o sinal de controle não irá variar após as
+primeiras predições, ou seja, os incrementos serão nulos. A
+função de custo é calculada utilizando o indivíduo como
+sequência de sinais de entrada, somando os erros de saída em
+relação à referência e as variações dos sinais de controle
+ponderadas pela constante . O valor de fitness é considerado
+como o negativo da função custo, de forma que os indivíduos
+de menor custo tenham maior fitness. Em relação às restrições,
+e
+a taxa máxima de variação da ação de controle
+é definida pelos limites do espaço de busca. As
+e
+e do
+restrições de excursão do sinal de controle
+e
+são definidas através de
+sinal de saída (
+penalizações na função de fitness. Cada amostra que
+ultrapasse as restrições dentro da predição tem sua parcela na
+função de custo multiplicada por 4, fator este definido
+empiricamente para penalizar e inibir a violação das
+restrições.
+O algoritmo é executado a cada instante de amostragem,
+sendo que, a cada execução do algoritmo, o indivíduo de
+melhor fitness é armazenado para existir na população inicial
+da próxima execução. Antes de ser armazenado, tal indivíduo
+tem seus componentes deslocados uma amostra para o futuro,
+com seu último elemento repetido. Dessa forma, facilita-se a
+convergência do algoritmo considerando que o estado físico
+da planta não se altera abruptamente entre dois instantes de
+amostragem.
+
+
+A Tabela I apresenta, em resumo, a relação dos parâmetros
+entre DE e MPC.
+
+IV. IDENTIFICAÇÃO DO MODELO DA PLANTA
+A planta utilizada para os testes do controlador DE-MPC
+consiste em um sistema de pressão configurado em uma
+Estação Compacta MPS® PA [16], da Festo Didactic,
+mostrada na Fig. 1.
+
+
+
+Uma bomba hidráulica, acionada com uma tensão de 0 a
+10V, faz o controle de fluxo de água entre um reservatório e
+um cilindro. O cilindro possui a extremidade superior fechada,
+de forma a haver uma coluna de ar que é pressionada pela
+água. A pressão é medida por um sensor que gera um sinal de
+0 a 10V lido por um CLP (Controlador Lógico Programável),
+que realiza a conversão A/D. O algoritmo de controle é
+executado em um microcomputador, que se comunica com o
+CLP, utilizando variáveis de 16 bits.
+O controlador preditivo realiza a otimização do processo
+com base em um modelo explícito da planta. Para a
+identificação de tal modelo, realizou-se o seguinte
+procedimento:
+realização de ensaios em malha aberta de forma a
+verificar a relação entre entrada e saída da planta e
+também determinar o período de amostragem;
+identificação da característica não linear da planta;
+utilização de métodos numéricos para ajuste de
+parâmetros em um modelo genérico;
+validação do modelo obtido.
+
+
+A partir dos dados obtidos com os ensaios em malha aberta,
+foi verificado que a planta responde à entrada com
+características de um modelo de primeira ordem, mas com
+ganhos variáveis. Verificou-se que o período de amostragem
+que permite uma boa quantidade de amostras do transitório
+(em torno de 30), garantindo ainda tempo suficiente para a
+.
+execução do algoritmo DE, foi de = 200
+Diversos valores de entrada e de saída em regime
+permanente foram obtidos de forma a se identificar uma curva
+de ganho estático. A Fig. 2 mostra alguns dos pontos
+identificados. Para mapear a curva de ganho em função do
+nível do sinal de entrada, utilizou-se uma rede neural artificial
+MLP (Multi-Layer Perceptron) com uma entrada, uma
+camada escondida com 4 neurônios e uma saída. A função de
+ativação da camada escondida foi definida como a função de
+Elliot simétrica, com steepness = 0.4. Na camada de saída,
+utilizou-se ativação linear, com steepness = 1.0 [17]. O
+algoritmo de treinamento utilizado foi o NBN (Neuron by
+Neuron), implementado na biblioteca SuperNN [18]. A
+configuração da rede foi definida empiricamente de forma a
+aproximar-se da curva de ganho com uma taxa de acerto de
+65%, suficiente para um mapeamento aceitável sem provocar
+efeitos de overfitting.
+
+
+A parte dinâmica do modelo da planta foi identificada por
+um sistema discreto no espaço de estados de primeira ordem,
+com ganho variando de acordo com a entrada mapeado pela
+rede neural. Aumentando o estado de tal sistema de forma a
+torná-lo incremental com inclusão de ação de controle
+integral, permitindo rejeição a perturbações constantes e erro
+nulo em regime permanente, obteve-se o modelo mostrado na
+é a função de execução da rede
+Equação 5, em que
+neural.
+
+V. RESULTADOS EXPERIMENTAIS
+Diversos ensaios com diferentes configurações de
+parâmetros foram realizados. Dentre eles, são aqui
+apresentados os ensaios com configurações de parâmetros que
+levaram aos melhores resultados em relação a minimização de
+erro e energia. O algoritmo DE implementado é uma tradução
+para a linguagem C da biblioteca LuaDE [19].
+
+A. Configuração de parâmetros
+A Tabela II apresenta a sintonia de 6 ensaios com o
+controlador DE-MPC, referente à parte do algoritmo de
+otimização. Em geral, verificou-se que uma população de 15
+indivíduos foi suficiente para se obter um bom desempenho. O
+número máximo de gerações por execução do algoritmo é
+definido pelo parâmetro Gmax. O parâmetro Gstuck refere-se ao
+critério de parada em que se encerra a execução do algoritmo
+quando o melhor valor de fitness não apresenta melhora nas
+últimas Gstuck iterações. Os Limites apresentados na Tabela II
+referem-se ao espaço de busca, restringindo os incrementos de
+controle aos valores apresentados. Utilizou-se
+aleatório
+entre 0.45 e 0.95, de forma a diversificar o processo de busca
+sem sair dos limites citados em [13].
+
+Nos ensaios DE-MPC 1, DE-MPC 2 e DE-MPC 3, avaliouse os efeitos do uso de restrições e também da variação do
+parâmetro . Foi verificado que, à medida que a energia é
+liberada para o controlador através da redução do valor de , o
+sistema apresenta convergência mais rápida para a referência.
+Entretanto, observou-se um problema de amplificação de
+ruído. Dessa forma, limitou-se o número de gerações para o
+algoritmo em 100, pois se observou que mais iterações
+levaram o sistema a tentar compensar todas as variações
+causadas por ruídos. Nos ensaios DE-MPC 4, DE-MPC 5 e
+DE-MPC 6, foi utilizado um esquema de filtragem para que se
+pudesse reduzir o parâmetro sem amplificar ruídos e garantir
+rápida convergência. Tal esquema é baseado no fato de que
+nos controladores MPC usualmente calcula-se, a cada período
+de amostragem, uma sequência ótima de ações de controle,
+sendo que apenas primeiro termo é aplicado à planta,
+caracterizando o horizonte retrocedente [6]. Como se calcula a
+sequência de até + − 1, foi proposto armazenar todos
+os termos em uma matriz e utilizar, para cada instante + , a
+média de todas as amostras + calculadas anteriormente
+para tal instante. A Fig. 3 mostra um exemplo das amostras
+utilizadas no cálculo da média para = 2 e horizonte de
+controle
+= 3. Esse esquema reduz o nível de ruído gerado
+no sinal de controle sem tornar sua dinâmica mais lenta no
+seguimento da referência. Ressalta-se que esse esquema deve
+gerar atrasos em casos de haver perturbações na saída e
+aumenta a dependência que o algoritmo de controle tem em
+relação ao modelo da planta. O número de gerações foi
+aumentado para 500 nos ensaios 4 e 5, e para 1000 no ensaio
+6, em que também foram estendidos os limites de busca.
+
+
+consideradas as melhores para cada controlador, utilizando
+valores semelhantes de energia, conforme mostra a Fig. 4. As
+configurações PID 5 e PID 6 não constam no gráfico por
+apresentarem valores de energia relativamente elevados em
+comparação às demais configurações.
+
+Energia
+
+As sintonias do controlador PID usado para comparação
+estão apresentadas na Tabela IV. Foram variados os
+parâmetros de ganho proporcional ( ), integral ( ) e
+derivativo ( ), forma a buscar respostas rápidas, mas sem
+utilizar valores muito altos de energia. As exceções foram os
+ensaios PID 5 e 6, nos quais utilizou-se valores não nulos para
+, o que ocasiona um aumento significativo na energia
+empregada.
+
+A Tabela III apresenta a sintonia dos controladores em
+relação aos parâmetros do controle preditivo. Os horizontes
+foram definidos de forma a proporcionar resultados
+satisfatórios de otimização do processo, levando em
+consideração o período de amostragem considerado.
+
+
+B. Análise dos resultados
+A análise quantitativa dos resultados foi feita através do
+somatório quadrático do erro da saída em relação à referência
+e do somatório quadrático das variações de controle, ao qual
+se atribuiu o termo Energia. Ambos os somatórios, em todos
+os ensaios, foram multiplicados por valores constantes de
+escala para facilitar a interpretação dos dados. Isso foi feito
+devido à faixa de valores de saída e ação de controle
+envolvidos no sistema, que quando elevados ao quadrado,
+produzem valores muito altos.
+Os resultados estão mostrados na Fig. 4. Os resultados com
+as configurações PID 5 e PID 6 não são mostrados na Fig. 4
+por apresentaram valores relativamente altos de energia (42.47
+e 12.48, respectivamente) e erro semelhante ao PID 4.
+A observação dos resultados permite avaliar o desempenho
+dos controladores, comparando os resultados do algoritmo
+DE-MPC com o PID. Serão discutidos os controladores DEMPC 6 e PID 2, por serem configurações que podem ser
+
+
+Em todos os ensaios, o controlador DE-MPC foi superior ao
+PID no erro de saída, o que se deve principalmente à sua
+característica antecipativa. A Fig. 5 (a) mostra a comparação
+entre o erro quadrático obtido com o controlador DE-MPC 6 e
+o controlador PID 2, para uma determinada parte do ensaio.
+Verifica-se que momentos antes do controlador PID
+apresentar erro devido a uma mudança de referência, o
+controlador DE-MPC fez com que a saída desviasse do regime
+permanente em direção à referência futura. Dessa forma, no
+instante em que a referência muda, a malha de controle DEMPC se encontra mais próxima da referência do que a malha
+com PID. Considerando o erro quadrático, este efeito
+minimiza valores elevados de erro, garantindo um melhor
+desempenho nesse critério.
+A Fig. 5 (b) apresenta a energia empregada pelos mesmos
+controladores considerados anteriormente nas mesmas partes
+do ensaio. Verifica-se que o controlador DE-MPC antecipa a
+resposta à referência, produzindo uma resposta mais suave. O
+controlador PID apresenta variações mais abruptas de ação de
+controle, fazendo com que o valor quadrático se torne maior
+do que no ensaio com DE-MPC. Além do fator de otimização,
+o uso de restrições no controlador DE-MPC e do espaço de
+busca limitado faz com que o controlador evite gerar picos de
+sinal de controle, minimizando efeitos de overshoot de saída e
+de ação de controle.
+
+A saída da planta, com o controlador DE-MPC 6, está
+mostrada na Fig. 6. Entre os ensaios realizados, este foi o que
+produziu o menor erro quadrático de saída. Verifica-se que a
+saída convergiu para a referência com pouco overshoot e com
+
+
+uma resposta rápida quando comparado aos ensaios com
+controle PID (ver Fig. 9). Observa-se também que o sinal de
+saída possui um nível considerável de ruído. O sinal de
+controle gerado apresenta-se na Fig. 7. Verifica-se que o sinal
+não violou as restrições impostas e apresentou um nível de
+ruído reduzido em relação ao sinal gerado com o controlador
+DE-MPC 3, mostrado na Fig. 8, que não utilizou o esquema de
+filtragem.
+
+
+C. Análise de convergência e fitness
+A cada período de amostragem, a população é
+reinicializada, mantendo o melhor indivíduo da execução
+anterior. Assim, o algoritmo converge para uma sequência de
+controle cada vez que é realizada uma leitura da saída da
+planta. Logo, o sistema envolve dois processos de
+convergência: o intrínseco do otimizador e o da saída para a
+referência. A Fig. 10 mostra a convergência do algoritmo de
+otimização do ensaio DE-MPC 6 em diferentes pontos da
+convergência da saída em relação a um dos degraus aplicados.
+Na amostra k, a saída encontra-se distante da referência, com
+valores de fitness distantes de zero. Nas amostras posteriores,
+com a planta convergindo para a referência, valores mais
+próximos de zero foram alcançados.
+
+VI. CONCLUSÕES E TRABALHOS FUTUROS
+
+
+
+A Fig. 9 apresenta a saída obtida com o controlador PID 2.
+Esse ensaio apresentou resultados que podem ser considerados
+os melhores entre os controladores PID testados. Podem ser
+observados sobressinais mais elevados nos degraus mais altos
+de referência. Atribui-se essa desvantagem ao fato de que o
+controlador PID de parâmetros fixos não realiza nenhum
+processo adaptativo em relação à não linearidade da planta.
+
+Um controlador MPC não linear baseado em um otimizador
+DE foi implementado e aplicado a um sistema de controle de
+pressão. O sistema avaliado possui características não lineares
+de ganho em regime permanente. Os resultados mostraram
+que o modelo identificado e a configuração do algoritmo de
+otimização foram adequados para realizar um controle de alto
+desempenho com tratamento de restrições. Além disso, o
+sistema implementado apresentou vantagens como fácil
+configuração de quanta energia deve ser empregada, através
+do parâmetro . Diversas configurações de horizontes de
+predição e controle, assim como parâmetros relativos ao
+otimizador DE foram testados. Dentre as configurações
+testadas, foram apresentadas as configurações de melhor
+desempenho em relação a minimização de erro e energia.
+Comparações foram feitas em relação a um controlador PID
+convencional, que serviu como um guia inicial para a
+avaliação dos resultados obtidos com o DE-MPC. Verificou-se
+
+
+que o DE-MPC foi capaz de produzir melhores resultados em
+relação ao erro e à energia empregada.
+Com relação ao custo computacional, verificou-se que o
+custo médio manteve-se entre 50ms e 130ms em todos os
+ensaios, garantindo a execução completa do sistema de
+controle. Manteve-se assim uma margem de segurança em
+relação ao período de amostragem de 200ms.
+Utilizando o esquema apresentado de filtragem do sinal de
+controle, conclui-se que o sistema implementado possui
+potencial para ser aplicado em plantas mais complexas. Para
+trabalhos futuros, podem ser consideradas plantas com atrasos
+ou com problemas de estabilidade quando controladas por um
+controlador PID. Além disso, sugere-se o uso de outro
+algoritmo de otimização, como o PSO (Particle Swarm
+Optimization), para fins de comparação com o otimizador DE
+em relação a estabilidade, qualidade e custo computacional.
+

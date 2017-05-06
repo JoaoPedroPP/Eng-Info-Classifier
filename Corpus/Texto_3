@@ -1,0 +1,253 @@
+BRNeural - Simulador de redes neurais com topologia multicamadas perceptron - Usando o framework encog
+
+
+I. INTRODUÇÃO
+
+CONSIDERANDO a complexidade da utilização de Redes
+Neurais Artificiais (RNAs), torna-se interessante o
+desenvolvimento de uma ferramenta genérica e simplificada
+que possa ser utilizada por usuários de diversas áreas de
+conhecimento.
+Para o desenvolvimento do simulador BRNeural,
+objetivando nessa versão o reconhecimento de padrões, foi
+selecionado o framework intitulado Encog [1], por fornecer as
+funcionalidades de criação e treinamento de diversas
+topologias de RNAs e também de algoritmos de treinamento
+específicos para cada topologia, dentre outras características,
+como distintas formas de normalização de saída,
+processamento multithread, e varias topologias de rede.
+Em projeto anterior do BRNeural, cujo objetivo foi a
+aplicação de RNAs para a estimativa de infecção por manchas
+foliares na cultura do trigo [2] foi necessário o
+desenvolvimento de uma ferramenta para a simulação de
+RNAs. Essa ferramenta foi implementada utilizando o
+framework MLP [3], o qual fornecia apenas a funcionalidade
+de construção de redes Multilayer Perceptron (MLP) com o
+algoritmo de treinamento Backpropagation.
+Dentro desse contexto, o objetivo desse trabalho foi a
+ampliação do projeto BRNeural [4], desenvolvendo um
+módulo para construção e treinamento de RNAs com
+topologia MLP contendo os algoritmos de treinamento
+Backpropagation, Resilient propagation e Quick propagation,
+dando ênfase em uma interface genérica e simplificada para o
+uso multidisciplinar.
+
+II. REDES NEURAIS ARTIFICIAIS
+Segundo Haykin [5], uma rede neural é um processador
+maciçamente paralelamente distribuído constituído de
+unidades de processamento simples, que têm a propensão
+natural para armazenar conhecimento experimental e torna-lo
+disponível para o uso. Ela se assemelha ao cérebro nos
+seguintes aspectos: o conhecimento é adquirido pela rede a
+partir de seu ambiente através de um processo de
+aprendizagem e as forças de conexão entre neurônios,
+conhecidas como pesos sinápticos, são utilizadas para
+armazenar o conhecimento adquirido.
+O objetivo das RNAs é a simulação do funcionamento do
+cérebro humano, sendo composta por neurônios artificiais. As
+características mais importantes que atraem essa simulação
+
+
+são sua robustez e tolerância a falhas, capacidade de
+aprendizagem, processamento de informação incerta e
+paralelismo [6].
+As RNAs possuem diversas estruturas, considerando o
+número de camadas destacam-se as redes com camada única e
+com múltiplas camadas. A rede com camada única é a forma
+mais simples de uma rede em camadas, sendo que a camada
+de entrada se projeta diretamente para a camada de saída. As
+redes com múltiplas camadas possuem uma ou mais camadas
+ocultas, que ficam entre a camada de entrada e a de saída [5].
+Os métodos de aprendizado das RNAs podem ser divididos
+em três classes, dependendo do nível de controle fornecido ao
+usuário. No aprendizado supervisionado, o usuário informa
+um comportamento de referência preciso para ensinar a rede.
+O aprendizado semissupervisionado ou aprendizado por
+reforço ocorre quando o usuário possui apenas indicações
+imprecisas como sucesso ou insucesso da rede. E o
+aprendizado não-supervisionado consiste em modificar os
+pesos da rede em função de critérios internos [7].
+III. METODOLOGIA
+O BRNeural foi desenvolvido sob a plataforma Java
+Enterprise Edition 6 – Java EE [8] utilizando o framework
+Encog para a construção do módulo em referência e os
+respectivos algoritmos de treinamento para a arquitetura MLP.
+A interface do simulador foi desenvolvida utilizando a
+tecnologia JavaServer Faces – JSF [9] em conjunto com o
+framework PrimeFaces [10], o qual fornece uma suíte de
+componentes gráficos para o JSF.
+Foi utilizada a estrutura de rede de múltiplas camadas,
+especificamente a MLP, a qual consiste em uma RNA
+constituída por neurônios do modelo perceptron. Em relação
+ao aprendizado, foi o utilizado o método supervisionado,
+utilizando os algoritmos de treinamento Backpropagation,
+Resilient propagation e Quick propagation.
+Para a validação do módulo MLP e dos algoritmos de
+treinamento, as RNAs foram submetidas a testes utilizando os
+dados agrometeorológicos, descritos na Tabela I, por meio dos
+quais foi possível fazer uma comparação entre os frameworks
+Encog e MLP [3], bem como entre os resultados de cada
+algoritmo contido no Encog.
+Foram utilizados dois métodos de normalização para a saída
+da RNA, o primeiro denominado OneOf onde é atribuído um
+neurônio para cada índice na camada de saída da rede e o
+segundo método denominado Equilateral, o qual realiza o
+cálculo de distância euclidiana entre os índices e atribui a
+quantidade necessária de neurônios na camada de saída.
+A base de dados utilizada para o treinamento e validação
+das RNAs foi obtida junto à fundação ABC [11] e é composta
+por variáveis agrometeorológicas, descritas na Tabela I e
+variáveis de controle, seguidas dos índices de severidade das
+doenças ferrugem, mancha e oídio na cultura do trigo.
+
+
+O índice de severidade da doença foi mapeado entre valores
+de 1 a 4, onde o índice 1 indica que a planta está até 25%
+infectada, o índice 2 de 26% a 50%, o índice 3 de 51% a 75%
+e o índice 4 de maior grau onde a planta possui infecção
+superior a 76%.
+Na Tabela II, pode ser visualizada uma amostra dos dados
+utilizados para treinamento e testes das RNAs. No total foram
+utilizados 1379 registros, os quais formam a base de dados.
+
+A. Validação do simulador
+Para a validação do BRNeural, foram realizados testes e
+seus resultados foram comparados com os obtidos no
+simulador desenvolvido com o framework MLP [2]
+implementado utilizando o ambiente de desenvolvimento
+Delphi 2009 [12] com funcionalidade específica para a
+classificação de doenças em índices de severidade.
+A arquitetura da RNA utilizada para o teste foi de 10
+neurônios na camada de entrada, sendo um para cada variável,
+uma camada oculta com três vezes os neurônios de entrada
+mais os neurônios de saída, ou seja, 34 neurônios e 4
+neurônios de saída, utilizando o método de normalização
+OneOf.
+Os dados de entrada foram normalizados entre os valores 0
+e 1, e para as sinapses da rede foram gerados valores
+aleatórios entre -1 e 1, realizando o treinamento por 10000
+iterações, utilizando o algoritmo de treinamento
+
+
+Backpropagation. A Tabela III demonstra os resultados de
+comparação obtidos.
+
+Como pode ser observado, o simulador proposto obteve
+resultados superiores a 75% enquanto que o simulador
+desenvolvido com o framework MLP [2] obteve resultados
+superiores a 85%.
+Durante a execução dos testes notou-se que aumentando o
+número de iterações de treinamento, a margem de acerto com
+o BRNeural aumenta e o mesmo não ocorre com o framework
+MLP [2].
+IV. RESULTADOS E DISCUSSÃO
+Depois de realizada a validação da ferramenta, a mesma foi
+submetida a outro teste com o intuito de realizar um
+comparativo de resultados obtidos entre os algoritmos de
+treinamento Backpropagation, Resilient propagation e Quick
+propagation e os métodos de normalização OneOf e
+Equilateral.
+Para o método de normalização OneOf, a arquitetura da
+RNA possui uma camada oculta contendo 34 neurônios e 4
+neurônios de saída. Para o método Equilateral, a arquitetura
+consiste em uma camada oculta com 33 neurônios e 3
+neurônios de saída. Em ambos os métodos a RNA possuía 10
+neurônios de entrada e foram realizadas 10000 iterações de
+treinamento. Os resultados obtidos podem ser visualizados na
+
+Após verificar que os algoritmos de treinamento utilizados
+demonstraram desempenho satisfatório em relação ao
+problema em que foram submetidos, foi desenvolvida a
+interface do simulador, buscando a facilidade de uso,
+principalmente por usuários que não estejam familiarizados
+com esse tipo de ferramenta. Na Fig. 1 pode ser visualizada a
+interface principal do BRNeural, a qual possui todas as
+informações necessárias para o treinamento e teste da RNA
+em uma única tela.
+
+
+
+Além dessa interface, também foi desenvolvida uma
+funcionalidade em formato de wizard para auxiliar o usuário,
+fornecendo informações passo a passo em relação à
+configuração, treinamento e teste da RNA. O passo a passo do
+processo de criação e configuração da RNA utilizando o
+wizard é detalhado abaixo.
+
+
+Seguindo, os algoritmos de treinamento que serão
+utilizados. Se escolhido mais de um, é realizado o treinamento
+e teste para cada algoritmo informado.
+
+O primeiro passo é inserir o nome do projeto, necessário
+para o gerenciamento dos arquivos criados para treinamento e
+testes da RNA.
+
+
+
+No passo 4, é informada a faixa de normalização de entrada
+dos dados. Para a entrada dos dados na primeira camada da
+RNA é necessário normalizar os mesmos. A normalização
+pode ser realizada nas faixas de -1 a 1 ou 0 a1.
+
+
+
+Em seguida, o arquivo que será utilizado para o treinamento
+e teste da rede, sendo esse em formato csv (dados separados
+por vírgula).
+
+
+Após, a forma de normalização de saída, podendo ser
+Equilateral ou OneOf, citadas anteriormente.
+
+
+
+Depois, a porcentagem utilizada para o teste da rede. O
+arquivo inserido anteriormente será separado em dois novos
+arquivos, um para treinamento e outro para teste conforme o
+valor de porcentagem informado. A separação dos dados do
+arquivo original ocorre de forma aleatória, considerando o
+percentual informado para cada índice de severidade, ou seja,
+se o valor de porcentagem inserida for 10%, o arquivo de
+treinamento será constituído de 90% de registros de cada
+índice, enquanto que o arquivo de teste, 10% de registros de
+cada índice.
+
+
+
+
+
+Por fim, a estrutura da RNA. Os neurônios de entrada e
+saída são definidos automaticamente conforme o número de
+variáveis de entrada e saída. Podem ser configurados, a
+quantidade de épocas de treinamento, ou seja, quantas vezes
+será realizado o ciclo de treinamento e a quantidade de
+camadas ocultas, bem como o número de neurônios ocultos
+em cada camada.
+
+
+
+faz parte do quadro de professores permanentes do Mestrado em Informática
+Aplicada da Universidade Estadual de Ponta Grossa.
+Luiz Antônio Zanlorensi Junior,possui graduação em
+Bacharelado em Informática pela Universidade Estadual de
+Ponta Grossa (2013). Tem experiência na área de inteligência
+artificial, especificamente redes neurais artificiais.
+Atualmente é aluno regular do Mestrado em Computação
+Aplicada, da Universidade Estadual de Ponta Grossa,
+desenvolvendo pesquisas na área de Inteligência Artificial, Modelagem
+Computacional e Gestão e Automação de Dados.
+
+
+
+V. CONCLUSÃO
+Em relação a utilização do framework ENCOG para o
+desenvolvimento do BRNeural, como demonstrado, o mesmo
+foi validado em comparação ao framework MLP [2], tornando
+válida sua proposta de uso.
+Por fim, demonstra-se interessante o desenvolvimento de
+uma interface genérica e autoexplicativa para configuração,
+treinamento e teste de RNAs, uma vez que seu uso pode ser
+destinado a diversas áreas e usuários não familiarizados com
+essa metodologia.
+

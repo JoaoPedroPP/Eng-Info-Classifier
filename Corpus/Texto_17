@@ -1,0 +1,853 @@
+Comparação de sistemas DTV terrestre: ISDB-TB e DVB-T2 em 6 MHz
+
+I. INTRODUÇÃO
+
+OS SISTEMAS de televisão digital ISDB-TB (Integrated
+Services Digital Broadcasting – Terrestrial version B) e
+DVB-T2 (Digital Video Broadcasting – Second Generation
+Terrestrial) entraram em operação comercial em 2007 e 2008
+respectivamente [1], [2].
+Apesar de ambos os sistemas estarem em operação desde a
+década passada, ainda existem países que não adotaram um
+sistema de televisão digital terrestre.
+No entanto, alguns países como França e Alemanha já
+optaram pela substituição do sistema DVB-T (primeira
+geração) para o DVB-T2. Por outro lado, países como Japão e
+Estados Unidos já finalizaram o desligamento das
+transmissões analógicas e estudam um futuro sistema de
+televisão digital.
+Os Estados Unidos estão desenvolvendo um novo padrão
+chamado ATSC (Advanced Television System Committee) 3.0.
+Recentemente o grupo ATSC anunciou que grande parte das
+contribuições para a camada física virá do sistema DVB-T2
+[3]-[5].
+O grupo FOBTV (Future Of Broadcast Television),
+também visa o desenvolvimento de tecnologias para a
+próxima geração da televisão terrestre e recomendações para
+organizações a respeito de padronização dos sistemas. O
+FOBTV foi formado inicialmente por 13 emissoras de
+radiodifusão e atualmente a associação é composta por 71
+membros da área de radiodifusão [6].
+O sistema ISDB-TB apresenta diferentes blocos e técnicas
+de processamento quando comparado ao DVB-T2. No
+entanto, essas estruturas possuem o mesmo princípio podendo
+ser dividido em quatro estágios denominados de codificação
+da fonte, codificação de canal, modulação e transmissão que
+
+são válidos para os dois sistemas.
+Ambos os sistemas de televisão utilizam eficientes códigos
+corretores de erros: RS (Reed Solomon) + CC (Codificador
+Convolucional) para o ISDB-TB, e o código de verificação de
+paridade de baixa densidade mais conhecido por LDPC (Low
+Density Parity Check) + BCH (Bose, Chaudhuri e
+Hocquenghem), para o DVB-T2. Segundo estudos a
+concatenação do LDPC+BCH apresenta melhor desempenho
+quando comparado ao RS+CC [3], [7].
+Neste trabalho são apresentadas comparações de
+desempenho entre os sistemas ISDB-TB e DVB-T2 utilizando
+6 MHz de largura de banda. Para cada um dos parâmetros prédefinidos foram analisadas a robustez dos sistemas, sobre a
+influência de diferentes tipos de interferência, como o ruído
+AWGN (Additive White Gaussian Noise), ruído impulsivo,
+multipercurso e a sensibilidade dos presentes sistemas
+estudados.
+O artigo está estruturado da seguinte maneira: as Seções II
+e III abordam os aspectos gerais e diferenças entre os sistemas
+ISDB-TB e DVB-T2; a Seção IV apresenta resumo
+comparativo de ambos os sistemas e os parâmetros de
+transmissão adotados nos testes de laboratório, seguido dos
+procedimentos e respectivos resultados; e finalmente na Seção
+V, a conclusão deste trabalho.
+II. ISDB-TB
+Em 2006, com a publicação do Decreto 5820, o Brasil
+adota o sistema SBTVD-T (Sistema Brasileiro de Televisão
+Digital - Terrestre) baseado no sistema japonês ISDB-T com
+inovações tecnológicas aprovadas pelo Comitê de
+Desenvolvimento criado em 2003 [8].
+O Comitê de Desenvolvimento teve a responsabilidade de
+criar um sistema de televisão digital terrestre. Sob a
+coordenação técnica do CPqD (Centro de Pesquisa e
+Desenvolvimento) e FINEP (Financiadora de Estudos e
+Projetos) [9]. O SBTVD foi desenvolvido por 22 consórcios
+compostos de 72 universidades, 34 instituições de pesquisa e
+empresas privadas.
+O SBTVD-T, denominado ISDB-TB apresenta algumas
+inovações comparadas à versão japonesa como a codificação
+H.264/AVC, MPEG-4/AAC e interatividade, normas
+publicadas pela ABNT (Associação Brasileira de Normas
+Técnicas) [10]-[12]. O ISDB-TB foi adotado por vários países
+das Américas do sul e central, continente africano (8 MHz) e
+asiático [13].
+A. Processamento dos dados de entrada
+A primeira etapa chamada de processamento dos dados de
+entrada representa a interface entre o estágio de codificação
+
+
+fonte e modulação.
+O sinal BTS (Broadcasting Transport Stream) é gerado
+pelo multiplexador/re-multiplexador. No multiplexador são
+inseridos um ou mais TS (Transport Stream) com pacotes de
+áudio, vídeo e tabelas com tamanho de 188 bytes provenientes
+dos codificadores [10], [14], [15]. Também podem ser
+inseridos pacotes com informações de dados como o closed
+caption e interatividade (DTVi).
+Durante o processo de multiplexação são geradas tabelas
+específicas de informação de programa chamada de PSI
+(Program Specific Information) [11].
+Após a multiplexação de um ou mais TS ocorre o processo
+de re-multiplexação. Esta etapa é responsável por informar a
+qual camada pertence cada TSP (Transport Stream Packet).
+Cada TSP é identificado por seu PID (Program Identifier)
+e através de um filtro, somente os pacotes selecionados são
+armazenados na FIFO (First In First Out) de sua respectiva
+camada. A ordem de transmissão de cada TSP é fixa dentro do
+quadro BTS e é gerada no bloco gerador de sequência BTS
+[15].
+No re-multiplexador também é inserido o pacote IIP
+(ISDB-T Information Packet). O IIP é gerado uma vez por
+quadro e tem a função de configurar o modulador [14].
+O descritor MCCI (Modulation Configuration Control
+Information) é responsável por configurar os parâmetros de
+modulação, codificação e do descritor NSI (Network
+Syncronization Information). O NSI por sua vez, transmite
+informações para sincronismo utilizado em redes de
+frequência única (SFN - Single Frequency Network), em que é
+necessário sincronismo em frequência e em tempo [16].
+A maioria dos equipamentos de radiodifusão utilizam
+sinais de sincronismo através de um GPS (Global Positioning
+System) ou por oscilador de rubídio, os quais fornecem o
+clock de 10 MHz necessário para o sincronismo em
+frequência e 1 pps (um pulso por segundo) importante para o
+sincronismo no tempo.
+Por fim são inseridos pacotes nulos para manter a taxa de
+bits constante. No último estágio do re-multiplexador são
+inseridos 8 bytes de controle e 8 bytes referentes ao corretor
+de erros RS encurtado (n=204, k=196, t=4) em que n
+representa o número de símbolos de saída, k o número de
+símbolos de entrada e t é a capacidade de correção. A Fig. 1
+apresenta as etapas para construção do sinal BTS que é
+conectada ao modulador e a Fig. 2 apresenta a estrutura do
+quadro BTS.
+Uma das características do BTS é a taxa constante de
+aproximadamente 32,5079 Mbps, considerando uma banda de
+6 MHz e pacotes com comprimento de 204 bytes.
+
+
+O modulador ISDB-TB é formado pelos estágios de
+codificação de canal, construção do quadro e construção
+OFDM. A Fig. 3 apresenta as etapas citadas as quais serão
+abordadas nas próximas subseções.
+
+
+B. Codificação do Canal
+O processo de codificação de canal se inicia com a
+detecção do IIP através do PID 0x1FF0 ou pela indicação de
+Layer 0x8 [15]. O IIP contém informações necessárias para
+configuração dos blocos de codificação de canal, construção
+do quadro e construção OFDM [16].
+Em seguida todos os processos são realizados de acordo
+com a quantidade de camadas. O ISDB-TB possibilita a
+transmissão de até três camadas (serviços), estas chamadas de
+Layer A, Layer B e Layer C.
+A primeira etapa de codificação é feita pelo codificador
+externo RS, o qual faz parte da família dos códigos de bloco
+
+
+BCH não binários. Neste estágio apenas os primeiros 188
+bytes do BTS são codificados em uma versão encurtada do RS
+(n=204, k=188, t=8). O dummy byte (16 bytes restantes) é
+armazenado para ser utilizado no separador de camadas. Na
+saída do RS, o TSP possui tamanho fixo de 204 bytes e é
+realizado deslocamento de 1 byte, necessário para o
+sincronismo do quadro OFDM [10], [15], [16].
+Após a codificação RS, o bloco separador de camadas
+direciona cada TSP a sua respectiva camada [10].
+Em seguida o bloco dispersor de energia tem o objetivo de
+reduzir a interferência entre símbolos devido a repetição de
+zeros e uns provenientes do estágio da codificação fonte. O
+dispersor é composto por um gerador PRBS (Pseudo Random
+Binary Sequence), o qual dispersa a sequência repetitiva da
+informação [10], [17].
+O processo de entrelaçamento de byte consiste em
+entrelaçar a sequência dos bytes gerados pelo dispersor de
+energia. O bloco realiza atrasos e deslocamentos dos bytes
+com tamanho fixo sem alterar a taxa de transmissão. O
+resultado na saída desse bloco são bytes entrelaçados, o que
+aumenta a eficiência do RS [10], [15]. Em seguida ocorre o
+ajuste de atraso, o qual é responsável por compensar a latência
+do entrelaçador de byte. O ajuste de atraso varia de acordo
+com o tipo de modulação e taxa do CC.
+O codificador interno utilizado é o CC com
+puncionamento. Esse bloco é definido por (n=2, k=1, m=6),
+sendo k entradas, n saídas e m memórias; logo, a taxa desse
+codificador é de 1/2. O codificador convolucional é
+construído por um circuito combinacional sequencial sendo
+composto por flip-flops, somadores módulo 2 e
+multiplexadores [15].
+No fim do processo deste codificador alguns bits são
+descartados, técnica chamada de puncionamento, a qual pode
+ser ajustada nas taxas de 1/2, 2/3, 3/4, 5/6 e 7/8. Quanto
+menor a taxa do codificador maior é a distância livre do
+código o que proporciona um ganho assintótico durante a
+decodificação [15].
+Em seguida é realizado o entrelaçamento de bit, processo
+que faz a conversão serie/paralelo dos bits que serão
+mapeados. Durante o mapeamento os dados são multiplexados
+em diferentes atrasos de tempo. O valor do atraso depende do
+método de modulação: QPSK, 16-QAM e 64-QAM. Durante
+esse processo é realizado o ajuste de atraso para compensar a
+latência do entrelaçador de bit e manter o sincronismo entre
+camadas dentro do quadro BTS [10], [15].
+O ISDB-TB pode operar em três modos que equivalem ao
+tamanho da IFFT/Número de Portadoras. São eles: modo 1
+(2048) com 1405 portadoras, modo 2 (4096) com 2809
+portadoras e o modo 3 (8192) com 5617 portadoras [10].
+A técnica de modulação utilizada no ISDB-TB é o
+BST-OFDM (Band Segmented Transmission - Orthogonal
+Frequency Division Multiplexing), onde o espectro do canal é
+dividido em 14 segmentos. Destes segmentos apenas 13 são
+utilizados para transmissão de dados e um segmento é
+destinado à banda de guarda do canal [15].
+
+
+C. Construção do quadro
+Após o processo de codificação e mapeamento as camadas
+são combinadas formando um único fluxo de dados. O
+processo de combinação das camadas concatena os símbolos
+das três camadas.
+Na etapa seguinte é realizado o entrelaçamento temporal,
+técnica similar ao bloco de entrelaçamento de byte. O
+processo de entrelaçamento atua individualmente em cada
+camada sendo realizada uma combinação cíclica na saída
+[10], [15].
+No modo 3 o entrelaçador temporal pode ser ajustado para
+os valores de espalhamento de 0, ≅100, ≅200 e ≅400 ms. O
+entrelaçamento temporal provê maior robustez contra
+desvanecimento do tipo fading, ruído impulsivo e melhora o
+desempenho da recepção móvel [10], [15].
+Na etapa seguinte é realizado o entrelaçamento em
+frequência, em que apresenta estrutura similar ao entrelaçador
+de bloco.
+A função do entrelaçador de bloco consiste na escrita dos
+dados em uma memória e leitura em ordem diferente. No
+entrelaçamento em frequência os dados também são
+entrelaçados entre segmentos. No entanto, quando transmitido
+o serviço de recepção móvel (one-seg) a informação contida
+no segmento central não é entrelaçada com os demais
+segmentos [10], [15].
+Durante o entrelaçamento em frequência também é
+realizado o rotacionamento dos símbolos dentro dos
+segmentos e ao término ocorre aleatorização destes dentro dos
+segmentos. A aplicação dessa técnica apresenta robustez em
+relação ao desvanecimento de frequência seletivo [10], [15].
+Na última etapa da construção do quadro é realizado o
+ajuste do espectro, função importante para ordenar os
+segmentos. O segmento central do espectro é considerado
+zero e os segmentos ímpares ficam dispostos a esquerda e os
+segmentos pares a direita de maneira crescente a partir do
+segmento central [10], [16], [18].
+D. Construção OFDM
+Durante a etapa de construção do sinal OFDM é necessário
+primeiramente realizar a adaptação do quadro OFDM. Nessa
+etapa são inseridas diversas portadoras, algumas têm o
+objetivo de auxiliar o sincronismo e estimação do canal. Essas
+portadoras são chamadas de SP (Scattered Pilots) e CP
+(Continual Pilots) e são moduladas em BPSK (Binary Phase
+Shift Keying).
+As informações dos parâmetros de transmissão são
+sinalizadas pela TMCC (Transmission and Multiplexing
+Configuration Control) e as portadoras AC1 (Auxiliary
+Channel 1) e AC2 (Auxiliary Channel 2) carregam
+informações para operação do sistema. Tanto a TMCC quanto
+a AC são moduladas em DBPSK (Differential BPSK) [10],
+[15], [16].
+O sinal ISDB-TB é composto por quadros OFDM e
+apresenta duração Tf. No modo 3, um símbolo OFDM é
+composto por 5617 portadoras, dessas 4992 portadoras são de
+dados, 468 SP, 52 TMCC, 104 AC1 e 1 CP [10], [15].
+A modulação OFDM existe desde a década de 60,
+
+
+abordado primeiramente por Chang [19]. Essa técnica de
+transmissão visa a transmissão de várias portadoras limitadas
+em banda moduladas ortogonalmente, teoricamente não
+gerando interferências entre os símbolos e portadoras.
+A técnica utilizada na modulação do ISDB-TB utiliza a
+transformada inversa rápida de Fourier (IFFT – Inverse Fast
+Fourier Transform). Para ajustar o tamanho da IFFT são
+inseridos zeros na saída do quadro OFDM a fim de obter a
+quantidade de amostras necessárias para o algoritmo da IFFT
+[10], [15], [20], [21].
+No último estágio da construção do OFDM é inserido o IG
+(Intervalo de Guarda) - técnica desenvolvida por Peled e Ruiz
+[22] que consiste na inserção da extensão cíclica da
+informação útil, sendo adicionada antes de cada símbolo (Tu)
+OFDM, resolvendo problema de ortogonalidade. Um dos
+motivos da inserção dessa informação é evitar o chaveamento
+do sinal durante a transmissão o que gera intervalos no
+domínio do tempo e quando transformado no domínio da
+frequência gera espúrios. O IG também torna o sinal mais
+robusto minimizando a interferência intersimbólica [10], [15].
+Considerando o modo 3 de transmissão, o período do
+símbolo Tu é de 1008 µs, para as razões do IG 1/4, 1/8, 1/16 e
+1/32 o que resulta na duração do IG de 252µs, 126µs, 63µs e
+32µs, respectivamente.
+Após a inserção do IG o sinal OFDM gerado em BB
+(Banda Base) é convertido pelo up-converter para BP (Banda
+Passante). Esse sinal é transmitido via canal de comunicação
+[15].
+III. DVB-T2
+Em junho de 2006 foi formado o grupo chamado TM-T2
+(Módulo Técnico em Next Generation DVB-T) pelo grupo
+DVB. A principal tarefa desse grupo era estudar e desenvolver
+um novo padrão DVB-T atualizado, o qual viria a ser
+nomeado DVB-T2 [23].
+A norma do DVB-T2 foi publicada em 2009 pela ETSI
+(European Telecommunications Standards Institute) e desde
+então foram realizadas algumas atualizações [24], [25]. As
+principais diferenças em relação à primeira geração são os
+códigos corretores de erros, codificação H.264/AVC, MPEG4/AAC e novas técnicas de transmissão e eficiência que serão
+abordadas nas próximas subseções.
+O DVB-T2 com 8 MHz de largura de banda é amplamente
+difundindo na Europa e continente africano. Poucos países da
+América do sul e continente asiático utilizam o DVB-T2 com
+6 MHz de largura de banda [2].
+O DVB-T2 também pode ser dividido em quatro principais
+etapas como o ISDB-TB. A primeira etapa realiza o tratamento
+dos dados de entrada, de maneira a construir a informação que
+alimentará o transmissor chamado de T2-MI (Modulator
+Interface).
+A. Processamento dos dados de entrada
+As informações de entrada no DVB-T2 são chamadas de
+PLP (Physical Layer Pipes), esses dados não apresentam a
+necessidade de um formato específico, podendo ser um
+simples TS com pacotes de tamanho fixo ou mesmo um GSE
+
+(Generic Stream Encapsulation) que apresentam pacotes de
+tamanho fixo ou variável [24], [26].
+No caso da utilização do TS foram implementados
+mecanismos que visam a redução do cabeçalho. Técnicas
+como remoção de pacotes nulos do TS e a utilização do HEM
+(High Efficiency Mode), o qual remove o byte de sincronismo
+do TS ou do GSE, o que não interfere no processo de
+recepção.
+O DVB-T2 suporta a transmissão de até 255 PLPs,
+podendo ser configurado cada um deles com diferentes
+parâmetros de transmissão como FEC, ordem da constelação e
+entrelaçador. Já as configurações de tamanho da IFFT e IG
+são fixos para todos PLPs [7], [24], [26].
+O BB frame é composto pelo cabeçalho chamado BB
+Header seguido dos dados e nulos [24], [26]. A Fig. 4
+apresenta as etapas para construção do sinal T2-MI
+transmitido pelo modulador, a qual apresenta estrutura similar
+ao ISDB-TB.
+
+
+
+Para construção do BB frame é inserido o bloco ISSY
+(Input Stream Synchronizer) sendo uma informação opcional.
+Quando habilitado, esse bloco acrescenta um contador que
+utiliza o mesmo clock do modulador. O mesmo clock é gerado
+no receptor para recuperar o fluxo dos dados. A configuração
+desse campo é ajustada de acordo com o formato do PLP [24].
+Em seguida os pacotes nulos são detectados e descartados;
+na próxima etapa são inseridos o bloco detector de erro CRC
+8 (Cyclic Redundancy Check) e outras informações,
+compondo o BB header [24]. A sinalização L1 é transmitida
+em células específicas a partir da contagem do bloco FEC
+Frame de cada um dos PLPs, essa sinalização será detalhada
+na seção III D.
+Antes do multiplexador formar o T2-MI é necessário
+realizar a adaptação do stream, nesse bloco são inseridos
+nulos para ajustar o tamanho fixo do BB frame. Na sequência
+os BB frames são aleatorizados com base no polinômio PRBS
+[23].
+Por fim, são inseridas informações AUX (Auxiliary
+Stream) em que dentro do quadro T2 são inseridas as células.
+Essas informações transportam dados compostos por
+componentes em fase (I) e quadratura (Q). O campo IA é
+utilizado para configuração individual dos transmissores
+quando operar em MISO (Multiple Input Single Output),
+técnica que será abordada na seção III D.
+A Fig. 5 apresenta a segunda etapa do sistema DVB-T2,
+em que é realizada a codificação de canal entre outras
+funções, especificada no estágio BICM (Bit Intearleaving
+Coding Modulation), construção do quadro e por fim a
+construção OFDM [24].
+
+
+processo de leitura é feito a cada linha, desse modo é obtida
+uma nova série de dados entrelaçados como apresenta a Fig.
+6. Outro benefício dessa técnica é o desvanecimento num
+canal de transmissão e erros em rajada (também conhecido
+como burst, técnica também presente no ISDB-TB).
+
+
+B. Codificação do canal BICM
+Após a construção do BB frame, os dados são enviados ao
+bloco BICM, responsável pela codificação do canal. O
+codificador externo (BCH) e interno (LDPC) é o mesmo
+utilizado em outros sistemas de comunicação como DVB-S2 e
+DVB-C2, e apresenta elevada robustez quando comparado ao
+DVB-T [24], [26], [27].
+Assim como outros códigos corretores de erros, o LDPC
+também apresenta uma saturação do BER (Bit Error Rate).
+Essa região também é conhecida por error floor ou patamar
+de erro. A concatenação com o BCH foi uma das soluções
+para corrigir este problema [7], [26], [27].
+O tamanho dos quadros do DVB-T2 variam de acordo com
+tamanho do frame LDPC podendo ser ajustado em 64K
+(longo) e 16K (encurtado). Estudos indicam que o LDPC
+encurtado possui desempenho inferior quando comparado ao
+LDPC longo. Após a codificação de canal os dados são
+chamados de FEC frame [26].
+Na sequência foram desenvolvidos quatro blocos
+responsáveis por realizar o entrelaçamento dos dados
+transmitidos. Três deles estão presentes no bloco BICM: o
+entrelaçador de bit, entrelaçador de células e o entrelaçador
+temporal. O entrelaçador em frequência está presente no bloco
+Construção do Quadro [28].
+Primeiramente o entrelaçamento de bit tem a função de
+evitar sequências repetidas de 1s e 0s da informação
+transmitida num mesmo quadro. O processo é semelhante ao
+utilizado no padrão ISDB-TB, processo no qual os bits são
+intercalados.
+O processo de entrelaçamento consiste na escrita dos bits
+nas colunas e leitura nas linhas. A quantidade de linhas
+variam de acordo com a ordem de modulação e tamanho do
+bloco FEC frame. Durante esse procedimento ocorre um
+deslocamento tc no início da escrita em cada uma das colunas.
+Os deslocamentos variam de acordo com a ordem de
+modulação, número de colunas e o tamanho do quadro
+transmitido, definido em [24].
+Na etapa seguinte é realiza a leitura dos dados gerados. O
+
+
+A próxima etapa realiza a construção das células com
+componentes I/Q. O processo de mapeamento do DVB-T2 é
+similar ao mapeamento do ISDB-TB. Após o recebimento do
+fluxo contínuo de informações o mapeamento é realizado
+através de uma conversão série/paralelo das camadas de
+acordo com a ordem de modulação [24], [26].
+O sistema DVB-T2 permite o mapeamento até a ordem de
+256-QAM com a possibilidade ou não de rotacionamento da
+constelação (Fig. 7). À medida que aumenta a ordem da
+modulação menor é o rotacionamento. Estudos indicam que o
+rotacionamento pode trazer melhorias no processo de
+recepção de até 3 dB para o sistema [24], [26], [27].
+O rotacionamento gera novos valores das componentes
+I/Q. O processo consiste no deslocamento cíclico da
+componente Q e cada símbolo é transmitido em diferentes
+células, de maneira a gerar independência entre o conteúdo
+dos símbolos transmitidos [24], [26], [27].
+
+
+Em seguida são realizadas duas técnicas de
+entrelaçamento, a primeira delas é o entrelaçamento das
+células, a qual tem o objetivo de garantir uma distribuição não
+correlacionada com as distorções do canal, minimizando
+
+
+interferências. O processo é realizado no nível da palavra
+código (FEC frame), a técnica utiliza polinômio PRBS em que
+as células são entrelaçadas diferentemente em cada FEC
+block, os quais compõe o bloco de entrelaçamento temporal
+[24], [27].
+O entrelaçamento temporal executa a dispersão da
+informação no nível do PLP. Esse bloco pode ser ajustado a
+cada tipo de serviço, obtendo melhores resultados para
+diferentes técnicas de entrelaçamento. O entrelaçador
+temporal também aumenta robustez em canais com pouco
+Doppler. No entanto, essa técnica proporciona um maior
+tempo de sintonia de canal [26].
+O entrelaçador temporal depende de três variáveis:
+TIME_IL_TYPE responsável por realizar o entrelaçamento
+dentro de um quadro ou distribuído ao longo de vários
+intervalos do quadro T2, TIME_IL_LENGTH especifica o
+número de blocos entrelaçados por tempo de quadros
+entrelaçados, FRAME_INTERVAL define o intervalo entre
+dois quadros carregando o tempo de entrelaçamento dos dados
+do PLP e o PLP_NUM_BLOCKS_MAX determina o número
+máximo de quadros de FEC que podem ser combinados para
+formar um bloco entrelaçado no tempo [28].
+Conhecidas as variáveis do entrelaçador temporal, o T2
+apresenta três configurações as quais proporcionam melhores
+resultados para baixas, médias ou altas taxas de transmissão.
+Os parâmetros e valores são detalhados em [24], [28].
+C. Construção do Quadro
+O bloco de construção do quadro representa a transição
+para última etapa na qual é realizada a transmissão OFDM.
+Antes dessa etapa as células de cada PLP são alocadas em
+símbolos OFDM, em seguida é formado o quadro T2. A cada
+quadro T2 são alocadas sinalizações P1, P2 e dados, as
+sinalizações serão abordadas na seção III D [7], [23].
+O conjunto de quadros T2 são somados com blocos FEF
+(Future Extension Frame) que compõem o super-quadro T2,
+conforme apresenta a Fig. 8 [24], [26], [29].
+O campo FEF pode conter qualquer tipo de informação.
+Em geral quando não transmitidos dados o receptor ignora as
+informações desse campo. Um dos objetivos desse bloco é
+permitir uma flexibilidade para o desenvolvimento de novos
+sistemas, como as transmissões de informações de alerta ou
+outros serviços [7], [27].
+
+
+desse modo é garantida a robustez contra um canal de
+frequência seletiva. A técnica utilizada é similar ao bloco de
+entrelaçamento de células.
+D. Geração OFDM
+A última etapa do DVB-T2 realiza a modulação OFDM e
+apresenta inovações quando comparado ao ISDB-TB.
+Técnicas adotadas com o intuito de tornar o sinal digital mais
+robusto e proporcionar um aumento na taxa de transmissão
+[30].
+Os principais sistemas de televisão como ATSC, DVB-T,
+ISDB-TB e DVB-T2 produzem um único sinal, o qual
+alimenta um único transmissor e o sistema apresenta uma
+única antena na recepção. Essa técnica é nomeada SISO
+(Single Input Single Output).
+Tanto o DVB-T2 como o ISDB-TB permitem transmissões
+em SFN em que todos os transmissores da rede transmitem
+conteúdos idênticos. Na recepção é utilizada apenas uma
+antena com uma polarização específica. O SFN é considerado
+como caso particular de transmissões MISO [7], [24], [26].
+No entanto, o DVB-T2 permite a transmissão MISO
+utilizando técnicas de transmissões diferentes quando
+comparadas às transmissões SFN. Quando habilitada essa
+técnica o processo consiste na construção de diferentes
+informações, em que cada transmissor gera informação
+modificada em relação aos demais. Para essa operação o
+modulador realiza a codificação Alamouti modificada [24],
+que tem como base a transmissão do complexo conjugado dos
+símbolos em relação aos demais transmissores.
+Estudos indicam que o MISO apresenta uma pequena
+melhora quando comparado a redes SFN [24], [26]. A Fig. 9
+apresenta o diagrama de transmissão MISO e SFN.
+
+
+Em seguida é realizado o entrelaçamento em frequência, o
+qual provoca aleatorização de células de dados adjacentes
+possivelmente danificados dentro de um símbolo OFDM,
+
+A próxima etapa realiza a inserção das portadoras. No
+DVB-T2 são inseridas as do tipo Edge Pilots, CP, Frame
+Closing Pilots, P2 Pilots e SP. O principal objetivo das
+portadoras é manter o sincronismo e realizar a estimação do
+canal.
+No DVB-T2 é possível realizar o ajuste do padrão das SP,
+de PP1 à PP8. Quanto mais próximo dos modos PP1 e PP2
+maior é a quantidade de portadoras de sincronismo, o que
+reduz a taxa útil de transmissão [24], [31].
+
+
+Os modos de transmissão ímpar PP1, PP3, PP5 e PP7
+apresentam menor robustez, por conta de apresentar maior
+distância entre as portadoras pilotos no domínio do tempo
+(Dy). O distanciamento para os modos ímpares é igual a 4 Dy ,
+enquanto no modo par o espaçamento é igual a 2 Dy. A única
+exceção é o modo PP8 que apresenta espaçamento de 16 Dy
+[24], [31].
+Segundo as considerações do EBU Technical Report 3348
+[31] para cada modo podem ser realizadas diferentes
+combinações tanto no tamanho da FFT como no IG, o que
+resulta em diferentes comportamentos em caso de efeito
+Doppler, taxas de transmissão e relação C/N.
+Para a recepção fixa com antena externa é recomendado o
+modo PP7. Ele possui baixa robustez ao efeito Doppler e
+sensibilidade. Entretanto, permite maior taxa de transmissão
+[31].
+No entanto, para recepções móveis que apresentam grandes
+variações no canal de comunicação indica-se de maneira
+decrescente os modos PP2, PP4 e PP6, sendo que o modo PP2
+apresenta mais portadoras permitindo melhor estimação do
+canal [31].
+O DVB-T2 apresenta 9 possibilidades de FFT como 1K,
+2K, 4K, 8K, 8K ext., 16K, 16K ext., 32K, 32K ext. Uma das
+características do DVB-T2 é a configuração do modo
+estendido. Esse recurso permite melhor uso do espectro
+possibilitando maior taxa de transmissão quando comparada
+transmissão normal [24], [26].
+Outra inovação foi a implementação da técnica PAPR
+(Peak Avarege Power Ratio) que tem o objetivo aumentar a
+eficiência do transmissor. Existem duas técnicas para realizar
+esse procedimento o ACE (Active Constelation Extension) e o
+TR (Tone Reservation) [24], [26].
+Basicamente o ACE reduz o fator de crista através da
+dispersão para fora dos pontos das extremidades da
+constelação. Essa técnica não pode ser utilizada quando a
+constelação estiver rotacionada [24].
+Já a técnica TR tem como base a não transmissão de
+algumas portadoras, compensando de maneira a reduzir a
+potência de pico. No entanto, ocorre uma perda na taxa de
+transmissão em torno de 1% por conta de não usar as
+portadoras ao contrário do modo ACE [24], [26].
+A técnica ACE é mais aplicada para constelações de menor
+ordem e o TR apresenta maior ganho para constelações de
+maior ordem. As duas técnicas podem ser aplicadas em
+conjunto [26].
+O IG utiliza o mesmo critério adotado no ISDB-TB. O
+diferencial do padrão europeu está na maior quantidade de
+razões de IG: 1/4, 9/256, 1/8, 19/128, 1/16, 1/32, 1/128 [24].
+Na última etapa é inserido o símbolo P1, referência
+utilizada para facilitar a detecção do quadro T2, sincronismo
+de tempo/frequência e sinalização dos parâmetros básicos de
+transmissão no receptor. O símbolo P1 apresenta elevada
+robustez possibilitando a decodificação dessa informação com
+valores negativos de C/N, o que contribui a recepção do sinal
+em situações críticas como na recepção móvel ou fixa sob
+interferências no canal de comunicação [7], [24], [26].
+O símbolo P2 é dividido em duas partes chamadas de
+
+
+sinal L1-pré e sinal L1-pós. A parte sinal L1-pré apresenta
+tamanho constante e contém informações de IG, portadoras
+piloto, cell id, network id, PAPR, quantidade de símbolos de
+dados e parâmetros de sinalização L1-pós como modulação e
+FEC.
+A parte sinal L1-pós apresenta tamanho variável e
+transmite informações como quantidade de PLPs, frequências
+de RF, identificações dos PLPs e os parâmetros de modulação
+e FEC dos PLPs. A quantidade de símbolos P2 varia de
+acordo com o modo FFT [7], [26], [27], [32].
+Outro recurso é a técnica TFS (Time Frequency Slicing), a
+qual permite um melhor aproveitamento do uso do espectro,
+sendo possível transmitir uma ou mais camadas PLPs sobre
+um único canal de transmissão.
+O processo consiste na multiplexação dos serviços e na
+utilização de até 6 canais de RF em que a informação é
+alocada em frequências que estão disponíveis os chamados
+White Spaces. Logo, considerando uma transmissão de 33
+Mbps utilizando TFS seria possível transmitir até 198 Mbps
+[31].
+Para esse processo são necessários no mínimo 2
+sintonizadores, o que torna custoso para comercialização. A
+Fig. 10 apresenta um exemplo de TFS em que ocorrem saltos
+em frequências disponíveis [31].
+
+
+Após a construção do IG o sinal OFDM pode gerar apenas
+um sinal BB1 (Banda Base) na configuração SISO. No caso
+das transmissões do tipo MISO são gerados BB1 e BB2 e
+apenas um sinal é utilizado no transmissor. Esses sinais são
+convertidos pelo up-converter para BP (Banda Passante), os
+quais serão transmitidos num canal de comunicação.
+IV. PROCEDIMENTO DE TESTE E RESULTADOS
+Conhecidas as características de ambos os sistemas a
+Tabela I mostra um resumo comparativo dos principais
+aspectos do ISDB-TB e do DVB-T2 citados nas seções
+anteriores.
+Os testes foram realizados com base no critério de limiar
+de visibilidade TOV (Treshold of Visibility), idêntico ao
+QMP2 (Indirect objective or subjective quality measurement
+procedure 2) estabelecido pela Nordig [33].
+O procedimento TOV consiste na análise subjetiva do
+vídeo zone plate, imagem representada pela Fig. 11. O vídeo é
+analisado durante 30 segundos e deve apresentar ausência de
+qualquer tipo de interferência durante o período de análise.
+
+
+Os parâmetros de transmissão adotados nas análises tanto
+do ISDB-TB quanto do DVB-T2 são comumente utilizados
+por radiodifusores, recomendações da EBU [34] e grupos de
+pesquisa [35]-[37].
+
+
+A Tabela II apresenta os parâmetros de modulação
+utilizados para o ISDB-TB. A Tabela III e a Tabela IV referese aos parâmetros de modulação fixos e variáveis usadas no
+DVB-T2 respectivamente.
+Os receptores utilizados nos testes são de uso comercial e
+utilizam sintonizadores do tipo Silicon Tuners, fabricados com
+componentes de silício (circuito integrado).
+
+As próximas subseções abordam os testes realizados,
+apontando a relevância de cada um deles, como a
+sensibilidade, relação C/N, presença de interferência de ruído
+impulsivo e multipercurso de cada um dos sistemas aqui
+abordados.
+Os testes foram realizados em 6 MHz de largura de banda
+nos canais 14, 42 e 69 UHF na frequência central de 473, 641
+e 803 MHz respectivamente. Para o ISDB-TB existe um
+deslocamento da frequência central chamado de decalagem no
+valor de + 1/7 MHz [10].
+Os testes foram realizados no laboratório de TV digital
+com os equipamentos: Analisador de espectro VSB/QAM
+Signal Analyser HP89441-V marca HP, Modulador DVBT2/ISDB-TB SFU-Broadcasting Test System marca Rohde &
+Schwarz, Gerador de ruído branco modelo Noise Generator
+marca Micronetics, Gerador de ruído Impulsivo TAS 420,
+Simulador de Sinal TAS modelo 4500 Flex RF Channel
+Emulator marca Spirent Communications e Receptores
+ISDB-TB/DVB-T2.
+A. Sensibilidade
+O teste de sensibilidade tem como objetivo verificar o
+limiar de desempenho, ou seja, a potência mínima de sinal no
+receptor na condição TOV.
+A Fig. 12 apresenta o diagrama do teste de sensibilidade,
+onde a potência do modulador é ajustada até atingir o critério
+TOV.
+
+
+Os resultados deste teste são apresentados na Fig. 13.
+Verifica-se que a configuração DVB-T2 RX2 apresentou
+sensibilidade de aproximadamente -83 dBm, isto é, em torno
+de 6 dB superior ao limiar de -77 dBm da norma ABNT [38] e
+8 dB para DVB-T2 RX3. Por outro lado, a configuração
+DVB-T2 RX1 apresentou sensibilidade inferior uma vez que
+utiliza menor FEC comparado a RX2 e maior ordem de
+modulação em relação ao RX3.
+O sistema ISDB-TB apresentou sensibilidade em torno de
+3,5 dB superior do que a norma determina para RX1 e RX2.
+Já o teste ISDB-TB RX3 apresentou resultados próximos aos
+dos DVB-T2 RX3 citados anteriormente. No entanto, para
+essa configuração o padrão brasileiro apresenta menor ordem
+de modulação o que torna o sinal mais robusto, porém, reduz
+significativamente a taxa de transmissão.
+
+Além dos resultados de laboratório realizados no canal 69,
+a Tabela V mostra o valor simulado dos testes de C/N. As
+simulações foram realizadas com o software PROGIRA®
+[39]. O resultado prático quando comparado ao valor
+simulado apresentam diferenças médias em torno de 1 dB
+para o DVB-T2 e 3,8 dB para o ISDB-TB.
+
+
+B. Relação C/N
+A relação C/N está em conformidade com a tolerância do
+sistema à presença de ruído AWGN. O procedimento consiste
+em fixar a potência do sinal (C) em –30 dBm no modulador e
+variar a potência do ruído (N) no gerador AWGN até que seja
+estabelecida a situação TOV. A Fig. 14 apresenta o diagrama
+do teste C/N.
+
+
+C. Ruído Impulsivo
+O ruído impulsivo é um fenômeno que ocorre em um curto
+período de tempo ou rajada. Ele é caracterizado por um trem
+de impulsos de alta potência [17], [35], [40], [41].
+Os eletrodomésticos como liquidificadores, furadeiras,
+secadores de cabelo, entre outros, são possíveis fontes
+geradoras de ruído impulsivo. Esse fenômeno pode ocorrer
+tanto por meios sem fio como por linhas de transmissão de
+energia [17], [42].
+A Fig. 15 apresenta o diagrama usado para verificar a
+robustez dos sistemas em relação ao ruído impulsivo. O
+procedimento consiste em fixar a potência do sinal (C) no
+modulador em –60 dBm e no gerador de ruído impulsivo
+ajustar o período (T) em 10 ms (100 Hz) e variar a largura do
+pulso (PW) de 10 a 500 µs. Para cada valor de PW a potência
+do ruído equivalente (Neq) gerada foi ajustada com passo de 1
+dB até estabelecer o critério TOV [17], [43].
+O valor de Neq é obtida realizando a medida da potência do
+ruído AWGN em 6 MHz de largura de banda antes do
+chaveamento do ruído. Na Fig. 16, o eixo x representa largura
+do pulso e o eixo y a relação entre a potência do sinal C e Neq.
+
+
+O DVB-T2 contém parâmetros fixos como TI (Time
+Interleaving = 1) e TL (Time Length = 3). Essas
+características são indicadas para altas taxas, conforme
+apontam as referências [24], [28].
+A configuração DVB-T2 RX1 apresentou menor robustez
+quando comparado aos demais testes do DVB, pois utiliza um
+menor FEC comparado ao DVB-T2 RX2 e maior ordem de
+modulação comparada ao DVB-T2 RX3.
+Analisando o teste DVB-T2 RX2 ocorreu um ganho
+aproximado de 3 dB em relação ao DVB-T2 RX3, o qual
+apresenta maior relação do FEC (3/4) e menor quantidade de
+portadoras piloto (PP7). A resposta do DVB mais próxima do
+ISDB-TB foi o teste DVB-T2 RX2.
+O resultado obtido para a configuração ISDB-TB RX1
+apresentou um ganho médio de 2 dB quando comparada a
+ISDB-TB RX2.
+A configuração ISDB-TB RX3 apresentou maior robustez
+devido ao uso da modulação 16-QAM. Para os valores de Pw
+inferiores a 150 µs não foi detectada interferência do ruído
+impulsivo devido a limitação de potência dos equipamentos
+utilizados nos testes.
+
+D. Multipercurso
+Outro fator que interfere na recepção do sinal é o
+multipercurso. Tal fenômeno está presente no canal de
+transmissão e é formado por um conjunto de fatores que
+atuam na propagação do sinal. Os objetos ou obstáculos
+
+presentes durante o percurso do sinal obstruem a Linha de
+Visada entre o transmissor e o receptor [44], [45].
+O multipercurso ocorre devido a quatro fenômenos:
+difração, espalhamento, reflexão e refração. A previsão de tais
+fenômenos pode auxiliar o melhor dimensionamento dos
+transmissores em diferentes tipos de ambiente [44], [45].
+Os múltiplos caminhos também são chamados de ecos. Na
+maioria das situações os ecos estão atrasados em relação ao
+sinal principal conhecido por pós-eco. Existe também a
+possibilidade de ocorrência de pré-eco, em que o eco chega
+adiantado em relação ao sinal principal [46].
+O emulador de canal TAS permite o uso de diversos
+modelos de propagação como Rician, Nakagami, Rayleigh e
+Log Normal. Também é possível realizar a combinação com o
+efeito Doppler.
+A Fig. 17 apresenta os equipamentos utilizados para
+emular o multipercurso. Durante o procedimento foi ajustado
+o canal de comunicação para o tipo Rayleigh. Em seguida o
+pré-eco e pós-eco foi ajustado em até 125µs (limite do
+equipamento). Os valores negativos do atraso representam o
+pré-eco, enquanto os valores positivos simbolizam o pós-eco,
+representados pelo eixo x da Fig. 18.
+
+
+Para configuração do simulador TAS primeiramente foi
+ajustada a potência D, path 1 na entrada do receptor em –42
+dBm considerando apenas o sinal principal.
+Após o ajuste do canal principal, o procedimento para
+medição da interferência do pré-eco consistiu em manter as
+características do path 1, enquanto a potência do eco (E) path
+2 foi atrasada e atenuada até estabelecer o critério TOV.
+Na segunda etapa para medição do pós-eco o sinal
+principal (D), path 1 foi atrasado enquanto a potência do path
+2 foi atenuada até obter-se o critério TOV.
+Desse modo a diferença de potência do sinal principal em
+relação ao pré-eco e pós-eco (D/E) é representada pelo eixo y
+da Fig. 18.
+Verifica-se que os parâmetros do DVB-T2 RX1 e RX3
+apresenta menor robustez na presença de multipercurso,
+necessitando maior atenuação da potência do pré-eco e póseco. Quando comparado ao ISDB-TB para RX2 a potência
+pré-eco foi atenuada em torno de 2,5 dB e 0,5 dB para o póseco em relação ao sinal principal, já o teste RX3 não
+apresentou interferência de multipercurso quando modulado
+em 16-QAM.
+Quando comparado a influência dos diferentes modos a
+DVB-T2 RX1 com PP4 apresentou ganho em torno de 14 dB
+
+
+até 80 µs em relação ao DVB-T2 RX3 com PP7. Esse fator se
+deve a maior quantidade de portadores pilotos.
+Já os resultados para as configurações DVB-T2 RX2 e
+ISDB-TB RX1 não houve interferência até 125µs por conta do
+IG ser de 298,7µs e 126µs, respectivamente.
+Pré-eco
+
+Pós-eco
+
+
+
+V. CONCLUSÕES
+O presente artigo apresenta uma contribuição importante,
+haja vista que muitos países que utilizam 6 MHz de largura de
+banda ainda não adotaram um sistema de TV digital em
+substituição ao analógico existente.
+Em relação à segunda geração do padrão europeu até o
+momento não existem estudos para o DVB-T2 utilizando 6
+MHz de largura de banda.
+Os recursos adicionados no DVB-T2 como tamanho da
+IFFT até 32K estendido, modos das portadoras (PP1-PP8),
+modulação 256-QAM entre outros recursos, proporcionam
+robustez e elevadas taxas de transmissão e robustez,
+características necessárias para o UHD (Ultra High
+Definition) (4K) e SHV (Super Hi-Vision) (8K) [47].
+De modo geral os resultados de ambos os sistemas de
+televisão digital apresentaram grande robustez nos testes
+realizados.
+O ISDB-TB apresenta uma menor possibilidade de
+configurações quando comparado ao DVB-T2. Com isso o
+DVB-T2 permite uma maior flexibilidade de transmissão.
+Como consequência cada um dos ajustes apresenta um melhor
+desempenho dependendo do tipo de canal de comunicação,
+para diferentes taxas de transmissão e métodos de recepção.
+

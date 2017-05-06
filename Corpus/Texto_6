@@ -1,0 +1,398 @@
+Melhora no aprendizado das disciplinas de eletrônica usando um workbench didático
+
+I. INTRODUÇÃO
+
+NO MEIO educacional, existe a necessidade de
+experimentos físicos para aprofundar e fixar os conteúdos
+ministrado de forma teórica que permitam aos acadêmicos
+observar as influências externas como erros de manuseio,
+tolerâncias e pontos de medição importantes para assimilação
+do conhecimento proporcionando o despertar do senso crítico
+e da elaborações de soluções [1, 2].
+Nos dias atuais temos engenheiros, tecnólogos e
+pesquisadores cujas necessidades, aplicações e requisitos
+mudam rapidamente, necessitam de flexibilidade para criar
+suas próprias soluções. Sendo uma realidade no mercado de
+trabalho, e maior no ambiente acadêmico, onde os alunos
+precisam de liberdade para experimentar sem o receio de
+danificar algum equipamento [3, 4].
+Entanto experimentos reais instalados nos laboratórios das
+instituições de ensino são extremamente onerosos, isto é, além
+do custo de aquisição do equipamento necessita desembolsar
+com a manutenção, instalação e a reposição dos materiais
+utilizados na experiência real [5]. Logo, com o crescente
+aumento no número de estudantes surge a demanda pela
+ampliação da quantidade de laboratórios nas universidades e
+outras instituições de ensino.
+A realização de experimentos práticos para o ensino de
+conteúdos teóricos é de suma importância para a formação de
+profissionais críticos e com capacidade de resolução de
+problemas que não são encontrados na teória e em simulações,
+como mal contato, erros devido as condições ambientais e
+
+tolerâncias de fabricação descriminadas pelo próprio
+fabricante [7, 8].
+Atualmente os laboratórios utilizados para atividades
+práticas nos cursos de engenharia elétrica são compostos de
+equipamentos com montagem em bancada e de alto custo que
+não possibilitam o transporte, pois são normalmente fixados
+em estruturas e necessitam de instalações exclusivas para seu
+funcionamento adequado [8].
+Deste modo o emprego de equipamentos portáteis, a
+necessidade de laboratórios exclusivos para a realização do
+experimento é dispensada, pois a estrutura de uma sala de aula
+tradicional com tomadas elétricas atende as exigências da
+bancada didática [9]. O funcionamento da mesma atende as
+atividades práticas na área de eletrônica, sendo similares as
+soluções comerciais tradicionais, porém integrados para
+reduzir o seu tamanho e, custo relativamente baixo.
+Para tornar o processo eficiente de ensino aprendizagem
+através de práticas, observa-se a necessidade de eliminar os
+itens de montagem, que demandam um tempo precioso da
+atividade. Sendo necessária a confecção de placas préconfiguradas para os experimentos definidos pelos professores
+que serão acoplados na bancada para realização das
+experiências práticas [7, 10].
+Deste modo, a proposta deste trabalho é a integração de
+todos os equipamentos necessários para realização das
+atividades práticas de eletrônica em apenas uma estrutura
+integradora e assim eliminando o uso de protoboard. Assim as
+atividades com os discentes podem ser realizadas em sala de
+aula tradicionais com intuito de auxiliar os estudantes na
+compreensão de conteúdos curriculares ministrados nas salas
+de aulas.
+Neste contexto, o artigo apresenta um comparativo de
+desempenho dos acadêmicos da 8ª fase do curso de
+Engenharia Elétrica referente ao desenvolvimento da atividade
+prática da disciplina de Eletrônica Aplicada, visando a
+compreensão do funcionamento do circuito conversor digital
+analógico de 4 Bits.
+II. EXPERIMENTOS PRÁTICOS
+Nos dias de hoje muito se ouve falar a respeito da
+introdução de experimentos didáticos em sala de aula de
+teoria, uma vez que é grande o dilema entre aulas tradicionais,
+participativas e lúdicas.
+O aluno de engenharia deve experimentar problemas
+realísticos de projeto. Esta exposição a problemas reais não
+possuem uma única solução certa, e a informação disponível
+não é suficiente para resolver o problema, a qual deverá ser
+gerada pelo aluno. Por ser esta uma situação única para o
+aluno, ele estará envolvido emocionalmente na solução do
+
+
+problema. Este tipo de problema é usado para medir a
+habilidade do aluno em associar teorias da engenharia com
+problemas do mundo real tais como projetar um produto.
+Portanto experimentos didáticos que associam o conceito
+em sala de aula compartilhada por toda classe sob orientação
+do professor, em um processo interativo, acrescenta ao
+pensamento do aluno elementos de realidade e enriquece
+conceitos espontâneos e de experiência pessoal contribuindo
+para formação profissional [11, 12].
+O emprego de ferramentas de ensino experimentais
+contribui reduzir o índice de reprovação e desinteresse dos
+alunos pelos cursos de engenharia. Visto que, uma das
+principais causas para este quadro preocupante é a
+desarticulação dos conteúdos ensinados com a realidade,
+cotidiano da maioria dos alunos e o futuro profissional.
+Analisando esta situação, tem-se a necessidade de
+atividades práticas para fixar os conceitos e teorias ministradas
+em sala de aula, os educando têm a necessidade de realizar
+trabalhos com componentes reais, que são suscetíveis a erros e
+tolerâncias gerando assim os resultados com variações, Na
+engenharia, os experimentos têm como objetivos principais
+explorar, estimar e confirmar valores [13, 14]. De forma que:
+Explorar: o conceito e compreender os dados do processo
+em análise;
+Estimar: consiste em determinar quais efeitos a variável que
+controladas afetam este processo;
+Confirmar: relacionar os resultados obtidos com a teoria
+aplicada no experimento e associar a aspectos indústrias.
+As instituições de ensino constaram a necessidade de
+relacionar atividades práticas desenvolvidas em laboratórios,
+máquinas e ferramentas aos processos industriais como forma
+de elaborar aulas teóricas aplicadas [15, 16]. Assim, algumas
+características devem ser consideradas para que um projeto na
+área educacional tenha êxito, como:
+
+
+
+Como o processo de aprendizagem prática pode ser
+dividido em três fases: aprendizado dos conhecimentos gerais,
+aprendizado dos procedimentos e soluções típicas e
+treinamento em simuladores de situações reais, sendo a última
+fase onde o aprendizado prático/operacional é reconhecido, a
+aplicação de atividades práticas para a fixação do
+conhecimento aplicado em sala de aula de forma tradicional,
+funciona como função extra no auxílio da construção do
+conhecimento através do aprendizado, e, através da resolução
+de problemas, o acadêmico consegue fixar melhor os
+conteúdos ministrados [13, 14].
+Através da utilização de elementos práticos facilita a
+compreensão de conteúdos que anteriormente provocavam um
+alto índice de reprovação, integração de componentes
+curriculares, não sendo uma disciplina isolada, e sim que haja
+interdisciplinaridade, além de proporcionar ao estudante a
+oportunidade de desenvolver suas habilidades em problemas
+reais do cotidiano de um engenheiro [20, 21].
+III. ARQUITETURA
+A Fig. 1 demonstra o diagrama em blocos da bancada
+empregada no estudo. Essa apresenta todos os dispositivos
+necessários para o desenvolvimento de atividades prática
+vinculadas a área de eletrônica tem como características a
+fonte de alimentação do sistema com uma saída de tensão
+simétrica regulável com tensão variando de ±1,25V a ±12,5V,
+saídas de tensão simétricas fixas com tensões de ±5V e ±12V.
+Todas as saídas têm capacidade de corrente limitada em 1A a
+partir de fusíveis individuais em cada saída.
+
+Alta confiabilidade: estável e com baixo índice de erro;
+Segurança: o equipamento didático deve permitir ao aluno
+diferentes opções de destes sem resultar em acidentes;
+Equipamentos: utilizações de materiais industriais
+asseguram a articulação para aplicações reais e, permite
+aproximação aos métodos empregados nos processos
+fabris;
+Custo manutenção: isto implica na maior utilização da
+bancada e em caso de problemas, esta manutenção é
+efetuada rapidamente com custo baixo [17, 18].
+Na área da Engenharia da Educação, engenharia de ensino
+ou engenharia de formação contém todos os princípios,
+procedimentos e tarefas que permitam [19]:
+Definir o conteúdo de um treinamento por meio de uma
+identificação estrutural do conhecimento;
+Realizar um cenário educacional das atividades e definir o
+contexto de uso e a estrutura do material de
+aprendizagem;
+Determinar a infraestrutura, recursos e serviços necessários
+para a distribuição de aulas e preservando a sua qualidade.
+
+
+
+O gerador de funções tem uma saída com formas de onda
+quadrada, triangular e senoidal, variando a frequência de 30Hz
+a 100kHz e tensão de 0 a 10V de pico a pico para a onda
+quadrada e -10V a 10V de pico a pico paras as outras ondas.
+Os dados a serem adquiridos são níveis de tensão, corrente
+e frequência da fonte ou dos experimentos que serão
+realizados. As possíveis medições realizadas são as tensões da
+fonte simétrica regulável da própria bancada, a tensão externa
+de até ±12V, a corrente externa de até ±5A, a frequência do
+gerador de funções de 30Hz a 100kHz e função de
+osciloscópio com resolução de 8 bits com entrada de tensão
+variável de até ±12V.
+
+
+As informações disponibilizadas pelo sistema são
+apresentadas ao usuário como forma de este obter as
+conclusões das atividades práticas executadas. Com intuito de
+facilitar à visualização a mesma contém um display de cristal
+líquido gráfico de 240x128 pixels. A escolha deste tipo de
+display é baseada na facilidade de comunicação entre o
+microcontrolador e geração de gráficos, necessária visualizar
+as grandezas durante o desenvolvimento da atividade prática.
+A Fig. 2 mostra a bancada com todas as suas
+funcionalidades.
+
+O educando ao utilizar a bancada poderá efetuar as
+configurações de forma a observar no display os parâmetros
+desejáveis em tempo real através do ajuste dos potenciômetros
+disponibilizados. Dentre os parâmetros que podem ser
+alterados e utilizados estão:
+Osciloscópio: amplitude e tempo;
+Gerador de formas de ondas: senoidal, dente de serra e
+quadrada e amplitude;
+
+
+
+modo, contemplam-se as disciplinas de Eletrônica e
+Instrumentação.
+Como população utilizou-se os acadêmicos das disciplinas
+de eletrônica e instrumentação dos cursos de Engenharia da
+Faculdade SATC para validar e identificar possíveis situações
+adversas no emprego desta nova abordagem. Isto permite
+analisar os pontos como a facilidade gerada com o
+equipamento final em comparação com outros métodos
+utilizados, como simulações computacionais e montagens em
+protoboard, o ganho de tempo e a agilidade para realizar as
+atividades tendo como ponto principal o maior número de
+práticas e maiores questionamento sobre o próprio
+experimento com este tempo extra adquirido.
+
+
+
+A. Experimento I
+Inicialmente, utiliza-se a bancada didática por um grupo de
+alunos de graduação. Em um primeiro momento o aluno irá
+acoplar a placa eletrônica que esta representada na Fig. 2 no
+local destacado como área de montagem.
+Posteriormente para efetuar o procedimento prático prédefinido e consequentemente analisar os pontos de leitura e
+avaliar diferentes aspectos que contemplam a atividade prática
+a ser realizada por meio da utilização da bancada didática
+proposta.
+
+Tensão de alimentação do experimento.
+Na área de montagem, será possível acoplar placas préconfiguradas, bastando ao acadêmico efetuar os testes e alterar
+de acordo com a necessidade seus esquemas de ligação,
+facilitando em muito a dinâmica das aulas, podendo ser
+aplicada a qualquer tipo de aula de eletrônica, analógica ou
+digital.
+IV. PROCEDIMENTO EXPERIMENTAL
+Com intuito de avaliar o desempenho dos educando no
+emprego da bancada didática para desenvolver atividades
+práticas, definiu-se quanto experimento prático o emprego do
+circuito conversor digital para analógico eletrônico (Fig. 3) e
+utilizou-se rede R-2R, como base no uso de amplificadores
+operacionais.
+O conversor analógico digital foi escolhido, pois engloba
+uma aplicação prática usual, que é a conversão de sinais, e ao
+mesmo tempo utiliza amplificadores operacionais. Deste
+
+
+
+Para auxiliar no processo de montagem do setup da aula
+prática proposta pelos discentes dos cursos de engenharia
+criou-se um pequeno guia contendo alguns passos prédefinidos para inserção da placa na bancada didática com o
+intuito de evitar problemas de montagem e danos, portanto,
+utiliza-se o procedimento composto por quatro passos:
+
+
+
+
+1 - Inserir placa de experimento do conversor A/D na bancada
+didática;
+2 - Alimentar a bancada;
+3 - Com todas as entradas em nível lógico alto, ajustar a
+tensão de saída para 10V;
+4 - A partir da seleção das entradas conforme apresentado na
+Tabela I, preenchendo a tensão de saída (Vout) do sistema.
+
+A. Experimento II
+De forma análoga, o segundo experimento, para fins de
+comparação e análise dos resultados da bancada didática
+proposta foi desenvolvida a mesma atividade prática. Porém,
+agora se realizando toda a montagem do circuito eletrônico
+manualmente utilizando-se de uma protoboard conforme pode
+ser visto na Fig. 5.
+
+5 - A partir da seleção das entradas conforme a tabela
+abaixo, preenchendo a tensão de saída do sistema;
+6 - Determinar a resolução do conversor;
+Concluída as atividades de ambos os procedimentos o
+acadêmico relata alguns dados pré-determinados para que o
+Professor possa acompanhar a curva de aprendizado do aula e
+realize a avaliação da aula prática. Como por exemplo, os
+dados como: relação de materiais, relação de ferramentas,
+alterações da atividade, dados obtidos na prática, informações
+adicionais e análise de resultados.
+V. AVALIAÇÃO DO SISTEMA.
+Para validar o funcionamento e interação dos acadêmicos
+com equipamento foram realizados experimentos práticos com
+questionário de cinco perguntas ao grupo de 20 educando com
+resposta de 1 a 5, com pesos de fraco, regular, bom, muito
+bom e excelente, equivalentes ao desempenho do sistema.
+Conforme pode ser visto na Fig. 6 a questão 1 que
+apresenta o questionamento “Em sua opinião houve maior
+aprendizado com a utilização da bancada didática comparado
+ao desenvolvimento no protoboard apresentou uma avaliação
+superior a 50% das resposta maiores que o conceito 3 (Bom)
+sendo analisado como a bancada auxiliou um maior nível de
+aprendizado em comparação ao mesmo experimento realizado
+em protoboard.
+
+
+Para a questão 2 que questiona “Observa-se maior
+facilidade de interação com a atividade proposta por meio da
+bancada didática?”, apresentou uma avaliação de 80% das
+respostas maiores de conceito 4 (Muito bom) e 5 (Excelente).
+
+Destaca-se ainda que para a realização do segundo
+experimento se faz necessário há utilização de um laboratório
+especifico de eletrônica contendo fonte de tensão,
+osciloscópio, multímetro, sendo o procedimento de montagem
+descrito a seguir:
+1 - Montar o circuito conforme o diagrama fornecido;
+2 - Conferência do professor;
+3 - Energizar o circuito;
+4 - Com todas as entradas em nível lógico alto, ajustar a
+tensão de saída para 10V;
+
+No terceiro questionamento “Em sua concepção no aspecto
+relacionado a montagem e execução da atividade, houve maior
+agilidade e produtividade?” indica, com o mesmo índice da
+questão anterior, que as atividades práticas realizada na
+bancada tem um ganho de tempo obtido uma maior
+produtividade em função disto, Fig. 8.
+
+
+da bancada didática em comparação a atividades práticas por
+meio de simulações e montagens em protoboard?” é realizada
+uma comparação entre os tópicos de simulação, montagem na
+bancada e no protoboard sendo que, com a utilização é
+possível uma fixação igual ou maior em comparação aos
+outros itens possivelmente por ser explorado o experimento ao
+máximo, conforme indica a questão quatro, Fig. 10.
+
+
+A questão quatro “É possível avaliar outros parâmetros não
+destacados na atividade?” mostra um resultado de 80% nos
+conceitos de conceito 3 (Bom) e 4 (Muito bom), conforme
+Fig. 9, sendo avaliado o ganho de tempo.
+
+
+A Tabela II mostra os tempos gastos na montagem através
+de protoboard e da bancada, como pode ser observado os
+tempos referentes a montagem em protoboard são muito
+superiores aos tempos utilizados na bancada. O ganho de
+tempo nas aulas práticas de laboratório é uma grande
+vantagem, pois permite a montagem de muito mais circuitos
+no mesmo período de tempo.
+
+Na última questão “Avaliando o aprendizado pode-se
+afirmar que há maior fixação do conhecimento pela utilização
+
+
+VI. CONCLUSÃO.
+Portanto, a demonstração experimental de um conceito em
+sala de aula compartilhada por toda classe sob orientação do
+professor, em um processo interativo, acrescenta ao
+pensamento do aluno elementos de realidade e enriquece
+conceitos espontâneos e de experiência pessoal.
+A possibilidade de ser realizada com um único conjunto de
+equipamento para todos os alunos, sem a necessidade de uma
+sala de laboratório específica e a possibilidade de ser utilizada
+em meio à apresentação teórica, sem quebra de continuidade
+da abordagem conceitual que está sendo trabalhada. Além
+disso, quando adequadamente apresentada proporciona
+situações específicas de motivação e momentos de
+aprendizagem que dificilmente aparecem em aulas tradicionais
+A utilização de experimentos práticos no ensino de teorias
+para os cursos de engenharia é algo fundamental para a
+formação de profissionais capacitados para inserção no
+mercado de trabalho contribuindo com o aprendizado
+acadêmico e científico na área, com o auxílio das bancadas
+maiores questionamentos dos experimentos são providenciais
+para a utilização do equipamento final.
+O sistema por um todo teve funcionamento conforme as
+especificações, mesmo com pequenos desvios em função das
+tolerâncias e erros internos dos componentes não foram
+significativas para o resultado final obtido com os educando
+no experimento realizado para comprovar funcionamento e
+facilidade.
+Realizando este trabalho pode-se afirmar que o objetivo
+final foi alcançado, sendo que a resposta obtida pelo sistema
+foi satisfatória quando se comparado a sistemas que
+necessitam de montagens externas, porém mesmo com
+resultados bons houve respostas não positivas, pois devido ao
+contato com educando ocorreu a necessidade de uma interação
+maior com o sistema, gerando assim um nível maior de
+processamento do sistema.
+
+
+Diante do exposto, conclui-se que, a facilidade do
+transporte aliada a pouquíssima alocação de espaço físico e
+custo menores que os laboratórios convencionais, pois trata-se
+de um sistema totalmente integrado e de tamanho reduzido, a
+necessidade de laboratórios convencionais pode ser
+substituída, já que uma sala de aula comum com apenas
+tomadas convencionais.
+
