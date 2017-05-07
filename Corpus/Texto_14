@@ -1,0 +1,544 @@
+Uma Proposta Estatística para Suporte de Comparações de Desempenho entre Diferentes Projetos de Algoritmos Evolucionários
+
+I. INTRODUÇÃO
+
+ALGORITMOS Evolucionários pertencem a uma classe de
+heurísticas estocásticas computacionais inspiradas na
+biologia, em especial na evolução darwiniana. Algoritmos
+Genéticos [1], um de seus representantes mais conhecidos,
+
+utilizam ainda conceitos de genética. Embora esta técnica já
+tenha sido amplamente utilizada na resolução de diversos
+problemas de engenharia, raras são as aplicações em projetos
+de iluminação que a utilizam [2].
+Um dos fundamentos mais importantes dos algoritmos
+evolucionários é o calculo da aptidão, pois ele determina a
+qualidade de um indivíduo como solução de um problema
+proposto [1]. O cálculo da aptidão retorna um valor numérico
+e é utilizado para a elencar indivíduos por ordem de qualidade
+como solução nas etapas de seleção e de redução dos
+algoritmos evolucionários.
+A aptidão de um indivíduo em um determinado "ambiente"
+mede a melhor ou pior capacidade de adaptação do mesmo. A
+adaptação do indivíduo é um importante fator apontado na
+teoria da seleção natural proposta por Darwin que influência
+na perpetuação das espécies: os mais aptos têm maiores
+chances de se reproduzir e, assim, passar suas características
+(seus genes) para as próximas gerações [3].
+Ainda segundo [3], as técnicas de seleção e avaliação em
+algoritmos evolucionários possuem baixo acoplamento, ou
+seja, um não afeta o modo como o outro trabalha. Porém,
+métodos refinados de avaliação podem trazer melhorias para o
+desempenho e eficácia do algoritmo como um todo.
+Algoritmos evolucionários multi-objetivos possuem a
+característica de otimizar dois ou mais objetivos ao mesmo
+tempo. Ou seja, em sua função de aptidão, o mesmo deve
+combinar duas ou mais funções objetivo e consolidá-las de
+modo a possibilitar o ordenamento dos indivíduos, do mais
+apto ao menos apto. A estratégia de ordenação mais
+consagrada é o NSGA-II [4].
+Como estudo de caso, este trabalho apresenta uma
+aplicação de algoritmos evolucionários multi-objetivo para a
+geração automática de projetos de iluminação externa.
+Para o presente estudo de caso, projetos de iluminação, uma
+característica desejável dita sobre a qualidade da iluminação
+fornecida. A instalação desejada deve oferecer aos usuários o
+melhor conforto visual com o menor custo possível. Quanto
+menor o esforço de adaptação do indivíduo ao ambiente,
+maior sua sensação de conforto. Do ponto de vista fisiológico,
+para desenvolver algumas atividades visuais (como leitura,
+identificação de objetos, localização), nossos olhos precisam
+de condições específicas que dependem do tipo de atividade a
+ser realizada [5].
+
+
+Outra característica desejada refere-se à economia de
+energia. Recentes discussões sobre as questões sócio
+ambientais, associadas à necessidade de projetos de
+iluminação de maior qualidade, tem impulsionado tanto a
+sociedade que cobra por sistemas energéticos mais eficientes e
+pelo uso de fontes alternativas de energia [6], quanto as
+autoridades responsáveis que adotam normas cada vez mais
+rigorosas [7,8,9,10]. Dessa forma, os projetos de iluminação
+atuais têm crescido em tamanho e complexidade.
+Infelizmente, as metodologias de projeto não
+acompanharam este desenvolvimento, fazendo com que os
+profissionais busquem novas ferramentas para este fim.
+Problemas deste tipo possuem várias características
+desejáveis que são conflitantes entre si. Por exemplo, a busca
+por eficiência energética pode prejudicar a qualidade de
+iluminação de uma área e vice-versa, existindo a possibilidade
+de inviabilizar o atendimento do projeto às normas vigentes.
+Por essas razões, este artigo objetiva analisar algumas
+técnicas de cálculo de aptidão para problemas de iluminação
+de espaços externos. Este trabalho apresenta combinações de
+quatro métodos de avaliação da qualidade de iluminação e
+dois métodos de avaliação da economia de energia, com um
+total de oito variações para formulação de funções de aptidão.
+O campo de estudos da Estatística possui ferramentas que
+podem auxiliar nesse processo de decisão, uma vez que a
+natureza estocástica dos algoritmos evolucionários impedem
+comparações mais simplistas ou mesmo determinísticas. Com
+base nos resultados apresentados para diversas execuções de
+cada uma das variações de formulação para a aptidão,
+comparações estatísticas de médias de desempenho podem ser
+utilizadas para auxiliar no processo decisório sobre qual
+dessas seria a função de aptidão mais indicada. Essas
+comparações são possíveis através de testes de hipótese sobre
+diferença de médias [11].
+Em um dos trabalhos anteriores [12], os autores apresentam
+a problemática atacada e a versão inicial do algoritmo
+evolucionário que se destina a projetos automáticos de
+iluminação externa em áreas não triviais. O presente trabalho
+destina-se a avançar essa pesquisa no intuito de incorporar a
+multi-objetividade ao algoritmo inicial, propondo, com
+indícios estatísticos, a função de aptidão mais adequada para
+os fins desejados.
+II. TEORIA
+A. ALGORITMO MULTI-OBJETIVO
+O que diferencia um algoritmo evolucionário tradicional de
+um multi-objetivo é a forma de aplicação da aptidão que deve
+combinar duas ou mais funções objetivo. Neste trabalho,
+emprega-se a dominância de Pareto para este fim.
+A dominância de Pareto é uma relação de ordem parcial e
+obedece apenas às propriedades irreflexiva ( ≺ ⇒ ≠ ),
+assimétrica ( ≺ ⇒ ¬( ≺ ) ) e transitiva ( ≺ ∧ ≺
+⇒ ≺ ).
+Um dos algoritmos mais conhecidos que utilizam a
+dominância de Pareto como base na avaliação multi-objetivo é
+o NSGA-II [4].
+
+O algoritmo de ordenação NSGA-II tem duas etapas
+principais [4]: a ordenação fast non-dominated que distribui a
+população de soluções candidatas em fronteiras separadas com
+relação à aptidão individual para cada objetivo, e o crowdingdistance que evita a convergência prematura da população
+através de um esquema para manter a sua diversidade.
+1) Algoritmos de ordenação non-dominated
+Algoritmos evolucionários multi-objetivos com ordenação
+non-dominated seguem o fluxograma presente na Fig. 1. No
+esquema de tipo fast non-dominated, para cada indivíduo
+(solução candidata) p dentro de uma população de candidatos
+P de indivíduos de tamanho T, são determinados os seguintes
+valores:
+o número de candidatos em
+que domina
+(dominância de Pareto),
+conjunto de candidatos em que domina , e
+
+
+a que fronteira que pertence.
+Primeiro, o conjunto é percorrido e cada indivíduo ϵ
+é comparado, com o objetivo de determinar a quantidade de
+indivíduos que dominam ( ) e para identificar indivíduos
+dominados por (registrado em ). No final, cada indivíduo
+com
+= 0 é colocado dentro da primeira fronteira (front
+#1).
+Cada indivíduo que é colocado dentro de uma fronteira
+(o Pareto ótimo está em front = 1) tem um conjunto de
+tem
+indivíduos dominados ( ). Todo indivíduo ϵ
+decrementada. No caso em que
+= 0, o individuo
+é
+colocado na fronteira
++ 1. Este procedimento é
+realizado de forma recursiva, até que todos os indivíduos da
+população original sejam colocados em alguma fronteira.
+
+
+2) Crowding distance
+É um operador de diversidade usado no NSGA II que
+permite um maior espalhamento dos resultados ao longo da
+linha de Pareto, evitando a concentração de soluções em cima
+de um mesmo ponto ou região. Ele é utilizado como um
+método de ordenação de cromossomos dentro de uma mesma
+fronteira. O algoritmo calcula a distância média entre um
+ponto central i selecionado dentro da população e dois pontos
+localizados nas extremidades do ponto central (i-1) e (i+1). A
+ideia é que, a partir de um ponto central, o operador de
+diversidade possa encontrar pontos extremos e priorizar os
+pontos mais distantes durante o processo de seleção. O
+crowding distance é representado na Fig. 2, em que se
+considera uma função com apenas dois objetivos, cuja
+vizinhança (o retângulo pontilhado cercando a solução i por
+i+1e i-1) pode ser facilmente representada de forma gráfica.
+
+
+3) Criando uma nova população
+Os elementos são ordenados por dois parâmetros. O
+primeiro (e principal) é a fronteira, sendo classificados de
+acordo com a fronteira que o indivíduo pertence. Para cada
+fronteira é feita a ordenação secundária. Nesta, os indivíduos
+que têm maior valor de crowding distance são os melhores
+classificados.
+A nova população tem tamanho T e é escolhida a partir das
+fronteiras de Pareto de tamanho 2T. São selecionados T
+elementos ordenados em primeiro lugar pela fronteira que
+pertence e em segundo pelo crowding distance conforme
+apresentado na Fig. 3.
+
+
+B. APTIDÃO
+Um dos critérios considerados para um projeto de
+iluminação otimizada é a distribuição uniforme da iluminação
+em toda a área a ser iluminada. Nenhum ponto de pouca
+iluminação é desejado, devido aos padrões e questões de
+desconforto visual. Da mesma forma o excesso de iluminação
+não é permitido, devido ao desperdício indesejado uma vez
+que o outro critério importante é o de economia de energia.
+Tópico constante nas discussões de desenvolvimento
+sustentável, este critério tem sua importância tanto pelo lado
+econômico quanto pelo lado ambiental.
+1) Qualidade de Iluminação
+Cada tipo de área externa possui uma meta ideal de
+iluminação ditado por normas e que influenciam no projeto.
+Para o caso de estudo deste trabalho essa meta é em torno de
+30 lux [5]. A função de aptidão deve retornar uma melhor
+avaliação para os indivíduos que têm uma iluminação
+uniformemente distribuída em torno de 30 lux.
+Para atender estes requisitos, a função de aptidão foi
+dividida em duas etapas. Na primeira, é realizada a avaliação
+da iluminância para todos os pontos discretos da área através
+de equações do método de ponto a ponto [5].
+A segunda etapa usa um dos quatro métodos de avaliação
+da qualidade de iluminação para chegar aos valores da função
+de aptidão. Estes métodos serão utilizados e analisados neste
+trabalho.
+Erro
+A aptidão bruta, cuja interpretação é inteiramente
+dependente do problema em análise, é o mais simples dos
+vários tipos de funções de aptidão existentes. Seu valor é o
+somatório das diferenças absolutas entre os valores
+encontrados e os respectivos valores esperados. Esta métrica
+precisa ser minimizada. Matematicamente a aptidão
+do
+individuo é dada pela Equação (1).
+Uma alternativa à Equação (1) é o erro quadrático total
+[13], dado pela Equação (2). Esta métrica precisa ser
+minimizada.
+Para as Equações (1) e (2), N representa o número de
+pontos discretizados da área a ser iluminada, é a iluminação
+obtida pelo método ponto a ponto do ponto
+e
+é a
+iluminação desejada.
+
+
+Gaussiana, ou filtro "passa-faixa"
+Uma função similar a de uma distribuição normal, como
+apresentado na Fig. 4, também será analisada.
+
+é a potência do da
+Onde Pow é a potência total instalada
+unidade de iluminação i e T é o total de unidades de
+iluminação.
+
+
+A curva apresentada na Fig. 4 é dada pela equação (3).
+
+onde é a aptidão parcial de um único ponto da região de
+é a iluminância calculada no ponto
+dados discretos;
+observado , e é calculada pelo método de ponto a ponto; é a
+iluminação ideal (neste caso, 30 lux) e é o desvio padrão de
+uma distribuição normal (neste caso, ele é obrigado a ser igual
+a tolerância desejada de 10 lux). Depois, todos os resultados
+são resumidos, conforme apresentado na Equação (4):
+onde ( ) é a aptidão total do indivíduo
+da população
+atual,
+é o número total de pontos da área discretizada, e
+é a aptidão de um único ponto da região.
+Nota-se que, quando mais pontos com nível de iluminância
+dentro do intervalo de 20 a 40 lux, maior é a aptidão. Esta
+métrica precisa ser maximizada.
+Uniformidade
+A uniformidade é um dos principais critérios utilizados para
+se avaliar a qualidade de uma iluminação. Ao utilizar este
+critério, quanto maior for a uniformidade de uma área, melhor
+será a qualidade de iluminação (maximização). A
+uniformidade global da instalação é dada pela Equação (5):
+onde
+é a iluminância mínima e
+média da área a ser iluminada.
+
+Índice de Consumo de Energia
+O índice de consumo de energia (ICE), usado para
+localizar a classe que determinada instalação pertence (Tabela
+I), é igual ao inverso do índice de eficiência de energia, como
+pode ser visto na Equação (7):
+
+é a iluminancia
+
+2) Economia de Energia
+Para trabalhar com o critério de economia de energia, duas
+métricas são investigadas. A primeira e mais simples entre
+elas é o cálculo da potência instalada. Já a segunda consiste no
+cálculo do índice de consumo de energia de um indivíduo
+tendo como base a área a ser iluminada, a iluminação média
+obtida, a potência instalada (calculados de acordo com o
+projeto a ser desenvolvido) e a eficiência energética de
+referência, cujo valor é dados pelas normas de iluminação [8].
+Potência Instalada
+Esta métrica faz o cálculo da potência instalada, ver
+Equação (6), que precisa ser minimizada, ou seja, quanto
+menor a mesma mais eficiente será o cromossomo no quesito
+economia de energia.
+
+A avaliação da eficiência energética ( ) de uma instalação
+de iluminação é definido pela a razão entre a sua eficiência
+energética e um valor de eficiência energética de referência
+, conforme Equação (8):
+
+A eficiência energética (ε) de uma instalação de
+iluminação pode ser calculada pela Equação (9):
+onde é a área da superfície a ser iluminada [ ];
+é a
+iluminância média [lx]; e
+é o total de energia elétrica
+instalada [W].
+
+C. ABORDAGEM ESTATÍTICA
+Uma abordagem estatística se faz necessária para legitimar
+a comparação de possíveis combinações de aptidão.
+Começando pela caracterização dos dados, um teste de
+normalidade, e.g. Kolmogorov-Smirnov [14], se faz
+necessário. O teste de Bartlett [15] também é importante para
+inferir se dois conjuntos de dados seriam homoscedásticos
+(mesma variância) ou heteroscedásticos (variâncias distintas)
+entre si.
+O cálculo estatístico de diferença entre duas médias com
+variâncias desconhecidas é dado pela Equação (10), se os
+processos são heteroscedásticos, e pela Equação (11), se
+homoscedásticos.
+
+Onde ̅ e ̅ são as estimativas das médias das populações a
+e b;
+e
+são as variâncias amostrais de a e b;
+e
+os
+tamanhos das amostras a e b;
+é o número de graus de
+liberdade da t-Student; ⁄ é o valor dado pela inversa da
+função de distribuição cumulativa (icdf) t-Student; e α é o
+nível de significância para o experimento.
+Para possibilitar a análise estatística, foram definidas as
+seguintes variáveis de resposta: Uniformidade Global Média
+dentre todas as execuções; Iluminação Média, Índice de
+Classe Médio e Consumo Médio (potência instalada), esses
+três calculados dentre as execuções que atingiram o mínimo
+de uniformidade ditado pelas normas (no caso, uniformidade
+≥ 0,40).
+III. MÉTODO
+O objetivo deste trabalho é comparar diferentes possíveis
+métodos de avaliação de indivíduos para o algoritmo
+evolucionário proposto pelos autores [12] e permitir a
+expansão do mesmo para que se torne multi-objetivo.
+A. PARÂMETROS E DADOS UTILIZADOS
+Os valores definidos para os parâmetros do algoritmo
+evolucionário são: (i) 85% de probabilidade de recombinação;
+(ii) 15% de probabilidade de mutação; (iii) 70 gerações; (iv)
+população de 1000 indivíduos; (v) estratégia de classificação
+da aptidão: crowding distance dos indivíduos não dominados;
+(vi) estratégia de seleção dos pais: torneio com 1% dos
+indivíduos; e (vii) estratégia de redução: sobrevivência dos
+melhores indivíduos.
+As lâmpadas utilizadas nos experimentos são apresentadas
+na Tabela II. Os postes tem altura entre 5, 7, 10 e 12 metros. A
+luminária hipotética utilizada foi apresentada no trabalho [12].
+Deve-se ressaltar que o algoritmo evolucionário desenvolvido
+escolherá dentre os materiais selecionados quais serão
+utilizados na constituição de um indivíduo.
+
+Para testar o impacto das variações de avaliação escolhidas
+no desempenho do algoritmo evolucionário, uma área
+desafiadora foi selecionada para estudo de caso: um dos
+estacionamentos privados existentes no aeroporto de
+Uberlândia (Brasil). Essa área possui layout não trivial, ou
+seja, irregular e com várias subáreas importantes nas quais a
+colocação de postes de iluminação é proibida. A Fig. 5,
+
+confeccionada em três tons de cinza, apresenta o esquema
+simplificado desta área: o tom mais escuro corresponde à
+região externa onde a iluminação não é necessária; o tom
+intermediário indica a área onde é permitida a fixação de
+postes; e tom mais claro indica onde essa fixação é proibida.
+
+
+B. ESTUDO PARA FORMULAÇÃO DA APTIDÃO
+Para que os testes comparativos pudessem ser realizados,
+foram desenvolvidas oito variações para o cálculo de aptidão
+multi-objetivo para o mesmo algoritmo evolucionário (ver
+Tabela III), ou seja, oito aplicações foram desenvolvidas as
+quais diferem na escolha de critérios.
+Essa comparação permite obter a configuração que
+apresenta o melhor compromisso entre qualidade de
+iluminação e eficiência energética, baseado nas análises
+estatísticas das variáveis de resposta. Execuções sucessivas de
+cada aplicação foram necessárias para se avaliar
+estatisticamente a influência da função de aptidão na
+qualidade desejada para as variáveis de resposta.
+
+C. SELEÇÃO DO MELHOR INDIVÍDUO
+Um algoritmo evolucionário usando NSGA-II não
+encontra um “melhor” indivíduo, mas sim um conjunto de
+melhores indivíduos com compromissos diferentes de
+desempenho em cada um dos dois critérios (qualidade de
+iluminação e eficiência energética). Este conjunto é chamado
+de primeira fronteira [4] devido à teoria de soluções ótimas de
+Pareto. Observa-se, para um determinado problema, a
+existência de um número infinito de soluções que se encaixam
+na definição de Pareto ótimo (ou soluções não dominadas). No
+entanto, para o sistema desenhado pelos autores para a
+construção automatizada de projetos de iluminação exterior,
+foi optado pela sugestão de uma melhor solução como projeto
+final, em vez de apresentar todas as soluções na primeira
+fronteira como em outras aplicações que utilizam dominância
+de Pareto.
+
+
+Uma métrica foi desenvolvida para integrar o desempenho
+em todos os critérios. Note-se que esta métrica de desempenho
+global é aplicada apenas aos indivíduos (soluções de projeto)
+presentes na primeira fronteira ao final de cada execução do
+algoritmo evolucionário proposto. A métrica, apresentada nas
+Equações (12) e (13), pode ser utilizada em problemas com
+critérios concorrentes (minimização e maximização).
+
+onde ( ) é a métrica proposta aplicada ao indivíduo ; ( )
+é a aptidão do indivíduo para o critério de qualidade de
+iluminação; ( ) é a aptidão do indivíduo para o critério de
+eficiência energética; max( (1: )) e é a máxima aptidão
+encontrada entre os indivíduos que pertencem à primeira
+fronteira; min( (1: )) e min( (1: )) são as mínimas
+aptidões
+e
+, respectivamente, encontradas entre os
+indivíduos que pertencem à primeira fronteira.
+As variações AE 01, AE 02, AE 03 e AE 04 trabalham com a
+Equação (12), pois tentam minimizar os dois objetivos do
+algoritmo evolucionário. Já as variações AE 05, AE 06, AE 07
+e AE 08 utilizam a Equação (13), pois tentam maximizar um
+dos objetivos e minimizar o outro.
+IV. RESULTADOS E DISCUSSÃO
+Para obter os resultados, cada aplicação foi executada 161
+vezes, sendo a primeira execução de cada algoritmo
+descartada. Os dados obtidos após as execuções foram: o
+percentual dos casos em que o algoritmo evolucionário
+conseguiu uma uniformidade global maior ou igual a 0,40; a
+uniformidade global média de todas as execuções; o consumo
+médio (potência instalada), o erro absoluto em relação à
+iluminação média desejada (neste caso, 30 lux) e o índice de
+eficiência energética das execuções dos casos com a
+uniformidade global média maior ou igual a 0,40. Os
+resultados obtidos são apresentados na Tabela IV.
+
+A Tabela V apresenta os desvios padrão da uniformidade
+(todas as execuções), do consumo, do erro absoluto referente à
+iluminação ideal e do índice de eficiência energética (os três
+últimos para as execuções que conseguiram uma uniformidade
+global igual ou superior a 0,40).
+
+Observando os dados obtidos na Tabela IV, algumas
+variações podem ser descartadas. Devido ao baixo
+desempenho para conseguir respostas que satisfaçam o
+mínimo exigido em normas, AE 01 pode ser descartada
+(somente 16% das execuções atingiram o mínimo). AE 07 e
+AE 08 também foram descartadas devido ao seu altíssimo
+consumo em relação ao das outras variações. Na média, o
+consumo de AE 07 é aproximadamente o dobro das demais e o
+de AE 08 é aproximadamente o triplo.
+Após os descartes, tem-se que somente AE 02, AE 03, AE
+04, AE 05 e AE 06 são objetos de análise. Estas variações
+conseguiram uma iluminação média muito próxima da
+desejada, isto é, menos de 1 lux na média e no desvio padrão
+do erro absoluto, o que poderia ser classificado como
+desprezível para o conforto visual de seres humanos.
+
+Logo, a iluminação média deixa de ser uma variável de
+resposta útil para comparações. Elas obtiveram ainda bons
+resultados nos respostas médias de uniformidade global,
+consumo de energia e índice de eficiência energética, o que
+dificulta uma comparação visual simples. Utilizando as
+Equações (12) e (13) e as Tabelas IV e V com os dados
+integralizados dos experimentos, foram geradas as Tabelas VI,
+VII e VIII. A construção destas tabelas baseou-se na aplicação
+do Algoritmo 1 aos valores de uniformidade, consumo e
+índice de eficiência energética (as variáveis de resposta)
+presentes nas Tabelas IV e V.
+Os valores das tabelas possuem os seguintes significados
+para cada um dos quesitos analisados:
+1 : O AE da linha é maior que o AE da coluna;
+-1: O AE da linha é menor que o AE da coluna;
+0: Não temos evidências estatística que suportem
+afirmar que o AE da linha é diferente do AE da
+coluna, com 95% de confiança.
+Por apresentarem desempenhos experimentais próximos, o
+uso do método estatístico de diferença entre duas médias [11]
+foi indicado para determinar qual AE apresenta evidências
+estatísticas de melhor desempenho em cada resposta. Como as
+respectivas respostas analisadas por este trabalho passaram no
+teste de Kolmogorov-Smirnov para detecção de normalidade
+dos dados, este método se torna viável. O intervalo de
+confiança de 95% foi considerado, gerando um nível de
+significância = 0,05 (1 − 0,95).
+Para a Tabela VI, as melhores avaliações devem ser dos
+AE que apresentam o menor valor e para as Tabelas VII e VIII
+as melhores avaliações são dos AE que apresentam os maiores
+valores.
+
+
+No contexto de dominância de Pareto, um elemento
+domina outros se ele for melhor que os demais em um critério
+e não for pior que eles em nenhum dos outros critérios. Este
+conceito foi estendido para o que será chamado de
+“dominância estatística” de Pareto.
+
+Na dominância estatística de Pareto, dado duas soluções a
+e b, diz-se que a domina b ( ≺ ) com certa confiança se as
+seguintes condições forem satisfeitas:
+podemos afirmar pelos indícios estatísticos que a
+solução a é superior a b em pelo menos um critério;
+não existe evidência estatística de que a solução a é
+diferente da solução b para os demais critérios.
+Aplicando os conceitos da dominância estatística de Pareto
+aos dados das Tabelas VI, VII e VIII encontra-se os dados
+presentes na Tabela IX. Para cada variação estudada, têm-se
+quantas outras a domina e quais são por ela dominadas.
+
+Aplicando o conceito de fast non-dominated sort aos dados
+da Tabela IX, foi construída a Tabela X que classifica as
+variações de aptidão multi-objetivo nas suas respectivas
+fronteiras de Pareto. Desta maneira, percebe-se que o AE 05,
+cuja função de aptidão multi-objetivo é composta pela
+equação do tipo "passa-faixa" (qualidade de iluminação) e
+
+
+pela somatória das potências instaladas de todas as fontes de
+iluminação (economia de energia), possui fortes evidências
+estatísticas de que é a que possibilita gerar os melhores
+resultados, com 95% de confiança.
+
+V. CONCLUSÃO
+Este trabalho apresentou o uso de um método de avaliação
+estatístico (diferença de médias) que possibilitou a
+comparação de diferentes funções de aptidão no desempenho
+de um algoritmo evolucionário multi-objetivo para projetos
+automatizados de iluminação externa.
+A progressão da pesquisa apresentada em [12] baseia-se
+nos resultados do presente trabalho. Com isso, foi possível a
+escolha consciente do método de avaliação de aptidão mais
+propício para melhorar o desempenho do algoritmo proposto.
+Dentre as variações propostas, o método utilizado
+apresenta evidências estatísticas suficientes para indicar, com
+95% de confiança, a melhor combinação multi-objetivo:
+qualidade de iluminação através de função do tipo "passafaixa" e eficiência energética através da contabilização de
+potência instalada.
+Foi apresentado também o conceito de dominância
+estatística de Pareto que, integrado aos intervalos de confiança
+para diferenças de médias, mostrou-se efetivo no auxílio do
+processo decisório para formulação da função de aptidão mais
+indicada ao problema apresentado.
+

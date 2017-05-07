@@ -1,0 +1,351 @@
+Monitoramento de Apneia do Sono Através da Expansão Torácica com Sensores Capacitivo e Indutivo
+
+I. INTRODUÇÃO
+
+A síndrome de apneia do sono é uma doença crônica,
+obstrutiva e progressiva que gera características de
+morbidade cardiovascular induzindo a uma elevada taxa de
+fatalidade humana [1-2]. É uma síndrome que pode gerar
+morte prematuro de um indivíduo, pois aumenta o risco de
+infarto agudo do miocárdio com acidente vascular cerebral e
+morte súbita repentina [3-4].
+Atualmente a busca pela praticidade e comodidade ao nível
+de qualidade de vida das pessoas que apresentam algum tipo
+de problema de saúde, induz ao desenvolvimento de
+equipamentos que tem por objetivo facilitar o dia a dia e as
+práticas das pessoas. Entre esses equipamentos, existem os
+que são aplicados em várias áreas, dentre elas a aplicações de
+saúde. Em equipamentos dessa área de aplicação, são diversos
+tipos de sensores com o intuito de medir grandezas físicas
+como pressão arterial, batimentos cardíacos, glicemia, etc.
+Muitas vezes os sensores para medir essas grandezas físicas
+diretamente são de custo elevador, difícil construção,
+dimensões que dificultam a sua aplicação e/ou armazenamento
+e/ou só podem ser manipulados por pessoas especializadas.
+Dentre esses equipamentos voltados para a área da saúde,
+estão os que são utilizados para analisar o sono, que
+consiste ao nosso caso específico de pesquisa. Em função
+da elevada correria dos indivíduos frente ao cotidiano no
+
+mundo moderno, o estresse é um sintoma perceptível de
+cansaço e desgaste físico do ser humano. Os problemas que
+enfrentamos diariamente da vida agitada entre outras
+dificuldades encontradas na vida moderna, torna-se cada
+vez mais comum os casos de distúrbios no sono que acabam
+prejudicando a qualidade de vida dos indivíduos. Dentre
+esses distúrbios no sono podemos encontrar a conhecida
+síndrome de apneia do sono, a qual foi definida
+inicialmente [5].
+Existem diversos métodos que podem ser utilizados para a
+detecção da apneia e outros distúrbios do sono [5-6]. Entre
+eles, podem-se exemplificar:
+− Medidas da oscilação de fluxo aéreo detectadas por
+pneumotacografia;
+− Monitorização da pressão nasal;
+− Pletismografia de indutância respiratória (PIR);
+− Sensores piezoelétricos, de deslocamento e de
+impedância torácica; e
+− Sensores térmicos e mensuração do CO2 expirado.
+O primeiro método listado utiliza um pneumotacógrafo o
+qual oferece excelente precisão na medição do fluxo
+respiratório, podendo detectar hipopnéias e apnéias, sendo
+recomendado como método de pesquisa, mas de difícil
+utilização rotineira em laboratórios de sono [10].
+O método da monitorização da pressão nasal utiliza cânulas
+posicionadas nos entróitos nasais, pode-se extrapolar com
+certa precisão os fluxos aéreos inspiratórios e expiratórios e,
+com isso, reconhecer tanto hipopnéias como as limitações de
+fluxo aéreo [11].
+A Pletismografia de Indutância Respiratória (PIR) tem por
+base detectar a mudança dos volumes torácicos e abdominais
+durante o ciclo respiratório. Para essas medidas são utilizados
+sensores que ficam alocados em cintos torácicos e/ou
+abdominal medindo a variação da circunferência torácica,
+sendo este um método não-invasivo. Bem calibrados, a soma
+do sinal torácico com o sinal abdominal proporciona boas
+medidas de volume corrente. O método possui uma moderada
+acuracidade, quando comparado a pletismografia de corpo
+inteiro ou a espirometria [12-13].
+Os dois últimos métodos listados são tecnicamente
+limitados para detecção de hipopnéia e apnéia do sono,
+fornecem apenas uma análise qualitativa, sendo usados como
+métodos secundários de diagnostico. Outros métodos têm sido
+estudados, mas ainda com menor repercussão como aqueles
+que utilizam sensores resistivos, strain gauges, acelerômetros,
+sensores térmicos, entre outros [14-15].
+Baseado nisso, percebe-se que o desenvolvimento de novos
+métodos de auxílio ao diagnóstico e monitoração de apneia do
+sono, precisam ser continuamente aprimorados, bem como o
+
+desenvolvimento e aplicação de sensores que sejam precisos,
+sensíveis e apresentem outras características como
+repetibilidade, exatidão, linearidade, entre outros.
+Sendo assim, este trabalho tem como objetivo apresentar o
+desenvolvimento, caracterização e análise comparativa de dois
+tipos de sensores para medida indireta de deslocamento
+torácico, abortando sua utilização no método pletismografia de
+indutância respiratória, medindo a variação da expansão
+torácica baseado na fixação dos sensores em uma cinta
+torácica conforme sugerido pela Fig. 1, auxiliando assim, na
+detecção e monitoramento da síndrome de apneia do sono.
+
+
+comprimento das mesmas “x”, e “d” a distância
+entre as placas.
+Para um melhor desempenho mecânico, utilizou-se papel
+manteiga entre as placas, o qual permitia um melhor
+deslizamento, resultando em uma associação de dielétricos de
+ar e papel entre as placas. Desta forma, a distância total entre
+as placas é composta pela espessura do papel" ", e pela
+pequena distância " "	entre o papel e as placas, preenchida
+com ar
+
+
+
+II. DESENVOLVIMENTO SENSORES
+O desenvolvimento de um equipamento para medir a
+variação da expansão torácica foi baseado na medição do
+deslocamento mecânico da parte sensor com retorno ao estado
+inicial por mola. Os sensores propostos aqui, buscam traduzir
+um deslocamento mecânico em uma grandeza elétrica. Para
+tal, foram desenvolvidos, analisados e comparado sensores
+com princípios de operação capacitivo [16] e indutivo [17], os
+quais são descritos a seguir.
+
+
+A Fig. 3 apresenta a associação capacitiva, onde C’ é
+obtido da associação de múltiplos dielétricos entre duas
+placas. Essa associação de capacitores resultará em uma
+capacitância devido ao papel e outra devido ao ar, como
+demonstrado nas equações (2) a (6):
+
+A. Método do Sensor Capacitivo
+O primeiro sensor desenvolvido baseou-se no princípio de
+um capacitor de placas paralelas, o qual foi proposto com
+várias placas para fazer uma associação capacitiva e aumentar
+a sensibilidade do sensor.
+De um lado, foram utilizadas quatro placas de circuito
+impresso de fibra de vidro (fixas de um lado da cinta), sendo
+que as duas placas internas possuem dupla face metálica, as
+duas placas externas possuem uma face metálica, como
+apresentado na Fig. 2. Do outro lado, três placas de dupla face
+metálica são fixadas no outro lado da cinta, as quais podem
+movimentar-se. O deslocamento relativo das placas móveis
+em função da respiração “x” resulta na variação da
+capacitância “C” que de forma simplifica pode ser descrita
+pela equação (1):
+em que C é a capacitância do sensor; K é a constante dielétrica
+relativa do material entre placas metálicas;
+é
+a
+permissividade no vácuo, com valor de 8,85. 10
+F/m. “A”
+representa a área comum entre as placas que pode ser
+presentada pela multiplicação da largura “l” das placas pelo
+
+
+Como	a	área	comum	das	placas	pode	ser	definida	
+como	
+
+A capacitância completa do sensor é dada pela associação
+paralela dos capacitores C1 a C6, indicados na Fig. 3, e
+determinados por
+Um oscilador de relaxação apresentado na Fig. 4 foi
+utilizado como circuito de condicionamento de sinal. O
+objetivo deste circuito é ter o período do sinal de saída
+proporcional ao valor da capacitância, o qual pode ser
+calculado pela equação (8).
+2R
+em que
+é o sensor capacitivo.
+
+
+
+Na bobina central, chamado de primário, é aplicado um
+sinal senoidal, o qual induz uma tensão nas bobinas laterais,
+chamados de secundários. A tensão induzida é proporcional a
+indutância mutua e varia com a posição do núcleo. O sinal
+aplicado no primário foi um senoidal de 2,5 kHz, a qual foi
+proveniente de um gerador de função.
+Para o circuito de condicionamento de sinal, foram
+estudados diversos circuitos, mas eles apresentavam
+componentes de alto custo ou difícil acesso [17]. Por esse
+motivo, foi escolhido e adaptado um circuito com
+componentes comuns e de baixo custo. Assim, foi usado um
+circuito com amplificador operacional em modo diferencial,
+tendo como entrada da primeira etapa os secundários do
+sensor. A saída dessa etapa é amplificada e, após ser filtrado
+por um passa-baixa, é equalizado para gerar um sinal de 0 a
+5V para ser aplicado na entrada do conversor AD (analógico
+para digital) [18-20]. O circuito descrito é apresentado na Fig.
+6.
+
+
+
+B. Método do Sensor Indutivo
+O sensor indutivo desenvolvido é do tipo LVDT (Linear
+Variable Differential Transformer) utilizado por garantir e é
+utilizado para a medida de deslocamento linear. Esse sensor é
+composto por três bobinas concêntricas montadas lado a lado,
+como pode ser observado na Fig. 5, e também possui um
+núcleo móvel de material ferromagnético.
+O deslocamento do núcleo ferromagnético “x” é
+proporcional à diferenças de tensões induzidas nos
+secundários, em função de uma constante construtiva k, como
+apresentado pela equação (9)
+C. Caracterização
+Para caracterização desses sensores (capacitivo: Fig. 7-A, e
+indutivo: Fig. 7-B), foi montado em uma plataforma de
+madeira um motor de passo, com uma correia dentada, um
+
+
+esticador para correia e um fim de curso (Fig. 7-C). No
+controle do motor e na aquisição dos dados foi usada uma
+placa de controle com microcontrolador Freescale
+MC9S08AW32 com entradas AD, temporizadores, interface
+serial e PWM, display LCD de duas linhas de dezesseis
+caracteres, e as placas de condicionamento dos sensores (Fig.
+7-D).
+O ciclo de medida consiste em 9 passos:
+a) Localização do fim de curso e o deslocamento até a
+posição inicial;
+b) Aquisição dos valores de período do oscilador e a
+tensão no condicionador LVDT;
+c) Apresenta os valores no display;
+d) Transmite os valores pela serial;
+e) Avança um passo no motor;
+f) Repete os passos de 2 a 5 por 101 vezes;
+g) Repete os passos de 2 a 4;
+h) Retrocede um passo no motor;
+i) Repete os passos 7 e 8 por 101 vezes.
+
+
+superfície, outro mostra o comportamento da média e o último
+mostra o desvio padrão dos resultados.
+A. Resultados do Sensor Capacitivo
+Nas Figs. 8 e 9, são apresentados os dados obtidos nos
+testes do sensor capacitivo, onde se observa uma superfície
+irregular pela variação entre os ciclos de medidas. Também se
+podem notar, em certas regiões dos gráficos, picos maiores,
+mesmo depois de tratamento estatístico. Estes problemas são
+oriundos da dificuldade mecânica do deslocamento das placas
+do sensor, quase sempre ocasionados por folgas mecânicas.
+Estas falhas podem ser eliminadas com procedimentos mais
+criteriosos de construção de um novo protótipo.
+Outra forma de eliminar os problemas apresentados nestes
+resultados pelas folgas mecânicas seria operar na região de
+operação linear do sensor (entre 0 e 13 mm), uma vez que os
+problemas ocorreram apenas na terça parte de extensão do
+sensor.
+
+Como o passo do motor corresponde a 0,21 mm, tem-se um
+deslocamento inicial de 0 a 21,21 mm com 101 passos que
+corresponderá a expansão no ciclo. Após isto a rotação do
+motor é invertida e o deslocamento vai 21,21 mm a 0, onde
+representará retração no ciclo com mais 101 passos. Ao final
+de cada ciclo de medida, ter-se-ão coletados os dados de 202
+posições.
+
+
+Os dados coletados pela placa foram transmitidos para um
+microcomputador executando um programa desenvolvido em
+Delphi, desenvolvido para esse fim especifico, de recepção,
+tratamento e geração de arquivos com os dados formatados.
+Esses arquivos foram importados para o programa MatLab®,
+onde foram gerados os gráficos do comportamento de cada
+sensor.
+III.TESTES E ANÁLISE DE DESEMPENHO
+Após realização dos
+sequenciais de medidas
+obtidos foram montados
+sensor. Sendo que dois
+
+testes foram extraídos 40 ciclos
+dos sensores. Com os resultados
+quatro tipos de gráficos para cada
+mostram todos os ciclos em uma
+
+
+
+Na Fig. 10 são apresentados os gráficos das médias as
+medidas de expansão e retração do sensor capacitivo. Além da
+pequena perda de linearidade em torno de 14 mm ocasionado
+pelas folgas mecânicas do protótipo, verifica-se no restante da
+
+
+A Fig. 11 apresenta o desvio padrão obtido nos testes do
+sensor capacitivo. Nesse gráfico é possível observar regiões
+com grandes variações nas curvas do desvio padrão. O motivo
+dessas variações é justificado pelas folgas mecânicas do
+protótipo.
+
+
+Na Fig. 14 é apresentado o gráfico com as médias de
+expansão e retração do sensor indutivo, onde a histerese entre
+as curvas é pequena, apesar do gráfico não ser linear ele é
+uniforme.
+
+B. Resultados do Sensor Indutivo
+Nas Figs. 12 e 13 mostram os dados obtidos nos testes do
+sensor indutivo. Nesses gráficos é possível observar
+superfícies uniformes, que se referem a variação entre os
+ciclos de medidas. Nesses dados não foi utilizado nenhum
+tratamento estatístico.
+
+
+
+Já na Fig. 15, pode-se observar o desvio padrão das
+amostras obtidas com o sensor indutivo. Nesse gráfico, a
+variação das curvas do desvio padrão é pequena.
+
+
+
+ainda a elaboração de um projeto
+miniaturização dos circuitos propostos.
+
+ergométrico
+
+e
+
+
+C. Discussão comparativa
+Com os resultados apresentados pode-se ver que no sensor
+capacitivo a repetibilidade é inferior ao do sensor indutivo,
+pois no gráfico de desvio padrão observa-se que os valores
+para o sensor indutivo são menores que 1%, com poucas
+variações.
+Também se observa a histerese mecânica devido ao
+acoplamento dos sensores na correia dentada e por ela não ser
+totalmente rígida. Esse efeito é agravado por motivo do atrito
+entre as partes e por folgas mecânicas.
+O sensor capacitivo apresenta uma tendência linear em
+todo o seu percurso, já no indutivo, para esse mesmo percurso
+se observa uma não-linearidade nas extremidades causada,
+parte pelos problemas mecânicos descritos acima, e parte pela
+extrapolação do percurso, pois o mesmo foi desenvolvido para
+ter 15 mm.
+IV. CONCLUSÃO
+Com base no processo de montagem das experiências e dos
+resultados obtidos, conclui-se que o sensor capacitivo é de
+fácil confecção mecânica, possui um circuito de
+condicionamento simples e boa linearidade, porém é
+necessário um tratamento estatístico nos dados adquiridos,
+pois o desvio padrão é muito grande.
+No sensor indutivo a confecção mecânica da bobina é mais
+complexa, pois envolve certa precisão nas medidas das partes,
+o circuito eletrônico é mais complexo, a linearidade não é boa,
+mas, no entanto, dentro do objetivo proposto inicialmente de
+medir a expansão torácica com precisão, verificamos que o
+sensor indutivo apresenta melhor resultado.
+No sistema de caracterização dos sensores, procurou-se
+minimizar as influencias decorrentes de elementos auxiliares e
+a aquisição simultânea dos dados dos sensores, possibilitando
+o acompanhamento dos mesmos em tempo real. Esse sistema
+pode ser facilmente adaptado para a experiência com outros
+tipos de sensores, sendo necessário somente o
+desenvolvimento do circuito de condicionamento respectivo.
+Esta experiência demonstra que a confecção de um
+aparelho, detector de apneia do sono baseado a PIR é viável,
+com resultados considerados adequados, mas sendo necessário
+
+

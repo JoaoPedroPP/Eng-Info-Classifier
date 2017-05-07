@@ -1,0 +1,509 @@
+Interface de Controle Biomédica para um Jogo Sério em Reabilitação Física
+
+I. INTRODUÇÃO
+
+SEGUNDO dados da Organização Mundial de Saúde
+(OMS) [1], aproximadamente 15% da população mundial
+vive com algum tipo de deficiência. Entre os motivos deste
+elevado número estão o envelhecimento da população e o
+aumento das doenças crônicas. Este número indica a
+necessidade de estratégias para a reabilitação destas pessoas.
+A reabilitação é definida pela OMS [1] como: “o uso de todos
+os meios necessários para reduzir o impacto da condição
+incapacitante e permitir aos indivíduos incapacitados a
+obtenção de uma completa integração”. Assim, a reabilitação
+tem como objetivo, reduzir a incapacidade provocada por
+alguma doença e, quando possível, melhorar a capacidade
+funcional do indivíduo [2]. Dentre as doenças mais
+incapacitantes está o Acidente Vascular Encefálico (AVE).
+Segundo a Organização Mundial de AVE (WSO) [3], a cada
+ano são registrados cerca de 15 milhões de casos, com um
+índice de mortalidade de 40%, sendo a segunda principal
+
+causa de morte no mundo. Somente no Brasil, no ano de 2011,
+foram registradas 179 mil internações por AVE (isquêmico e
+hemorrágico), sendo essa uma das doenças crônicas que mais
+afeta a população brasileira, incidindo principalmente em
+adultos de meia-idade e idosos [4]. Doenças sistêmicas
+crônicas como a artrite reumatóide, que acometem
+principalmente as articulações, também podem limitar as
+atividades da vida diária dos pacientes [3]. A paralisia
+cerebral, que se origina de lesões no cérebro durante o período
+de desenvolvimento do sistema nervoso central, é responsável
+por uma série de distúrbios motores que impactam
+permanentemente o desenvolvimento humano [4]. Em geral,
+as doenças ou síndromes que afetam as funções motoras que
+comprometem a capacidade funcional do indivíduo, exigem
+longos períodos de reabilitação. Nos casos em que não existe a
+possibilidade de cura, o processo de reabilitação pode ser
+permanente, sendo fundamental para a manutenção da
+condição motora do indivíduo. Portanto, é fundamental buscar
+estratégias para tornar o processo de reabilitação mais
+motivador para o paciente. Nesse sentido, o uso de jogos
+digitais tem se mostrado um importante aliado dos
+profissionais da saúde no processo de reabilitação. Estudos [5]
+indicam que o uso de jogos em reabilitação melhora a
+motivação para o tratamento e consequentemente, diminui o
+tempo de reabilitação do paciente. Nos últimos anos a área da
+saúde tem se beneficiado significativamente da utilização de
+jogos no processo de reabilitação de pacientes [6]. No caso de
+crianças com paralisia cerebral, por exemplo, o grau do
+comprometimento motor está diretamente relacionado com os
+aspectos cognitivos, o que favorece o uso desse tipo de
+recurso para estimular o desempenho ocupacional dessas
+crianças [4]. Várias áreas relacionadas à saúde física e mental
+podem se beneficiar desses jogos, tais como simulação,
+treinamento, reabilitação e estimulação cognitiva [7]. Além
+disto, os jogos digitais também podem estimular as funções
+cognitivas básicas, gerando benefícios além da questão da
+reabilitação motora [8].
+Os jogos comerciais tradicionais não são desenvolvidos
+para uso em reabilitação, o que limita a sua aplicação
+terapêutica. Uma alternativa para reduzir essas limitações
+pode ser o desenvolvimento de jogos para propósitos
+específicos. Esses jogos que visam aspectos específicos como
+educação e saúde, combinados com o aspecto lúdico do
+entretenimento, são chamados de serious games [9], também
+utilizado em tradução literal por alguns autores como jogos
+sérios. Mas mesmo nesses jogos, a interface de controle para o
+jogo ainda é um problema. Em geral, a condição de função
+motora reduzida impossibilita o paciente de controlar um jogo
+através de interfaces tradicionais como um joystick ou mouse,
+
+
+por exemplo. Portanto, uma alternativa mais eficiente, é a
+combinação do desenvolvimento do jogo com uma nova
+interface de controle mais adequada.
+Neste contexto, este artigo descreve o desenvolvimento de
+um sistema biomédico como interface de controle para um
+serious game na reabilitação física de pessoas com função
+motora reduzida. O jogo desenvolvido pode ser controlado por
+diferentes sinais biológicos e possibilita ao terapeuta a
+configuração de vários parâmetros do sistema, adequando seu
+uso para cada paciente.
+II. JOGOS PARA REABILITAÇÃO
+A. Projeto de Jogos:
+Em geral, o desenvolvimento de jogos digitais está baseado
+na estratégia de Pontos, Recompensas e Ranking, também
+conhecida por PBL (Points, Badges e LeaderBoards) [10]. Os
+pontos motivam o participante a evoluir o seu desempenho no
+jogo. As estratégias de recompensa potencializam o fator
+motivador à medida que o jogador aumenta sua habilidade. O
+ranqueamento possibilita ao jogador avaliar seu desempenho
+em um grupo de jogadores. Entretanto, em jogos voltados para
+reabilitação, a estratégia PBL deve ser observada com cautela.
+O sistema de ranqueamento, por exemplo, ao comparar um
+grupo de jogadores, pode se tornar um fator de desmotivação
+para quem tem dificuldade ou não consegue evoluir no jogo.
+Outro aspecto importante que deve ser observado nos projetos
+de jogos está relacionado com a qualidade da realimentação
+(feedback) proporcionada pela ação de controle. Em geral, os
+jogos tradicionais oferecem feedback visual, sonoro e tátil. A
+complexidade dos detalhes do jogo é o que determina a
+configuração de hardware e software necessária para um bom
+desempenho. Portanto, a percepção do jogador depende do
+tempo de resposta do sistema frente à interação. Estas
+respostas devem ser rápidas o suficiente para que o jogador
+não perceba qualquer atraso entre a ação executada e o retorno
+esperado. Estes aspectos mostram que, em função da condição
+do paciente e do objetivo terapêutico desejado, o projeto de
+um serious game deve ser diferente de um jogo comercial.
+B. Teoria do Fluxo:
+A teoria do fluxo (Fig. 1) estabelece uma relação entre o
+desafio e o nível de habilidade do jogador, mantendo o jogo
+em um patamar que não seja muito fácil, que levaria ao tédio,
+e nem muito difícil, que levaria a frustração.
+
+
+À medida que a habilidade do jogador evolui, o nível do
+desafio também evolui, fazendo com que o jogador entre em
+um alto nível de concentração [11]. Essa alternância dentro do
+canal de fluxo mantém elevado o nível de concentração do
+jogador. Em jogos para reabilitação isto significa que o
+paciente estará focado no desafio, minimizando os problemas
+da reabilitação e mantendo o comprometimento com a
+continuidade do processo.
+C. Projeto de jogos para reabilitação:
+O projeto de serious games para reabilitação deve ser feito
+de forma multidisciplinar, considerando os vários aspectos
+envolvidos, tais como, fisiológicos, psicológicos e
+tecnológicos [12]. Diferentemente dos jogos para
+entretenimento, nos jogos para reabilitação o foco deve ser o
+tratamento. Apesar disto, é fundamental considerar os
+aspectos abordados na estratégia PBL para que o jogo seja
+motivador para o paciente. Em um trabalho recente [13],
+pesquisadores utilizaram os princípios da estratégia PBL
+adaptada ao contexto da reabilitação e abordaram alguns
+fatores críticos que devem ser considerados no momento do
+projeto. Primeiramente, uma característica dos processos de
+reabilitação é a repetibilidade dos exercícios, o que em geral,
+leva a uma condição de aborrecimento do paciente. Assim, a
+introdução de elementos de variabilidade do jogo é
+fundamental para minimizar esta condição indesejada. Outra
+característica importante na reabilitação é a definição de
+tempo e ritmo dos exercícios. Isso torna o desafio do projeto
+de jogos para reabilitação ainda mais complexo, onde o
+projetista precisa equilibrar os aspectos motivacionais com os
+terapêuticos. Além disso, os jogadores são pacientes e
+possuem algum nível de limitação motora, introduzindo
+variadas restrições de jogabilidade ao projeto. Pacientes em
+reabilitação também estão propensos ao estado de depressão, o
+que afeta consideravelmente o interesse pela terapia. Portanto,
+desenvolver jogos para reabilitação é um verdadeiro desafio e
+requer um trabalho cooperado entre os profissionais
+envolvidos no processo.
+Entretanto, vem sendo demonstrando que os jogos
+contribuem para aumentar a motivação em sessões de
+reabilitação, onde os problemas são a repetição de exercícios e
+o longo tempo de tratamento [12]. Um estudo com pacientes
+com paralisia cerebral mostrou que os mesmos melhoraram o
+seu equilíbrio, e se mostraram bastante motivados em
+continuar o processo de reabilitação com o uso de jogos
+digitais [14]. Outro estudo demonstrou que a realidade virtual
+melhorou o equilíbrio e a recuperação locomotora em
+hemiparéticos por AVE, quando comparada à terapia
+convencional [15].
+A quantidade de estudos correlatos encontrados na literatura
+indica que a interação entre serious games e reabilitação tem
+trazido inúmeros benefícios, apontando para um novo
+paradigma na área de reabilitação.
+D. Interfaces de Controle:
+
+
+As diferentes limitações motoras constituem um importante
+fator de restrição nas terapias com jogos digitais. Entretanto,
+nessa última década, o avanço tecnológico tem proporcionado
+
+
+uma nova geração de jogos baseadas em interfaces naturais
+com o usuário – NUI (Natural User Interfaces). As NUI são
+interfaces homem-máquina que possibilitam ao jogador a
+experiência de controlar um jogo com ações naturais do ser
+humano, como controle por movimento e por voz [16]. O
+console Wii [17] da Nintendo foi pioneiro no uso dessa nova
+abordagem, que acrescentou acelerômetros e giroscópios ao
+controle, proporcionando uma experiência mais natural ao
+jogador. Em um jogo de tênis, por exemplo, o controle é usado
+da mesma forma que a raquete. Seguindo essa tendência, a
+Microsoft desenvolveu o Kinect [18], um controle baseado em
+uma câmera de vídeo especial que capta o movimento do
+jogador e o converte em ações do jogo. Em um trabalho
+correlato [19], pesquisadores mostraram os benefícios dessa
+abordagem em um estudo piloto utilizando o Kinect para
+reabilitação do controle motor em adultos jovens. Esse novo
+paradigma na forma de controlar os jogos, proporcionado
+pelas NUI, favorece de maneira significativa o
+desenvolvimento de jogos para reabilitação. Entretanto, a
+diversidade de limitações motoras dos pacientes ainda é um
+fator de restrição no uso destas interfaces. Assim, uma nova
+lacuna se abre no campo de jogos para reabilitação: o
+desenvolvimento de novas interfaces de controle específicas e
+adaptáveis ao paciente.
+
+movimento das raquetes através de um dos sinais biológicos
+capturados. O jogo permite vários tipos de ajustes que
+possibilita ao terapeuta configurar o sistema para cada
+paciente.
+A. Dinamometria
+A força muscular é medida através de uma célula de carga
+de compressão que permite medir forças de até 490 N (=50
+kg) com resolução de 100 g. Para possibilitar a utilização por
+pessoas com diferentes níveis de força, o sinal elétrico gerado
+pela célula de carga pode ser amplificado com um ganho
+ajustável de até 1000. Para minimizar possíveis ruídos
+elétricos, depois de amplificado, o sinal passa por um filtro
+passa baixa com frequência de corte de 20 Hz [21]. A célula
+de carga é acoplada a um dispositivo (Fig. 3) desenvolvido
+para avaliação da força de preensão palmar [22]. Para maior
+conforto do usuário o dispositivo permite o ajuste de
+empunhadura da mão.
+
+III. DESENVOLVIMENTO DO SISTEMA DE CONTROLE
+BIOMÉDICO PARA REABILITAÇÃO FÍSICA
+O corpo humano é capaz de produzir uma grande variedade
+de sinais biológicos e a complexidade de medir esses sinais
+depende da sua natureza. Em geral, os sinais elétricos gerados
+pelo corpo humano são de baixa intensidade e baixa
+frequência, sendo facilmente afetados por fontes de ruído e
+exigindo projetos de hardware mais elaborados.
+Para o sistema de controle biomédico proposto, foram
+utilizadas três grandezas que estão relacionadas à função
+motora: atividade elétrica muscular, força muscular e
+movimento angular. Os sinais referentes a essas grandezas são
+obtidos através de: eletromiografia (EMG), dinamometria e
+acelerometria. O sistema possibilita atender variados tipos de
+limitações motoras, em diferentes fases da reabilitação. A Fig.
+2 mostra o diagrama de blocos com as unidades básicas do
+sistema.
+
+
+B. Eletromiografia
+Para medir a tensão da atividade elétrica muscular foram
+utilizados eletrodos de superfície descartáveis, modelo
+Meditrace 200 (Kendall). O condicionamento do sinal
+eletromiográfico é composto por um amplificador de
+instrumentação e circuitos auxiliares para filtragem,
+amplificação, retificação e alisamento do sinal. O sinal
+captado pelos eletrodos pode ser amplificado com ganho
+ajustável de até 2000. A etapa de filtragem é composta por um
+filtro passa faixa com banda de freqüência de 10 a 400 Hz.
+Depois de filtrado, o sinal é retificado e suavizado por um
+detector de envoltória com frequência de corte de 5 Hz. O
+circuito foi desenvolvido com base nas especificações
+recomendadas
+pelo
+projeto
+SENIAM
+(Surface
+ElectroMyoGraphy for the Non-Invasive Assessment of
+Muscles) [23].
+C. Acelerometria
+
+
+Os sinais condicionados são processados por um sistema
+microcontrolado e enviados ao computador para controlar o
+jogo. Foi desenvolvida uma interface gráfica baseada no
+clássico jogo Pong [20], onde o objetivo é controlar o
+
+A informação de movimento angular do segmento corporal
+avaliado é obtida através de uma unidade de sensores inerciais
+MPU-6050 (Invensense), composta por um acelerômetro e um
+giroscópio com 3 eixos cada. A Fig. 4 mostra o ângulo de
+inclinação de cada eixo (yaw, pitch e roll), obtidos pela fusão
+das informações do acelerômetro e do giroscópio, com
+resolução de 1°.
+
+
+O módulo MPU-6050 é conectado a um sistema
+microcontrolado secundário que transmite as informações via
+rádio frequência para o sistema microcontrolado principal. O
+sistema é alimentado por uma bateria recarregável de 3.7 V. O
+sistema sem fio (Fig. 5) é essencial para possibilitar o uso da
+acelerometria acoplado ao corpo do paciente.
+
+
+utilizado e as paredes (limites horizontais) rebatem a bola. É
+possível configurar o tamanho e velocidade da bola, tamanho
+da raquete e tempo de jogo. O limite de deslocamento da
+raquete pode ser calibrado para cada paciente. Todas as
+configurações devem ser definidas pelo terapeuta, que avalia a
+condição física de cada paciente, visando manter a condição
+de fluxo do jogo. A Fig. 7 mostra um exemplo das diferentes
+configurações de tamanho de bola e raquete.
+
+D. Sistema microcontrolado
+Esse sistema é composto por dois subsistemas. O sistema
+principal é baseado no microcontrolador ARM CortexM3 da
+Atmel, responsável por digitalizar os sinais condicionados de
+dinamometria e EMG em um conversor A/D de 12 bits com
+taxa de amostragem de 1 kS/s. Dois módulos de rádio
+frequência nRF24L01 (Nordic) fazem a comunicação sem fio
+entre os sistemas
+principal e secundário. O sistema
+microcontrolado secundário é baseado no microcontrolador
+ATmega328 da Atmel, e é responsável por receber os dados
+do sensor inercial (acelerômetro e giroscópio). Os dados
+processados no sistema microcontrolado principal são
+enviados ao computador através de uma conexão USB.
+
+Também foram considerados aspectos relacionados a
+possíveis limitações visuais dos pacientes, podendo ser
+alterada as cores da quadra, bola e raquete. O jogo também se
+adapta a resolução de vídeo do computador, sendo esta uma
+informação importante na análise de desempenho do paciente,
+pois altera o tamanho da quadra, da raquete e da bola.
+O sistema de pontuação do jogo foi baseado em um modelo
+empírico que relaciona as variáveis do jogo com o grau de
+dificuldade para o paciente rebater a bola. A Tabela I mostra
+as variáveis utilizadas e seus valores mínimos e máximos,
+onde i é um número inteiro.
+
+E. O Jogo:
+O jogo foi desenvolvido em linguagem Delphi [24], e é
+compatível com o Sistema Operacional Microsoft Windows.
+Os aspectos visuais do jogo (Fig. 6) focam o paciente na tarefa
+de rebater a bola.
+
+A equação (1) mostra o cálculo da pontuação do jogo (P)
+definida empiricamente de forma a ajustar a pontuação em
+função da dificuldade das configurações do jogo. O valor
+480000 é o produto da resolução de tela horizontal mínima
+(640 pixels) pela resolução de tela vertical mínima (480
+pixels) permitida pelo jogo.
+P
+
+
+O paciente controla as raquetes que se deslocam
+simultaneamente nas paredes verticais em função do sensor
+
+Pode-se observar na equação (1) que a pontuação é função
+direta dos acertos da bola na raquete pelo tempo de jogo. As
+demais variáveis ajustam a pontuação de acordo com a
+influência no grau de dificuldade do jogo. Por exemplo, é
+esperado que aumentando a velocidade da bola (VB) o jogo
+fique mais difícil, portanto, a pontuação deve ser
+proporcionalmente aumentada. O mesmo raciocínio vale para
+
+
+um aumento no tamanho da raquete (TR), pois aumentando o
+seu tamanho, é esperado que seja mais fácil rebater a bola,
+portanto, a pontuação deve ser reduzida proporcionalmente.
+Por fim, o jogo ainda possibilita a gravação dos dados, em
+arquivo texto, da posição do centro da bola (eixos X e Y) e
+posição do centro da raquete (eixo Y), além dos parâmetros do
+jogo e pontuação. Essas informações são essenciais para a
+análise do terapeuta.
+IV. ANÁLISE E DISCUSSÃO
+O presente trabalho foi focado no desenvolvimento de um
+dispositivo biomédico e um serious game para aplicação em
+reabilitação motora. Os testes iniciais foram focados no uso
+das interfaces de controle com o jogo, sendo realizados por
+um sujeito do sexo masculino, sem histórico de disfunções
+neuromusculares, 44 anos de idade, 1.80 m de altura e 82 kg
+de peso corporal.
+Uma preocupação em jogos é quanto ao tempo de reposta
+do jogo. O tempo entre a ação de comando e a visualização da
+ação na tela do computador deve ser rápido o suficiente para
+que o usuário tenha a experiência do tempo real. Em média, o
+tempo de reação visual do ser humano, sem limitações
+motoras ou cognitiva e em estado de concentração, é de cerca
+de 200 ms [25].
+No sistema biomédico desenvolvido, a taxa de aquisição
+média para os sinais de eletromiografia e dinamometria foi de
+2 kS/s. Os dados de acelerometria são obtidos a uma taxa de 1
+kS/s e transmitidos via RF a uma taxa de até 1 Mbps. Com
+essas taxas, o tempo médio entre a captura do sinal e o
+posicionamento da raquete na tela foi de 30 ms.
+Os protocolos utilizados para os testes de força de preensão
+palmar e eletromiografia de superfície foram baseados nas
+recomendações da Associação Americana de Terapeutas da
+Mão [26] e do SENIAM [23], respectivamente. Os gráficos
+mostrados neste texto foram gerados pelo software Matlab
+[27] a partir dos arquivos de dados das sessões do jogo.
+A Fig. 8 mostra as posições da bola e da raquete durante
+uma sessão com o jogo controlado por dinamometria. A linha
+(1) representa o deslocamento horizontal da bola (eixo X), a
+linha (2) representa o deslocamento vertical da bola (eixo Y) e
+a linha (3) representa a posição do centro das raquetes que se
+descolam simultaneamente nas paredes no eixo vertical.
+
+rebatida da bola. A linha (3) que mostra a posição da raquete
+na tela, também representa a ação de força exercida pelo
+jogador. A representação gráfica da sessão com o jogo é um
+componente inovador que traz inúmeras informações ao
+terapeuta. É possível identificar, por exemplo, os limites de
+força, condição de fadiga, estratégia de controle muscular,
+entre outras possibilidades.
+A Fig. 9 mostra o gráfico de uma sessão utilizando o sinal
+de EMG como interface de controle, onde é possível observar
+o comportamento estocástico do sinal.
+
+
+A Tabela 2 mostra os valores médios dos resultados obtidos
+em 5 seções de 30 segundos cada, com uso de dinamometria e
+EMG, em função da alteração na velocidade da bola.
+
+Estes dados indicam que, como esperado, com o aumento
+da velocidade da bola o número de erros aumenta. Além disso,
+pode-se observar que o número de erros é maior quando se usa
+o sinal de EMG como interface. Isto pode ser explicado pela
+natureza estocástica do sinal EMG, o que dificulta o controle
+fino da posição da raquete.
+Outra possibilidade para o sistema proposto é o uso da
+acelerometria para o controle da raquete. Neste caso, a
+informação de interesse está relacionada ao movimento
+angular, onde a raquete se desloca em função do ângulo de
+inclinação ou rotação do membro utilizado. A Fig. 10 mostra
+dois exemplos de movimentos usando o sistema de
+acelerometria acoplado por abraçadeira ao membro afetado.
+
+
+Também pode ser observado na Fig. 8, nos pontos
+indicados por um círculo, o momento em que ocorre o toque
+da bola com a raquete (acerto). O ponto indicado por um
+losango é o momento em que a bola não é rebatida pela
+raquete (erro). A trajetória da linha (2) indica o ângulo de
+
+
+Esta abordagem de controle é mais simples que as
+anteriores (dinamometria e EMG) e possibilita avaliar uma
+ampla gama de grupos musculares (membros superiores e
+inferiores). A Fig. 11 mostra o gráfico de uma sessão
+utilizando acelerometria, em um exercício de adução e
+abdução de ombro.
+
+
+comprovar a eficácia de um serious game para a área da saúde
+é usando e avaliando na população alvo. Entretanto, vale
+salientar que neste trabalho, objetivou-se testar apenas a
+usabilidade das interfaces de controle com o jogo. Embora
+ainda não tenha resultados clínicos, o sistema proposto foi
+desenvolvido por especialistas das três áreas envolvidas no
+projeto: engenharia, computação e saúde. Projetos nesta área
+requerem uma equipe de trabalho multidisciplinar, e cabe ao
+especialista da área da saúde orientar a equipe técnica
+(engenharia e computação) ainda na fase de desenvolvimento
+do projeto. E na fase de validação, propor o experimento
+clínico, controlar as variáveis de interesse e analisar a eficácia
+da intervenção no paciente [28].
+V. CONCLUSÃO
+
+
+A trajetória da linha (2) representa a altura da bola (eixo
+Y), onde é possível observar que sua altura variou pouco,
+indicando um melhor controle de posicionamento da raquete
+para a rebatida. A linha (3), que representa a altura da raquete,
+mostra um movimento mais suave, indicando que é mais fácil
+manter a raquete em uma altura próxima a da bola. Isto
+favorece acertar a bola próximo ao centro da raquete, o que
+implica em uma rebatida com menos ângulo de saída da bola
+(Fig. 12a). Quanto menor o ângulo de rebatida, menor o
+tempo que a bola leva para chegar ao outro lado. Quando o
+ângulo de rebatida é maior (Fig. 12b), a bola toca mais vezes
+nas paredes, levando mais tempo para chegar ao outro lado.
+Quanto menor o tempo para a bola chegar ao lado oposto,
+maior o número de chances de acerto na raquete e,
+consequentemente, maior a pontuação no jogo. A condição
+ideal de rebatida é quando a bola sai perpendicular à raquete
+(Fig. 12c).
+
+O uso de jogos digitais na reabilitação física de pacientes
+tem se mostrado uma abordagem bastante promissora, embora
+ainda seja comum o uso de jogos comerciais e interfaces de
+controle que não são desenvolvidos para reabilitação, o que
+limita as possibilidades de aplicação. Entretanto, o sistema
+biomédico apresentado nesse trabalho amplia essas
+possibilidades. O uso de interfaces de controle específicas
+para funções motoras, combinadas com um serious game, é
+uma estratégia que favorece a utilização de jogos digitais na
+área de reabilitação.
+Os resultados preliminares da avaliação do sistema
+proposto, que foi focada em testes de usabilidade de hardware
+e software, mostraram que o mesmo atende aos requisitos
+necessários para jogos em reabilitação. Embora não tenha sido
+utilizado por pacientes, o sistema foi desenvolvido e avaliado
+por especialistas das áreas da engenharia, computação e saúde,
+o que potencializa o indicativo de sua eficácia.
+Propostas futuras com este sistema biomédico incluem
+pesquisas com pacientes neurológicos e reumatológicos, com
+o objetivo de investigar os efeitos terapêuticos e as possíveis
+propriedades métricas que podem ser extraídas de um serious
+game.
+
+Ainda em relação às interfaces de controle, mesmo para um
+sujeito saudável, o esforço realizado para controlar a raquete
+com o uso da dinamometria ou EMG é maior do que com o
+uso da acelerometria. Isto ocorre porque para manter a raquete
+em uma posição intermediária na tela, é preciso manter o
+músculo em contração isométrica por mais tempo, o que
+comumente, pode levar o sujeito à fadiga muscular. Portanto,
+a tendência com o uso de dinamometria e EMG é manter o
+músculo em repouso (relaxado) durante a trajetória da bola.
+Somente quando a bola se aproxima da raquete o sujeito faz a
+contração muscular para deslocar a raquete, o que torna mais
+difícil o controle da sua posição.
+Embora o sistema desenvolvido tenha características que
+podem auxiliar no processo de reabilitação, ainda é necessário
+avaliá-lo em ambiente clínico. De fato, a única maneira de
+
+

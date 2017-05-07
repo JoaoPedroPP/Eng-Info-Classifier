@@ -1,0 +1,467 @@
+Avaliação de painéis especialistas
+
+I. INTRODUÇÃO
+
+NA avaliação de uma painel de especialistas, há dois
+problemas. O primeiro problema é estimar a
+probabilidade de acerto de um especialista individual. O
+segundo é combinar as probabilidades de todos os membros
+do painel para encontrar a probabilidade de acerto do grupo. O
+Marquês de Condorcet foi o primeiro pesquisador a abordar o
+problema de combinar probabilidades [1]. Na sua forma
+original, o teorema do júri de Condorcet exige que decisões
+sejam tomadas pelo voto da maioria. O método permite que o
+cálculo da probabilidade de obter-se uma resposta correta para
+questões dicotômicas seja dado pela equação 1, em que N é o
+número de votantes/especialistas, p é a probabilidade de um
+especialista votar de forma correta e m o número de votantes
+necessários para a maioria. Dessa forma, pode-se utilizar a
+distribuição binomial cumulativa para calcular a probabilidade
+do voto da maioria produzir uma decisão correta.
+
+adição de votantes com diferentes probabilidades pode
+aumentar a probabilidade combinada, o próprio Condorcet não
+comprovou esse fato, uma vez que a sua prova pressupõe que
+todos os membros do júri tenham a mesma probabilidade de
+acerto. Porém o matemático Christian List generalizou o
+teorema de Condorcet para votantes com diferentes
+probabilidades. Basicamente, List provou duas proposições:
+Proposição 1: Existem k opções e cada votante tem um
+de
+conjunto de probabilidades independentes
+escolher as opções 1, 2, 3 ... k. Além disso, a probabilidade
+de votação correta para o item i ultrapassa cada probabilidade
+de votação para qualquer resultado incorreto, em que ≠ .
+Nesse caso, o voto da maioria ser a opção correta é mais
+provável do que qualquer outra opção.
+Proposição 2: A medida que o número de votantes/jurados
+tende ao infinito, a probabilidade da resposta correta pelo voto
+da maioria converge para 1.
+O leitor encontrará a prova das duas proposições em [2].
+Os autores deste trabalho mostram como o modelo de
+Rasch pode ser utilizado para mensurar o valor de variáveis
+latentes e atribuir-lhes probabilidades. Em particular, o
+trabalho descreve como o leitor pode utilizar o modelo de
+Rasch para identificar a probabilidade de acerto de cada
+membro de um painel especialista e combinar as
+probabilidades através do Teorema de Condorcet-List.
+
+A Fig. 1 mostra que a probabilidade do voto da maioria
+produzir um resultado correto tende a 1 a medida que o
+número de votantes aumenta, desde que todos os votantes
+tenham uma probabilidade superior a 0.5 de produzir uma
+classificação correta.
+O primeiro problema ao utilizar o método de Condorcet em
+painel de especialistas é combinar as diferentes probabilidades
+dos membros. Embora Condorcet nos leve a suspeitar que a
+
+Wright e Mok [3] fornecem um bom material sobre o
+modelo de Rasch. O modelo é largamente utilizado em áreas
+como Educação, Ciências da Saúde, Economia e Psicologia.
+Não há muitos trabalhos baseados no modelo de Rasch para a
+área de Ciências Exatas.
+
+
+II. ESCALAS
+Quando alguém decide medir algo, seja temperatura,
+habilidade ou confiabilidade, o primeiro passo é escolher a
+escala de medida. A fim de compreender sobre a construção
+de escalas, vamos examinar como ocorreu a especificação das
+escalas de temperatura mais utilizadas hoje em dia.
+Uma escala de intervalar suas unidades são marcadas em
+intervalos iguais. Em uma escala intervalar, o zero é um
+ponto arbitrário de medida, ou seja, não representa o valor
+zero do atributo medido. Exemplos são as escalas de
+Fahrenheit e de Linnaeus/Celsius, em que o valor zero não
+indica uma quantidade nula de calor; trata-se de uma
+referência arbitrária.
+Carolus Linnaeus pediu à oficina na Academia Real de
+Ciências da Suécia que lhe construísse um termômetro,
+conforme especificações anexadas por ele ao pedido. O
+botânico escolheu o zero no ponto de congelamento da água.
+Para definir intervalos de unidades iguais, Linnaeus postulou
+que o ponto de ebulição da água está em 100 graus. Antes
+dele, o astrônomo sueco Anders Celsius colocou o zero no
+ponto de ebulição da água. Portanto, a escala de Linnaeus é o
+reverso da escala de Celsius. Nos dias atuais, a escala de
+Linnaeus é conhecida por escala Celsius, escala centígrada ou
+escala Linnaeus/Celsius.
+O engenheiro polonês Daniel Fahrenheit, por construir
+termômetros de mercúrio confiáveis, tinha seus produtos
+amplamente requisitados na Europa. Fahrenheit postulou que
+o zero está na temperatura de existência de uma mistura de
+água, gelo e cloreto de amônia. No ponto de congelamento da
+água, Fahrenheit colocou a marca de 32 graus. Para certificarse de que o termômetro não faria uma leitura errônea,
+Fahrenheit confirmou que a água começa a congelar em 32ºF
+no inverno. A diferença de 32 graus entre os pontos de
+referência permitiu que Fahrenheit determinasse suas unidades
+com sucessíveis divisões por dois, isto é, ele simplesmente
+dobrou cinco vezes a fita em cujas extremidades marcou 0 e
+32. Brilhante solução de engenharia!
+
+são estimadas
+
+
+1. Objetividade Específica
+Pode-se dizer que C é melhor que V se seus resultados são
+superiores independentemente do problema. Vamos
+considerar duas variações r e s de um dado problema. Temse uma boa comparação estatística entre C e V quando a
+relação entre eles não muda com a alteração do item. Nesse
+caso, tem-se a seguinte igualdade.
+
+A chance é a razão da probabilidade de um evento ocorrer
+pela probabilidade de não ocorrer. Pode-se reescrever a
+igualdade da equação 5 de modo a obter as chances de
+sucesso de C na solução do item r.
+
+O próximo passo é escolher o zero da escala de medida
+que se pretende introduzir. Vamos considerar um engenheiro
+o cuja habilidade se equipara à dificuldade de um item o.
+Neste caso, o engenheiro o irá solucionar o item o na metade
+das vezes. Esse engenheiro está na origem da escala de
+habilidade e o item fica na origem da escala de dificuldade.
+Considerando que o engenheiro mediano o soluciona o item
+
+na metade das vezes, a probabilidade de sucesso é
+Vamos comparar C com o engenheiro da origem.
+
+III. ESTIMANDO A PROBABILIDADE
+Vamos considerar que dois especialistas C e V tenham
+respondido a um teste. O primeiro problema é comparar as
+habilidades de C e V com base na solução de um item r, onde
+o item é um problema a ser resolvido pelo painel de
+engenheiros. Os dois especialistas necessitam resolver muitos
+itens para obter o escore bruto.
+Vamos ignorar os resultados em que C e V acertam ou
+falham simultaneamente. A probabilidade de C solucionar o
+problema r é dado por , e a probabilidade de falha pode ser
+. Por outro lado, as probabilidades de
+calculada em
+êxito e falha de V no mesmo problema são dadas por
+e
+respectivamente. Seja
+a notação de quantos
+itens C acerta e V falha. Da mesma forma,
+denota o
+número de falhas de C e sucessos de V. Probabilidade é
+estimada como a divisão de sucesso pelo número de tentativas,
+quando o número de tentativas tende ao infinito. Se o número
+
+e
+
+de tentativas é N, as probabilidade
+por:
+
+
+é 0.5, tem-se que
+Sabendo que
+Portanto
+
+Aplicando o logaritmo a ambos os lados da equação, temos:
+
+
+Vamos definir
+
+Então, a equação 12 torna-se
+
+Note que
+não depende do problema r e
+não depende
+do engenheiro especialista C. Essa é a grande contribuição de
+Georg Rasch para a Teoria das Medidas.
+A definição de logaritmo produz a seguinte expressão para
+a razão entre a probabilidade de sucesso e a probabilidade de
+falha de um determinado item e especialista.
+
+Vamos referir ao parâmetro
+como a habilidade do
+especialista e
+como a dificuldade do item.
+Lembremo-nos de que a objetividade específica estabelece
+como ponto de partida do modelo a invariância da razão
+
+com a mudança do item.
+2. Avaliando Engenheiros
+Para demonstrar como o método de Rasch funciona na
+prática, avaliamos cinco engenheiros através de um teste
+composto por cinco programas de computador.
+Aqui cabe um comentário. Uma questão dicotômica só tem
+duas respostas possíveis: verdadeira ou falsa, correta ou
+incorreta, errada ou certa, etc. Por várias razões convém
+utilizar questões dicotômicas na avaliação.
+Do ponto de vista da psicologia do treinamento, Robert
+Marger insiste que uma sequência de exercícios deve ter por
+metas uma conduta final que possa ser facilmente observada e
+classificada como correta ou incorreta. Ao estabelecer os
+objetivos do treinamento, o projetista do curso deve evitar
+conceitos ambíguos como “compreender”, “apreciar”,
+“entender”, etc. Em vez disso, o trainee deve resolver um
+problema, identificar uma característica, recitar uma lista, etc
+[4]. Esse tipo de resposta é dicotômica, pois pode ser
+classificada como correta ou incorreta. Além do mais, a
+matemática do método de Rasch torna-se muito mais simples
+quando se usa itens com respostas dicotômicas.
+Pelas razões acima enumeradas, costuma-se usar questões
+de múltipla escolha na avaliação de participantes em painéis
+de engenharia e em testes de capacitação, tal como o exame do
+National Council of Examiners for Engineering and Surveying
+
+(NCEES). Entretanto muitos especialistas em painéis de
+engenharia consideram questões de múltipla escolha
+inadequadas para escolher os membros de um quadro de
+engenheiros. Esses especialistas insistem que a avaliação deve
+ser feita por meio de questões abertas, cujas repostas não
+podem ser escolhidas de uma pequena lista de opções.
+O interessante é que programas de computador são ao
+mesmo tempo questões abertas e dicotômicas. Assim, os
+autores do presente artigo optaram por programas de
+computador para levantar as probabilidades de acerto,
+necessárias para a aplicação do Teorema de Condorcet-List.
+Utilizaremos os seguintes itens para avaliar a capacidade do
+engenheiro de produzir soluções por meio de computadores:
+Item 1: Escrever um servidor de aplicações para
+Internet.
+Item 2: Utilizar um provador automático de
+teorema como o ACL2 para demonstrar
+propriedades de programas, máquinas e processos.
+Item 3: Usar o sistema de computação algébrica
+Maxima para resolver problemas de controle e
+automação, expansão em série, solução de
+problemas de eletromagnetismo por elementos
+finitos, etc.
+Item 4: O Emacs é um editor de texto extensível
+que oferece ferramentas para organizar projetos de
+engenharia, escrever programas fontes, realizar
+computação algébricas, e lançar um shell, etc. A
+tarefa do engenheiro é estender o Emacs por meio
+da linguagem elisp para dar apoio a projetos
+específicos.
+Item 5: Preparar uma extensão para o gEDA, que é
+um sistema de CAD eletrônico.
+O resultado do teste é apresentado na Tabela I, onde cada
+acerto do engenheiro foi assinalado com o valor 1, enquanto
+cada falha com o valor 0.
+
+O primeiro passo do método é calcular a média das linhas e
+colunas da matriz a fim de estimar os vetores iniciais de
+habilidade e dificuldade, como pode ser visto na Tabela II.
+Na primeira aproximação utilizaremos a média das linhas
+para medir a habilidade do engenheiro. Desta forma, o
+engenheiro 1 tem habilidade inicial de 0.6, já que solucionou
+três itens; enquanto o engenheiro 2 possui habilidade inicial de
+0.4 = 2/5, e assim por diante. Esse escore é o utilizado pela
+Teoria de Testes Clássicos. Essa teoria não leva em conta a
+dificuldade do item; assim, um engenheiro que possuiu
+habilidade de 0.8 em um teste difícil possuiu a mesma
+pontuação de outro estudante que acertou o mesmo número de
+itens em um teste fácil.
+
+
+
+
+A primeira aproximação da dificuldade é obtida pela média
+das colunas. O item 3 é o mais fácil, já que, quase todos os
+engenheiros obteve sucesso nele. No parâmetro de dificuldade
+quanto menor o valor, mais difícil é o item.
+As demais aproximações da habilidade e dificuldade serão
+obtidas pelas equações 13 e 14, respectivamente. Essas
+aproximações serão utilizadas para calcular a matriz de
+probabilidade de acerto através da equação 19. Após várias
+iterações, tem-se uma boa estimativa da habilidade do
+engenheiro, da dificuldade do item e da probabilidade de cada
+engenheiro solucionar um item.
+Na próxima seção será apresentado uma implementação do
+método de Rasch para avaliar engenheiros.
+IV. O PROGRAMA
+O Maxima é um sistema de computação algébrica,
+escrita em Lisp e distribuída gratuitamente com os fontes
+(open source). Há uma grande quantidade de tutoriais e
+manuais sobre o Maxima, tanto em inglês e português, quanto
+em outras línguas. Assim, o leitor interessado poderá aprender
+facilmente como trabalhar com o Maxima [5]. Neste artigo
+utilizamos o Maxima na codificação do método de Rasch.
+O ponto de partida para implementação do método é a
+construção de uma tabela com o resultado do teste aplicado
+aos engenheiros; onde cada entrada contém 1 para sucesso ou
+0 para falha em um determinado item do teste (Tabela I). Essa
+tabela será utilizada para calibração do método de Rasch.
+A calibração é o processo de determinar os parâmetros
+como habilidade e dificuldade, e em consequência determinar
+o engenheiro virtual que reside na origem da escala de
+medida.
+Como apresentado anteriormente, as medições brutas
+não se correlacionam bem com o modelo. No entanto, o
+método estatístico de Máxima Verossimilhança ajusta os
+dados brutos ao modelo, fazendo emergir os parâmetros de
+habilidade e dificuldade. Em [6] é possível encontrar
+explicações aprofundadas sobre estimativa por máxima
+verossimilhança.
+O primeiro passo será calcular a média das linhas e
+colunas da matriz de dados brutos (mat) a fim de estimar o
+vetor inicial de habilidade e dificuldade.
+A função a_logit calcula o vetor de habilidade inicial;
+enquanto d_logit produz o vetor de dificuldade inicial. O
+pacote descriptive contém um conjunto de funções estatísticas
+e deve ser carregado no início, de modo a tornar as funções
+estatísticas disponíveis para o programador.
+
+load( "descriptive" )$
+average(elements):=mean( list_matrix_entries(elements))
+average( matrix([4.5, 7, 3, 4]) );
+4.625
+Em seguida, a matriz com os dados brutos deve ser
+inserida.
+O Maxima permite a utilização de matrizes com número
+variável de linhas e colunas, sem a necessidade de ajustar as
+funções. Veja a função que calcula a média para cada linha da
+matriz, e armazena o resultado em uma lista.
+hits( m ) := (
+lc : matrix_size( m ),
+lin : first(lc),
+r : [],
+for i from 1 thru lin do
+(r : append( r, [average( row( m, i ))])), r);
+Na função acima, o parâmetro m representa a matriz. A
+variável r acumula em uma lista os resultados da aplicação da
+função média para cada linha da matriz através do for-loop.
+Com a aplicação da função transpose, é possível utilizar a
+função hits para calcular a média das colunas da matriz sem a
+necessidade de definir outra função.
+va : hits(mat);
+vd : hits(transpose(mat));
+a_logit( m ) := log(m / (1 - m));
+hablogit : a_logit( va );
+d_logit( m ) := log((1-m) / m);
+diflogit : d_logit( vd );
+O próximo passo é ajustar o vetor de dificuldade,
+subtraindo a média de cada um de seus elementos.
+adj_dif_logit( vec ) := (
+avg : average( matrix(vec) ),
+vec - avg );
+adj_dif : adj_dif_logit( diflogit );
+
+A função probability irá calcular as chances dadas pela
+equação 19. A chance para cada par de habilidade/dificuldade
+será armazenada em um vetor bidimensional.
+probability( A, Dadj ) := (
+a_size : length( A ),
+ad_size : length( Dadj ),
+r_matrix : zeromatrix(a_size,ad_size),
+for i from 1 thru a_size do
+for j from 1 thru ad_size do
+setelmx( %e^(A[i]-Dadj[j]) /
+(1 + %e^(A[i] - Dadj[j])),
+i,j,r_matrix), r_matrix );
+prob : probability( hablogit, adj_dif );
+Em seguida, para atualizar os vetores de habilidade e
+dificuldade, deve-se calcular o residual entre a matriz atual e a
+matriz de probabilidade.
+residual(m,p) := m - p;
+resi : residual( mat, prob );
+sum_row( m ) := (
+lc : matrix_size( m ),
+lin : first(lc),
+col : second(lc),
+r : [],
+for i from 1 thru lin do
+(line: row(m,i), r :
+append( r, [sum(line[1][j],j,1,col)])),
+r);
+sum_row_mat( m ) := -1*sum_row(m);
+sum_var_row : sum_row_mat( vari );
+sum_var_col : sum_row_mat(transpose(vari));
+sum_residual : sum_row( resi );
+sum_residual_col : sum_row_mat( transpose(resi) );
+O próximo passo é calcular a variação da matriz de
+probabilidade.
+variance( m ) := m * (1.0 - m);
+vari : variance( prob );
+Após o cálculo da soma residual e da variância para cada
+uma das duas matrizes dimensionais iremos atualizar os
+vetores de habilidade e dificuldade.
+new_ability_row( h, s, v ) := h - s / v;
+newAbility: new_ability_row
+(hablogit, sum_residual, sum_var_row);
+
+
+new_difficulty_col(a,s,v) := a - s / v;
+newDifficulty: new_difficulty_col
+( adj_dif, sum_residual_col, sum_var_col);
+avg_new_diff( m ) := m - average( matrix(m));
+newadjdif : avg_new_diff( newDifficulty );
+Estes passos devem ser repetidos até que a soma dos
+quadrados dos resíduos (sumquad) seja suficientemente
+pequeno.
+sum_sq( s ) := sum(s[i]^2,i,1, length( s ));
+sumquad : sum_sq( sum_residual );
+O algoritmo de calibração produz uma tabela contendo a
+probabilidade que cada engenheiro tem de produzir uma
+resposta correta para um item. A tabela III apresenta a
+habilidade do engenheiro (Ac), a dificuldade do item (Dr) e a
+probabilidade de acerto.
+
+Para gerar o voto do Condorcet-List foi utilizado o seguinte
+algoritmo:
+Para cada coluna da matriz de probabilidade (Tab. 3) faça:
+1. Verificar na matriz de probabilidade a probabilidade de
+acerto de cada engenheiro. Se a probabilidade de acerto
+do engenheiro for maior que 0.5, o voto do engenheiro
+na tabela de dados brutos (Tabela I) é contabilizado.
+2. Se a maioria dos votos contabilizados no item anterior
+for igual a 1, o voto de Condorcet-List será 1, caso
+contrário 0.
+O algoritmo 1 gera um vetor com o voto do CondorcetList baseado na maioria dos engenheiros especialistas que
+possuem probabilidade de acerto superior a 0.5. Em seguida,
+é adicionado uma linha na matriz de dados brutos com o
+voto do engenheiro Condorcet-List. O método de Rasch é
+novamente aplicado fazendo emergir a habilidade,
+dificuldade e probabilidade de acerto do novo engenheiro.
+A Tabela IV mostra que o engenheiro Condorcet-List
+produziu uma probabilidade de acerto alta, com valores
+chegando a 97%. O resultado do engenheiro Condorcet-List
+foi superior a dos outros engenheiros; por exemplo, para o
+item 3 o engenheiro possuiu uma probabilidade de acerto de
+0.97 enquanto o segundo melhor colocado possui
+probabilidade 0.90. No item mais difícil do teste, o item 1, o
+especialista Condorcet-List possui uma probabilidade de
+
+
+acerto de 0.64, enquanto o segundo melhor colocado possui
+probabilidade 0.38.
+
+V. CONCLUSÃO
+O método de Rasch é amplamente utilizado em Ciências
+Humanas para, entre outras coisas, avaliar alunos e
+profissionais da saúde. Este trabalho mostra que o método
+também pode ser usado para avaliar painéis de engenheiros.
+Neste caso, pode-se utilizar o método de Rasch para obter a
+distribuição de probabilidades de painéis de engenheiros
+especialistas.
+Através do Teorema de Condorcet-List pode-se combinar
+as probabilidades de vários especialistas do painel e obter uma
+probabilidade de sucesso elevada. Uma maneira simples de
+aplicar o teorema seria escolhendo os engenheiros com
+probabilidades de sucesso superior a 0.5 para um determinado
+item, e eleger o voto do Condorcet-List pelo voto da
+pluralidade.
+Repetindo esse processo para cada item, se introduz uma
+nova linha para o painel de especialistas, que corresponde ao
+teorema de Condorcet-List. Em seguida, pode-se repetir o
+processo de calibragem, a fim de obter a probabilidade de
+acerto para o classificador Condorcet-List. Este trabalho
+demonstrou que esta combinação do método de Rasch e do
+teorema de Condorcet-List produz classificações com uma
+probabilidade elevada de estar correta. Como apresentado na
+Tabela IV, o voto da pluralidade (Condorcet-List) produz um
+resultado superior ao voto de engenheiros individuais.
+A aplicação do teorema de Condorcet-List proposto neste
+trabalho tem uma pequena falha que o leitor interessado pode
+querer tentar corrigir. Uma vez que os votantes são escolhidos
+por análise de cada coluna separadamente, o número de
+votantes podem não ser o mesmo para todas as colunas. No
+problema em questão o erro introduzido por esta pequena
+simplificação não impede que o teorema de Condorcet-List
+obtenha probabilidades satisfatórias de sucesso. No entanto,
+pode-se pensar em outra forma mais adequada para a escolha
+dos eleitores.
+

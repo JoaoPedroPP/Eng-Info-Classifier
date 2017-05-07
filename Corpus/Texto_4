@@ -1,0 +1,417 @@
+Analise dos efeito de subtensões em Soft-Starters
+
+
+I. INTRODUÇÃO
+
+PARTIDA eletrônica suave ou soft-starter (SS) é um dos
+métodos eletrônicos de controle principalmente da
+corrente nos motores de indução trifásicos (MIT). Este
+dispositivo é montado entre o motor e a fonte de alimentação
+de energia. Pelo uso de tiristores pode-se controlar a tensão de
+alimentação do motor ou a corrente de partida. A tensão de
+alimentação que supre a máquina elétrica pode ser
+programada para aumentar durante uma sequencia de partida
+por um tempo determinado ou a corrente de alimentação ser
+limitada. O usuário pode ajustar a característica de
+alimentação adaptando-a ao processo e limites de consumo de
+energia.
+Devido a sua construção compacta e com componentes
+eletrônicos, outras ferramentas de controle podem ser
+implementadas neste dispositivo de acionamento sem grande
+aumento de custo. Alguns exemplos destas “facilidades de
+controle” são: proteção térmica para sobrecarga (ajustável),
+sensores de falta de fase, função de pulsos (jog), economia de
+energia (para condições operacionais de baixa carga –
+corrigindo o fator de potência), diagnóstico interno e parada
+suave.
+A aplicação de SS como dispositivos de partida de MIT
+suplanta a conhecida justificativa de reduzir as correntes no
+momento de partida e garantir uma partida sem stress
+mecânico e golpes em tubulações. A aplicação deste tipo de
+acionamento considera também o conceito de redução no
+consumo de energia, como apresentado em [1] e se estende ao
+
+
+uso em acionamento multi-motores como apresentado em [2].
+Alguns conceitos iniciais relacionados ao dispositivo softstarter podem ser revistos em [3].
+Diferentes técnicas de controle podem ser utilizadas para
+ajustar os ângulos de disparos dos tiristores e minimizar os
+efeitos de torques pulsando durante o processo de partida,
+como o uso de redes neurais artificiais (RNA ou Artificial
+Neural Networks - ANN) e sistemas de inferência adaptativos
+com fuzzy conhecidos como Adaptative Neuro Fuzzy
+Inference Systems (ANFIS) [4] ou processadores digitais de
+sinais modificados (Digital Signal Processor - DSP) como
+apresentado em [5].
+O comportamento do MIT quando alimentado por sistemas
+desbalanceados é estudado por vários pesquisadores. Pode-se
+citar o estudo de Faiz [6], que apresenta um método preciso
+para definir a redução de carga nos MIT´s aumentando a
+eficiência e garantindo uma operação segura ao processo.
+É importante ressaltar que o desbalanceamento das tensões
+de alimentação do MIT podem causar perdas econômicas e
+devem ser consideradas nos estudos de queda de tensão
+permitidas aos sistemas quando dos projetos. Em [7]
+apresenta-se um método para esta analise econômica de
+perdas considerando como objeto de estudo um motor de 7,5
+kW.
+Outro ponto a destacar quando da analise de MIT´s
+alimentados por sistemas em sobre e/ou subtensão é o efeito
+causado por aumento da temperatura nos enrolamentos, esta
+análise esta bem discutida nos trabalhos [8]-[9] que abordam
+também aspectos relacionados à vida útil e capacidade de
+carregamento da máquina de indução. Técnicas para analisar
+o comportamento do motor frente a características deformadas
+da fonte de alimentação devem ser citadas, como a injeção de
+sinal de corrente continua no estator para estimar a
+temperatura dos enrolamentos [10].
+A análise do efeito da tensão desbalanceada no MIT com
+projetos de ranhuras abertas e fechadas apresentado em [11] é
+destacado, porque se analisam aspectos das reatâncias de
+sequencia negativas no rotor da máquina.
+A preocupação com a proteção do MIT é recorrente a todos
+os projetos de instalações industriais, porque a falha neste
+equipamento pode causar perda de produção, perda de
+qualidade do produto, entre outros problemas. Quando não há
+dispositivos que possam ser programados para garantir uma
+mínima proteção ao MIT, técnicas utilizando softwares que
+suportam e atendem esta necessidade podem ser
+implementados, como apresentado em [12], onde uma
+ferramenta on line de monitoramento foi implementada e
+testada para um motor de pequeno porte (1,5 kW).
+Em [13] é proposto um sistema controlador para os ângulos
+de disparos dos tiristores (especialmente na configuração série
+back-to-back) para evitar redução de eficiência frente à
+
+
+alimentação em sistemas desbalanceados. E em [14] um novo
+método com algoritmo de compensação da tensão baseado em
+vetores é descrito. Em [15] novas técnicas de controle de
+torque por estimação do fluxo estatórico são detalhadas.
+A preocupação com o comportamento de outros sistemas
+de acionamentos eletrônicos frente a um desbalanço
+operacional é apresentado em [16]. Existem estudos
+específicos analisando o comportamento de sistemas de
+partida com tiristores SCR, em que para avaliar a desempenho
+operacional dos controladores são utilizados sistemas
+desbalanceados como fonte de alimentação, tentando
+identificar os possíveis problemas que sistemas de
+acionamentos eletrônicos possam ter quando estão
+alimentados em condições anormais [17]. Sistemas de
+chaveamento delta-estrela tiristorizados são estudados
+também, devido às características que o uso de componentes
+eletrônicos para chaveamento causam no circuito entre a linha
+de alimentação e a maquina de indução. O desempenho deste
+modelo considerando aspectos relacionados à economia de
+energia é desenvolvido em [18].
+É importante também relatar neste texto os estudos focados
+na identificação de falhas nos MIT´s quando alimentados por
+sistemas eletrônicos de partida, em especial destaca-se o
+trabalho de [19] na analise de falhas no estator. Outra linha de
+pesquisa importante é a que avalia o comportamento térmico
+do SS, e a técnica conhecida por Phase Change Material
+(PCM) apresentada em [20].
+A melhoria do desempenho de sistemas industriais que
+utilizam SS também é uma preocupação recorrente dos
+pesquisadores desta área. Em [21]-[22] é avaliado um sistema
+para reduzir o tempo de resfriamento da chave estática usando
+uma técnica de estimação da temperatura nos enrolamentos
+estatóricos, onde o tempo de recuperação térmico do sistema é
+reduzido em 45%. Em [23]-[24] avalia-se a otimização do
+desempenho de motores de médio/grande potência durante
+partidas com SS eliminando-se os torques pulsantes, e
+mantendo constante a corrente de alimentação em valores préajustados.
+Quando se discute a qualidade de energia nos diversos
+setores industriais, percebe-se claramente que existe uma
+preocupação crescente com os impactos que a má qualidade
+de energia pode causar no desempenho dos equipamentos
+industriais. Em [25] alguns destes efeitos são descritos e
+apresentam-se também exemplos de medidas mitigadoras.
+O comportamento dos SS frente a condições severas de
+falta e a descrição de solução são apresentados no trabalho de
+[26] com a proposta de um esquema de controle resiliente em
+malha-fechada.
+II. METODOLOGIA
+A. Montagem dos Equipamentos
+O método consiste em através da aquisição de dados de
+parâmetros elétricos na entrada e saída do SS, criar quatro
+diferentes experimentos e efetuar medições com um
+analisador de energia. Com os dados obtidos são analisados o
+
+comportamento do SS e então descrito o comportamento do
+equipamento com desbalanço de tensão em uma das fases de
+alimentação.
+Para todos os experimentos ajusta-se uma rampa de partida
+de 25 segundos e continuam as medições por mais 35
+segundos com o equipamento funcionando em regime
+permanente.
+Tem-se neste experimento a montagem de um SS acionando
+um motor, conforme se pode observar nas Figs. 1 e 2. São
+apresentadas nas figuras as conexões entre o SS e a carga,
+bem como, a inclusão do analisador de energia no circuito.
+
+
+O motor ensaiado possui os seguintes dados de placa: 4
+I
+CV, trifásico, 60 Hz, p = 8 , 3.480 rpm , V= 220 V,
+In
+FS=1,15, corrente = 10,5 A, cos ϕ = 0,85 e η= 86,5 % .
+O SS possui dados de fabricante de 4 kW e V=230 V.
+Foi instalado na Fase B da entrada de alimentação do SS
+um variac atuando como resistência variável, como pode ser
+observado na Fig. 3. Assim, pode-se realizar a queda de
+tensão em uma das fases, e assim, aplicar o estudo e análise
+proposta.
+Deve-se salientar, ainda, que o SS é capaz de ajustar
+eletronicamente os parâmetros de saída, ou seja, impede que
+determinadas perturbações que ocorrem na rede elétrica,
+
+
+como subtensão, por exemplo, não interfiram no desempenho
+do MIT ao qual está conectado.
+Existe um limite para essa correção determinado por cada
+fabricante de equipamento, e normalmente informado nos
+dados de placa do SS. No equipamento utilizado neste
+experimento, a tensão mínima é de 200V, ou seja, o
+dispositivo suporta uma redução da tensão de alimentação em
+até 10% do valor nominal.
+
+
+Ajuste da tensão de partida por um tempo pré-definido;
+Pulso de tensão na partida para cargas com alto
+conjugado de partida;
+Redução rápida de tensão a um nível ajustável, (redução
+de choques hidráulicos em sistemas de bombeamento);
+Proteção contra falta de fase, sobrecorrente e subcorrente,
+etc.
+A Fig. 4 ilustra resumidamente a conexão efetuada para
+os experimentos.
+
+
+
+
+Neste estudo provoca-se a subtensão em uma das fases de
+alimentação, com a inserção de um Variac em série entre a
+rede de alimentação o borne de entrada do SS.
+O perfil da tensão aplicada ao sistema em teste está
+representado nas Figs. 5, 6 e 7, onde se nota-se o
+afundamento de tensão na Fase B.
+
+A NBR 5410:2005 destaca que a queda de tensão nos
+terminais do dispositivo de partida do motor, durante a
+partida, não ultrapassem 10% da tensão nominal, exceto em
+aplicações especificas, nomeadas especiais. Além disso, a
+Norma destaca que a maior queda de tensão no ponto de
+conexão com o equipamento deve ser de 7% a partir do
+terminal secundário do transformador MT/BT ou do gerador.
+Instalou-se um analisador de energia na entrada do SS para
+cada caso apresentado no decorrer do artigo, a fim de tornar
+possível avaliar o comportamento da corrente, tensão, fator de
+potencia e potência, conteúdo harmônico e as formas de onda
+produzidas. Em seguida, instalou-se este analisador na saída
+do inversor e os mesmos dados foram avaliados.
+Os testes foram iniciados com a aplicação da tensão nominal
+no SS. Logo em seguida o variac foi sendo ajustado
+gradativamente, diminuindo o nível de tensão na Fase B, até
+que a proteção do equipamento atuasse desligando-o devido
+ao desequilíbrio e subtensão crítica.
+Ressalta-se ainda que a tensão utilizada para os testes foi de
+220 Vac / 60 Hz, trifásica.
+B. Descrição dos experimentos e resultados dos ensaios
+Uma das principais aplicações do SS está aliviar o
+acionamento dos altos conjugados durante a aceleração do
+MIT e, proteger a rede elétrica das correntes de partida
+elevadas.
+Algumas características e vantagens das chaves SS são:
+
+
+Destaca-se na Fig. 5 o afundamento no valor da tensão na
+Fase B em relação às outras fases. Além disso, observam-se
+pequenas oscilações durante o período de análise.
+Na Fig. 6, são apresentadas as formas de onda de tensão e
+corrente na entrada do SS. Conforme esperado, surgem
+formas de onda de corrente deformadas devido à topologia
+eletrônica do dispositivo. Entretanto, destaca-se uma forma de
+onda demasiadamente deformada para tensão somente na fase
+B, já caracterizando os efeitos do afundamento provocado
+para os ensaios.
+
+
+O perfil dos comportamentos das variáveis: tensão de
+entrada SS, corrente de entrada SS, tensão de alimentação do
+motor e corrente de alimentação do motor estão representados
+nas Figs. 8, 9, 10 e 11 respectivamente.
+A Fig.8 apresenta o perfil da tensão durante este ensaio.
+Devido à distância entre a fonte e o SS, ocorre uma queda de
+tensão nos condutores. Entretanto, manteve-se o maior
+afundamento de tensão na Fase B.
+
+
+A Fig. 9 aborda o comportamento das correntes durante o
+período de análise. Nota-se que durante a partida, a corrente
+mantém-se controlada e, em regime permanente, ocorre uma
+diminuição brusca em sem valor até o momento de
+desligamento.
+
+A Fig. 7 complementa a informação apresentada na Fig. 6,
+uma vez que, destaca as componentes harmônicas de tensão.
+Nota-se na Fase B um conteúdo harmônico bastante
+acentuado com significante relevância até a 13º ordem.
+Destacam-se ainda as componentes: 3º, 5º, 7º e 9º ordem.
+
+
+
+
+
+O 1º experimento consiste em partir a máquina em carga
+nominal, considerando uma rampa de 25 segundos na partida
+e, aplicando-se a tensão desbalanceada na entrada do SS.
+Após o término da rampa foi mantida a alimentação por 35
+segundos. Este experimento objetiva coletar dados de um
+ciclo de funcionamento do acionamento com carga nominal.
+
+A Fig.10 destaca o perfil para a tensão de alimentação do
+MIT. Nota-se que existe um desbalanço na tensão de saída.
+Entretanto, ao analisar a Fig. 11 fica claro o equilíbrio nos
+valores das correntes nas três Fases.
+Ao comparar as Figs. 10 e 11 observa-se que, na medida
+em que o nível de tensão aumenta o valor da corrente diminui.
+Além disso, observa-se que mesmo quando os valores de
+tensão não estão equilibrados, os valores das correntes estão.
+Isso evidencia a eficiência do SS na manutenção do
+desempenho da máquina, ou seja, mesmo com o desbalanço
+
+
+na tensão de entrada do sistema de acionamento, o MIT é
+submetido a uma potência constante, mesmo sob carga.
+
+
+O 2º experimento consiste em partir a máquina sem carga
+no eixo, considerando uma rampa de 25 segundos na partida
+e, aplicando-se a tensão desbalanceada na entrada do SS.
+Após o término da rampa foi mantida a alimentação por 35
+segundos. Este experimento objetiva coletar dados de um
+ciclo de funcionamento do acionamento com a máquina em
+vazio.
+Os mesmos dados do 1º experimento foram coletados e
+apresenta-se na Fig. 12 o perfil do comportamento da variável
+corrente de alimentação do motor para exemplificar.
+O 3º experimento consiste em partir a máquina sem carga
+no eixo, considerando uma rampa de 25 segundos e,
+aplicando-se a tensão desbalanceada na entrada do SS.
+Após o fim da rampa de partida, manteve-se o motor
+operando por 15 segundos sem carga e, logo em seguida, o
+submeteu ao carregamento nominal por 20 segundos.
+Este experimento objetiva coletar dados de um ciclo de
+funcionamento com degrau de carga para o SS.
+Os mesmos dados do 1º experimento foram coletados e
+apresenta-se na Fig. 13 o perfil do comportamento da variável
+corrente de alimentação do motor para exemplificar.
+
+Nota-se o rápido declínio no valor de corrente durante a
+partida em vazio, assim como, a baixa corrente durante a
+operação em vazio. Finalmente, o degrau no valor das
+correntes no momento da aplicação da carga mecânica.
+Evidencia-se também que durante a operação em vazio
+ocorre uma diferença relevante entre a fase que sofreu
+afundamento e as demais. Além disso, fica evidente a
+correção imposta pelo SS quando o MIT opera sob carga
+nominal.
+O 4º experimento consiste em partir a máquina com carga
+nominal no eixo, considerando uma rampa de 25 segundos e,
+aplicando-se a tensão desbalanceada na entrada do SS.
+Após o fim da rampa de partida, manteve-se o motor
+operando por 15 segundos com a carga e, logo em seguida,
+deixou-se o MIT sem carregamento no eixo por 20 segundos.
+Este experimento objetiva coletar dados de um ciclo de
+funcionamento com degrau inverso de carga para o SS,
+durante o regime de operação.
+Os mesmos dados do 1º experimento foram coletados e
+apresenta-se na Fig.14 o perfil do comportamento da variável
+corrente de alimentação do motor para exemplificar.
+
+
+
+
+Nota-se que durante a partida, com carga, ocorre um
+decaimento no valor da corrente de forma mais suave devido
+à aplicação da função rampa programada no SS. Dessa forma,
+o torque aplicado sobre a carga mecânica durante a partida é
+menos severo.
+Durante o regime permanente de operação, as correntes
+ficam equilibradas devido à ação do dispositivo de
+acionamento.
+Finalmente, no momento em que há o
+desacoplamento da carga mecânica ocorre também um degrau
+nos valores das correntes.
+Os experimentos executados anteriormente permitem
+conhecer melhor o comportamento do SS e do MIT para
+diferentes regimes de carregamento.
+O 5º experimento consiste em aplicar diferentes subtensões
+na entrada do SS. O resumo dos valores aplicados esta
+descrito na Tabela I. O critério de parada neste ensaio foi o
+momento em que o dispositivo não conseguisse mais manter o
+correto funcionamento da máquina ou simplesmente não
+permitisse a partida. Para isso, foram aplicados tapes no
+manuseio do variac.
+
+A Fig.15 apresenta o perfil das tensões e correntes de
+entrada durante o ensaio sem carga no motor, porém, com um
+afundamento de tensão, na Fase B da entrada, de
+aproximadamente 12,53% em relação ao valor nominal
+conforme Tape 1 da Tabela I.
+
+
+III. CONCLUSÕES
+Este trabalho apresentou estudos referentes à aplicação de
+subtensão em uma das fases no sistema de acionamento por
+soft-starter (SS). Com isso, pode ser verificado tanto o
+comportamento do dispositivo de acionamento quanto o
+desempenho do motor de indução trifásico (MIT).
+O sistema foi submetido a diferentes cenários operativos,
+para que assim, fosse possível verificar a eficácia do SS.
+Primeiramente aplicou-se tensão equilibrada na entrada do
+SS e, posteriormente, tensão desequilibrada com afundamento
+no valor da Fase B através da aplicação de um variac
+adaptado para funcionar como resistência em série.
+Finalmente, aplicaram-se degraus de afundamento na Fase
+B até que o dispositivo de acionamento não conseguisse mais
+manter a condição normal operativa do MIT ou simplesmente
+não fosse capaz de partir a máquina.
+Verifica-se ao analisar os gráficos apresentados nas Fig. 8 a
+Fig.15, assim como na Tabela I, que quando se tem uma
+queda de tensão em uma das fases da entrada, o soft-starter
+corrige a diferença na saída, ou seja, o dispositivo tenta
+compensar a falha na alimentação de entrada impedindo que
+comprometa de forma significativa a correta operação da
+máquina.
+Conforme pode ser verificado, também na Tabela I,
+mesmo com a queda de tensão de 12,53% na Fase B de
+entrada o soft-starter ainda conseguiu mitigar o problema.
+Entretanto, para valores de queda de tensão acima de
+12,53% o MIT não partiu. Notou-se ainda nos ensaios, que a
+chave de partida iniciava o processo, mas o sistema de
+controle e proteção do dispositivo protegia o SS com
+indicação de falta de fase. Constata-se ainda que durante a
+partida, a queda de tensão na saída do SS pode ser elevada.
+A maior eficácia do SS, com relação a afundamento de
+tensão em uma das fases na entrada, está durante o regime
+permanente de operação, no qual, enquanto na entrada ocorre
+uma diferença na tensão de 12,53% na saída observa-se
+apenas uma queda de apenas 1,49%.
+As características anteriormente descritas indicam que o
+soft-starter é um excelente dispositivo para acionamento de
+motores de indução trifásico, principalmente em sistemas de
+pequeno porte, que operam em redes com desequilíbrio de
+
+tensão nas Fases, geralmente devido a grande quantidade de
+cargas monofásicas.
+Além disso, auxilia na proteção dos motores de indução
+trifásicos e alívio da rede elétrica durante a partida e parada,
+bem como, suaviza o torque e mitiga os esforços mecânicos
+no eixo e na carga durante a partida.
+Portanto, é um “beneficio” extra que estes equipamentos
+trazem e que mitigam o maior numero de falhas nos motores,
+além da conhecida redução da corrente de partida e em alguns
+casos eficiência energética.
+

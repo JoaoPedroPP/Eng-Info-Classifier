@@ -1,0 +1,419 @@
+Projeto Piloto para uma rede GPON no Brasil
+
+I. INTRODUÇÃO
+
+A demanda por aplicações e serviços media-rich, tais como
+computação em nuvem (cloud computing), vídeo sob
+demanda (VoD), videoconferência, transferência de imagens
+de alta resolução, televisão de alta definição (HDTV – HighDefinition Television) e jogos online multiusuário, é crescente.
+Em um futuro próximo, provedores de serviço deverão
+disponibilizar, nas residências, larguras de banda simétricas da
+ordem de 100 Mbps, e até 1 Gbps, enquanto redes de acesso
+convencionais, baseadas na tecnologia DSL (Digital
+Subscriber Line) em par metálico, e a solução híbrida fibracabo coaxial (HFC – Hybrid Fiber-Coax) disponibilizam
+capacidades bem inferiores. Um estudo da Cisco Virtual
+Networking Index (VNI) indica que o tráfego global de
+Internet deverá triplicar no período 2013-2018, dando início,
+então, à chamada “era Zettabyte” [1].
+Atualmente, redes ópticas passivas (PONs – Passive
+Optical Network) são consideradas a mais promissora solução
+de acesso em banda larga, com baixos custos de
+instalação/manutenção e facilidade de upgrade. O crescimento
+e o amadurecimento dessa tecnologia são notáveis: em 2013,
+ao redor do mundo, já havia em torno de 100 milhões de
+assinantes e 300 milhões de residências com cabeamento
+óptico (premises passed) [2], [3].
+A maior parte de PONs instaladas no mundo tem arquitetura
+ponto-multiponto (P2MP), com topologia em árvore: um
+terminal de linha óptico (OLT – Optical Line Terminal), na
+central, é conectado a múltiplos terminais de rede ópticos
+(ONT – Optical Network Terminal), instalados nas imediações
+do usuário, através de uma rede de distribuição óptica (ODN –
+
+Optical Distribution Network) composta exclusivamente de
+fibras ópticas e divisores passivos. O controle de acesso ao
+meio é baseado em múltiplo acesso por divisão de tempo
+(TDMA − Time Division Multiple Acces), daí a denominação
+TDM-PON. Dois principais padrões são adotados: GPON
+(Giga PON) e EPON (Ethernet PON), com diferentes
+características de taxa agregada de linha, eficiência de
+protocolo TDMA, balanço de potência entre o OLT e os ONTs
+e custos [4], [5]. O padrão GPON é a principal escolha na
+América do Norte, Europa, e também no Brasil. O padrão
+EPON é adotado, principalmente, na Ásia. Estudos mostram
+que a tecnologia GPON deverá prevalecer sobre as demais,
+pela capacidade, eficiência e flexibilidade [6], [7].
+Recentemente, o Brasil sediou grandiosos eventos,
+incluindo a Copa do Mundo, a Copa das Confederações, a
+Jornada Mundial da Juventude, o Rock in Rio, a Olimpíada
+Militar, e se prepara, ainda, para transmitir ao mundo os Jogos
+Olímpicos em 2016. Para que esses eventos sejam realizados
+com qualidade, há necessidade de ampliação da planta de
+telecomunicações e da utilização de novas tecnologias,
+visando aumentar a capacidade de transmissão das redes.
+Atualmente, as redes de transporte, que interligam estações
+backbone aos pontos de presença (PoP), operam com altas
+taxas de transmissão, de até 100 Gbps. Entretanto, há urgência
+no aumento da capacidade das redes de acesso.
+Este trabalho tem como objetivo apresentar um projetopiloto de implantação de uma rede GPON, aplicável a
+qualquer operadora de telecomunicações, e está organizado da
+seguinte maneira: na Seção 2, é apresentada uma visão geral
+de uma rede típica de telecomunicações e, em seguida, a
+planta do projeto GPON. Na Seção 3, os testes de campo são
+descritos e os principais resultados associados – vazão,
+latência e perda de quadros – são apresentados e discutidos.
+Na Seção 4, os custos de investimento (CAPEX − CAPital
+EXpenditure) e de operação (OPEX − OPerating
+EXpenditure) da tecnologia GPON são comparados com os de
+outras três alternativas de solução para a rede de acesso. De
+um modo geral, constatou-se que a solução GPON é viável,
+técnica e financeiramente, considerando os mercados
+residencial e SOHO (Small Office/Home Office). Por fim, na
+Seção 5, as conclusões do trabalho são apresentadas.
+II. REDE PON: CARACTERÍSTICAS E ARQUITETURA
+
+A Fig. 1 mostra uma visão geral e esquemática de uma rede
+de telecomunicações: à esquerda, as redes de transporte, que
+conectam os backbones de dados (IP – Internet Protocol) e de
+voz (PSTN − Public Switched Telephone Network) aos pontos
+de presença; à direita, as possíveis redes de acesso aos
+usuários, incluindo a rede GPON.
+As redes de transporte são constituídas, em sua maioria, de
+redes ópticas SDH (Synchronous Digital Hierarchy),
+
+
+configuradas em anel ou em malha, sobre uma rede DWDM
+(Dense Wavelength Division Multiplexing). Redes estatísticas
+Metro-Ethernet de alta capacidade, configuradas em anel,
+também são utilizadas e, mais recentemente, redes de
+transporte óptico (OTN – Optical Transport Network) sobre
+DWDM. Os pontos de presença são estrategicamente
+distribuídos, de forma a atender diversas regiões.
+Tradicionalmente, as redes de acesso operavam com redes
+determinísticas em hierarquias digitais plesiócrona (PDH −
+Plesiochronous Digital Hierarchy) e síncrona (SDH), em uma
+das seguintes configurações: redes metálicas, limitadas a 2
+Mbps (circuito E1); redes ópticas com modens de até 16 x E1;
+enlaces de micro-ondas de alta capacidade (8 x 155 Mbps) ou
+via satélite (n x 34 Mbps limitados a 155 Mbps por
+transponder de 72 MHz de banda); anéis ópticos SDH de nova
+geração (SDH NG), com interfaces e mapeamento de circuitos
+compatíveis com o padrão Ethernet.
+
+
+Gradativamente, os circuitos de baixa e média capacidades,
+fornecidos via rede tradicional SDH, estão migrando para a
+rede GPON. Os principais fatores que contribuem para esse
+fato são: crescente demanda por largura de banda; comprovada
+robustez da rede; simplicidade no processo de ativação de
+novos circuitos e de upgrade dos já existentes. A plataforma
+GPON disponibiliza diversas interfaces: E1 (2 Mbps), FETH
+(até 100 Mbps) e, em alguns casos específicos, circuitos STM1 (155 Mbps). Considerando aplicações de voz, dados e vídeo,
+todo o tráfego é transportado por uma única rede de
+comutação de pacotes IP/MPLS (Internet Protocol/Multi
+Protocol Label Switch). A interface GETH (1 Gbps) é ainda
+utilizada para a conexão entre a rede GPON, mais
+especificamente o OLT, e a rede de transporte.
+
+A. Rede GPON
+O escopo inicial do projeto GPON foi substituir a rede
+metálica em operação, cujas características são: tecnologia
+XDSL e atendimento máximo a 250 usuários, limitados à taxa
+de 2 Mbps e a uma distância máxima de 3 km da central, para
+garantir uma taxa de erro de bit (BER – Bit Error Rate)
+melhor que 1010. Nessa configuração de rede, é necessário
+concatenar vários circuitos de 2 Mbps para atender usuários
+com requisito de maior capacidade, como o caso do serviço de
+internet de banda larga. Esse procedimento utiliza maior
+
+
+número de equipamentos por usuário e apresenta degradações
+decorrentes de problema de sincronismo de relógio.
+O projeto GPON adotou um perfil conservador: a rede de
+distribuição óptica (ODN – Optical Distribution Network),
+composta de fibra monomodo (SMF – Single Mode Fiber)
+bidirecional e divisores de potência óptica passivos, tem
+alcance em torno de 10 km. As taxas de transmissão
+downstream (descendente) e upstream (ascendente) são,
+respectivamente, de 2,488 Gbps e 1,244 Gbps, em
+conformidade com a recomendação ITU-T G.984. Entretanto,
+as taxas de transmissão por usuário (em cada ONT) são
+limitadas a uma porta E1 (2 Mbps) e uma porta Ethernet
+(10/100 Mbps) e o número máximo de usuários por ramo PON
+é 32. A intenção foi garantir que o balanço de potência do
+enlace apresentasse boa margem de segurança, considerando
+atenuações resultantes da degradação da rede óptica e da
+inserção de divisores de potência para atendimento a novos
+usuários.
+Na direção descendente, voz e dados são combinados e
+enviados no comprimento de onda de 1490 nm; na direção
+ascendente, o tráfego é feito em 1310 nm. Nessa etapa do
+projeto, o tráfego de vídeo na direção descendente
+(comprimento de onda de 1550 nm) não foi disponibilizado.
+Entretanto, essa aplicação poderá ser facilmente implantada,
+através da inclusão de um combinador /divisor de potência e
+dos equipamentos de vídeo propriamente ditos, sem a
+necessidade de paralisação dos sistemas em funcionamento.
+As aplicações de vídeo podem, também, ser disponibilizadas
+utilizando a tecnologia IPTV (Internet Protocol Television).
+A rede de distribuição óptica da maior parte das operadoras
+faz uso de cabos aéreos para atendimento às pequenas e
+médias empresas, que operam com tráfego médio (em
+capacidade e volume). Para serviços que necessitem de maior
+disponibilidade, recomenda-se a construção de um acesso
+redundante. Nesse projeto, foram utilizadas cascatas (ou
+conjuntos) de divisores de potência assimétricos, de duas
+portas, no ramo principal, e com razões de divisão: (60/40,
+70/30, 80/20, 90/10) ou (65/35, 75/25, 85/15, 95/5) e divisores
+de potência simétricos de 2, 4, 8 e 16 portas, nos ramos
+secundários (cabos derivados ou rabichos). A Fig. 2 ilustra,
+esquematicamente, a configuração adotada para a ODN.
+
+
+Nas dependências do assinante (ONT), observam-se, ainda,
+as diversas interfaces disponíveis: para PABX, com entrada
+E1 (2 Mbps) e tecnologia de multiplexação determinística
+TDM; para acesso a internet banda larga em Ethernet (FETH);
+e para interconexão com as redes legadas ADSL.
+
+
+Usualmente, a ODN é dividida em áreas de cobertura, que
+dependem da distância ao OLT e das demandas real e
+projetada dos clientes. Como pode ser observado na Fig. 2, as
+áreas mais próximas do OLT são atendidas por divisores
+assimétricos de maior razão; para as áreas mais afastadas, a
+razão de divisão diminui, de forma que os diversos ramos da
+rede recebam níveis de potência semelhantes.
+O arranjo e posicionamento dos divisores ópticos são, sem
+dúvida, tarefas críticas no cálculo do balanço de potência de
+uma rede PON. Extensas simulações em computador são
+realizadas com o uso de planilhas eletrônicas e, assim,
+diversos cenários são investigados, de forma interativa e
+personalizada, para melhor compreensão de mercados e
+necessidades de clientes. A melhor alternativa deve levar em
+conta desempenho e custo.
+
+comprimentos variáveis – 76, 128, 256, 512, 1024, 2076, 2140
+bytes. Os testes de vazão, latência e perda de pacotes, nas
+camadas L1, L2 e L3, e de acordo com o padrão RFC 2544,
+foram executados utilizando o instrumento de teste MTS5800, da JDSU. Os principais resultados foram extraídos da
+tela do equipamento e estão mostrados na Fig. 3.
+RFC 2544-Teste de vazão
+
+RFC 2544-Teste de latência
+
+III.TESTES DE DESEMPENHO
+
+A realização de testes probatórios de qualidade da rede é
+fundamental para avaliar seu desempenho e estabelecer
+contratos de níveis de serviço (SLA – Service Level
+Agreement) com os clientes, além de verificar o cumprimento
+das recomendações associadas.
+No projeto de implantação de uma rede GPON, estes testes
+são normalmente realizados em três fases distintas. Na
+primeira, os parâmetros de desempenho e de configuração
+informados pelos fabricantes em suas “folhas de teste” são
+verificados. Os testes são realizados em ambiente controlado,
+nas dependências dos próprios fornecedores de equipamentos
+ou em laboratórios de testes da operadora, simulando
+variações de temperatura e umidade, atenuação da fibra,
+degradações e interferências, dentre outras. A segunda fase,
+denominada fase de comissionamento ou aceitação de um
+novo ramo da rede, é executada imediatamente após a
+construção/instalação da rede. Nessa fase, e utilizando um
+equipamento OTDR, são verificados os níveis de potência
+óptica nos vários pontos da rede, de modo a avaliar
+degradações (atenuações e reflexões) ao longo do trajeto e,
+assim, garantir o balanço de potência estabelecido. Ainda
+nessa etapa, são realizados os testes clássicos de rede nas
+camadas física (L1), Ethernet (L2) e IP (L3) do modelo OSI.
+Na terceira fase, de forma gradativa e de acordo com a
+demanda, os circuitos individuais de clientes são ativados e
+continuamente supervisionados pelo sistema de gerência, que
+indica a necessidade de manutenção e/ou recuperação de
+circuito/serviço do cliente.
+A capacidade de uma rede é avaliada pela medição da
+quantidade de dados que podem ser transportados na rede, da
+fonte ao destino, livres de erros, ou com limitada quantidade
+de erros. Os instrumentos de testes normalmente utilizados são
+capazes de simular diversas condições de tráfego e protocolos
+(ATM; Frame Relay; IP; MPEG; JPEG 2K), além de analisar,
+em tempo real, desempenho e habilidade de chaveamento e
+armazenamento dos equipamentos da rede.
+Neste trabalho, foram utilizados os equipamentos AlcatelLucent OLT 7750 e ONU 7342, com as seguintes
+configurações: taxa de transmissão de 1000 Mbps; topologia
+em loop back simétrico; e emulação de quadros de
+
+RFC 2544- Teste de perda de pacotes
+
+
+O teste de vazão apresentou comportamento previsível:
+quadros de menor comprimento têm vazão reduzida, quando
+comparada com quadros de maior comprimento, e
+considerando conexão em camada 3 (L3), devido ao maior
+cabeçalho associado (uso de mais pacotes de controle). Assim,
+por exemplo, para os serviços de voz, que utilizam pacotes
+pequenos, tem-se uma vazão de 60%. Por outro lado, para
+pacotes grandes, tipicamente utilizados em aplicações de vídeo
+streaming, a vazão é muito próxima de 100%.
+O teste de latência (RTD – Round Trip Delay) apresentou
+praticamente o mesmo valor (80 microssegundos) para os
+diversos pacotes testados. Este fato é particularmente
+interessante para aplicações triple play, onde pacotes pequenos
+(voz), médios (dados) e grandes (vídeo) trafegam
+simultaneamente, dispensando, assim, a utilização de
+equalizadores. O RTD obtido é considerado extremamente
+baixo, condição essencial para aplicações de vídeo de banda
+larga e com baixa taxa de compressão, como por exemplo, o
+JPEG 2K. Os codecs mais usados atualmente operam com alto
+nível de compressão, pois utilizam processamentos
+extremamente complexos, e impõem um retardo da ordem de
+300 μs, tornando ainda mais desprezível o RTD obtido.
+Para todos os comprimentos de quadro testados, e
+considerando conexão na camada física (L1), não se observou
+perda de quadros.
+
+
+Para simular a fase de ativação de circuitos de clientes,
+foram realizadas medidas dos níveis nominais de potência
+óptica recebida (sensibilidade de −180 dBm) e transmitida
+pelo ONT, em um período de 6 horas (30 medidas realizadas
+em intervalos de 12 minutos). A potência no OLT foi medida
+durante a fase de implantação do ramo. Os correspondentes
+resultados foram satisfatórios, e. O sinal recebido pelo ONT
+apresentou um comportamento de potência decrescente ao
+longo do período de verificação, indicando uma variação lenta
+(long term drift) da potência do transmissor do OLT, com
+desvio máximo de 1,5 dB, mas ainda dentro do limite da
+sensibilidade do ONT. Por outro lado, a potência de
+transmissão do ONT variou de maneira oscilatória ao longo do
+período analisado, devido a variações na corrente de
+polarização e na temperatura do laser. A máxima variação
+observada foi de 3 dB. Esta diferença no comportamento das
+potências de transmissão e recepção deve-se ao diferente
+desempenho dos circuitos de controle de temperatura do laser
+do OLT e do ONT.
+Concluída a fase de ativação de circuitos, os mesmos
+entram em operação comercial e passam a ser monitorados
+continuamente pelo sistema de gerência. A identificação e
+reparação de falhas são fundamentais para a adequada
+prestação dos serviços. Para os circuitos Ethernet, são
+realizados os testes simples de ping e de velocidade de
+transmissão, utilizando um computador portátil, ou o teste de
+BER mencionado anteriormente, para os circuitos que
+possuam interfaces TDM E1. Após o restabelecimento do
+tráfego, caso o cliente indique degradação em sua aplicação, é
+iniciada uma investigação mais detalhada.
+Os testes anteriores foram concebidos para operar com um
+único feixe e, portanto, não permitem a análise de múltiplas
+VLANs. Além disto, os aplicativos de medição de banda e o
+teste de ping não são suficientes para garantir a qualidade de
+serviços requerida pelas atuais aplicações de clientes, além de
+não pertencerem a nenhuma regulamentação existente. Esses
+fatos têm provocado frequentes divergências entre operadoras
+e clientes, relacionadas ao atendimento da banda contratada e
+ao tempo de resposta da rede: se, por um lado, não há valores
+de referência definidos para avaliação desses parâmetros, por
+outro lado, as operadoras atualmente não disponibilizam
+parâmetros alternativos de avaliação de desempenho.
+A recomendação ITU-T Y1564, por exemplo, permite
+avaliar o tráfego com múltiplos feixes (multistream), bem
+como itens específicos de qualidade de serviço (QoS), como a
+taxa de informação contratada CIR (Committed Information
+Rate) e a taxa de informação em excesso EIR (Excess
+Information Rate), que estão associados à capacidade de
+transmissão garantida pela rede em 100 % do tempo e à
+máxima capacidade que a rede pode oferecer de acordo com o
+carregamento da mesma.
+Para aperfeiçoar os testes, pode-se, ainda, utilizar o padrão
+RFC 6349, cujo foco é a qualidade de serviço (QoS) do
+protocolo TCP, estabelecendo parâmetros para avaliação de
+desempenho da rede com base nos clientes mais exigentes.
+Assim, parâmetros como tamanho da janela (window size) e
+tamanho do buffer (buffer size), podem inviabilizar
+
+
+determinadas aplicações dos clientes, necessitando o
+desenvolvimento de ferramentas que atuem no controle
+(policing) e dimensionamento (shaping) dinâmico de
+parâmetros críticos na transmissão.
+Estas recomendações ainda não são usadas de forma
+sistemática pelas operadoras, embora haja interesse na
+utilização das mesmas, como forma de assegurar a qualidade
+da rede sob o ponto de vista do usuário (payload), em
+detrimento ao procedimento adotado até então, muito
+associado aos interesses das operadoras e fornecedores.
+Acredita-se que os próprios sistemas de gerência
+disponibilizados pelos fabricantes dos equipamentos deverão
+sofrer um upgrade no sentido de incluir determinados
+parâmetros elencados nas referidas recomendações.
+IV. ANÁLISE DE CUSTOS
+A viabilidade econômica de uma nova tecnologia e,
+consequentemente, a decisão de implantação dessa solução,
+dependem de uma análise comparativa de seus custos de
+investimento (CAPEX) e de operação (OPEX) com os de
+tecnologias competidoras. Em adição, as propostas técnicas de
+fornecedores / fabricantes de equipamentos – desempenho,
+durabilidade, suporte e reposição de peças – devem ser
+analisadas.
+Neste trabalho, de forma hipotética e para fins de
+comparação das soluções, foram adotadas as seguintes
+características de projeto: cabeamento aéreo; oito sites em um
+raio de 20 km, com 16 pontos de atendimento a usuários, cada
+qual com capacidade de 12 Mbps (10 Mbps dados e 2 Mbps
+voz); serviço de dados (L2L e internet banda larga); serviço de
+voz (30 troncos analógicos (TDM) ou 200 ramais VoIP).
+Considerou-se, ainda, que os potenciais usuários estão
+localizados em prédios comerciais e/ou condomínios planos.
+A Tabela I faz a comparação de custos CAPEX e OPEX da
+nova solução GPON com os de soluções já em uso para a rede
+de última milha, indicadas na Fig. 1: modem óptico; SDH NG;
+link de micro-ondas; link de satélite. Os preços sugeridos são
+os de lista de fabricantes.
+Observa-se que a solução GPON se mostra muito
+interessante também sob o ponto de vista de custos, quando
+comparada às demais alternativas. Seu custo total (CAPEX +
+OPEX) é ligeiramente menor do que o das tecnologias
+tradicionalmente empregadas: SDH NG + SHDSL e enlace de
+micro-ondas. Considerando as alternativas utilizadas em
+condições específicas de atendimento, como é o caso da
+solução satélite quando se deseja agilidade na implantação, ou
+da solução do modem óptico, quando se deseja alta capacidade
+de tráfego, a solução GPON é ainda mais atraente,
+representando apenas 10% do custo associado à implantação
+das mesmas.
+Face ao exposto, acredita-se que a tecnologia GPON
+encontra-se em fase “madura” de utilização, apresentando uma
+ótima relação custo versus beneficio para a implantação das
+redes de acesso de última milha, incluindo aplicações em
+tempo real.
+
+
+V. CONCLUSÃO
+Este trabalho apresentou um projeto-piloto de rede
+GPON, incluindo os principais resultados de medidas – vazão,
+latência e perda de quadros. Os custos de investimento
+(CAPEX) e de operação (OPEX) da tecnologia GPON foram
+comparados com os de outras três alternativas de solução para
+a rede de acesso. De um modo geral, constatou-se que a
+solução GPON é viável, técnica e economicamente,
+considerando o mercado residencial e SOHO (Small
+Office/Home Office).Considerando, ainda, as atuais
+necessidades de capacidade e qualidade para aplicações
+multimídia de banda larga, redes GPON podem operar
+associadas às redes de comutação por pacotes/células, das
+quais se destacam: redes com protocolo ATM (células de 53
+bytes, para tráfego de voz, dados e vídeo); redes com
+protocolo Frame Relay (quadros de comprimento variáveis
+
+entre 262 e 1600 bytes, para tráfego de voz e dados); redes
+com protocolo IP (pacotes de 1518 bytes, para tráfego de voz,
+dados e vídeo); redes com protocolo MPEG 2 (quadros de 188
+bytes, para tráfego de vídeo e áudio).
+Atualmente, as operadoras brasileiras estão ativando novos
+circuitos, realizando testes complementares na tecnologia
+GPON e investigando a possibilidade de se usar a tecnologia
+10 GPON. Nesse caso, todas as placas de interface do lado da
+rede do backbone são mantidas, sendo substituídas apenas as
+placas de controle, gerência e interface PON.
+
