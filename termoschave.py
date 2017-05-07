@@ -22,7 +22,7 @@ def comp():
     pLN = ['PLN', 'NLP', 'nltk', 'línguas naturais', 'língua natural', 'linguística', 'tradução automática', 'semântica']
     dispMoveis = ['J2ME', 'MIDlet', 'CLDC', 'MIDP', 'GUI', 'aplicativos', 'Android', 'iOS', 'java', 'C#', ' Java', 'API', 'APIs']
     jogosDigi = ['jogos', 'Unity3D', 'Unity', 'VR', 'sprite', 'sprites', 'videogame', 'jogo']
-    sistInt = ['rede neural', 'redes neurais', 'machine learning', 'perceptron' , 'SVM', 'rede convolucional', 'backpropagation', 'algoritmo genético', 'ADALINE', 'vetor de suporte', 'aprendizado de máquina', 'lógica fuzzy', 'Machine Learning', 'neurônio', 'neurônios']
+    sistInt = ['rede neural', 'redes neurais', 'machine learning', 'perceptron' , 'SVM', 'rede convolucional', 'backpropagation', 'algoritmo genético', 'ADALINE', 'vetor de suporte', 'aprendizado de máquina', 'lógica fuzzy', 'Machine Learning', 'neurônio', 'neurônios', 'MLP', 'mlp']
     engSoftware = ['Engenharia de Software', 'CASE', 'desenvolvimento de software', 'gerência de projeto']
     algoEstruDado1 = ['estruturas lineares', 'pilhas', 'listas encadeadas', 'árvores', 'ordenação', 'strings']
     sistDistribuidos = ['comunicação entre processos', 'modelo cliente servidor', 'RPC', 'sincronização', 'transação distribuída', 'P2P', 'cluster', 'cloud', 'Cloud']
@@ -56,7 +56,7 @@ def tele():
     pds = ['sinais digitais', 'transformada z', 'tempo discreto', 'FFT', 'transformada rápida de Fourier']
     comuDigi = ['sistemas de transmissão', 'AWGN', 'ruído branco', 'filtro casado', 'codificação de gray', 'QAM', 'QPSK', 'OOK', 'm-ários', 'ASK', 'bluetooth', 'zigbee', 'BER', 'SER', 'SNR', 'CNR', 'baud-rate', 'baud', 'm-ário']
     tic = ['entropia', 'codificação', 'Shannon-Fano', 'Huffman', 'Lempel-Ziv', 'codificação de canal', 'Hamming', 'detecção de erro', 'convolucionais', 'Viterbi', 'convolucional']
-    comMov = ['sistemas móveis', 'hand-off', 'co-canal', 'modelos de propagação', 'sem-fio', 'padrões celulares', 'GSM', 'AMPS', '3G', 'EDGE', 'interferência', 'roaming', 'broadcast', 'rádio-base', 'CDMA']
+    comMov = ['sistemas móveis', 'hand-off', 'co-canal', 'modelos de propagação', 'sem-fio', 'padrões celulares', 'GSM', 'AMPS', '3G', 'EDGE', 'interferência', 'roaming', 'broadcast', 'rádio-base', 'CDMA', 'Doppler']
     ondasEle =['propagação', 'Maxwell', 'guia metálico', 'eletromagnetismo', 'ondas', 'eletromagnéticas', 'eletromagnético', 'eletromagnética', 'onda', 'radiação', 'linhas de transmissão']
     propAnt = ['propagação', 'antena', 'dipolo', 'Yagi-Uda', 'Friis', 'rádio propagação',  'antenas']
 

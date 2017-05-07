@@ -1,0 +1,522 @@
+Obtenção do Ponto de Máximo Carregamento de Sistemas Elétricos de Potência utilizando Métodos Desacoplados de Newton
+
+I. NOMENCLATURA E SIMBOLOGIA
+PMC – Ponto de máximo carregamento
+FCC – Fluxo de carga continuado
+P-V – Curva magnitude de tensão versus carregamento
+FC – Fluxo de carga
+MC – Margem de carregamento
+PM – Ponto médio
+MDN – Método Desacoplado de Newton
+MDNM – Método Desacoplado de Newton Modificado
+θ – Vetor dos ângulos de fase nodais
+V – Vetor das magnitudes de tensões nodais
+J – Matriz Jacobiana
+Jm – Matriz Jacobiana modificada
+G – Vetor composto pelas equações de balanço de potência
+ativa e reativa das barras do sistema
+ΔP – Mismatches de potência ativa
+ΔQ – Mismatches de potência reativa
+ΔR – Mismatch da equação da reta
+Pgesp – Vetor de potência ativa gerada especificada
+Qg – Vetor de potência reativa gerada
+Pcesp – Vetor de potência ativa consumida especificada
+Qcesp – Vetor de potência reativa consumida especificada
+Pesp – Vetor da diferença entre os vetores de potência ativa
+gerada e consumida especificadas
+Qesp – Vetor da diferença entre os vetores de potência reativa
+gerada e o de potência reativa consumida especificada
+Leq – Submatriz da matriz Jm
+PV – Barra de geração
+PQ – Barra de carga
+
+Vcb – Magnitude da tensão no caso base
+λ – Fator de carregamento
+α – Parâmetro de continuação que determina a nova equação
+de reta
+Ω – Conjunto de todas as barras da rede
+gkl – Condutância série do ramo entre as barras k e l
+bkl – Susceptância série do ramo entre as barras k e l
+
+
+II. INTRODUÇÃO
+
+RECENTEMENTE, vários fatores estão afetando os
+sistemas de energia elétrica brasileiro, entre eles podemos
+destacar a crise hídrica que o país vem sofrendo em regiões
+importantes como Sudeste e Centro-Oeste, fazendo com que
+os níveis dos reservatórios fiquem abaixo da média, e é nessas
+regiões em que se concentra o maior número de usinas
+hidroelétricas do país. Outros fatores como, restrições
+ambientais, atrasos nas obras (usinas e linhas de transmissão
+(LT)) e principalmente o aumento da demanda de energia
+elétrica, estão fazendo com que os sistemas de energia elétrica
+operem próximos de seus limites operacionais, ou seja,
+próximos do ponto crítico, ponto de máximo carregamento
+(PMC) [1] [2].
+A Fig. 1 a seguir mostra o cenário dos reservatórios da
+região sudeste e centro-oeste nos anos de 2013 e 2014.
+Observa-se uma quede acentuada no nível da água dos
+reservatórios no decorrer do ano de 2014 e uma diminuição
+expressiva em relação ao ano de 2013, Fig. 1(a). Foi feito uma
+média dos principais reservatórios localizados nas principais
+bacias existentes na região Sudeste e Centro-Oeste (Rios
+Paranaíba, Grande, Paraná, Paranapanema, entre outras). A
+variação ficou em torno de 50% entre os anos de 2013 e 2014.
+Já para todo o território nacional, o nível dos reservatórios
+variou em torno de 40%, como pode ser visto na Fig. 1(b). Os
+dados foram obtidos do Operador Nacional do Sistema
+Elétrico (ONS) [3].
+Atualmente, setembro de 2015 [3], o nível dos
+reservatórios por regiões no Brasil se encontra com uma
+média de 40% de sua capacidade, conforme mostrado na Fig.
+2.
+Além dos dados do nível dos reservatórios atualmente,
+dados do ONS consideram como um dos cenários brasileiros,
+uma taxa média de crescimento anual do Produto Interno
+Bruto (PIB) de 5% para o quinquênio 2011-2015, o que
+representa uma taxa anual de crescimento da carga para o
+mesmo período equivalente também a 5% [1].
+A combinação desses fatores pode ser desastrosa, pois
+tornam os sistemas elétricos de potência vulneráveis, ou seja,
+
+
+qualquer aumento de carga expõe ao risco de uma situação de
+instabilidade de tensão. Diante disso, visando assegurar uma
+condição segura de operação para os sistemas elétricos de
+potência, surgem vários métodos de análise da estabilidade
+estática de tensão [4-17]. Esses métodos possibilitam avaliar
+as condições de operação do sistema elétrico e de sua margem
+de carregamento segura. Essa análise pode ser realizada por
+meio da curva P-V (obtenção do perfil de tensão das barras
+em função de seu carregamento). Estas curvas são de grande
+importância, pois permitem o entendimento das condições de
+operação do sistema para diferentes níveis de carregamentos, e
+têm sido recomendadas pelas empresas do setor elétrico
+internacional [18] e nacional [19] para a avaliação da
+estabilidade estática de tensão. A obtenção do PMC dos
+sistemas elétricos de potência está entre os principais
+objetivos dos métodos de análise da estabilidade estática de
+tensão. A importância deste ponto reside no fato de definir a
+fronteira entre as regiões de operação estável e instável, além
+disso, neste ponto que se faz a análise modal e são fornecidas
+informações para reforço do sistema [20-21].
+Os métodos mais utilizados para obtenção das curvas P-V
+são o fluxo de carga convencional (FC), método de Newton e
+o fluxo de carga continuado (FCC). O primeiro considerado
+robusto, pois converge quase sempre e com um número
+reduzido de iterações, mas devido a problemas de
+singularidade da matriz Jacobiana J no PMC, não obtém com
+precisão. Por outro lado, o FCC supera os problemas de
+singularidade no PMC devido à adição de equações
+parametrizadas que possibilita com isso, a determinação
+precisa do PMC [6-17]. O modo como este parâmetro é
+escolhido é que difere os métodos de FCC.
+Com base nesse contexto, o objetivo deste trabalho é
+apresentar um estudo da utilização de outros métodos de FC
+para a obtenção completa das curvas P-V. Esses métodos,
+derivados do FC convencional e presentes na literatura, é o
+Método Desacoplado de Newton (MDN), cujos algoritmos
+simultâneo e alternado são aplicados ao FCC com o objetivo
+de obter o PMC dos sistemas elétricos de potência com uma
+precisão tão boa quanto se queira. Neste trabalho se propõem
+o Método Desacoplado de Newton Modificado (MDNM) que
+utiliza a técnica de parametrização geométrica proposta em
+[8], na qual se elimina a singularidade da matriz Jacobiana
+pela adição da equação de uma reta que passa no plano
+formado pelas variáveis fator de carregamento e magnitude da
+tensão de uma barra k. O interesse pelo uso dos métodos
+desacoplados em particular, se deve à necessidade de redução
+do tempo computacional exigido pelos FCC para o traçado
+das curvas P-V. Nesse trabalho são feitas comparações entre
+os desempenhos dos FCC utilizando o método de Newton e o
+método de Newton desacoplado considerando os algoritmos
+de resolução simultâneo e alternado. Cabe ressaltar que o
+desacoplamento altera o processo de convergência,
+modificando o caminho percorrido entre o ponto inicial e a
+solução, mas não provoca alterações significativas na solução
+final do problema original de fluxo de carga [21].
+Os resultados foram obtidos para os sistemas testes do
+IEEE e sistemas de grande porte como o sistema Sul-Sudeste
+Brasileiro de 638 barras e o sistema de 904 barras do Sudoeste
+Americano.
+
+
+
+III. FLUXO DE CARGA CONTINUADO
+Os sistemas elétricos de potência em estudos de
+estabilidade estática de tensão são representados pelo seguinte
+conjunto de equações do FC:
+em que λ é o fator de carregamento, V e θ os vetores das
+magnitudes das tensões nodais e o ângulo das tensões nodais,
+Pesp = Pgesp - Pcesp o vetor da diferença entre as potências ativas
+gerada e consumida para as barras de carga (PQ) e de geração
+(PV), e Qesp = Qg - Qcesp o vetor da diferença entre as
+potências reativas gerada e consumida para as barras de carga
+PQ. ∆P é denominado resíduo (mismatch) de potência ativa e
+
+
+
+
+sendo Ωk o conjunto de todas as barras diretamente conectadas
+à barra k, (Yk,k=Gk+jBk) o elemento da diagonal k da matriz
+admitância nodal (Y), e (ykl=gkl+jbkl) à admitância série do
+ramo que conecta as barras k e l. Depois de definir um padrão
+de variar a carga e uma estratégia de despacho de geração,
+utilizando um FC é realizado o traçado da curva P-V por meio
+de sucessivas soluções de (1). Nesse processo, Pesp e Qesp são
+as incógnitas independentes, enquanto que V e θ, exceto V e θ
+da barra de referência (slack) e V das barras de geração (PV),
+são as incógnitas dependentes. Como λ foi introduzido como
+incógnita em (1), o sistema de equações não lineares resultará
+em n equações e n+1 incógnitas. Podendo assim, qualquer
+uma das n+1 incógnitas ser definida como parâmetro da
+continuação. A forma de identificar cada solução ao longo da
+curva trajetória de soluções a ser obtida é denominada
+parametrização. O PMC é obtido, por exemplo,
+incrementando gradualmente o λ, a partir do ponto inicial caso
+base (λ=1) até um valor onde não mais se encontra solução
+(FC não converge ou diverge). Neste ponto, em geral, um
+controle de passo é realizado consistindo numa simples
+diminuição no incremento de λ e uma próxima solução é
+obtida a partir da última solução encontrada. Após várias
+repetições desse processo, o último ponto convergido é
+considerado o PMC. No entanto, conforme comentado, a
+divergência do Fluxo de Carga é devido à singularidade de J
+de (1) no PMC e, consequentemente, determiná-lo
+precisamente não é possível. Como visto na introdução desse
+trabalho, muitos autores propuseram diferentes formas de
+implementar os conhecidos métodos da continuação para
+eliminar as dificuldades numéricas relacionadas pela
+singularidade de J e determinar com precisão o PMC.
+IV. MÉTODO DESACOPLADO DE NEWTON MODIFICADO
+A técnica de parametrização utilizada no MDNM foi
+desenvolvida a partir de [8], no qual se acrescenta uma
+equação de reta ao sistema (1), a qual passa por um ponto “O”
+escolhido (λ0, Vk0) no plano de coordenadas formada pelas
+variáveis fator de carregamento (λ) e magnitude da tensão
+nodal (Vk) de uma barra k qualquer:
+
+O seguinte sistema de equações não lineares é obtido:
+
+em que α é o coeficiente angular da reta. Com a inclusão da
+equação (2), λ é tratado como uma incógnita dependente e α
+pode ser considerada a incógnita independente, ou seja, é
+escolhida como parâmetro, seu valor é prefixado. Como o
+número de incógnitas é igual ao de equações tem-se a
+condição necessária para que a solução seja obtida (desde que
+não haja singularidade). Nota-se que a prefixação de
+α corresponde à técnica de previsão trivial ou polinomial
+modificada de ordem zero [20]. Conforme a Fig. 3 e o
+apresentado em [8], a partir do ponto inicial O (λ0, Vk0) e dos
+respectivos valores calculados para um caso base P (λ1=1,
+Vk1) obtém-se o valor inicial de α1=( Vk1- Vk0)/( λ1-λ0,).
+1.1
+
+
+
+∆Q o de potência reativa, respectivamente, P(θ,V)
+corresponde as equações não lineares de potência ativa e
+Q(θ,V) corresponde as de potência reativa para cálculo dos
+vetores V e θ. Para uma barra k qualquer, Pk(θ,V) e Qk(θ,V)
+são dados por:
+
+
+Fator de carregamento, λ
+Figura 3. Reta inicial que passa por um ponto O (λ0, V0) e pelo ponto caso
+base P (λ1, V1) no plano λ-V.
+
+Colocando o sistema de equações (3) na forma matricial,
+tem-se:
+
+sendo ek o vetor com todos os elementos iguais a zero, exceto
+o da coluna correspondente a barra k cuja a magnitude da
+tensão é utilizada para compor a reta. H=∂P/∂θ, N=∂P/∂V,
+M=∂Q/∂θ e L=∂Q/∂V são submatrizes que formam a matriz J
+do FC. Logo, a equação (4) assume a seguinte forma:
+
+em que ΔQ'=[ΔQT ΔR]T e ΔV'=[ΔVT Δλ]T. O desacoplamento
+permite utilizar dois algoritmos para resolução, o algoritmo
+simultâneo e o algoritmo alternado para os subproblemas Pθ
+(ativo) e QV (reativo). Para este trabalho foi considerado o
+desacoplamento proposto em [22]. Sendo assim, considerando
+a equação (5), premultiplicando ∆P por M'H-1 e somando o
+resultado às equações ∆Q', encontra-se o seguinte sistema de
+equações na forma desacoplada:
+
+em que Leq=L′−M′H-1N′. Nesse caso ao resolver (6) há uma
+exigência na fatoração das duas matrizes: H e Leq. Pode ser
+observado que (5) e (6) são equivalentes, ou seja, os vetores
+de solução ∆θ e ∆V’ são iguais para os dois sistemas, a única
+diferença é que (6) pode ser resolvido de uma forma
+desacoplada, contudo em três passos [22]. O cálculo dos
+mismatches ∆Q’ no ponto (V, θ +H-1∆P) é igual ao cálculo de
+∆Q−M′H-1∆P que também é demonstrado em [22].
+Garantindo que resolvendo (6) de forma desacoplada leva-se
+em conta o acoplamento de M′. Também é demonstrado em
+[22] que ao decorrer do processo iterativo, as correções dos
+ângulos das tensões ∆θN = −H-1N∆V’ são automaticamente
+levadas em conta na iteração seguinte.
+O MDNM calcula as demais soluções via sucessivos
+incrementos (Δα) no valor do parâmetro α. Para α=α1+Δα, a
+solução de (3) fornece um novo ponto de operação (λ2,Vk2)
+que correspondente à interseção da reta com a curva trajetória
+de soluções (λ-Vk) cujo novo valor de α (α1+Δα) é
+especificado. Para α=α1, a solução encontrada resultará em
+λ=1,0. As equações a seguir representam o algoritmo
+simultâneo.
+
+Para o algoritmo alternado, o sistema de equações é
+colocado nas seguintes formas:
+
+Deste modo, a cada meia iteração, os vetores das incógnitas
+θ e V são atualizados. Assim, a resolução de (9)
+correspondente à meia-iteração ativa, a qual é responsável por
+atualizar os ângulos de fase das tensões, e da mesma forma, a
+resolução de (10) corresponde à meia iteração reativa, a qual
+por sua vez é responsável pela atualização das magnitudes das
+tensões nodais. Logo, as velocidades de convergência para os
+subproblemas Pθ e QV podem ser distintas [21].
+4.1. Procedimento Geral adotado para o MDNM via
+fluxograma
+A Fig. 4 apresenta o fluxograma do procedimento geral
+adotado para o traçado completo da curva P-V. Já nas Fig. 5 e
+6 são apresentados os fluxogramas dos algoritmos simultâneo
+e alternado como parte do procedimento geral adotado para o
+traçado completo da curva P-V de sistemas elétricos de
+potência.
+
+
+V. RESULTADOS
+Para todos os testes realizados, a tolerância adotada para o
+mismatch total de potência foi de 10–4 p.u. A consideração dos
+limites de potência reativa (Q) nas barras PV's é feito da
+mesma forma que no método convencional de FC. O valor
+adotado para o passo inicial (Δα ) é 0.02.
+5.1. Desempenho do MDNM para sistemas do IEEE
+
+
+A Fig. 7 mostra resultados para o sistema do IEEE-14, o
+ponto V0=0.0 e λ0=0.0 foi escolhido como centro do feixe de
+retas. Na Fig. 7(a) apresenta-se a curva P-V da barra crítica
+(14), obtida via algoritmo simultâneo. O valor do fator de
+carregamento (λ) no PMC é de 1.719 p.u., sendo assim, têm-se
+uma margem de 0.719 em relação à do caso base (λ=1). Na
+Fig. 7(b) é são apresentados os números de iterações
+necessários para o traçado da curva P-V utilizando o
+algoritmo simultâneo e o alternado.
+Observe que próximo a região do PMC o número de
+iterações aumenta sensivelmente utilizando o algoritmo
+simultâneo. Por outro lado, o mesmo não ocorre para o
+algoritmo alternado, cujo número de meias iterações
+permanece baixo durante todo o traçado da curva P-V. A
+razão principal desse baixo número de iterações se relaciona
+com a utilização dos valores recém calculados na subiteração
+Pθ anterior, na subiteração QV seguinte, ou seja, a utilização
+de θv+1 no cálculo de Vv, e na utilização de Vv+1 no cálculo de
+θv.
+
+
+Fator de carregamento λ
+
+Tensão [p.u.]
+
+curva P-V. Observa-se que também neste caso, o respectivo
+PMC é obtido com êxito pelo MDNM, com um número
+reduzido de iterações, Fig. 8(c). Na Fig. 8(b), os pontos da
+curva P-V da barra crítica V30 foram obtidos armazenando-se
+os valores correspondentes ao traçar a curva λ-V11.
+Fator de carregamento λ
+
+PMC
+Fator de carregamento λ
+
+
+A Fig. 9 apresenta resultados para o sistema do IEEE-300
+com o centro do feixe de retas no ponto V0=0.4 e λ0=0.0. Na
+Fig. 8(a) a curva P-V da barra crítica V526 é apresentada e foi
+obtida com o uso do algoritmo simultâneo. O valor no PMC
+de λ foi de 1.0552 p.u., tem-se assim uma margem de
+carregamento de 0.055 p.u., com relação ao ponto de operação
+caso base (λ=1). Os números de iterações para a obtenção da
+curva P-V utilizando o algoritmo simultâneo e o alternado é
+são apresentados na Fig. 9(b).
+Já na Fig. 9(c) foi escolhida uma barra de geração V7057
+para avaliação do desempenho do MDNM. As coordenadas do
+centro de feixe de retas, o ponto “O” foi de V0=0.6 e λ0=0.0,
+mostrando que para qualquer valor entre uma faixa de 0.0 e o
+valor no caso base (0.0 à Vcb) para magnitude da tensão, o
+MDNM não apresentou problemas na obtenção da curva P-V
+e do PMC de qualquer um dos sistemas estudados. Observa-se
+que toda margem de carregamento foi obtida, inclusive um
+ponto após o PMC que pertence à parte de baixo da curva PV. O número de meias iterações permanece baixo conforme a
+Fig. 9(d).
+
+
+Fator de carregamento λ
+Fator de carregamento
+
+As tabelas I e II mostram o desempenho do MDNM para os
+sistemas do IEEE de 30, 57, 118 e 300 barras com diferentes
+coordenadas do centro de feixe de retas. Na tabela 1 foi
+utilizado o feixe de reta com centro em V0=0.0 e λ0=0.0 e na
+tabela 2 em V0=0.4 e λ0=0.0. Os números de iterações totais
+utilizadas para obtenção da margem de carregamento são
+significativamente maiores para o algoritmo simultâneo do
+que para o alternado. Nota-se também que o valor do PMC
+obtido praticamente não se afeta com a mudança no centro do
+feixe de retas. Por outro lado, com a mudança do centro de
+feixe de retas, há uma ligeira interferência no desempenho de
+ambos os algoritmos de resolução (simultâneo e alternado) em
+termos de número de iterações, ou seja, ocorre uma pequena
+diminuição do número iterações totais.
+Já a tabela III, apresenta o desempenho do MDNM
+considerando as coordenadas do centro do feixe de retas em
+V0=0.4 e λ0=0.0 e agora com passo de 0.04. Deseja-se nesse
+caso avaliar o desempenho do método proposto em relação à
+
+
+variação do tamanho do passo, neste caso, passo duplicado.
+Observa-se uma sensível redução no número total de iterações
+para ambos os algoritmos, no entanto, tanto desempenho,
+quanto a precisão do cálculo do PMC não foram
+sensivelmente prejudicados.
+TABELA I. DESEMPENHO DO MDNM CONSIDERANDO O PONTO “O”
+EM (λ=0.0, V0=0.0).
+Sistemas
+IEEE
+
+Simultâneo
+Iterações
+
+PMC
+
+
+normalizados considerando o primeiro procedimento e se
+encontram na segunda coluna das tabelas. Para o segundo
+procedimento também é apresentado o número total de
+iterações (NTIA) que a matriz foi atualizada.
+Observa-se que em ambos os procedimentos há uma
+vantagem do algoritmo desacoplado alternado em relação ao
+simultâneo, já que para alcançar o PMC os tempos de CPU
+(TCPU) são bem menores. Com base nesses dados, também se
+pode afirmar que ao fazer uso do segundo procedimento, o
+algoritmo alternado é mais eficiente. Resultados alcançados
+apenas com uma simples modificação de procedimento e que
+consiste na atualização da matriz somente se o sistema sofrer
+mudança significativa, e não a cada iteração.
+
+5.2. Influência de atualizar as matrizes H e Leq do MDNM
+O principal objetivo deste tópico é avaliar a influência da
+atualização das matrizes H e Leq no desempenho do MDNM,
+considerando os algoritmos de resolução simultâneo e
+alternado. Dois procedimentos são considerados. No primeiro,
+as matrizes H e Leq são atualizadas a cada iteração e no
+segundo procedimento, somente quando for necessário, ou
+seja, se quando ocorrer alguma mudança significativa nas
+características do sistema (mudança do tipo das barras PQ
+para PV, devido atuações dos limites). Nas duas situações foi
+considerado o centro do feixe de retas em (λ=0.0, V0=0.4) e
+passo quadruplicado Δα=0.04.
+Para os dois procedimentos, os tempos de CPU requeridos
+ao utilizar os algoritmos de resolução e o número total de
+iterações (NTI) necessário para o traçado da curva P-V são
+mostrados nas tabelas 4 e 5. O tempo de CPU considerado é o
+tempo total gasto para que o MDNM obtenha o PMC a partir
+do caso base. Os valores dos respectivos tempos foram
+
+5.3. Desempenho do MDNM para sistemas reais de grande
+porte
+As Figs. 10 e 11 apresentam resultados para sistemas reais
+de grande porte, no caso uma configuração de 638 barras do
+sistema Sul-Sudeste Brasileiro e o sistema de 904 barras
+localizado no Sudoeste Americano.
+A obtenção das curvas P-V pelo MDNM utilizando o plano
+formado pelas variáveis fator de carregamento e magnitude de
+tensão da barra crítica não foi apresentado aqui por ser
+considerado simples, uma vez que as curvas P-V das barras
+críticas apresentam uma curvatura quadrática facilitando a sua
+obtenção. Portanto a idéia aqui foi utilizar a tensão de barras
+que apresentam curvaturas mais agudas que permitam utilizar
+todo o procedimento apresentado pelo fluxograma da Fig. 4.
+A Fig. 10(a) apresenta resultados do MDNM para a barra PV
+(V403 em função do carregamento λ) e o parâmetro utilizado
+foi o coeficiente angular (α) da reta. A Fig. 10(b) mostra a
+região do PMC ampliada e pode-se notar que o PMC foi
+obtido sem problemas numéricos, possibilitando assim obter
+também pontos pertencentes a parte de baixo (instável) da
+curva P-V. A Fig. 10(c) foi obtida armazenando-se os valores
+dos respectivos pontos da barra crítica P-V150 durante o
+
+Fator de Carregamento λ
+PM
+PMC
+Fator de Carregamento λ
+PMC
+Fator de Carregamento λ
+
+
+processo de obtenção dos pontos da curva λ-V403. O número
+de meias iterações utilizadas para geração da curva P-V por
+meio do algoritmo alternado é mostrado na Fig. 10(d).
+Resultados similares são apresentados na Fig. 11 para o
+sistema de 904 barras. O α é utilizado como parâmetro na
+obtenção da curva λ-V43 (Fig. 11(a)), durante a qual
+armazenam-se os valores dos respectivos pontos
+correspondentes à curva P-V da barra crítica 138 (Fig. 11(c)).
+A região do PMC é ampliada na Fig. 11(b), de onde se pode
+verificar a coincidência dos “noses” quando do uso do fator de
+carregamento λ ou da magnitude de tensão (V46) como
+parâmetro. Ao utilizar o parâmetro α, nota-se que esta
+coincidência de singularidade não se torna um problema para
+MDNM, visto que com a mudança do centro do feixe de retas
+para o ponto médio (PM) a singularidade da matriz Jacobiana,
+e portanto o problema de mal-condicinamento, é removida. O
+numero de meias iterações para a obtenção da curva P-V
+completa utilizando o algoritmo alternado pode ser visto na
+Fig. 11(d).
+
+
+Fator de Carregamento λ
+
+PM
+PMC
+Fator de Carregamento λ
+
+VI. CONCLUSÃO
+PMC
+Fator de Carregamento λ
+
+Este trabalho apresenta uma versão para o método de
+Newton desacoplado modificado usando uma técnica de
+parametrização geométrica. Esta técnica de parametrização
+permite o traçado das curvas P-V e obtenção do PMC de
+qualquer sistema estudado sem troca de parâmetro. Na técnica
+proposta é adicionada uma equação da reta situada no plano
+formado pelas variáveis fator de carregamento (λ) e
+magnitude da tensão nodal (Vk) de uma barra k qualquer,
+incluindo aquelas barras cuja magnitude da tensão apresenta
+uma inversão na sua tendência de variação simultaneamente
+com o fator de carregamento (coincidência da singularidade
+de ambas as matrizes Jacobianas no PMC). A influência dos
+esquemas de resolução simultâneo e alternado no desempenho
+do método também foi apresentada.
+Tratando-se de tempo de CPU, utilizando o primeiro
+
+
+procedimento de atualizar a matriz Jacobiana a cada iteração,
+a redução de tempo de CPU por meio do algoritmo alternado
+em relação ao simultâneo foi em média de 72.8%. Já com
+relação ao uso dos procedimentos de atualização das matrizes,
+o segundo procedimento (a atualização somente quando o
+sistema sofrer uma mudança significativa) associado ao
+esquema alternado mostrou-se ser a alternativa mais viável,
+visto que os tempos de CPU sofrem uma considerável
+redução, cerca de 55%. As modificações proporcionaram uma
+melhora do desempenho do método de Newton desacoplado
+convencional, tornando o método mais robusto e eficiente no
+traçado completo de curvas P-V de sistemas de potência em
+geral, incluindo sistemas reais de grande porte tais como as
+configurações de 638 barras do sistema Sul-Sudeste Brasileiro
+e do sistema de 904 barras localizado no Sudoeste Americano.
+

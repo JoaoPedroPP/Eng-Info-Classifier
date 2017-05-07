@@ -1,0 +1,291 @@
+Carregador de bateria chumbo-ácido, utilizando CI BQ2031
+
+
+I.INTRODUÇÃO
+
+BATERIAS são dispositivos que acumulam energia
+química e a transforma em energia elétrica. Existem tipos
+variados de baterias, como as de 11Lítio, Níquel-Cádmio
+(NiCd), Níquel Hidreto Metálico (NiMH), Zinco Ar, Baterias
+de Gel e a Chumbo-Ácido [5].
+As baterias Chumbo-Ácido foram inventadas por Gastón
+Plante, 1860. Nos dias de hoje, ela é bastante utilizada como
+bateria de iluminação e arranque em automóveis, bem como
+em fontes alternativas, como os no-breaks, que são um sistema
+de alimentação secundário e entra em funcionamento quando
+ocorre uma interrupção de energia, e em sistemas de tração
+para veículos e máquinas elétricas [4].
+Pelo consumo contínuo de Baterias Chumbo-Ácido, faz-se
+necessário seu carregamento por outras formas de energia. O
+ato de carregar uma bateria não é um processo simples, devido
+a vários fatores [7].
+Em algumas baterias, caso não recebam a quantidade
+apropriada de corrente, presumindo a tensão nos limites
+adequados, têm suas características modificadas devido às
+reações químicas. Esse fenômeno é conhecido como subcarga.
+Outro fenômeno que deve ser evitado é o de sobrecarga. Caso
+exceda o nível de corrente no tempo, a bateria sofrerá
+alterações físicas. Para qualquer um desses fenômenos,
+podem-se ter consequências prejudiciais a bateria,
+contribuindo fortemente para a diminuição da vida útil e
+desempenho de trabalho da mesma [1].Para este trabalho será
+estudado e projetado para o método de carga, utilizando o CI
+BQ203.
+
+
+II.CARREGADOR DE BATERIA CHUMBO-ÁCIDO
+Muitos carregadores de Baterias Chumbo-Ácido
+disponíveis no mercado utilizam métodos inadequados para
+carregá-las, resultando numa considerável diminuição da vida
+útil da mesma [5].
+O algoritmo mais eficaz utilizado para este processo é o de
+quatro estágios ou método duplo nível de tensão, que adota a
+modulação através da largura de pulso, PWM, para comandar
+o nível de tensão e corrente fornecidos para a bateria, através
+de um conversor DC-DC tipo Buck [7].
+O carregador inteligente deste trabalho utiliza métodos de
+carga que respeitam os níveis de tensão e corrente necessários
+para uma carga eficaz.
+III.MÉTODOS DE CARGA
+Existem vários métodos de carga diferenciados conforme a
+característica de corrente e tensão. Estes métodos possuem um
+curso de carga dividida em etapas, nas quais são aplicadas
+tensões e/ou correntes constantes. Para isto é necessário a
+utilização de sensores de corrente, de tensão, de temperatura e
+de um algoritmo de carga implementado por
+microcontroladores, DSPICs, DSPs ou CIs dedicados a esta
+função [2].
+Há quatro tipos de algoritmos de carga, mas para o CI
+BQ2031 serão implementados três desses métodos, que são:
+método dois níveis de tensão, dois níveis de corrente e
+corrente pulsada.
+A.
+
+Método Duplo de Nível de Tensão
+
+Para este método há três estágios. No primeiro estágio é
+determinada uma corrente constante (Imax) para que a tensão
+sobre a bateria alcance à tensão de equalização (Vblk). O
+segundo estágio a tensão de equalização é preservada sobre a
+bateria, com isso a corrente decresce até atingir um valor de
+corrente chamado de retenção mínima (Imin). Ao término do
+segundo estágio a bateria obteve 100% de carga. O terceiro
+estágio consiste em reter uma tensão de flutuação sobre a
+bateria para manter a sua carga. Com isso a corrente se
+estabiliza em um valor de manutenção de carga (Iflt) [2].
+Este método pode ser otimizado verificando-se situações
+em que a bateria está com uma descarga profunda. Neste caso,
+antes de aplicar a corrente do primeiro estágio (Imax), é
+colocado uma corrente menor de pré-carga (Icond) para
+aumentar a tensão para um valor mínimo (Vmin), como
+apresentado na Fig. 1. Depois este pré-estágio de carga, iniciase o ciclo completo de carga descrito anteriormente [2].
+
+
+
+Em caso de descarga profunda, o método pode ser otimizado
+acrescentando-se um estágio de pré-carga. Este método pode
+ser analisado na Fig. 3 [2].
+
+
+B. Método Duplo de Nível de Corrente
+Para este método, existem duas etapas de aplicação de
+corrente, em que o nível da corrente introduzida na bateria é
+controlado pelo nível de tensão. Na primeira etapa é injetada
+uma corrente máxima até que a tensão da bateria alcance a
+tensão de equalização. A segunda etapa tem o objetivo de
+manter a carga da bateria, em que é aplicada uma corrente
+pulsante de retenção, de patamar Icond, de frequência
+regulada, para manter a tensão de flutuação da bateria
+constante. No entanto, este método possui a desvantagem de
+impor uma corrente de retenção muita reduzida ou muito
+elevada, produzindo perda de capacidade ou sobrecarga na
+bateria. Isto pode ser resolvido verificando a tensão da bateria
+e regulando o valor da corrente de retenção até um valor
+correto de corrente de manutenção de carga. Este método pode
+ser analisado na Fig. 2 (LAZZARIN, 2006).
+
+
+IV. CIRCUITO INTEGRADO BQ2031
+O circuito integrado CI BQ2031 de 16 pinos da Texas
+Instruments é um chip dedicado à aplicação de monitorar o
+carregamento de Baterias chumbo-ácido. Possui pino
+selecionável para os três tipos de carga. Os dados do CI
+BQ2031 podem ser verificados na Tabela I.
+TABELA I. TRÊS TIPOS DE CARGA DO CI BQ2031 [6].
+
+
+C. Método de Corrente Pulsada
+Este método possui dois estágios de aplicação de corrente.
+No primeiro, a bateria é carregada com corrente constante até
+que a sua tensão alcance a tensão de equalização. Depois
+desse instante, inicia-se o segundo estágio, que consiste em
+monitorar a tensão da bateria. Quando esta diminuir à tensão
+de flutuação, é injetada a corrente Imax, para que a tensão
+volte à tensão de equalização. Esse processo se repete,
+caracterizando uma corrente pulsante sobre a bateria com a
+finalidade de manter sua carga. Este método de carga depende
+da verificação da tensão de flutuação e equalização. A
+variação patamares e, devido à variação de temperatura, deve
+ser compensada para não prejudicar o nível de carga da
+bateria.
+
+Este CI possui teste de qualificação que detecta caso as
+células das baterias estejam em curto-circuito, abertas ou
+danificadas, como também se a bateria está em bom estado.
+Durante o período de carregamento, monitora os limites de
+tensão e temperatura e controla a carga pelo pino PWM.
+Como também, possui LEDs que exemplificam o status da
+carga e algum problema que possa acontecer durante a carga,
+como pode ser verificado na Tabela II.
+
+
+Portanto, os valores encontrados de RB1, RB2 e RB3 são
+utilizados, pelo BQ2031, para monitorar tensão e o valor Rsns
+para monitorar corrente.
+O CI BQ2031 monitora temperatura entre os pinos SNS e
+TS, como é mostrado na Fig. 5. Os cálculos são feitos pelas
+equações 4 e 5.
+
+O monitoramento de tensão e corrente é executado pelo
+circuito mostrado na Fig. 4. Este monitoramento é efetuado
+devido aos cálculos que são realizados como mostram as
+equações 1 e 2. Com esses valores, o CI BQ2031 monitora a
+tensão da bateria em função de alguns dados, como tensão de
+flutuação, tensão de equalização e número de células. Já o
+valor de Rsns faz com que o BQ2031 monitore a corrente.
+
+
+Os valores sugeridos pelo manual técnico da bateria estão
+descritos abaixo [3]:
+
+Fazendo a corrente máxima ser 3 A, o valor do resistor
+Rsns pode ser obtido através da equação 3.
+Com isso, foram obtidos os seguintes valores:
+
+
+Onde
+é a tensão de alimentação do CI, no caso 5V,
+é resistência do termistor em LTF e
+é a resistência
+e
+podem ser
+do termistor em HTF. Os valores de
+encontrados na folha de dados do componente, estes valores
+são apresentados abaixo:
+Com esses valores, os limites de temperatura para que o
+BQ2031 funcione corretamente está entre 0ºC e 47ºC. O CI
+BQ2031 interrompe a carga da bateria quando o tempo de
+carga ultrapassa o tempo calculado TMTO. A forma de
+calcular esse tempo é determinada pela equação 6.
+
+está em horas, R em KΩ e C em uF. Os
+Onde
+valores de R e C calculados serão colocados no seguinte
+circuito do CI BQ2031, como apresenta a Fig. 6.
+
+
+
+Com isso, os seguintes valores foram obtidos:
+Totalizando um tempo máximo de 20 horas de carga.
+V. ESQUEMA ELÉTRICO BQ2031
+
+O pino 9 TPWM é referente à frequência de chaveamento
+do pino MOD. Como a frequência de chaveamento é calculada
+é apresentado na equação 7.
+, para uma
+Desta forma, o valor do capacitor
+frequência de 100 KHz, é de
+= 1nF. O pino 14,
+referenciado por MOD, deve acionar um conversor CC/CC
+BUCK para carregar a bateria.
+VI. RESULTADOS
+
+O esquema elétrico do circuito do BQ2031 pode ser
+verificado na Fig. 7.
+
+Para o desenvolvimento deste trabalho, foi necessário a
+construção de uma placa de circuito impresso do circuito
+BQ20131 e todos os componentes necessários apresentados
+anteriormente. Os layouts das placas de circuito impresso são
+apresentados nas Fig. 8 e Fig. 9.
+
+
+Os pinos 10, 11, 15 e 16 são referentes aos tipos de cargas
+e indicação do carregamento. Os três tipos de cargas são
+escolhidos dependendo dos pinos 10 e 15, conforme foi
+apresentado na Tabela I.
+O método de carga é escolhido de acordo com os pinos
+QSEL e TSEL, correspondentes aos conectores P5 e P7 da
+Fig. 7. A indicação dos LEDs durante a carga é escolhido de
+acordo com o pino DSEL, correspondente ao conector P6 da
+Fig. 7. Caso DSEL estiver em nível lógico alto, o modo
+escolhido é o 2, como apresenta a Tabela II. Se o pino 16
+DSEL estiver em baixo e não existir uma bateria conectada, o
+led 3 acenderá. Durante a pré-qualificação da carga o LED1
+ficará piscando e assim por diante, conforme mostra a Tabela
+II.
+A configuração dos pinos 4 e 5 foram retirados do
+application notes do CI BQ2031, que está disponível no site
+da Texas Instruments.
+O pino 6 determinará a corrente em que o CI BQ2031
+corta a carga da bateria no método duplo nível de tensão,
+conforme é apresentado na Tabela III.
+
+
+Para os teste do circuito do BQ2031 foi verificado o
+sinal de saída MOD para ser utilizado no circuito de potência
+do conversor CC/CC BUCK. O sinal gerado no momento da
+qualificação de pré-carga é apresentado na Fig. 10.
+
+
+O circuito do BQ2031 possui três tipos de indicações,
+através de leds, para mostrar as etapas de carga, como
+apresentado na Tabela II. Essa indicação é definida através do
+pino DSEL da Fig. 7. Caso DSEL esteja em nível lógico baixo
+(MODO 1), na qualificação de pré-carga o led 1 fica piscando.
+Caso DSEL esteja em nível lógico alto (MODO 2), na
+qualificação de pré-carga o led 1 e o led 2 permanecem em
+níveis lógicos alto. Por último, caso DSEL não esteja nem em
+nível lógico baixo nem em nível lógico alto (estado de
+flutuação – MODO 3), na qualificação de pré-carga o led 1 e o
+led 2 ficam piscando. Os modos de indicação do circuito
+BQ2031 são apresentados nas Fig. 11 a 16.
+
+
+Pode ser visualizada nas Fig. 12, 14 e 16 a posição do
+jumper de conexão no conector P6, que é relacionado com o
+respectivo modo de operação do pino DSEL.
+No circuito do BQ2031 o LED 3, luz vermelha, indica
+sempre alguma falha, como ausência de bateria, temperatura
+fora da faixa e falta de carga. Nesses três estados, os LEDs,
+respectivamente, acendem, piscam e acendem. Os momentos
+em que o LED três acende são apresentados nas Fig. 17 e Fig.
+18.
+
+
+
+Na Fig. 17, apenas o LED 3 está aceso, indicando que há
+ausência de bateria. Já na Fig. 18, o LED 3 está aceso
+indicando falta de carga. No momento da indicação de falta de
+carga e de temperatura fora da faixa, os LEDs um e dois
+permanecem no mesmo estado em que estavam no momento
+da falha, caso estejam piscando, continuam piscando.
+VII. CONCLUSÃO
+Neste trabalho foi demostrado a importância do controle
+dos métodos de carga utilizados para carregar baterias
+chumbo-ácido. Desta forma, deve-se atentar para o uso correto
+de circuitos eletrônicos que não diminuam a vida útil das
+baterias.
+Portanto, tentando melhorar os métodos de carregamento,
+o presente trabalho apresenta o desenvolvimento de um
+projeto eletrônico utilizando o circuito integrado BQ2031 da
+Texas Instruments para aumentar a vida útil das baterias.
+Os resultados obtidos demonstram que o protótipo foi bem
+projetado, pois todos os circuitos foram simulados e testados
+dando resultados satisfatórios precisando ser aprimorado,
+apenas, o circuito que une a placa do BQ2031e a placa de
+potência.
+Pretende-se também, posteriormente, acoplar a placa de
+circuito impresso apresentado no presente artigo no circuito de
+potência composto pelo conversor CC/CC BUCK.
+

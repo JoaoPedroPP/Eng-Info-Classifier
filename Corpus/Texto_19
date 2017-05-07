@@ -1,0 +1,343 @@
+Avaliação do desempenho do sistema M-QAM/OFDM para o canal PLC sob a influência dos ruídos Gaussiano e Impulsivo
+
+I. INTRODUÇÃO
+
+O SISTEMA de comunicação através da rede elétrica
+torna-se interessante por fornecer taxas de transmissão de
+dados relativamente altas (centenas de Mbps) proporcionando
+aplicações como: videoconferência, voz sobre IP (Internet
+Protocol), monitoramento, gerenciamento, telemetria e redes
+domesticas inteligentes com níveis de qualidade satisfatórios
+[1]. Além disto, a tecnologia PLC apresenta baixo custo e
+facilidade de implantação, visto que a mesma utiliza
+infraestrutura já instalada.
+Porém, a transmissão de dados no canal PLC sofre a
+influência negativa dos ruídos de fundo (background) e do
+impulsivo. Neste estudo, o ruído de fundo foi modelado como
+um ruído branco gaussiano aditivo [2] e o ruído impulsivo
+como um processo Bernoulli-Gaussiano [3]. A presença do
+ruído sobrepõe-se ao sinal informação mascarando o sinal, e
+consequentemente, limita a capacidade do receptor de detectar
+o símbolo transmitido corretamente.
+Na presença destes ruídos, o desempenho do OFDM é
+melhor do que de um sistema com portadora única. Isto se
+deve ao fato de que o OFDM difunde o efeito do ruído
+impulsivo por vários símbolos utilizando a operação da
+transformada discreta de Fourier (DFT – Discrete Fourier
+Transform).
+A combinação das modulações QAM e OFDM é
+promissora porque provê taxas altas de transmissão de dados
+com a garantia de eficiência espectral e baixa complexidade
+computacional. Assim, neste artigo avalia-se a probabilidade
+de erro de símbolo da transmissão de dados pelo sistema 64QAM OFDM em um canal PLC com os ruídos gaussiano e
+impulsivo.
+Este artigo está organizado da seguinte forma: Na seção II
+proporciona-se o conhecimento teórico sobre as tecnologias
+
+utilizadas no desenvolvimento do estudo. A descrição do
+modelo matemático proposto do ruído combinado e a sua
+análise na modulação QAM encontram-se na seção III. Já na
+seção IV, a análise é feita para o sistema M-QAM OFDM. Por
+fim, as considerações finais são apresentadas na seção V.
+II. TRANSMISSÃO DE DADOS NA REDE PLC
+A. Power Line Indoor Communication
+Neste artigo discute-se apenas o padrão PLIC (Power Line
+Indoor Communication) que abrange o trecho que vai desde o
+medidor de energia do usuário até as tomadas presentes no
+interior da residência. Todas as tomadas estão habilitadas a
+transmitir dados além da eletricidade, ou seja, elas também
+são pontos de conexão para a rede de dados [4].
+A compreensão do funcionamento da tecnologia deu-se
+através da montagem em laboratório de uma rede elétrica com
+distâncias conhecidas. O adaptador PLC opera na faixa de 10
+a 30MHz e apresenta as seguintes características: 500 Mbps,
+plug-and-play, 300 metros de alcance máximo e possui QoS
+(Quality of Service).
+Nos testes transferiu-se um arquivo de 1,06 GByte na rede
+ethernet com as distâncias entre o transmissor e o receptor de
+23,02m. Os resultados obtidos são apresentados na Tabela I.
+
+Os resultados obtidos nos testes foram utilizados para
+avaliar a influência dos ruídos impulsivo e de fundo no tempo
+e na taxa de transferência do arquivo.
+B. Modulação em amplitude e quadratura
+Na transmissão de dados em altas taxas de transferência, a
+modulação QAM é mais eficiente em termos do requisito de
+largura de banda quando comparada com outras modulações
+[5]. Nas modulações de alta ordem (M > 16), a BER (Bit
+Error Rate) é mais alta na modulação M-PSK (Phase Shift
+Keying) do que na M-QAM.
+Na constelação M-QAM, o número de pontos é definido
+como M = 2b, b é o número de bits em cada símbolo e M é o
+número de símbolos da constelação. Se o número de bits por
+símbolo for par, o diagrama de constelação adquire formato
+quadrado (16-QAM, 64-QAM, 256-QAM) e tem o alfabeto
+definido na eq. (1).
+
+A Fig. 1 ilustra o diagrama da constelação 64-QAM. A Fig.
+1 ilustra o diagrama da constelação 64-QAM. Tem-se M = 64
+e, portanto, b = 6 e a sua constelação baseia-se no conjunto de
+
+e sua função densidade de probabilidade com parte real (nR )
+e imaginária (nI ) são mostradas nas eqs. (5a) e (5b).
+
+Os símbolos pertencentes a constelação são classificados
+em três grupos [6]:
+: possuem dois símbolos
+Símbolos nos cantos
+adjacentes e é sempre quatro N 2 = 4 ;
+Símbolos no centro
+: possuem quatro símbolos
+adjacentes e segue a definição N 4 = M − 2
+M −2 ;
+Símbolos nem no centro e nem no canto *: possuem
+três símbolos adjacentes e é definido por
+Neste diagrama de constelação específico, os 64 símbolos
+encontram-se nas posições determinadas na eq. (1) e estão
+distribuídos da seguinte maneira: quatro nos cantos, trinta e
+seis no centro e vinte e quatro nem no centro e nem no canto.
+C. Ruído gaussiano
+O ruído branco gaussiano aditivo (AWGN – Aditive White
+Gaussian Noise) tem sua densidade espectral de potência
+(PSD - Potencial Spectral Density) independente da
+frequência de operação, e é definida na eq. (2).
+N0
+2
+O fator 2 indica que a
+em que,
+[J/k]
+em que, M é o número de símbolos da modulação e erfc é a
+função erro complementar. O argumento dessa função é
+
+em que, Es é a energia do símbolo, N 0 é a densidade
+espectral de potência definida na eq. (3) e k é o fator de escala
+ou normalização. Para M = 16, 64 e 256 tem-se os valores do
+fator de escala 10
+, respectivamente.
+A Fig. 2 apresenta uma comparação em relação à SEP das
+modulações M-QAM.
+Modulação M-QAM constelação quadrada
+
+O valor de N 0 é determinado por
+
+
+Símbolo no centro
+
+Símbolo nem no centroe nem no canto
+
+A eq. (6) apresenta a fórmula para o cálculo da
+probabilidade de erro de símbolo da modulação M-QAM na
+presença de ruído gaussiano [4].
+
+O ruído branco é idealizado matematicamente para as
+frequências no intervalo de -∞ até +∞. Este ruído apresenta
+variância infinita
+
+SEP - Probabilidade de erro do símbolo
+e Te é a temperatura equivalente de ruído no receptor em [k].
+
+Es/N0 [dB]
+
+k é a constante de Boltzmann de valor 1,38.10-23
+
+Caso o valor de SEP almejado seja 10-5, a 16-QAM
+alcançará tal valor de probabilidade com uma relação de
+20dB, a 64-QAM com 26dB e a 256-QAM somente com
+
+
+32dB. Os resultados demonstraram que o aumento de dois bits
+em M (M = 2b, b=4, 6 e 8) requer um aumento de
+aproximadamente 6dB na relação sinal ruído (SNR – Signal
+Noise Relation). Portanto, o aumento na ordem da modulação
+QAM torna a eficiência espectral maior em uma SNR alta [6].
+O aumento no valor desta relação significa que o sistema
+apresenta valor bem superior de potência de sinal e, portanto,
+o sistema opera em boas condições.
+D. Ruído impulsivo
+O ruído impulsivo (IN – Impulsive Noise) caracteriza-se por
+possuir uma pequena duração e ocorrência aleatória. Portanto,
+considerou-se esse ruído como um processo BernoulliGaussiano [10], a ocorrência é um processo Bernoulli
+enquanto as amplitudes são modeladas como um processo
+Gaussiano.
+(8)
+
+em que, ik é o ruído impulsivo, Bk é o processo de Bernoulli,
+sequência de uns e zeros com Pr ( Bk = 1) = p , e g k é o
+processo gaussiano com média zero e variância 2σ i2 como
+
+Este tipo de ruído possui uma densidade espectral de
+potência que varia muito em instantes de microssegundos a
+milissegundos provocando erros de vários bits [11].
+III. ANÁLISE DO RUÍDO COMBINADO NA
+MODULAÇÃO QAM
+O estudo inicia-se com o equacionamento matemática da
+soma dos ruídos.
+
+
+em que, nk é o ruído total com parte real e imaginária, wk é o
+ruído gaussiano e ik é o ruído impulsivo.
+O ruído total é uma variável aleatória com variância
+descrita na forma
+
+
+em que, σ w2 é a variância do ruído gaussiano e σ i2 é a
+variância do ruído impulsivo.
+De acordo com o trabalho [12], a densidade de potência do
+ruído impulsivo e a do ruído gaussiano relacionam-se por
+
+em que, μ -é a relação entre as PSDs. Aplicando essa relação
+na eq. (11) determina-se na eq. (13) a variância do ruído
+combinado.
+
+
+Na eq. (13) tem-se a função característica (CF –
+Characteristic Function) do ruído combinado [3].
+
+
+A função característica mostrada na eq. (14) é composta
+pela função característica gaussiana definida em [9] como
+
+
+e pela função característica Bernoulli definida em [10] por
+
+
+em que, ω é a variável aleatória e p é a probabilidade de
+ocorrência,
+A eq. (17) mostra a definição da probabilidade de acerto na
+presença do ruído combinado.
+
+em que pn ( nR , nI ) é a função densidade de probabilidade
+conjunta [9] do ruído combinado e a sua transformada de
+Fourier é dada na eq. (18).
+
+A função densidade de probabilidade marginal [9] referente
+às partes real e imaginária do ruído combinado são:
+G (nR , 0, σ n2 ) =
+
+Aplicando as eqs. (5a), (5b), (19a) e (19b) na eq. (18) temse na eq. (20) a definição da função densidade de
+probabilidade conjunta na presença do ruído combinado.
+IV. ANÁLISE DO RUÍDO COMBINADO NA
+MODULAÇÃO QAM OFDM
+
+em que, μ é a relação entre as PSDs, p é a probabilidade de
+ocorrência, nR é a parte real e nI é a parte imaginária.
+A eq. (22) mostra a probabilidade de erro de símbolo da
+modulação M-QAM com ruído combinado.
+
+Para altos valores de M, M > 16, é conveniente associar a
+modulação QAM ao OFDM. Deste modo obtém-se melhoria
+na eficiência espectral e na largura de banda [12,13]. A
+multiplexação por divisão de frequência ortogonal é um
+esquema MCM (Multi Carrier Modulation) em que múltiplos
+símbolos são transmitidos em paralelo usando diferentes
+portadoras ortogonais. A MCM utiliza largura de banda menor
+do que a utilizada na modulação com portadora única.
+Conclui-se que é eficiente na utilização das frequências e
+realiza transmissão de dados em alta velocidade em uma
+largura de banda limitada.
+A Fig. 4 ilustra o envio e o recebimento do sinal OFDM no
+canal PLC. Durante a transmissão do sinal é adicionado ao
+sinal informação os ruídos.
+
+em que, M é o número de símbolos e erfc é a função erro
+complementar. Neste ponto do equacionamento, o argumento
+da função erro complementar é definido como
+
+em que, μ é a relação entre as PSDs, Es é a energia do
+símbolo, N 0 é a densidade espectral de potência definida na
+eq. (3) e k é o fator de escala ou normalização.
+A primeira curva ilustrada na Fig. 3 representa o resultado
+da SEP obtida da simulação da modulação 64-QAM em um
+canal com ruído gaussiano.
+SEP - Probabilidade de erro do símbolo
+
+
+O sinal recebido é definido em [9] pela seguinte expressão:
+
+em que, yk é o sinal recebido, s = I + jQ é o sinal transmitido
+e
+
+Es é a energia do símbolo.
+A nova variância do ruído combinado considerou os ruídos
+gaussiano e impulsivo, e as múltiplas portadoras.
+
+em que, Nc é o número de portadoras OFDM e μ é a relação
+entre as PSDs dos ruídos.
+A nova função distribuição de probabilidade começa em
+zero e vai até o número total de portadoras utilizadas N c .
+
+As outras duas curvas representam a SEP obtida da
+simulação da modulação 64-QAM em um canal com ruído
+combinado com (µ= 10) [3] e (µ= 100) [11].
+Ao comparar as curvas obtidas da simulação e ilustradas na
+Fig. 3 verificou-se que relação sinal ruído era 26,24 dB, e com
+a adição do ruído impulsivo (µ= 10) a relação atingiu o valor
+de 36,74 dB, ou seja, ocorreu um aumento de 40,01 %. A
+terceira curva foi obtida com uma segunda relação (µ= 100)
+entre os ruídos gaussiano e impulsivo. A relação foi igual a
+46,38 dB para uma SEP de 10-5 .
+
+A eq. (28) mostra a definição da probabilidade de acerto na
+presença do ruído combinado e com múltiplas portadoras.
+
+Reescrevendo a eq. (28) de acordo com a eq. (18) tem-se a
+eq. (29).
+
+dos símbolos localizados no canto da
+
+constelação.
+
+em que, N c é o número de subportadoras, p é a probabilidade
+de ocorrência.
+A substituição do valor da variância do ruído combinado
+determinado na eq. (25) nas eqs. (19a) e (19b) resultam as eqs.
+(30a) e (30b), respectivamente.
+A eq. (32) mostra o cálculo da probabilidade de erro dos
+símbolos que possuem dois vizinhos com ruído combinado e
+utilizando OFDM.
+
+A eq. (31) mostra o cálculo da probabilidade de erro do
+símbolo que possui quatro vizinhos para a região de
+e
+integração
+
+Conforme ilustrado na Fig. 7 a região de integração dos
+símbolos que possuem três vizinhos encontra-se no interval
+− k Es ≤ Re( n) ≤ ∞ e − k Es ≤ Im( n) ≤ + k Es .
+
+
+(
+
+)
+
+
+Ajustando os intervalos de integração aos
+determinados na Fig. 7 propõe-se a eq. (33).
+
+A fórmula exata para o calculo da SEP da modulação MQAM com constelação quadrada utilizando OFDM É
+mostrada na EQ. (34).
+
+em que c é o argumento da função erro complementar definida
+por
+em que N c é o número de subportadoras, k é o fator de
+
+é a relação entre as PSDs, N 0 é a PSD do
+ruído Gaussiano e Es é a energia do símbolo.
+
+normalização,
+
+A Fig. 8 ilustra a SEP obtida da simulação do sistema 64QAM com 64 subportadoras em um canal com ruído
+combinado e relação (µ= 10).
+
+Para uma SEP de 10-5 a relação atingiu um valor de 36 dB
+quando a probabilidade de ocorrência do ruído foi unitário.
+V. CONCLUSÃO
+Os resultados das simulações evidenciaram que a adição de
+um segundo ruído elevou significativamente a probabilidade
+de erro. Para diminuir o valor deste parâmetro de desempenho
+acrescentaram-se múltiplas portadoras ao sistema de
+modulação QAM. A transmissão de dados, no canal PLC,
+utilizando M-QAM OFDM produziu um resultado eficiente
+mesmo com a influência dos ruídos gaussiano e impulsivo.
+
+

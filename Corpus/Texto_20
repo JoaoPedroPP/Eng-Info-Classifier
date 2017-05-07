@@ -1,0 +1,1254 @@
+Um Modelo para Gerenciamento de Bilhetagem PaaS em Ambientes de Computação em Nuvem
+
+I. INTRODUÇÃO
+
+MUITAS empresas têm buscado utilizar os conceitos da
+computação em nuvem em suas estratégias de entrega
+de serviços de TI, envolvendo as redes, computação e recursos
+de armazenamento. A computação em nuvem pode ser
+definida como um modelo para possibilitar um acesso via
+rede, sob demanda, conveniente, a um conjunto de recursos
+computacionais configuráveis (Ex. servidores, redes,
+armazenamento, aplicações e serviços) que possam ser
+provisionados e publicados com o mínimo de esforço de
+gestão ou interação com o provedor de serviços [5].
+As características da computação em nuvem incluem o
+acesso sobre demanda, elasticidade, controle de recursos,
+infraestrutura abstrata e ausência de compromisso [3]. A
+grande maioria das empresas conta com recursos de tecnologia
+da informação (TI) para suprir a necessidade de
+gerenciamento do negócio. Dessa forma, essas empresas
+mantém
+uma
+infraestrutura
+de
+processamento,
+armazenamento, rede, comunicação, aplicações e suporte para
+garantir que a matéria prima básica, a informação, esteja
+disponível de forma rápida e segura [6].
+De acordo com Bigala e Ekabua [1], existe uma questão
+que está sempre presente no pensamento dos clientes de
+serviços na nuvem: Quanto vai custar? Os autores afirmaram
+que somente se aventurar no paradigma de computação em
+nuvem não ajuda a empresa a determinar quem vai pagar pelo
+recurso, mas pode ajudar a estabelecer uma diretriz para o
+
+projeto e uma forma de comunicação que permita criar um
+modelo para bilhetagem, tarefa comprometida com frequência
+nos provedores, devido à falta de várias interações simultâneas
+(consumidor, provedor, gestão de orçamento, agentes e
+pagamento on line), com as características necessárias tais
+como o desconto, taxas, planos, entre outras.
+A maioria das pesquisas recentes sobre computação em
+nuvem tem sido focadas em aspectos técnicos. Ainda não
+existem informações suficientes na literatura sobre os aspectos
+gerenciais da computação em nuvem [2]. Os provedores de
+serviços para desenvolvimento de software na nuvem
+(Platform as a Service - PaaS) têm enfrentado uma série de
+desafios gerenciais, os quais incluem a necessidade de um
+monitoramento efetivo do ambiente de infraestrutura como
+serviço (IasS) e o controle das aplicações em produção
+utilizadas por seus clientes ou usuários.
+A forma de estimar a tarifação dos serviços prestados na
+nuvem aos clientes de provedores do tipo plataforma como
+serviço (PaaS) consiste em uma atividade gerencial
+estratégica, por impactar diretamente nos resultados
+financeiros da empresa. Sousa et al. [4] afirma que os serviços
+baseados em nuvem são cobrados de uma maneira diferente,
+onde o usuário paga por aquilo que utiliza ou pelo tempo de
+utilização, gerando economia e um melhor controle dos
+gastos. Esse modelo de pagamento é conhecido como pay-peruse (pagamento pelo uso) e possibilita uma redução dos riscos
+de saturação e de subutilização dos recursos. O CGI [30]
+afirma que independentemente de se saber em qual tipo de
+serviço o provedor se concentra, o faturamento é o elo
+perdido, sendo fundamental para a capacidade do provedor
+rentabilizar suas ofertas de serviços na nuvem.
+Bigala e Ekabua [1] afirmaram que o desenvolvimento e a
+implantação de um sistema de bilhetagem consiste em uma
+tarefa desafiadora. A tarifação de serviços do tipo PaaS
+apresenta um conjunto de desafios para os gestores, já que um
+aplicativo que executa em ambiente de nuvem utiliza outros
+tipos de serviços na nuvem, no caso da infraestrutura (IaaS) e
+banco de dados (BDaaS), além de possuir uma IDE própria
+para desenvolvimento de software, também ofertada como um
+serviço. No caso dos ambientes de desenvolvimento e
+publicação de aplicações em nuvem, o desenvolvedor de
+software em um ambiente PaaS (cliente) ainda necessita de
+um sistema de tarifação para os usuários de aplicativos que
+serão desenvolvidos e publicados nessa plataforma.
+Borenstein e Blake [22] afirmam que o gerenciamento de
+ambientes de desenvolvimento baseado em nuvem do tipo
+PaaS é um processo em fase de maturação. Até onde se
+conhece, não existe uma plataforma PaaS que atenda
+simultaneamente as necessidades dos usuários, o orçamento e
+
+adaptabilidade de sistemas, apesar das expectativas para a
+atuação desses tipos de provedores PaaS serem altas.
+II. REVISÃO DE LITERATURA E TRABALHOS RELACIONADOS
+De acordo com o NIST [5], existem três tipos de serviços
+ofertados pela computação em nuvem: Software as a Service,
+Infraestructure as a Service e Platform as a Service (vide Fig.
+1). Três atores principais possuem papéis importantes na
+computação em nuvem: os prestadores de serviço, os
+prestadores de infraestrutura e os usuários do serviço.
+
+
+De acordo com Hurwitz et al. [7], Infrastructure as a
+Service (IaaS) consiste em um modelo de computação em
+nuvem que facilita a entrega de recursos computacionais como
+um serviço. A abordagem possui a vantagem de escalabilidade
+instantânea e fornece uma solução de custo eficaz e flexível.
+A partir da convergência de várias evoluções tecnológicas,
+organizacionais e políticas, tais como terceirização, trabalho
+distribuído de software, o surgimento de ambientes
+colaborativos baseados na internet e o crescimento do
+fornecimento global de serviços de TI, existe o surgimento de
+uma nova era onde software se tornou serviço e serviço se
+tornou software. De acordo com Marins [8], o modelo
+Software as a Service (SaaS) oferece aplicações que rodam na
+infraestrutura da nuvem e podem ser acessadas por thin
+clientes, como os navegadores. O software é oferecido como
+um serviço que pode ser acessado através da internet e a
+principal característica desse modelo é que existe a separação
+entre o proprietário e o usuário do software. Os clientes não
+pagam por possuir o software, mas sim, por utilizá-lo [9]. O
+modelo SaaS é um modelo de arquitetura multi-inquilino, o
+que significa que a infraestrutura física de hardware do
+servidor é compartilhada entre vários clientes, mas
+logicamente é única para cada cliente.
+Platform as a Service (PaaS) é uma consequência do SaaS,
+sendo um ambiente de desenvolvimento de aplicativos, não
+apenas o uso de uma aplicação. As soluções em PaaS diferem
+das soluções SaaS porque fornecem uma plataforma de
+desenvolvimento virtual hospedada na nuvem e acessível
+através da web. Os fornecedores de soluções PaaS ofertam
+tanto a plataforma de computação, como toda a pilha de
+solução necessária para o desenvolvimento e teste de
+aplicações baseadas no modelo de SaaS e em seguida distribui
+ou implanta suas aplicações na nuvem com facilidade [10].
+A provisão de serviços que possibilitem o
+desenvolvimento, testes, implantação, hospedagem e
+gerenciamento de aplicações objetivando suportar o ciclo de
+vida do desenvolvimento de aplicações é a proposta básica do
+modelo PaaS. Soni [28] afirmou que o conceito de PaaS
+ocupa o espaço existente entre as definições das soluções do
+tipo IaaS e SaaS. Dessa forma, Krutz e Vines [10] citaram
+
+que uma solução PaaS fornece ambientes de desenvolvimento
+de software e facilita a implantação de aplicações sem os
+custos e complexidades relativas a compra e gerenciamento do
+hardware e de software adjacentes que são necessários ao
+ambiente de desenvolvimento. Entre as principais
+características de um PaaS pode-se citar [27]:
+Serviços para desenvolvimento, testes, implantação,
+hospedagem e manutenção de aplicações em um
+mesmo ambiente integrado de desenvolvimento. Todos
+os diferentes serviços necessitam contribuir para o
+processo de desenvolvimento de aplicações;
+Ferramentas web para criação de interface visando
+criar, modificar, testar e implantar diferentes cenários
+de interação com o usuário;
+Arquitetura multi-inquilino, onde vários usuários
+concorrentes utilizam o mesmo ambiente para
+desenvolvimento de aplicações;
+Inclusão de escalabilidade no software implantado,
+incluindo o balanceamento de carga e tolerância a
+falhas;
+Integração com web services e banco de dados através
+de padrões comuns;
+Suporte para colaboração de times de desenvolvimento
+algumas soluções do tipo PaaS incluem ferramentas
+para planejamento de projetos e comunicação;
+Ferramentas para o tratamento da bilhetagem e
+gerenciamento de assinaturas.
+Existem muitos conceitos derivados no contexto da
+prestação de serviços. Estes conceitos são normalmente
+utilizados para diferenciar um determinado tipo de serviço,
+dentro os quais pode-se citar, banco de dados como serviço
+(DBaaS), testes como serviço (TaaS), segurança, simulação,
+comunicação, dentre outros, todos sendo oferecidos como
+serviço.
+IDE as a Service (IDEaaS) é um conceito introduzido
+nesta pesquisa, como parte integrante do modelo PaaS, onde
+busca-se o tratamento específico dos aspectos referentes ao
+ambiente para desenvolvimento e entrega de software
+utilizado na plataforma.
+Database as a Service (DBaaS) é uma tecnologia onde um
+provedor hospeda e gerencia todo ambiente necessário ao
+funcionamento dos sistemas de banco de dados e o terceiriza
+como um serviço para um ou mais consumidores [13].
+De acordo com a Cloud Security Aliance [12], um serviço
+em nuvem pode ser modelado em sete camadas: (1)
+instalações: infraestrutura que compreende os data centers; (2)
+rede: nesta camada são considerados os links de rede e os
+caminhos tanto na nuvem quanto entre a nuvem e o usuário;
+(3) hardware: componentes físicos da computação e
+equipamentos de rede; (4) sistema operacional: são os
+componentes de software que formam o sistema operacional,
+tanto no servidor (sistema operacional em execução na
+máquina física) quanto no usuário (sistema operacional em
+execução na máquina virtual); (5) middleware: camada de
+software entre o sistema operacional e os aplicativos do
+usuário (tipicamente presente nos serviços em nuvem dos
+modelos SaaS e PaaS); (6) aplicações: aplicações executadas
+pelos usuários dentro da nuvem; (7) usuários: usuário final do
+serviço em nuvem e as aplicações executadas fora da nuvem.
+
+
+Ao dissertar sobre as tendências futuras da computação em
+nuvem, Keahey et al. [25] afirmou que a abordagem de cloud
+computing abstrai os recursos e facilita a sua utilização de
+forma integrada. Foi citado que um passo adiante, o mesmo
+princípio se aplica a um grupo de nuvens, onde vários blocos
+promovem a criação de um ambiente do tipo céu (Sky
+Computing). Ao misturar os recursos de nuvens públicas e
+privadas, a nuvem sky pode tornar a computação intensiva
+eficiente, mitigar os gargalos e proteger os dados sensíveis.
+Monteiro et al. [26] afirma que um fator decisivo a favor da
+abordagem sky computing consiste na suposta liberdade de
+escolha para desenvolvedores e clientes.
+Utilizando esse paradigma, as aplicações poderão se mover
+livremente entre provedores de nuvem, sem a necessidade de
+reescrita ou alterações no código. O grande desafio consiste
+em gerir os recursos combinados das nuvens disponíveis,
+públicas ou privadas, e interoperar entre os mesmos. Em uma
+arquitetura do tipo sky computing, os usuários tentam tirar o
+máximo proveito dos melhores (e mais baratos) provedores de
+nuvem disponíveis. O objetivo principal da abordagem
+consiste no desenvolvimento de um PaaS capaz de abstrair os
+diferentes provedores de nuvem e fornecer aos usuários uma
+interface única com todos os sistemas. Esse nível deve se
+integrar com outros níveis, tais como o nível de
+gerenciamento, de contabilização, entre outros. A Fig. 2
+apresenta uma visão da abordagem sky computing, conforme
+os autores.
+
+
+Entre problemas existentes nas tendências atuais e futuras
+de cloud computing, o provimento de mecanismos para a
+elasticidade, escalabilidade, qualidade de serviço e
+disponibilidade para ambientes em nuvem, proporcionando
+aos usuários a percepção de recursos quase infinitos, tem sido
+um grande desafio para os gestores. Visando se alcançar essas
+funcionalidades e princípios, torna-se necessário um
+monitoramento detalhado e preciso de todas as camadas e
+recursos que compõem as soluções em nuvem. Em ambientes
+do tipo PaaS, esses desafios se tornam mais aparentes, pelo
+fato dos mesmos envolverem aspectos relacionados aos
+
+
+ambientes de IaaS, SaaS, DBaaS, IDEaaS, entre outros. Uma
+cobrança efetiva por esses serviços em nuvem é um desafio
+ainda maior para os gestores, pela complexidade existente
+para se visualizar a interligação entre os recursos envolvidos.
+Baars et al. [34] afirmou que a partir da utilização de
+modelos do tipo pay-per-use, da elasticidade de recursos e uso
+de infraestruturas virtuais compartilhadas, a computação em
+nuvem oferece uma utilização de capital e agilidade mais
+eficiente. Os autores afirmaram que as organizações devem
+cobrar os usuários do negócio pelos serviços que os mesmos
+consomem, o que consiste em uma das propostas desta
+pesquisa.
+As soluções atuais de PaaS tem criado uma dependência
+dos desenvolvedores em relação à plataforma, situação
+contestada por alguns pesquisadores. Teixeira et al. [21]
+apresentou a proposta de uma plataforma de desenvolvimento
+que busca uma independência do desenvolvedor em relação ao
+provedor de serviços do tipo PaaS, evitando a reescrita de
+aplicações quando o desenvolvedor resolve mudar de
+provedor.
+Um ponto de pesquisa importante na computação em
+nuvem consiste no monitoramento de recursos em ambientes
+de nuvem, atividade fundamental para se medir e avaliar
+continuamente os comportamentos da infraestrutura ou
+aplicações em termos de desempenho, confiabilidade,
+consumo de energia, capacidade de atender acordos de nível
+de serviços (SLAs), segurança, entre outros [14].
+As soluções de monitoramento devem agir sobre as
+camadas que compõem os serviços em nuvem. Apesar de
+serem uma necessidade fundamental para o controle e
+gerenciamento das infraestruturas de hardware e software, as
+soluções de monitoramento fornecem informações e
+indicadores sobre o desempenho da utilização dos serviços.
+Segundo Borges [19], um dos grandes desafios no ambiente
+de nuvens consiste em controlar de forma eficiente o uso dos
+recursos computacionais, além de se certificar que aquilo foi
+acordado com os clientes está sendo de fato cumprido. A
+utilização de Acordos em Nível de Serviço ou Service Level
+Agreements (SLAs) pode delimitar de forma clara a
+responsabilidade de cada parte, bem como definir, de forma
+inequívoca, os requisitos que estão sendo contratados, para
+que em avaliações periódicas, seja possível se verificar o
+cumprimento dos contratos e a eficiência dos recursos.
+A computação em nuvem, de forma um tanto quanto
+generalizada, utiliza o conceito de SLA para controlar o uso
+de recursos computacionais advindos de um provedor e definir
+as responsabilidades tanto para os clientes quanto para
+provedores. Podem existir muitas diferenças entre as
+propostas de SLA, porém, segundo [18], existe a possibilidade
+de se identificar uma estrutura geral para um SLA, que
+apresenta informações sobre as partes envolvidas, os
+parâmetros do SLA, as métricas para calcular os parâmetros
+do SLA, o algoritmo para calcular os parâmetros do SLA,
+objetivo de nível de serviço ou Service Level Objective (SLO)
+e as ações a serem tomadas em caso de violação do acordo. De
+acordo com [19], o gerenciamento de SLA deve incluir a
+definição do contrato (criado a partir de um esquema básico
+com parâmetros de qualidade do serviço (QoS), a negociação,
+
+
+o acompanhamento e ainda a execução do SLA, isto tudo de
+acordo com uma política definida entre as partes.
+Um modelo de SLA para serviços na nuvem deve fornecer
+uma especificação do conteúdo do SLA com um alto nível de
+detalhes, que é tanto ricamente expressivo quanto
+intrinsecamente extensível, suportando uma personalização
+controlada para domínios arbitrários que possuem requisitos
+específicos.
+As atividades relacionadas com os objetivos principais do
+provedor de serviços demandam um monitoramento efetivo.
+Não possuir as informações necessárias em momentos de
+decisão anularia a utilidade de um serviço, principalmente em
+um ambiente de nuvem onde o consumidor espera que o
+mesmo reaja de acordo com as suas necessidades e atenda
+suas expectativas. O monitoramento de recursos nas diversas
+camadas da nuvem torna-se necessário para que se tenha uma
+precificação efetiva dos serviços entregues aos clientes de
+serviços na nuvem, visando o fornecimento de métricas
+utilizadas como entradas nos modelos de bilhetagem. O
+problema relacionado ao desenvolvimento de um modelo
+efetivo para bilhetagem em ambientes do tipo PaaS foi o foco
+desta pesquisa.
+Sousa et al. [31] afirma que apesar de existirem na
+literatura modelos que contemplam acordos e qualidade de
+serviços para a computação em nuvem, muitos modelos
+possuem inúmeros objetivos e não abordam aspectos de
+gerenciamento. Até onde se conhece, não existem na
+literatura modelos que tratem a subjetividade e a incerteza
+existentes no processo de estimativa da conformidade do
+desempenho do serviço de nuvem em relação aos seus SLAs,
+o que diferencia o presente trabalho dos demais.
+A questão relativa à busca de uma forma para tarifação
+efetiva dos serviços do tipo IaaS tem sido um dos problemas
+abordados na literatura sobre computação em nuvem. Chun e
+Choi [2] pesquisaram uma estratégia para precificação ótima
+na computação em nuvem, baseada na perspectiva do custo da
+estrutura. Os autores avaliaram duas abordagens para
+precificação: assinatura e pagamento por uso, na visão do
+provedor de serviços.
+Singh e Chana [15] propuseram uma arquitetura para
+medição e bilhetagem em ambientes do tipo IaaS, onde foi
+apresentado um sistema denominado IaaS Online Billing
+System (IOBS), o qual mostrava de forma transparente o
+consumo, a bilhetagem e a frequência de utilização dos
+serviços na nuvem, com base na abordagem pay-per-use. As
+regras de bilhetagem foram armazenadas em um banco de
+dados. Os resultados da pesquisa indicaram que o sistema
+proposto se mostrou efetivo na melhoria da interação com o
+usuário por meio da redução de tempo e melhoria da
+satisfação do cliente.
+Iwashita e Tanimoto [16] apresentaram um método para a
+gestão do atendimento ao cliente de serviços de nuvem em
+termos de três visões: o serviço, fluxo de caixa e a liquidação.
+Os autores afirmaram que a modelagem do relacionamento do
+cliente com o serviço é fundamental para o gerenciamento de
+regras de bilhetagem baseadas em serviços de comunicação,
+pelo fato da mesma ajudar na predição do direcionamento
+futuro com base nos requisitos ambientais e do usuário, os
+quais direcionam o processo de bilhetagem na nuvem.
+
+
+Um sistema de gerenciamento PaaS deve possibilitar a
+gestão de todas as fases da aquisição e publicação de um
+serviço: informação sobre os produtos e patrocinadores;
+negociação e resolução de produtos; contratação e
+empacotamento de serviços; fluxos financeiros; análises [29].
+De acordo com o CGI [30], os critérios de negócio que
+influenciam na bilhetagem de serviços em nuvem incluem
+preços diferentes para ofertas SaaS diferentes; soluções
+completas com ofertas de SaaS diferentes; descontos
+diferenciados entre nuvens distintas, diferenças entre ofertas
+na nuvem e fora da nuvem, além dos acordos de nível de
+serviços. Alguns critérios para a bilhetagem na nuvem
+incluem:
+IaaS: Tipo de CPU e sua utilização, tipo de servidor,
+capacidade e tipo de armazenamento (DASD), rede, HA,
+DR, acordos de nível de serviços (SLAs), espaço, poder
+de processamento, administração do sistema;
+PaaS: Pilhas de uso da IDE, balanceamento de carga de
+uso, segurança, SLAs;
+SaaS: Oferta da solução completa/única, oferta de
+módulos de software, volume de uso, utilização
+(momentos normais e de pico), receitas de terceirização
+de serviços, SLAs.
+Borges [19] afirmou que a utilização de modelos no
+contexto computacional tem sido muito difundida, e
+observando-se outras áreas da computação, foi possível
+perceber diversos benefícios advindos da utilização de
+modelos, tais como a padronização de processos e intercambio
+de informações, viabilizada através da realização do
+mapeamento entre estruturas distintas, dentre outros.
+De acordo com [34], as áreas usuárias de serviços de TI
+nas empresas devem acompanhar os custos dos serviços que
+utilizam, permitindo um controle maior dos custos de TI,
+melhorando o processo de tomada de decisão e alinhamento
+com as necessidades do negócio, facilitando assim uma
+utilização efetiva da TI. Os autores citaram a necessidade de
+um modelo para acompanhamento desses custos (chargeback)
+em serviços da nuvem.
+O processo inclui o acompanhamento efetivo dos custos
+por unidades de negócio que utilizam os serviços da nuvem.
+Deve-se considerar a opinião de todos os patrocinadores e
+evitar comportamentos oportunistas no chargeback. Os
+resultados indicaram a utilidade de se buscar esse controle de
+custos para a entrega e utilização de TI nas organizações.
+Apesar de ter tido um foco diferente, esse trabalho se
+relaciona à presente pesquisa pelo fato de ter mostrado a
+importância de uma abordagem pay-per-use e dissertado sobre
+a importância do controle de custos e cobrança efetiva para os
+serviços na nuvem.
+O mercado para desenvolvimento e hospedagem de
+aplicativos na nuvem atualmente conta com vários produtos,
+onde alguns deles são fornecidos por grandes empresas:
+A Amazon, com seus serviços web, não provê uma
+ferramenta de desenvolvimento propriamente dita, mas
+possui serviços muito úteis para o desenvolvedor
+hospedar seus aplicativos, como por exemplo o
+BeansTalk. Além disso, os serviços de gerenciamento
+de bancos de dados relacionais também facilitam a vida
+do desenvolvedor de sistemas de gestão, que na sua
+
+
+maioria dependem da existência de uma base de dados
+sólida.
+A Google e seu AppEngine também permitem ao
+desenvolvedor a hospedagem de seu aplicativo na
+nuvem com controles para o uso do ambiente elástico e
+o gerenciamento da cobrança dos clientes finais. Além
+disso, a utilização dos aplicativos da própria google
+(como googlemaps, por exemplo) também fica mais
+fácil de gerenciar nesse ambiente PaaS.
+A Microsoft Azure também provê serviços para a
+nuvem no estilo da Amazon, porém menos maduros, de
+utilização mais complexa. No entanto, possui também
+ferramentas para os desenvolvedores, como o Visual
+Studio Online, facilitando o uso para aqueles que já
+estão acostumados com a versão anterior do mesmo.
+AgileApps (antiga LongJump), da software AG, provê
+um ambiente de desenvolvimento de aplicativos
+comerciais bem completo e de alta produtividade, que
+pode ser utilizado no modelo nuvem ou em instalações
+próprias
+(on-premises).
+A
+ferramenta
+de
+desenvolvimento é bem abrangente, porém muito
+proprietária, não recomendável.
+Force.com, a plataforma de desenvolvimento da
+SalesForce, também provê um bom ambiente de
+desenvolvimento, como o AgileApps, com a vantagem
+de estar nativamente integrado ao CRM líder de
+mercado na nuvem, construído na era das redes sociais
+e com forte influência dessa forma de trabalho na web.
+Seu ponto fraco é também o fato de ser proprietário,
+ainda mais restritivo do que o AgileApps, uma vez que
+o único modelo comercializado é o modelo nuvem.
+Além disso utiliza uma linguagem proprietária, Apex
+[35].
+Existem também IDE próprias para desenvolvimento de
+aplicativos genéricos na nuvem, que se integram com soluções
+PaaS para hospedagem desses aplicativos. Pode-se citar como
+exemplos: Cloud9, Cloud IDE, Kodingen, entre outros. A
+ferramenta para desenvolvimento de aplicativos ideal deve
+prover o máximo de recursos possível, no entanto não pode
+aprisionar os seus usuários em uma tecnologia proprietária,
+permitindo a movimentação do aplicativo construído para
+outros ambientes se necessário. Muitos usuários consideram
+que a forma de bilhetagem nessas plataformas pode ser
+melhorada.
+Durante a pesquisa e revisão de literatura realizada, foi
+identificado que poucos trabalhos recentes abordam o
+problema relativo à um processo de bilhetagem efetiva em
+ambientes do tipo PaaS para desenvolvimento e publicação de
+aplicações.
+III. O MODELO PROPOSTO
+Visando o desenvolvimento de um modelo de tarifação que
+possa considerar a utilização de todos os recursos envolvidos
+no processo de desenvolvimento, publicação e venda de
+aplicações na nuvem, torna-se necessário que se apresente
+uma visão geral para utilização e tarifação de uma solução
+PaaS para o desenvolvimento de aplicativos na nuvem. O
+modelo de bilhetagem proposto busca obter os custos e
+precificar os recursos utilizados pelos usuários, para então
+
+
+realizar a cobrança para estes recursos. Diferente dos planos
+de negócio pré-definidos, o modelo proposto baseia-se
+totalmente no modelo de pagamento por uso (pay-per-use),
+além de registrar a utilização de recursos e fornecer a opção de
+acompanhamento dos custos.
+O modelo proposto permite que se opere em múltiplas
+moedas para que seja possível uma futura internacionalização,
+além de prover mecanismos que auxiliam os desenvolvedores
+a estabelecer mecanismos próprios de billing para suas
+aplicações baseados na quantidade de usuários de uma dada
+aplicação e/ou na quantidade de recursos utilizados. Estes
+pontos são importantes para a tarifação, assim como para fins
+contábeis.
+O modelo proposto segue a visão apresentada na Fig. 3,
+onde os clientes do ambiente PaaS são os desenvolvedores e
+os usuários dos sistemas criados por estes desenvolvedores. O
+modelo de tarifação deve contemplar formas de precificar a
+utilização dos recursos para esses dois tipos de clientes.
+Conforme apresentado na Fig. 3, uma solução do tipo
+PaaS para desenvolvimento de software na nuvem pode ser
+vista como um conjunto integrado de serviços em nuvem, que
+envolvem em alto nível os recursos da IDE (aplicativo para
+desenvolvimento), o software desenvolvido e publicado na
+plataforma, o banco de dados, a infraestrutura de suporte na
+nuvem e demais serviços de nuvem que componham a
+plataforma. Um sistema de tarifação efetivo deve coletar
+métricas relativas aos recursos utilizados, a partir de uma nova
+visão de tarifação integrada desses recursos, de forma a
+oferecer preços competitivos aos usuários e desenvolvedores,
+além de buscar uma boa margem de lucro para o provedor dos
+serviços.
+
+O modelo apresentado possui como entradas as métricas
+coletadas para cada tipo de cliente (desenvolvedor ou usuário
+de sistemas na nuvem) aos níveis de aplicação, de banco de
+dados, de infraestrutura, além dos demais níveis de serviços na
+nuvem que porventura existam na plataforma. Suas saídas são
+os preços consolidados pelo uso dos recursos utilizados pelos
+clientes em um determinado período de tempo. A Fig. 4
+mostra a inserção do modelo proposto no contexto de
+gerenciamento de PaaS.
+O modelo proposto envolve a coleta de métricas relativas
+aos ambientes de serviços entregues ao cliente pelo PaaS,
+realizada por meio de agentes desenvolvidos especificamente
+para esse fim. A partir da coleção de métricas relativas ao
+
+PaaS de forma integrada aos demais serviços da nuvem,
+calcula-se as tarifas dos clientes, com base nos custos dos
+serviços de nuvem durante o período avaliativo e na estratégia
+de negócio do provedor PaaS.
+
+Processos do modelo
+A Fig. 5 apresenta uma visão geral dos processos do
+modelo. A função de precificação gera uma fórmula para
+precificar os dados de registros das sessões que serão
+utilizados pelas funções de cobrança. Esse preço ainda poderá
+ser afetado pelas condições de mercado e utilização dos
+recursos ao longo do tempo. Na dimensão econômica, serão
+aplicados componentes de tarifa e eficiência.
+
+preços Pay-as-you-go é uma ponte importante entre os
+usuários e provedores de serviços. O esquema de preços será
+especificado pelo provedor de serviços e armazenado como
+entrada para o processo de políticas de cobrança (SCP).
+A prática de se calcular o preço com base nas horas de
+máquinas virtuais pode ser realizada a partir da cobrança de
+um valor estabelecido para cada hora de utilização dos
+recursos. Por exemplo, o preço da largura de banda é dado
+pelo tráfego entre os nós em um determinado período de
+tempo. A largura de banda contempla as mensagens enviadas /
+transferência de saída e as mensagens recebidas / transferência
+de entrada. A escala de preços para a largura de banca é
+aplicável em uma base mensal, como mostrado na Tabela I. O
+modelo proposto neste trabalho permite que regras de negócio
+sejam definidas e aplicadas ou que cada recurso utilizado seja
+cobrado pelo que for consumido (pay-per-use).
+
+
+No âmbito da componente tarifária devem ser definidas
+taxas para acessos e utilização, como parte da política de
+preços de taxa fixa, enquanto será utilizado um componente
+de eficiência como uma mercadoria a ser utilizada para
+maximizar a receita do provedor de serviço e eficiência
+econômica para a satisfação do cliente. Podem ser utilizados
+diferentes esquemas para precificação, de acordo com as
+necessidades do mercado web.
+O preço é importante não somente para a economia, mas
+também desempenha um papel na definição de como os
+sistemas do PaaS serão utilizados, com recursos otimizados e
+ajustados de acordo com a oferta e a demanda. O esquema de
+
+
+Um outro aspecto do modelo de bilhetagem consiste no
+fato de que o usuário poderá pagar somente a quantidade de
+armazenamento que utilizar durante o mês. No plano de
+pagamento por uso (pay-per-use) não existem taxas mínimas
+nem compromissos de longo prazo. O usuário não deve se
+preocupar com a compra e manutenção de hardware físico. O
+preço deverá estar em conformidade com a quantidade de
+armazenamento virtual utilizado em uma hora. Pode-se citar
+como exemplo a escala apresentada na Tabela II, a qual
+poderia ser aplicada em uma base de cálculo horária.
+
+Os clientes podem ser cobrados pelo uso das máquinas
+virtuais (MV), que são caracterizadas pela quantidade de CPU
+e memória RAM. Dessa forma, preços serão destinados às
+instâncias de MV que estiverem sendo executadas. Para os
+servidores sem utilização, o usuário paga taxas referentes ao
+armazenamento que os mesmos estiverem usando. Como
+exemplo, mostra-se a Tabela III, que apresenta as máquinas
+virtual e seus respectivos preços.
+Os acordos de nível de serviços (SLAs) são utilizados
+como base para o nível esperado de serviço entre o usuário e o
+provedor do serviço. A qualidade dos atributos de serviços
+que fazem parte de um SLA muda constantemente,
+demandando um cumprimento desses acordos. Os parâmetros
+dos acordos são compostos pelas partes, pelo serviço e pelas
+obrigações acordadas. Torna-se necessário um monitoramento
+efetivo dos mesmos. Sousa et al. [31] afirma que nos sistemas
+na nuvem, os SLAs possuem objetivos distintos, mas é
+possível se identificar uma estrutura geral. Schnjakin et al.
+[18] cita que essa estrutura pode ser formada pelas
+
+
+informações sobre as partes, parâmetros de SLA, métricas
+utilizadas para calcular os parâmetros do SLA, algoritmos
+para calcular os parâmetros do SLA, objetivos do nível de
+serviço (Service Level Objectives-SLOs) e ações a serem
+executadas no caso de violação dos acordos.
+
+Na presente pesquisa, foi utilizada seguinte definição: um
+SLA para serviços na nuvem é composto das informações
+sobre as partes, métricas de SLA, SLOs, algoritmos para
+cálculo das métricas e penalidades relativas aos SLAs. A
+informação sobre as partes se refere ao contrato entre o
+provedor e o cliente. A métricas de SLA são relacionadas aos
+itens que serão monitorados (por exemplo, tempo de resposta
+e vazão) enquanto os SLOs contém limites pré-definidos para
+o parâmetro. Existe uma forma para se calcular bem como
+penalidades para o caso de não conformidade de SLOs.
+Algumas métricas podem ser o tempo de resposta, a vazão e a
+disponibilidade. Um SLO está associado a cada métrica
+avaliada.
+O SLA orientado a lucro representa uma operação
+confiável dos sistemas, por motivar o provedor a fornecer um
+serviço de alta qualidade. A receita consiste no montante pago
+pelo cliente ao provedor para atingir um SLA e custo
+operacional pode ser definido como a despesa do provedor
+para executar um serviço com um SLA especificado. Dessa
+forma, o lucro consiste na soma de todas as receitas
+correspondentes menos o custo operacional somado ao total
+de todas as penalidades como mostrado na equação abaixo
+[31].
+Lucro = Receita - (Custo + Penalidades)
+A penalidade é um valor que o provedor deve pagar aos
+clientes se os SLAs não forem atingidos. Por exemplo, no
+Google AppEngine, Microsoft Azure, or Amazon S3, se a
+disponibilidade for menor do que 99.9%, os clientes recebem
+um crédito de serviços, de acordo com o SLA e proporcional à
+receita. De forma similar, o tempo de resposta é crítico para
+garantir a qualidade do serviço (QoS) e pode gerar
+penalidades em alguns modelos de serviços [32].
+O custo da penalidade foi definido como a razão entre a
+soma de todas as atividades que não cumpriram SLOs no total
+de atividades, multiplicado pelas receitas do sistema, de
+acordo com a fórmula abaixo. O valor das receitas consiste no
+valor calculado para o consumo de todos os recursos
+utilizados por cada usuário.
+
+Pode-se definir uma função de satisfação para o SLA,
+como mostrado abaixo. A função estará satisfeita se o SLA
+estiver satisfeito, isto é, se todos os SLOs do SLA estiverem
+satisfeitos. Nos demais casos, a função não está satisfeita.
+
+O desempenho foi definido como a razão entre a soma de
+todas as atividades que superaram integralmente os SLOs
+(limite máximo de KPIs - Key Performance Indicators) no
+total de atividades, multiplicado pelas receitas do sistema, de
+acordo com a fórmula abaixo.
+
+Foi definida uma função de superação para o SLA, onde a
+mesma estará satisfeita se o SLA tiver superado, isto é, todos
+os SLOs do SLA estiverem superados. Nos demais casos a
+função não está satisfeita.
+O conceito de conformidade do SLA se refere ao quanto o
+serviço está em conformidade com o padrão de qualidade mais
+alto estimado no conjunto de indicadores de desempenho
+denominados KPIs (Key Performance Indicators) definido
+para o serviço PaaS. Seu valor consiste no percentual de
+conformidade do serviço, calculado com base em um método
+fuzzy adaptado de [33]. No método para estimativa do
+percentual de conformidade dos SLAs proposto nesta
+pesquisa, os acordos de nível de serviços (Service level
+agreements - SLAs), os objetivos do nível de serviço (Service
+level objectives - SLOs) e os requisitos do nível de serviço
+(Service level requirements - SLRs) são considerados de
+forma conjunta no nível de objetivos de serviço, como
+componentes que definem os atributos de qualidade e
+desempenho utilizados como entrada no método. Os níveis
+hierárquicos considerados são três e incluem o PaaSObjetivos-KPIs.
+Os serviços podem compartilhar alguns recursos e possuir
+diferentes KPIs para suportar seus objetivos. Foi proposta
+neste trabalho uma mudança no projeto tradicional de KPIs,
+adaptada de [33], em acréscimo à abordagem mais geral
+utilizada, como ilustrado na Fig. 6. A proposta permite uma
+inferência fuzzy para se estimar de forma quantitativa a
+conformidade do SLA, através do monitoramento de métricas
+do quantitativas e qualitativas referentes à qualidade geral do
+serviço PaaS. A partir dessa abordagem, pode-se proceder o
+tratamento da subjetividade e incerteza epistêmica envolvida
+no processo de estimativa dos limiares superiores e inferiores
+dos KPIs definidos para o SLA, estimando assim o seu
+percentual de conformidade em relação ao padrão de
+qualidade estabelecido pelos gestores.
+O agrupamento dos KPIs relativos ao PaaS deve ser feito
+através da utilização dos objetivos como guia. É importante
+nessa fase que se tente utilizar métricas que agrupadas e
+agregadas possam simbolizar a conformidade do serviço PaaS
+em relação à todas as visões do negócio: estratégica, tática e
+
+
+operacional. Maiores detalhes sobre o processo de cálculo do
+percentual de conformidade da qualidade do serviço de nuvem
+podem ser encontrados em [33].
+
+geradas e enviadas aos usuários para pagamento. O processo
+de faturamento resume o registro da cobrança realizada para
+um determinado período e indica a quantidade de unidades
+monetárias a serem pagas pelo cliente. Essa informação pode
+incluir os registros dos clientes, seus dados, bem como as
+políticas pessoais de faturamento que definem o tipo de
+bilhete, seja em papel ou em meio eletrônico.
+Uma ferramenta automatizada para monitoramento e
+tarifação PaaS
+
+
+Dessa forma, o conceito de conformidade utilizado nesta
+pesquisa consiste no valor percentual de conformidade do
+SLA do PaaS, em relação a um padrão de qualidade
+preestabelecido. No modelo de bilhetagem proposto, seu valor
+é utilizado unicamente para gerar percentuais de descontos na
+cobrança dos usuários, nos casos de um desempenho muito
+inferior do serviço de nuvem.
+O processo de cobrança busca calcular o preço para a
+contabilização de um determinado registro que mostra o
+consumo particular de recursos. São definidas funções de
+conversão de valores coletados em termos técnicos em
+unidades monetárias. A informação sobre a cobrança
+monetária então é incluída nos registros de cobrança do
+serviço. Os preços podem estar disponíveis para recursos
+específicos dentro do registro de uso ou em qualquer
+combinação adequada de acordo com as aplicações. Supõe-se
+que tanto os registros de contabilização ou de cobrança são
+coletados para um determinado usuário, aplicação, sistema ou
+podem ser encargos baseados em uma regra de negócio.
+Os registros da sessão relativos aos SLAs são transferidos
+para a função de cobrança. O cálculo total do pagamento pelo
+uso dos recursos (pay-per-use) será deduzido pela fórmula:
+CustoPorusuário =  Pr eço × Quant + (Desempenho- Penalidades)
+
+Onde:
+Preço é o preço por recurso utilizado por unidade de
+medição.
+Quant é a quantidade de unidades do recurso
+utilizada
+Desempenho é o valor que o provedor deve receber
+pelo alto desempenho do serviço em relação aos
+SLAs.
+Penalidades é o valor que o provedor deve pagar
+em função das violações de SLAs.
+O modelo é genérico de tal forma, que os recursos a serem
+cobrados podem ser definidos pelos gestores do provedor de
+serviços, em um modelo de negócio que possa melhorar sua
+competitividade no mercado. No caso do serviço PaaS
+avaliado no estudo de caso realizado para avaliar o modelo,
+foram definidos os recursos mostrados na Tabela IV.
+A partir da execução da função de cobrança no modelo, os
+registros de cobrança são enviados para a função de
+bilhetagem. Os registros de cobrança são transformados em
+notas de cobrança finais ou notas fiscais. As contas são
+
+Para que se obtivesse uma maior produtividade durante a
+pesquisa, foi desenvolvida uma ferramenta para
+monitoramento integrado do ambiente PaaS e dos recursos
+utilizados nos ambientes IaaS, BDaaS, SaaS que dão suporte
+aos serviços de nuvem PaaS. A ferramenta foi desenvolvida a
+partir de alguns conceitos propostos por [20]. O modelo
+proposto foi incorporado em uma nova ferramenta para o
+monitoramento e a tarifação de ambientes PaaS.
+1. Definir uma eficiência de negócios
+crescente e atingir alto nivel de
+satisfação dos clientes
+2. Definir uma gestão precisa dos
+padrões de pagamentos e uma resposta
+rápida às questões
+3. Definir a função de capacitação
+
+4. Encontrar a forma de
+função de capacitação
+
+5. Desenvolver as funções
+
+6. Verificar a validade para a gestão
+Precisa dos padrões de pagamento e
+Resposta rápida
+
+7. Monitorar a eficiência de negócio e
+a alta satisfação dos clientes
+
+
+Durante o desenvolvimento desta pesquisa, foram
+utilizadas algumas recomendações de [16] e [17], referentes
+ao desenvolvimento de sistemas de bilhetagem para cloud
+computing. Os autores recomendavam a utilização da
+declaração "Um sistema deve realizar X, usando Y, de forma a
+se ter Z". Algumas interpretações dessa declaração para
+sistemas de bilhetagem podem ser "um sistema de
+gerenciamento de bilhetagem deve responder rapidamente as
+questões (X), por meio de funções (Y) de forma a se atingir
+um alto índice de satisfação dos clientes (Z)". Uma outra
+interpretação pode ser "Um sistema para gerenciamento de
+bilhetagem deve gerenciar precisamente padrões de
+pagamentos (X), por meio de funções (Y) de forma a se
+atingir a eficiência de negócio (Z)". Primeiramente deve ser
+investigado como aumentar a eficiência de negócio e se atingir
+altos índices de satisfação dos clientes (declaração Z). Então,
+deve-se entender como gerenciar padrões precisos de
+pagamento e respostas rápidas às questões, correspondendo à
+
+declaração X. O terceiro passo inclui o entendimento e
+definição da função. A próxima atividade consiste em se
+encontrar uma forma para a função a partir dessas três
+atividades. Então, deve-se desenvolver funções e se verificar a
+validade para se padrões precisos de pagamento e resposta
+rápida. Finalmente, deve-se monitorar a eficiência do negócio
+e a satisfação dos clientes. A Fig. 7 apresenta essa
+abordagem.
+Como citado anteriormente, o modelo de bilhetagem
+proposto foi automatizado em uma ferramenta de software,
+possibilitando o cadastramento e emissão dos bilhetes para os
+usuários dos serviços PaaS e SaaS disponíveis na plataforma.
+IV. ESTUDO DE CASO
+Para avaliação do modelo apresentado nesta pesquisa, foi
+realizado um estudo de caso em uma empresa brasileira do
+ramo de desenvolvimento de software. Por razões de sigilo do
+negócio, seu nome real não será revelado. A empresa foi
+nominada no artigo como empresa alfa. A empresa alfa possui
+uma solução do tipo PaaS em processo de implantação,
+destinada a desenvolvedores de software, que funciona de
+forma integral no ambiente de nuvem. A solução automatiza
+todo o processo de desenvolvimento, testes e publicação de
+aplicações na nuvem.
+A plataforma PaaS para qual o modelo de bilhetagem foi
+proposto e avaliado, consiste em um ambiente de alta
+produtividade que visa o rápido desenvolvimento de sistemas
+de gestão, utilizando bibliotecas denominadas gluonsofts. Os
+gluonsofts são componentes autossuficientes de software,
+próprios para rodar na nuvem. Podem ser acoplados para
+montar uma aplicação que resolva um problema de negócio
+complexo, ou podem ser utilizados individualmente, por uma
+pequena ou micro empresa, a fim de automatizar uma
+atividade de seus negócios. Um gluonsoft pode, por exemplo,
+ser um serviço que emite nota fiscal eletrônica. Para a
+bilhetagem, considera-se o gluonsoft como uma
+funcionalidade ofertada.
+A solução PaaS avaliada consiste em uma abordagem
+completa para se desenvolver, testar e distribuir aplicações de
+gestão na web, em um ambiente de nuvem, com um mínimo
+trabalho de gerenciamento. O usuário desenvolvedor possui
+disponível uma ferramenta de alta produtividade e diversos
+recursos de trabalho em grupo. As aplicações são hospedadas
+em servidores na nuvem, cuja capacidade é aumentada ou
+diminuída conforme a necessidade. A plataforma possui
+facilidades especiais para elaboração de formulários acoplados
+a regras de negócio e outros recursos característicos de
+sistemas de gestão, tais como menus, páginas padrão com
+grids inteligentes para consultas e edição, gestão de
+permissões, ajuda em tempo real (online) e outros.
+O provedor de serviços é responsável por disponibilizar,
+gerenciar e monitorar toda a estrutura para a solução de
+computação em nuvem, deixando os desenvolvedores e
+usuários finais sem esses tipos de responsabilidades.
+O modelo de negócio proposto permite que a cobrança
+pelos serviços seja feita através do monitoramento do uso dos
+recursos ou ainda pela cobrança de pacotes de utilização,
+permitindo que sejam concedidos ou não descontos gerados a
+
+
+partir de penalidades por descumprimento de SLAs ou por não
+conformidade na qualidade estimada para o serviço.
+O processo de bilhetagem da empresa alfa inclui a
+cobrança dos serviços de nuvem para os desenvolvedores e
+para os clientes dos desenvolvedores que utilizarem os
+softwares desenvolvidos e publicados na plataforma. O
+sistema de bilhetagem possui módulos para as funções de
+administração, usuário e desenvolvedor, sendo independente
+em relação à plataforma IaaS. Os agentes para a coleta dos
+dados para bilhetagem também não dependem do tipo de
+plataforma utilizado. No estudo de caso realizado, o sistema
+de bilhetagem foi executado no ambiente de nuvem da
+Amazon, monitorando a aplicação IDE do tipo PaaS e uma
+aplicação publicada no ambiente SaaS da plataforma.
+O sistema de bilhetagem desenvolvido a partir do modelo
+apresentado neste artigo, foi utilizado durante um mês na
+empresa alfa, tendo gerado uma cobrança considerada mais
+justa e transparente pelos gestores, desenvolvedores e usuários
+de software.
+A possibilidade de cobrança realizada a partir da utilização
+dos recursos disponíveis nos serviços do tipo PaaS e SaaS
+ofertados pela plataforma, foi um dos fatores considerados
+mais relevantes pelos gestores da empresa que foram
+entrevistados.
+Metodologia
+Foram realizadas entrevistas semiestruturadas com os
+gestores da empresa que avaliou a plataforma de
+desenvolvimento e usuários dos softwares da plataforma.
+Foram avaliados os valores de cobrança gerados pelo modelo
+de bilhetagem PaaS durante um mês.
+A pesquisa realizada obedeceu os seguintes passos:
+1. Desenvolvimento e automação do modelo de
+bilhetagem;
+2. Instalação do sistema de bilhetagem no ambiente
+de nuvem;
+3. Apresentação do sistema para os gestores e
+usuários;
+4. Utilização do sistema em um período avaliativo;
+5. Realização de entrevistas;
+6. Apresentação e discussão dos resultados para
+validação;
+7. Divulgação dos resultados finais.
+V. ANÁLISE DOS RESULTADOS
+Os resultados do estudo de caso apresentado foram
+promissores e contribuíram para o estado da arte na pesquisa
+sobre bilhetagem de serviços na computação em nuvem. Este
+trabalho é o primeiro a tratar a tarifação da PaaS de forma
+granular, isto é, cada recurso de forma separada, incluindo
+aspectos da IDE. Além disso, este trabalho inclui aspectos de
+qualidade de serviço. Dessa forma, tem-se um modelo de
+tarifação em consonância com as características da
+computação em nuvem.
+A Tabela IV apresenta a visão dos recursos da nuvem que
+foram monitorados durante o estudo de caso realizado com a
+
+
+utilização do modelo de bilhetagem proposto. Para a coleta
+dos dados da nuvem, foi utilizada a versão preliminar de uma
+ferramenta de software para bilhetagem desenvolvida e
+validada especificamente para esse fim. Os valores médios
+relativos ao consumo de recursos foram coletado pelos
+agentes durante um mês. O método de cálculo do modelo foi
+apresentado previamente aos clientes do serviço de nuvem.
+
+O percentual geral de conformidade de SLAs dos serviços
+do tipo PaaS (desenvolvedor) e SaaS (usuários de software)
+foram calculados com base nos SLAs relativos a métrica
+tempo de resposta. Ficou acordado entre o provedor e seus
+clientes que este percentual deveria ser superior a 80% em
+cada período avaliativo. Os percentuais de violação e
+superação de desempenho dos SLAs foram calculados por
+métrica, tendo sido prevista a aplicação de penalidades pelas
+possíveis violações e bônus para as superações de
+desempenho.
+O modelo de bilhetagem suporta o cadastramento de
+planos de negócio, além do plano denominado pay-per-use, o
+qual foi a principal inovação nesta pesquisa. O principal
+diferencial do modelo é o pagamento pela utilização de
+recursos, porém a contratação de pacotes foi contemplada no
+processo de bilhetagem desenvolvido, por ser um requisito
+tradicional e solicitado por alguns clientes.
+A plataforma PaaS e a ferramenta de bilhetagem foram
+configurados na Amazon. Durante o período de avaliação, foi
+desenvolvida e publicada uma aplicação web (SaaS). Como a
+plataforma PaaS ainda se encontrava em fase de implantação
+
+e testes, ainda não existiam clientes com softwares em
+produção. Para testar o uso do software publicado na nuvem
+para fins de bilhetagem, foi utilizada a ferramenta TPC-W
+adaptada para gerar a cargas de utilização para o mesmo.
+O experimento realizado na empresa envolveu durante um
+mês o acompanhamento das atividades rotineiras de
+desenvolvimento na plataforma PaaS, com a emissão dos
+bilhetes de cobranças para três cenários de desenvolvimento e
+para uma empresa usuária de software desenvolvido e
+publicado na plataforma. Os bilhetes foram apresentados aos
+gestores das empresas usuárias. Os resultados da cobrança
+pelo uso dos recursos no modelo se mostrou uma alternativa
+útil, preferível e satisfatória para os gestores entrevistados.
+Análise da bilhetagem do serviço de desenvolvimento de
+aplicativos na plataforma PaaS
+Durante o período de um mês, as informações relativas às
+métricas da IDE de desenvolvimento e do serviço de banco de
+dados utilizado nas atividades de desenvolvimento foram
+coletadas pelos agentes (vide Tabela V) em três cenários
+baseados em ambientes reais, definidos especificamente para
+esse fim. Todos os testes utilizaram dados reais de empresas
+que trabalham com serviços na nuvem.
+Cenário 1. Pequena empresa de desenvolvimento
+O primeiro cenário de testes foi definido para uma
+pequena empresa de desenvolvimento de software na nuvem.
+A infraestrutura utilizada incluiu uma máquina virtual, 2
+usuários desenvolvedores, 1 software em desenvolvimento na
+plataforma e 1 software em produção (serviço tipo SaaS),
+utilizado por uma empresa que possuía 20 usuários que
+dispararam 80 mil requisições durante o período avaliado. O
+KPI relativo ao SLA acompanhado foi o tempo de resposta.
+Nesse caso, os limiares superiores e inferiores relativos à
+definição da superação e violação dos desempenhos relativos
+ao SLA do serviço foram definidos em um mesmo valor, no
+caso 0,2 segundos. Para cálculo da conformidade, o percentual
+geral de qualidade definido para o serviço foi de 80% do
+padrão geral estimado pelos gestores. O serviço PaaS esteve
+em conformidade com o padrão de qualidade acordado
+durante o período avaliado. Dessa forma, não foi necessário
+que o provedor procedesse qualquer desconto por conta de
+baixa qualidade do serviço no valor final do bilhete.
+No período avaliado, o software em fase de
+desenvolvimento utilizou duas funcionalidades (gluonsofts) da
+plataforma.
+Foram realizados quatro deploys e seis
+armazenada uma versão (save). A métrica de armazenamento
+foi utilizada para acompanhar a evolução do espaço em disco
+ocupado pela aplicação em desenvolvimento na plataforma.
+Para o monitoramento e cobrança das atividades cotidianas,
+foram coletadas as métricas relativas à utilização da rede
+transferências,
+máquina
+virtual
+e
+quantidade
+de
+desenvolvedores conectados.
+
+
+desenvolvedores, trabalhando de forma distribuída. Como nos
+demais cenários avaliados nesta pesquisa, o experimento foi
+realizado para 1 software em desenvolvimento na plataforma e
+1 software em produção (serviço tipo SaaS), utilizado por 60
+usuários. O KPI relativo aos SLA acompanhado foi o tempo
+de resposta. Nesse caso, os limiares superiores e inferiores
+relativos à definição da superação e violação dos
+desempenhos relativos aos SLAs do serviço foram definidos
+em um mesmo valor de 0,2 segundos. Para cálculo da
+conformidade, o percentual geral de qualidade definido para o
+serviço foi de 80% do padrão geral estimado pelos gestores. A
+conformidade de qualidade foi mantida dentro do padrão de
+qualidade definido pelos gestores durante a avaliação do
+cenário 2. Dessa forma, não houve desconto no valor do
+bilhete calculado por conta de baixo desempenho da qualidade
+do serviço.
+
+Não houve valor relacionado a superação ou penalidade
+aplicada durante o cálculo do valor final do processo de
+bilhetagem, tendo em vista que não houve penalidade em
+função de violação do SLA tempo de resposta. A Tabela V
+apresenta os valores cobrados pelos serviços do provedor
+PaaS no cenário 1.
+
+Instância – Banco de Dados
+
+Armazenamento (100 GB)
+Quantidade de transações (100
+mil)
+
+Para o cenário 1, os parâmetros de desempenho e
+penalidades não ocorreram. Assim, neste cenário, o preço total
+cobrado para o desenvolvedor foi apenas o preço relativo ao
+uso dos recursos PaaS, ou seja, R$ 131, 88. Como não houve
+penalidades ou bonificações relativas ao SLA definido pelos
+gestores, esse foi o valor do bilhete repassado ao cliente.
+Durante as entrevistas realizadas com os gestores da empresa
+avaliada, foi identificado que a cobrança pelo uso dos recursos
+no cenário avaliado aparentou ser mais vantajosa do que a
+cobrança relativa a um pacote de uso, prática ainda comum no
+mercado de computação em nuvem. O bilhete relativo à
+empresa usuária do serviço SaaS teve o valor de R$ 14,44. Os
+valores relacionados ao software utilizado no serviço do tipo
+SaaS do provedor PaaS foram comparados entre os cenários
+avaliados, como será mostrado na sequência.
+
+
+Cenário 2. Média empresa de desenvolvimento
+O segundo cenário de testes foi definido para uma média
+empresa que trabalha com desenvolvimento de software na
+nuvem. A infraestrutura utilizada incluiu três MVs, 8 usuários
+
+Total PaaS
+
+259,74
+
+SaaS
+
+Total SaaS
+
+26,80
+
+No período avaliado, o software em fase de
+desenvolvimento utilizou cinco funcionalidades (gluonsofts)
+da plataforma. Foram realizados dez deploys e armazenadas
+quinze versões (save). A métrica de armazenamento foi
+utilizada para acompanhar a evolução do espaço em disco
+ocupado pela aplicação em desenvolvimento na plataforma.
+Para o monitoramento e cobrança das atividades cotidianas,
+foram coletadas as métricas relativas à utilização da rede
+transferências,
+máquina
+virtual
+e
+quantidade
+de
+desenvolvedores conectados.
+
+A Tabela VI apresenta os valores cobrados pelos serviços
+do provedor PaaS no cenário 2. O percentual de violação do
+SLA tempo de resposta foi de 4% nesse cenário. Como a
+receita obtida pelo provedor foi de R$ 286,45, ou seja, o
+somatório de todos os valores recebidos referentes ao PaaS e
+SaaS, tem-se um valor de R$11,46 como penalidade. Não
+houve bonificação no cálculo do bilhete para esse cenário.
+Dessa forma, o valor final para o desenvolvedor será o valor
+total pago subtraído do valor da penalidade, totalizando R$
+275,08.
+Cenário 3. Grande empresa de desenvolvimento
+O terceiro cenário de testes foi definido para uma grande
+empresa que trabalha com desenvolvimento de software na
+nuvem. A infraestrutura utilizada incluiu seis MVs, 50
+usuários desenvolvedores, trabalhando de forma distribuída.
+De forma, análoga aos demais cenários avaliados nesta
+pesquisa, foram monitorados 1 software em desenvolvimento
+na plataforma e 1 software em produção (serviço tipo SaaS),
+utilizado por até 1.000 usuários simultâneos.
+
+conformidade, o percentual geral de qualidade definido para o
+serviço foi de 80% do padrão geral estimado pelos gestores.
+No período avaliado, o software em fase de
+desenvolvimento utilizou dez funcionalidades (gluonsofts) da
+plataforma. Foram realizados 18 deploys e armazenadas 42
+versões (save). A métrica de armazenamento foi utilizada
+para acompanhar a evolução do espaço em disco ocupado pela
+aplicação em desenvolvimento na plataforma. Para o
+monitoramento e cobrança das atividades cotidianas, foram
+coletadas as métricas relativas à utilização da rede
+transferências,
+máquina
+virtual
+e
+quantidade
+de
+desenvolvedores conectados.
+A Tabela VII apresenta os valores cobrados pelos serviços
+do provedor PaaS no cenário 3. O percentual de violação do
+SLA tempo de resposta foi de 9% nesse cenário. Como a
+receita obtida pelo provedor foi de R$ 553,42, ou seja, o
+somatório de todos os valores recebidos referentes ao PaaS e
+SaaS, tem-se um valor de R$49,80 como penalidade. Não
+houve bonificação no cálculo do bilhete para esse cenário.
+Dessa forma, o valor final para o desenvolvedor será o valor
+total pago subtraído do valor da penalidade, totalizando R$
+503,62.
+
+
+O KPI relativo ao SLA acompanhado foi o tempo de
+resposta. Nesse caso, os limiares superiores e inferiores
+relativos à definição da superação e violação do desempenho
+relativos ao SLA do serviço (tempo de resposta) foram
+definidos como sendo 0,2 segundos. Para cálculo da
+
+No mesmo período da coleta dos dados da IDE, os
+agentes coletaram as métricas relativas ao software e ao banco
+de dados (vide Tabelas V, VI e VII), que se encontravam
+publicados na plataforma, para fins da bilhetagem do serviço
+SaaS nos três cenários. Para facilitar a comparação dos dados
+SaaS nos diferentes cenários avaliados, foi utilizado o mesmo
+software em ambiente de produção do provedor de serviços na
+nuvem.
+O software que foi publicado e monitorado nos três
+cenários avaliados utilizava uma funcionalidade da plataforma
+(gluonsoft). Foram coletadas as métricas relativas as máquinas
+virtuais. Cada usuário ainda foi monitorado e cobrado pelo
+uso da vazão de rede transferência de dados, segurança
+disponível para aplicação (firewall, VPN, entre outros), pela
+quantidade de usuários que utilizaram a aplicação (conexões
+ativas) e por uma taxa de publicação relacionada aos serviços
+de gestão da plataforma que são prestados continuamente aos
+usuários. Não houve cobrança de licença de sistema
+operacional, tendo em vista que o software foi executado em
+um servidor Linux, com todos os serviços configurados sendo
+do tipo GPL (general public licence).
+A Fig. 8 mostra a evolução da cobrança relativa ao serviço
+SaaS para os três cenários avaliados nesta pesquisa. Foi
+observado que o modelo proposto calculou valores
+compatíveis com os recursos utilizados, considerados pelas
+empresas usuárias do serviço como sendo úteis e preferíveis
+em relação aos tradicionais pacotes.
+Os resultados dos experimentos foram avaliados pelos
+gestores do provedor PaaS, onde os resultados indicaram que
+o modelo de bilhetagem apresentado neste trabalho foi
+considerado pelos entrevistados como sendo útil e adequado
+para solução do problema referente a bilhetagem de serviços
+em ambientes do tipo PaaS.
+
+Apesar de se ter obtido resultados promissores, existem
+algumas ameaças à validade desta pesquisa:
+Validade externa: os resultados do estudo de caso
+realizado com uma empresa dificultam a capacidade
+de generalização dos resultados desta pesquisa.
+
+
+Validade da conclusão: Pelo fato da quantidade
+limitada de repetições do estudo, existe uma
+deficiência na significância estatística dos resultados.
+Entretanto, todas as hipóteses analisadas utilizaram
+dados dos gestores envolvidos no processo avaliado.
+Dessa forma, não existe uma ameaça à validade da
+pesquisa neste ponto.
+
+
+de bilhetagem se permite que pacotes promocionais e outras
+estratégias de negócio sejam cadastrados e se sobreponham ao
+modelo de tarifação por uso, na fase de emissão dos bilhetes.
+Inclusive o gestor pode comparar qual seria a melhor opção de
+negócio para a empresa no momento da emissão periódica dos
+bilhetes. Essa funcionalidade foi considerada um diferencial
+do modelo pelos gestores.
+Entre as limitações da pesquisa realizada, pode-se citar a
+dificuldade de generalização dos resultados, pelo fato de se ter
+avaliado uma amostra restrita de usuários e empresas. Por
+conta de restrições de tempo e orçamento, não foi possível
+realizar uma maior quantidade de repetições durante o estudo
+de caso. Entretanto, apesar de iniciais, os resultados obtidos
+com o modelo de bilhetagem proposto se mostraram
+promissores.
+Como trabalho futuro, pretende-se realizar novos estudos
+com várias repetições dos testes em ambientes do tipo PaaS e
+SaaS de outros provedores de serviços em nuvem. A melhoria
+da ferramenta de software que automatizou o modelo em
+termos de usabilidade e aumento de produtividade também é
+um dos trabalhos futuros previstos.
+VI. CONCLUSÃO
+O presente trabalho apresentou um modelo para
+bilhetagem em nuvem para ambientes do tipo PaaS e SaaS,
+baseado na cobrança por utilização de recursos (Pay-per-use).
+Entre as principais contribuições desta pesquisa para o
+estado da arte, destacam-se:
+A possibilidade de uma cobrança pelo uso de recursos
+na bilhetagem de plataformas do tipo PaaS para
+desenvolvimento e publicação de software;
+A consideração do monitoramento dos SLAs no
+processo de bilhetagem, com possível aplicação de
+penalidades geradas a partir das violações desses
+acordos, mitigadas pelas superações de desempenho;
+A utilização de uma estratégia de verificação da
+conformidade da qualidade do serviço que pode
+impactar na concessão de descontos para o cliente no
+caso de serviços de baixa qualidade.
+Os resultados obtidos indicaram que a utilização de
+modelos de bilhetagem que possibilitem a cobrança baseada
+na utilização de recursos (pay-per-use) é uma tendência na
+computação em nuvem, onde foi verificado que o modelo
+proposto nesta pesquisa teve uma boa aceitação por parte dos
+usuários e gestores. Entretanto, ainda existe uma parcela de
+usuários que preferem a contratação de pacotes promocionais,
+os quais foram considerados importantes pelos gestores em
+alguns casos onde a empresa pode tirar proveito pela
+utilização em larga escala de alguns recursos da plataforma
+PaaS/SaaS avaliada.
+O modelo de bilhetagem proposto atendeu aos dois tipos
+de necessidades empresariais, tendo em vista que no módulo
+
+
