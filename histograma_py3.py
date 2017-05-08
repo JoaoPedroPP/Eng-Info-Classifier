@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
-
 #==============================================================================
+#
 # Código com a parte de geração do histograma para melhor visualização
-#
-# Dados atuais refletem o número de termos existentes para cada subárea
-#
-#
-#
+# 
 #==============================================================================
+
+# -*- coding: utf-8 -*-
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,9 +17,9 @@ def graph(tele, elec, comp, redinfo, procmult):
     totRedes = redinfo
     totTelecom = tele
 
-    areas = ['Computação', 'Eletrônica', 'Multímidia', 'Redes', 'Telecom']
+    areas = ['Computação', 'Eletrônica', 'Multimídia', 'Redes', 'Telecom']
     frequencias = [totComputacao, totEletronica, totMultimidia, totRedes, totTelecom]
-    xlabel = ['Computação: %d'%totComputacao, 'Eletrônica: %d'%totEletronica, 'Multímidia: %d'%totMultimidia, 'Redes: %d'%totRedes, 'Telecom: %d'%totTelecom]
+    xlabel = ['Computação: %d'%totComputacao, 'Eletrônica: %d'%totEletronica, 'Multimídia: %d'%totMultimidia, 'Redes: %d'%totRedes, 'Telecom: %d'%totTelecom]
 
     pos = np.arange(len(areas))
     width = 0.20

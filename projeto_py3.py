@@ -6,7 +6,7 @@
 # em Português da revista do IEEE da América Latina em alguma das subáreas do 
 # curso de Engenharia de Informação.
 # 
-# Dados atuais refletem o número de termos existentes para cada subárea
+# 
 # 
 #
 #
@@ -28,12 +28,6 @@ import histograma_py3
 ###########################################################################
 
 ######################Configuração inicial#################################
-
-#==============================================================================
-# #pyVersao = input("Você está utilizando Python 3 ou 2? ")
-# 
-# 
-
 caminhopasta = os.getcwd()
 caminho = os.getcwd() + '/Corpus'
 os.chdir(caminho)
@@ -41,9 +35,6 @@ A = os.listdir()
 
 t = PlaintextCorpusReader(caminho, '.*')
   
-
- 
- #print (t.words('Texto_%d'%i))
  
 texTel = np.zeros(len(A))
 texEle = np.zeros(len(A))
@@ -52,7 +43,7 @@ texMult = np.zeros(len(A))
 texRede = np.zeros(len(A))
 texTot = np.zeros(len(A))
 
-
+##################Varredura para termos, bigramas e trigramas##################
 for i in range(len(A)):
   
     print('Texto_%d'%i)
@@ -141,7 +132,7 @@ for i in range(len(A)):
     print ("Palavras da Eletrônica %d"%ele)
     print ("Palavras da Computação %d"%com)
     print ("Palavras de Redes de Informação %d"%redinfo)
-    print ("Palavras de Processamento Multimidia %d"%procmul)
+    print ("Palavras de Processamento Multimídia %d"%procmul)
     plt.figure(i) 
     plt.title('Texto_%d'%i)
     histograma_py3.graph(tel, ele, com, redinfo, procmul)
@@ -150,6 +141,7 @@ print ("-----FIM-----")
 
 print (np.sum(texTot))
 
+######################Classificação dos textos#################################
 
 pTel = np.zeros(len(A))
 pComp = np.zeros(len(A))
@@ -159,7 +151,7 @@ pRede = np.zeros(len(A))
 pTot = np.zeros((len(A), 5))
 pTotdebug = np.zeros((len(A), 5))
 
-areas = ['Computação', 'Eletrônica', 'Processamento Multímidia', 'Redes de Informação', 'Telecomunicações']
+areas = ['Computação', 'Eletrônica', 'Processamento Multimídia', 'Redes de Informação', 'Telecomunicações']
 
 for i in range(len(A)):
     pComp[i] = (texComp[i]/texTot[i])*100
