@@ -171,22 +171,22 @@ for i in range(len(A)):
     pTotdebug[i,:] = [pComp[i], pEle[i], pMult[i], pRede[i], pTel[i]]
     
     if pTot[i, np.argmax(pTot[i,])] >= 70:
-        print('O texto %d'%i,'é da área de: ' +areas[np.argmax(pTot[i,])]+', com %d'%pTot[i, np.argmax(pTot[i,])],'%.')
+        print('O texto %d'%i,'é da área de: ' +areas[np.argmax(pTot[i,])]+', com %d'%pTot[i, np.argmax(pTot[i,])],'% dos termos-chave nessa área.')
         
     else:
         pos = np.argmax(pTot[i,])
         maxi = pTot[i, pos]
         pTot[i, pos] = 0
         
-        if max + pTot[i, np.argmax(pTot[i,])] >= 80:
-            print('O texto %d'%i,'é das áreas de: ' +areas[pos]+' e '+areas[np.argmax(pTot[i,])] ) 
+        if maxi + pTot[i, np.argmax(pTot[i,])] >= 80:
+            print('O texto %d'%i,'é das áreas de: ' +areas[pos]+' e '+areas[np.argmax(pTot[i,])]+', com %d'%(maxi + pTot[i, np.argmax(pTot[i,])]),'% dos termos-chave nessas áreas.') 
                   
         else:
             pos2 = np.argmax(pTot[i,])
             maxi2 = pTot[i, pos2]    
             pTot[i, pos2] = 0  
             if maxi + maxi2 + pTot[i, np.argmax(pTot[i,])] >= 80:
-                print('O texto %d'%i,'é das áreas de: ' +areas[pos]+', '+areas[pos2]+' e '+areas[np.argmax(pTot[i,])] ) 
+                print('O texto %d'%i,'é das áreas de: ' +areas[pos]+', '+areas[pos2]+' e '+areas[np.argmax(pTot[i,])]+', com %d'%(maxi +maxi2+ pTot[i, np.argmax(pTot[i,])]),'% dos termos-chave nessas áreas.') 
             else:
                 print('O texto %d'%i,'não é classificável em alguma subárea em específico')
 
