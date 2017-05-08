@@ -28,7 +28,7 @@ def comp():
     sistDistribuidos = ['comunicação entre processos', 'modelo cliente servidor', 'RPC', 'sincronização', 'transação distribuída', 'P2P', 'cluster', 'cloud', 'Cloud']
 
     Computacao = Computacao + progEstru + progOrientObj + eSCMCritica + infoSoci + dispMoveis + pLN + jogosDigi + sistInt + engSoftware + algoEstruDado1 + sistDistribuidos
-
+    
     return Computacao
 
 def elec():
